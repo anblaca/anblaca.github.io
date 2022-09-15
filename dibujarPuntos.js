@@ -35,7 +35,7 @@ function main()
     }
 
     // Color de borrado del lienzo
-    gl.clearColor(1.0, 1.0, 1.0, 1.0);
+    gl.clearColor(0.0, 0.3, 0.0, 1.0);
 
     // Localiza el att del shader posicion
     const coordenadas = gl.getAttribLocation( gl.program, 'posicion');
