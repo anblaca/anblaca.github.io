@@ -76,16 +76,19 @@ function click( evento, gl, canvas )
 	// Guardar las coordenadas y copia el array
 	clicks.push(x); clicks.push(y); clicks.push(0.0);
     allclicks.push(x); allclicks.push(y); allclicks.push(0.0);
-    //lineStripVBO = gl.createBuffer();
-    //for (var i = 0; i < clicks.length; i++) {
-        //gl.bindBuffer(gl.ARRAY_BUFFER,lineStripVBO);
-        //gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(x))
-      //  mifuncion(n);
-    //}
+    lineStripVBO = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER,lineStripVBO);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(clicks),gl.STATIC_DRAW);
+
+    var lineColor = [0.0,1.0,1.0];
+    lineStripColor = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER,lineStripColor);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(lineColor),gl.STATIC_DRAW);
 
 	// Redibujar con cada click
 	render( gl );
 }
+
 
 function render( gl )
 {
@@ -95,15 +98,8 @@ function render( gl )
 	// Fija el color de TODOS los puntos
 	gl.uniform3f(colorFragmento, 1, 1, 0);
 
-    if(allclicks.length > 3) {
-        gl.bufferData( gl.ARRAY_BUFFER, new Float32Array(clicks), gl.STATIC_DRAW );
-        gl.drawArrays( gl.POINTS, 0, clicks.length/3 )	
-    } 
-    else {
-        // Rellena el BO activo con las coordenadas y lo manda a proceso
-        gl.bufferData( gl.ARRAY_BUFFER, new Float32Array(clicks), gl.STATIC_DRAW );
-	
-        gl.drawArrays(gl.LINE_STRIP,0,allclicks.length/3);
-    }
-	
+    //var vertexPositionAtrrib =gl.getAttribLocation(gl.pro)
+	// Rellena el BO activo con las coordenadas y lo manda a proceso
+	gl.bufferData( gl.ARRAY_BUFFER, new Float32Array(clicks), gl.STATIC_DRAW );
+	gl.drawArrays( gl.POINTS, 0, clicks.length/3 )	
 }
