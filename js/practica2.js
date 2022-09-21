@@ -21,44 +21,49 @@ function update() {}
 function loadScene() {
 
     //Practica 2
+    robot = new THREE.Object3D();
     //cilindro
-    var  base = new THREE.Mesh( new THREE.CylinderGeometry(50.0,50.0,15.0)); //r top, r bottom, height
-    base.position.y = 0.0;
+    var matRobot = new THREE.MeshBasicMaterial({ color: 'yellow', wireframe: true });
+    var  base = new THREE.Mesh( new THREE.CylinderGeometry(50.0,50.0,15.0),matRobot); //r top, r bottom, height
+    base.position.set = (0.0,0.0,0.0);
     //cilindro    
-    var ejeBrazo = new THREE.Mesh(new THREE.CylinderGeometry(20.0,20.0,18.0));
-    ejeBrazo.position.y = 0.0;
-    ejeBrazo.rotation.setY(180);
+    var ejeBrazo = new THREE.Mesh(new THREE.CylinderGeometry(20.0,20.0,18.0),matRobot);
+    ejeBrazo.position.set = (0.0,0.0,0.0);
+    ejeBrazo.rotation.setZ(Math.PI/2);
     //esfera
-    var rotula = new THREE.Mesh(new THREE.SphereGeometry(20.0));
-    rotula.position.y = 120.0;
+    var rotula = new THREE.Mesh(new THREE.SphereGeometry(20.0),matRobot);
+    rotula.position.set = (0.0,120.0,0.0);
 
     //cilindro
-    var cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22.0,22.0,6.0));
-    cilindroAntebrazo.position.y = 120.0;
+    var cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22.0,22.0,6.0),matRobot);
+    //cilindroAntebrazo.position = (0.0,120.0,0.0);
 
     //cilindro
-    var cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15.0,15.0,40.0));
-    cilindroMano.position.y = 200;
-    cilindroMano.setY(180);
+    var cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15.0,15.0,40.0),matRobot);
+    cilindroMano.position = (0.0,80,0.0);
+    cilindroMano.rotateZ(Math.PI/2);
 
-    objetoAntebrazo = new THREE.Mesh();
+
+    //ANTEBRAZO
+    objetoAntebrazo = new THREE.Object3D();
     objetoAntebrazo.add(cilindroAntebrazo);
     objetoAntebrazo.add(cilindroMano);
-
-    objetoBrazo = new THREE.Mesh();
+    objetoAntebrazo.position(0.0,120.0,0.0);
+   
+    //BRAZO
+    objetoBrazo = new THREE.Object3D();
     objetoBrazo.add(ejeBrazo);
     objetoBrazo.add(rotula);
     objetoBrazo.add(objetoAntebrazo);
 
-    objetoBase = new THREE.Object3D();
-    //mesh.add(base);
-    //mesh.add(ejeBrazo);
-    //mesh.add(rotula);
-    //mesh.add(cilindroAntebrazo);
-    //mesh.add(cilindroMano);
-    //scene.add(objeto)
-    objetoBase.add(base);
-    objetoBase.add(objetoBrazo);
+    //GRAFO DE ESCENA
+    robot.add(base)
+    
+    var suelo = new THREE.PlaneGeometry(1000, 1000, 50, 50)
+    var miSuelo = new THREE.Mesh(suelo, matRobot)
+    var suelo = new THREE.Mesh(PlaneGeometry(1000, 1000, 50, 50),matRobot);
+    suelo.rotation.x = -Math.PI / 2;
+    scene.add(suelo)
 }
 
 function render() {
