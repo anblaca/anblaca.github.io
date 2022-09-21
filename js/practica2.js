@@ -27,7 +27,7 @@ function loadScene() {
     //cilindro    
     var ejeBrazo = new THREE.Mesh(new THREE.CylinderGeometry(20.0,20.0,18.0),matRobot);
     ejeBrazo.position.set = (0.0,0.0,0.0);
-    ejeBrazo.rotation.setZ(Math.PI/2);
+    ejeBrazo.rotation.z = Math.PI/2;
     //esfera
     var rotula = new THREE.Mesh(new THREE.SphereGeometry(20.0),matRobot);
     rotula.position.set = (0.0,120.0,0.0);
@@ -57,8 +57,8 @@ function loadScene() {
     //GRAFO DE ESCENA
     robot.add(base)
     
-    var suelo = new THREE.PlaneGeometry(1000, 1000, 50, 50)
-    var miSuelo = new THREE.Mesh(suelo, matRobot)
+    var suelo = new THREE.PlaneGeometry(1000, 1000, 50, 50);
+    var miSuelo = new THREE.Mesh(suelo, matRobot);
     var suelo = new THREE.Mesh(PlaneGeometry(1000, 1000, 50, 50),matRobot);
     suelo.rotation.x = -Math.PI / 2;
     scene.add(suelo)
