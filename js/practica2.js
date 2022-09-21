@@ -39,6 +39,8 @@ function init() {
     mesh.add(rotula);
     mesh.add(cilindroAntebrazo);
     mesh.add(cilindroMano);
+
+    scene.add(mesh);
 }
 
 function update() {}
