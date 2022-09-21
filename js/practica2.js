@@ -33,14 +33,28 @@ function init() {
     cilindroMano.position.y = 200;
     cilindroMano.setY(180);
 
-    mesh = new THREE.Object3D();
-    mesh.add(base);
-    mesh.add(ejeBrazo);
-    mesh.add(rotula);
-    mesh.add(cilindroAntebrazo);
-    mesh.add(cilindroMano);
+    objetoAntebrazo = new THREE.Mesh();
+    objetoAntebrazo.add(cilindroAntebrazo);
+    objetoAntebrazo.add(cilindroMano);
 
-    scene.add(mesh);
+    objetoBrazo = new THREE.Mesh();
+    objetoBrazo.add(ejeBrazo);
+    objetoBrazo.add(rotula);
+    objetoBrazo.add(objetoAntebrazo);
+
+    objetoBase = new THREE.Object3D();
+    //mesh.add(base);
+    //mesh.add(ejeBrazo);
+    //mesh.add(rotula);
+    //mesh.add(cilindroAntebrazo);
+    //mesh.add(cilindroMano);
+    //scene.add(objeto)
+    objetoBase.add(base);
+    objetoBase.add(objetoBrazo);
+
+
+    
+    
 }
 
 function update() {}
