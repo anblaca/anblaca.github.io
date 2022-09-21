@@ -12,6 +12,14 @@ function init() {
     camera = new THREE.PerspectiveCamera(75,aspectRatio,0.1,100);
     camera.position.set(0,2,3);
 
+    //camera.position.set(90, 200, 350);
+    //camera.lookAt(new THREE.Vector3(0, 0, 0));
+}
+
+function update() {}
+
+function loadScene() {
+
     //Practica 2
     //cilindro
     var  base = new THREE.Mesh( new THREE.CylinderGeometry(50.0,50.0,15.0)); //r top, r bottom, height
@@ -51,13 +59,7 @@ function init() {
     //scene.add(objeto)
     objetoBase.add(base);
     objetoBase.add(objetoBrazo);
-
-
-    
-    
 }
-
-function update() {}
 
 function render() {
     requestAnimationFrame(render);
@@ -66,4 +68,5 @@ function render() {
 }
 
 init();
+loadScene();
 render();
