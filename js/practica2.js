@@ -10,8 +10,6 @@ function init() {
 
     var aspectRatio = window.innerWidth/window.innerHeight;
     camera = new THREE.PerspectiveCamera(75,aspectRatio,0.1,1000);
-    //camera.position.set(80,10,80);
-    //camera.position.set(50, 100, 80);
     camera.position.set(90, 200, 350);
     camera.lookAt(new THREE.Vector3(0, 0, 0));
 }
@@ -27,7 +25,6 @@ function loadScene() {
     
     //cilindro
     var  base = new THREE.Mesh( new THREE.CylinderGeometry(50,50,15,32),matRobot); //r top, r bottom, height
-    //base.position = (0,0,0);
     base.position.set(0, 0, 0);
     //cilindro    
     var ejeBrazo = new THREE.Mesh(new THREE.CylinderGeometry(20,20,18,32),matRobot);
@@ -35,7 +32,8 @@ function loadScene() {
     //esfera
     var rotula = new THREE.Mesh(new THREE.SphereGeometry(20,30,15),matRobot);
     rotula.position.set(0,120,0);
-
+    //Esparrago
+    var esparrago = new THREE.Mesh(new THREE.BoxGeometry(18,120,12),matRobot);
     //cilindro
     var cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22,22,6,32),matRobot);
     //cilindroAntebrazo.position = (0.0,120.0,0.0);
@@ -56,6 +54,7 @@ function loadScene() {
     objetoBrazo = new THREE.Object3D();
     objetoBrazo.add(ejeBrazo);
     objetoBrazo.add(rotula);
+    objetoBrazo.add(esparrago);
     objetoBrazo.add(objetoAntebrazo);
 
     //GRAFO DE ESCENA
