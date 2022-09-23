@@ -25,13 +25,13 @@ function loadScene() {
     
     //cilindro
     var  base = new THREE.Mesh( new THREE.CylinderGeometry(50,50,15,32),matRobot); //r top, r bottom, height
-    base.position.set = (0,0,0);
+    base.position = (0,0,0);
     //cilindro    
     var ejeBrazo = new THREE.Mesh(new THREE.CylinderGeometry(20,20,18,32),matRobot);
     ejeBrazo.rotation.z = Math.PI/2;
     //esfera
     var rotula = new THREE.Mesh(new THREE.SphereGeometry(20,30,15),matRobot);
-    rotula.position.set = (0,120,0);
+    rotula.position = (0,120,0);
 
     //cilindro
     var cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22,22,6,32),matRobot);
@@ -47,7 +47,7 @@ function loadScene() {
     objetoAntebrazo = new THREE.Object3D();
     objetoAntebrazo.add(cilindroAntebrazo);
     objetoAntebrazo.add(cilindroMano);
-    objetoAntebrazo.position = (0.0,120.0,0.0);
+    objetoAntebrazo.position = (0,120,0);
    
     //BRAZO
     objetoBrazo = new THREE.Object3D();
