@@ -127,14 +127,15 @@ function loadScene() {
     //GRAFO DE ESCENA
     robot.add(base)
     base.add(objetoBrazo)
-    scene.add(robot)
 
+    //scene.add(robot)
+    scene.add(mano)
     scene.add(new THREE.AxesHelper(1000));
 
     var suelo = new THREE.Mesh(new THREE.PlaneGeometry(1000, 1000, 50, 50),matRobot);
     suelo.rotation.x = -Math.PI / 2;
 
-    scene.add(suelo)
+    //scene.add(suelo)
 }
 
 function render() {
