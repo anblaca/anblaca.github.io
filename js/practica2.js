@@ -41,7 +41,7 @@ function loadScene() {
 
     //cilindro
     var cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15,15,40,32),matRobot);
-    cilindroMano.position.set(0.0,80,0.0);
+    cilindroMano.position.set(0.0,70,5);
     cilindroMano.rotation.z = Math.PI/2;
     //Nervios cada uno en una posicion del espacio
     //Nervio 1
@@ -125,15 +125,17 @@ function loadScene() {
     points.push(new THREE.Vector3(0, 0, 0));
     points.push(new THREE.Vector3(19, 0, 4));
 
-    //points.push(new THREE.Vector3(5, 0, 0))
     let geometry = new THREE.BufferGeometry().setFromPoints( points )
     //CREACION DE LA MANO
-    //var pinza = new THREE.BufferGeometry();
-    //pinza.setAttribute('position',new THREE.BufferGeometry(vertices,3));
-
-    var mano = new THREE.Mesh(geometry,matRobot);
-    //mano.position.set(0,0, 0);
-
+    //var mano = new THREE.Mesh(geometry,matRobot);
+    var pinzaI = new THREE.Mesh(geometry, matRobot);
+    pinzaI.rotateY(Math.PI / 2);
+    var pinzaD = new THREE.Mesh(geometry, matRobot);
+    pinzaD.rotateY(Math.PI / 2);
+    pinzaD.position.set(0, 20, 0);
+    //MANO
+    cilindroMano.add(pinzaD);
+    cilindroMano.add(pinzaI);
     //ANTEBRAZO
     objetoAntebrazo = new THREE.Object3D();
     objetoAntebrazo.add(cilindroAntebrazo);
@@ -142,7 +144,7 @@ function loadScene() {
     objetoAntebrazo.add(nervio2);
     objetoAntebrazo.add(nervio3);
     objetoAntebrazo.add(nervio4);
-    objetoAntebrazo.add(mano)
+    //objetoAntebrazo.add(mano)
     objetoAntebrazo.position.set(0,120,0);
    
     //BRAZO
