@@ -155,7 +155,7 @@ function loadScene() {
     //var mano = new THREE.Mesh(geometry,matRobot);
     var pinzaI = new THREE.Mesh(geometry, matRobot);
     //pinzaI.rotateY(Math.PI / 2);
-    pinzaI.rotation.z = -Math.PI/2;
+    pinzaI.rotation.z = Math.PI/2;
     var pinzaD = new THREE.Mesh(geometry, matRobot);
     //pinzaD.rotateY(Math.PI / 2);
     //pinzaD.rotation.z = Math.PI/2;
