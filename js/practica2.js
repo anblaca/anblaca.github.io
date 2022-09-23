@@ -108,6 +108,22 @@ function loadScene() {
     points.push(new THREE.Vector3(19, 20, 4));
     points.push(new THREE.Vector3(0, 20, 4));
     points.push(new THREE.Vector3(19, 0, 4));
+    // triangulo 5
+    points.push(new THREE.Vector3(0, 20, 0));
+    points.push(new THREE.Vector3(19, 20, 0));
+    points.push(new THREE.Vector3(19, 20, 4));
+    // triangulo 6
+    points.push(new THREE.Vector3(0, 20, 4));
+    points.push(new THREE.Vector3(0, 20, 0));
+    points.push(new THREE.Vector3(19, 20, 4));
+    // triangulo 7
+    points.push(new THREE.Vector3(0, 0, 0));
+    points.push(new THREE.Vector3(19, 0, 0));
+    points.push(new THREE.Vector3(19, 0, 4));
+    // triangulo 8
+    points.push(new THREE.Vector3(0, 0, 4));
+    points.push(new THREE.Vector3(0, 0, 0));
+    points.push(new THREE.Vector3(19, 0, 4));
 
     //points.push(new THREE.Vector3(5, 0, 0))
     let geometry = new THREE.BufferGeometry().setFromPoints( points )
