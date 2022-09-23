@@ -93,8 +93,8 @@ function loadScene() {
     ] );
 
     //CREACION DE LA MANO
-    var pinza = new THREE.BufferGeometry();
-    pinza.setAtrribute('position',new THREE.BufferGeometry(vertices,3));
+    const pinza = new THREE.BufferGeometry();
+    pinza.setAttribute('position',new THREE.BufferGeometry(vertices,3));
 
     var mano = new THREE.mesh(pinza,matRobot);
     mano.position.set(30,30, 30);
