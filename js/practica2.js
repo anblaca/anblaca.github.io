@@ -61,6 +61,10 @@ function loadScene() {
     objetoAntebrazo = new THREE.Object3D();
     objetoAntebrazo.add(cilindroAntebrazo);
     objetoAntebrazo.add(cilindroMano);
+    objetoAntebrazo.add(nervio1);
+    objetoAntebrazo.add(nervio2);
+    objetoAntebrazo.add(nervio3);
+    objetoAntebrazo.add(nervio4);
     objetoAntebrazo.position.set(0,120,0);
    
     //BRAZO
