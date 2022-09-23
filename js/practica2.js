@@ -10,7 +10,7 @@ function init() {
 
     var aspectRatio = window.innerWidth/window.innerHeight;
     camera = new THREE.PerspectiveCamera(75,aspectRatio,0.1,100);
-    camera.position.set(80,0,30);
+    camera.position.set(80,10,30);
     camera.lookAt(new THREE.Vector3(0, 0, 0));
 }
 
@@ -48,7 +48,7 @@ function loadScene() {
     objetoAntebrazo = new THREE.Object3D();
     objetoAntebrazo.add(cilindroAntebrazo);
     objetoAntebrazo.add(cilindroMano);
-    objetoAntebrazo.position = (0,120,0);
+    objetoAntebrazo.position.set(0,120,0);
    
     //BRAZO
     objetoBrazo = new THREE.Object3D();
