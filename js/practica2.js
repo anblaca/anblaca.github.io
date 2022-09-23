@@ -10,7 +10,7 @@ function init() {
 
     var aspectRatio = window.innerWidth/window.innerHeight;
     camera = new THREE.PerspectiveCamera(75,aspectRatio,0.1,1000);
-    camera.position.set(90, 200, -350);
+    camera.position.set(90, 200, 350);
     camera.lookAt(new THREE.Vector3(0, 0, 0));
 }
 
@@ -125,13 +125,37 @@ function loadScene() {
     points.push(new THREE.Vector3(0, 0, 0));
     points.push(new THREE.Vector3(19, 0, 4));
 
+    //triangulo 9
+    points.push(new THREE.Vector3(19, 0, 0));
+    points.push(new THREE.Vector3(19, 20, 0));
+    points.push(new THREE.Vector3(38, 0, 1));
+    //triangulo 10
+    points.push(new THREE.Vector3(19, 20, 0));
+    points.push(new THREE.Vector3(38, 10, 1));
+    points.push(new THREE.Vector3(38, 0, 1));
+    //triangulo 11
+    points.push(new THREE.Vector3(19, 0, 4));
+    points.push(new THREE.Vector3(19, 20, 4));
+    points.push(new THREE.Vector3(38, 0, 3));
+    //triangulo 12
+    points.push(new THREE.Vector3(19, 20, 4));
+    points.push(new THREE.Vector3(38, 10, 3));
+    points.push(new THREE.Vector3(38, 0, 3));
+    //triangulo 13
+    points.push(new THREE.Vector3(38, 0, 1));
+    points.push(new THREE.Vector3(38, 0, 3));
+    points.push(new THREE.Vector3(38, 10, 3));
+    //triangulo 14
+    points.push(new THREE.Vector3(38, 0, 1));
+    points.push(new THREE.Vector3(38, 10, 3));
+    points.push(new THREE.Vector3(38, 10, 1s));
   
     let geometry = new THREE.BufferGeometry().setFromPoints( points )
     //CREACION DE LA MANO
     //var mano = new THREE.Mesh(geometry,matRobot);
     var pinzaI = new THREE.Mesh(geometry, matRobot);
     //pinzaI.rotateY(Math.PI / 2);
-    pinzaI.rotation.x = Math.PI/2;
+    pinzaI.rotation.x = -Math.PI/2;
     var pinzaD = new THREE.Mesh(geometry, matRobot);
     //pinzaD.rotateY(Math.PI / 2);
     //pinzaD.rotation.z = Math.PI/2;
