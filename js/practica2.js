@@ -148,7 +148,7 @@ function loadScene() {
     //triangulo 14
     points.push(new THREE.Vector3(38, 0, 1));
     points.push(new THREE.Vector3(38, 10, 3));
-    points.push(new THREE.Vector3(38, 10, 1s));
+    points.push(new THREE.Vector3(38, 10, 1));
   
     let geometry = new THREE.BufferGeometry().setFromPoints( points )
     //CREACION DE LA MANO
