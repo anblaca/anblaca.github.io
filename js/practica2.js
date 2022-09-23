@@ -57,6 +57,52 @@ function loadScene() {
     var nervio4 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),matRobot);
     nervio4.position.set(8,34,4);
 
+    //CREACION DE LA MANO
+    var pinza = new THREE.BufferGeometry();
+    pinza.setAtrribute('position',new THREE.BufferGeometry(vertices,3));
+
+    const vertices = new Float32Array( [
+        //triangulo 1
+         0, 20,  0,
+         0, -0,  0,
+         19,  0,  0,
+        //triangulo 2
+         19,  20,  0,
+         0,  20,   0,
+         19,  0,   0,
+        //triagulo 3
+         0,  20,  4,
+         0,  0,   4,
+         19,  0,   4,
+        //triagulo 4
+         19,  20,  4,
+         0,  20,   4,
+         19,  0,   4,
+        //triangulo 5
+         0,  20,   0,
+         19,  20,  0,
+         19,  20,   4,
+        //triangulo 6
+        0,  20,   4,
+        0,  20,  0,
+        19,  20,   4,
+        //triangulo 7
+        0,  0,   0,
+        19,  0,  0,
+        19,  0,   4,
+        //triangulo 8
+        0,  0,   4,
+        0,  0,  0,
+        19,  0,   4,
+    ] );
+
+    //CREACION DE LA MANO
+    var pinza = new THREE.BufferGeometry();
+    pinza.setAtrribute('position',new THREE.BufferGeometry(vertices,3));
+
+    var mano = new THREE.mesh(pinza,matRobot);
+    mano.position.set(30,30, 30);
+
     //ANTEBRAZO
     objetoAntebrazo = new THREE.Object3D();
     objetoAntebrazo.add(cilindroAntebrazo);
@@ -65,6 +111,7 @@ function loadScene() {
     objetoAntebrazo.add(nervio2);
     objetoAntebrazo.add(nervio3);
     objetoAntebrazo.add(nervio4);
+    objetoAntebrazo.add(mano)
     objetoAntebrazo.position.set(0,120,0);
    
     //BRAZO
