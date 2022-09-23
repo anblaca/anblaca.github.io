@@ -95,16 +95,12 @@ function loadScene() {
     //points.push(new THREE.Vector3(0, 20, 0))
     //points.push(new THREE.Vector3(5, 0, 0))
     let geometry = new THREE.BufferGeometry().setFromPoints( vertices )
-    let line = new THREE.Line(geometry, new THREE.LineBasicMaterial({ color: 0x888888 }))
-    
-
-
     //CREACION DE LA MANO
     //var pinza = new THREE.BufferGeometry();
     //pinza.setAttribute('position',new THREE.BufferGeometry(vertices,3));
 
     var mano = new THREE.Mesh(geometry,matRobot);
-    mano.position.set(70,70, 70);
+    //mano.position.set(0,0, 0);
 
     //ANTEBRAZO
     objetoAntebrazo = new THREE.Object3D();
