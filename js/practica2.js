@@ -10,7 +10,7 @@ function init() {
 
     var aspectRatio = window.innerWidth/window.innerHeight;
     camera = new THREE.PerspectiveCamera(75,aspectRatio,0.1,1000);
-    camera.position.set(90, 200, -350);
+    camera.position.set(90, 200, 350);
     camera.lookAt(new THREE.Vector3(0, 0, 0));
 }
 
@@ -130,9 +130,11 @@ function loadScene() {
     //CREACION DE LA MANO
     //var mano = new THREE.Mesh(geometry,matRobot);
     var pinzaI = new THREE.Mesh(geometry, matRobot);
-    pinzaI.rotateY(Math.PI / 2);
+    //pinzaI.rotateY(Math.PI / 2);
+    pinzaI.rotation.y = Math.PI/2;
     var pinzaD = new THREE.Mesh(geometry, matRobot);
-    pinzaD.rotateY(Math.PI / 2);
+    //pinzaD.rotateY(Math.PI / 2);
+    pinzaD.rotation.y = Math.PI/2;
     pinzaD.position.set(0, 20, 0);
     //MANO
     cilindroMano.add(pinzaD);
