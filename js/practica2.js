@@ -104,7 +104,7 @@ function loadScene() {
     //pinza.setAttribute('position',new THREE.BufferGeometry(vertices,3));
 
     var mano = new THREE.Mesh(geometry,matRobot);
-    mano.position.set(30,30, 30);
+    mano.position.set(70,70, 70);
 
     //ANTEBRAZO
     objetoAntebrazo = new THREE.Object3D();
