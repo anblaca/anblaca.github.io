@@ -34,6 +34,7 @@ function loadScene() {
     rotula.position.set(0,120,0);
     //Esparrago
     var esparrago = new THREE.Mesh(new THREE.BoxGeometry(18,120,12),matRobot);
+    esparrago.position.set(0,60,0);
     //cilindro
     var cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22,22,6,32),matRobot);
     //cilindroAntebrazo.position = (0.0,120.0,0.0);
