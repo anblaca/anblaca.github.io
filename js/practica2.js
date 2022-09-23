@@ -10,8 +10,8 @@ function init() {
 
     var aspectRatio = window.innerWidth/window.innerHeight;
     camera = new THREE.PerspectiveCamera(75,aspectRatio,0.1,100);
-    camera.position.set(0,20,30);
-
+    camera.position.set(50,20,30);
+    camera.lookAt(new THREE.Vector3(0, 0, 0));
     //camera.position.set(100, 200, 0);
     //camera.lookAt(new THREE.Vector3(0, 0, 0));
 }
