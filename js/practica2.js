@@ -158,8 +158,8 @@ function loadScene() {
     robot.add(base)
     base.add(objetoBrazo)
 
-    //scene.add(robot)
-    scene.add(mano)
+    scene.add(robot)
+    //scene.add(mano)
     scene.add(new THREE.AxesHelper(1000));
 
     var suelo = new THREE.Mesh(new THREE.PlaneGeometry(1000, 1000, 50, 50),matRobot);
