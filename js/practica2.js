@@ -57,9 +57,7 @@ function loadScene() {
     //GRAFO DE ESCENA
     robot.add(base)
     
-    var suelo = new THREE.PlaneGeometry(1000, 1000, 50, 50);
-    var miSuelo = new THREE.Mesh(suelo, matRobot);
-    var suelo = new THREE.Mesh(PlaneGeometry(1000, 1000, 50, 50),matRobot);
+    var suelo = new THREE.Mesh(new THREE.PlaneGeometry(1000, 1000, 50, 50),matRobot);
     suelo.rotation.x = -Math.PI / 2;
     scene.add(suelo)
 }
