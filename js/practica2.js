@@ -91,10 +91,26 @@ function loadScene() {
         0,  0,  0,
         19,  0,   4,
     ] );
+    points = []
+    //triangulo 1
+    points.push(new THREE.Vector3(0, 20, 0));
+    points.push(new THREE.Vector3(0, 0, 0));
+    points.push(new THREE.Vector3(19, 0, 0));
+    //triangulo 2
+    points.push(new THREE.Vector3(19, 20, 0));
+    points.push(new THREE.Vector3(0, 20, 0));
+    points.push(new THREE.Vector3(19, 0, 0));
+    //triangulo 3
+    points.push(new THREE.Vector3(0, 20, 0));
+    points.push(new THREE.Vector3(0, 0, 4));
+    points.push(new THREE.Vector3(19, 0, 4));
+    // triangulo 4
+    points.push(new THREE.Vector3(19, 20, 4));
+    points.push(new THREE.Vector3(0, 20, 4));
+    points.push(new THREE.Vector3(19, 0, 4));
 
-    //points.push(new THREE.Vector3(0, 20, 0))
     //points.push(new THREE.Vector3(5, 0, 0))
-    let geometry = new THREE.BufferGeometry().setFromPoints( vertices )
+    let geometry = new THREE.BufferGeometry().setFromPoints( points )
     //CREACION DE LA MANO
     //var pinza = new THREE.BufferGeometry();
     //pinza.setAttribute('position',new THREE.BufferGeometry(vertices,3));
