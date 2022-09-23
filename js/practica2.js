@@ -125,6 +125,7 @@ function loadScene() {
     points.push(new THREE.Vector3(0, 0, 0));
     points.push(new THREE.Vector3(19, 0, 4));
 
+  
     let geometry = new THREE.BufferGeometry().setFromPoints( points )
     //CREACION DE LA MANO
     //var mano = new THREE.Mesh(geometry,matRobot);
@@ -158,8 +159,8 @@ function loadScene() {
     robot.add(base)
     base.add(objetoBrazo)
 
-    scene.add(robot)
-    //scene.add(mano)
+    //scene.add(robot)
+    scene.add(cilindroMano)
     scene.add(new THREE.AxesHelper(1000));
 
     var suelo = new THREE.Mesh(new THREE.PlaneGeometry(1000, 1000, 50, 50),matRobot);
