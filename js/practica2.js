@@ -43,7 +43,19 @@ function loadScene() {
     var cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15,15,40,32),matRobot);
     cilindroMano.position.set(0.0,80,0.0);
     cilindroMano.rotation.z = Math.PI/2;
-
+    //Nervios cada uno en una posicion del espacio
+    //Nervio 1
+    var nervio1 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),matRobot);
+    nervio1.position.set(8, 34, -4);
+    //Nervio 2
+    var nervio2 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),matRobot);
+    nervio2.position.set(-8,34,4);
+    //Nervio 3
+    var nervio3 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),matRobot);
+    nervio3.position.set(-8,34,-4);
+    //Nervio 4
+    var nervio4 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),matRobot);
+    nervio4.position.set(8,34,4);
 
     //ANTEBRAZO
     objetoAntebrazo = new THREE.Object3D();
