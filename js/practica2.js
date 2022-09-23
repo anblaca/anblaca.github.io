@@ -25,7 +25,8 @@ function loadScene() {
     
     //cilindro
     var  base = new THREE.Mesh( new THREE.CylinderGeometry(50,50,15,32),matRobot); //r top, r bottom, height
-    base.position = (0,0,0);
+    //base.position = (0,0,0);
+    base.position.set(0, 0, 0);
     //cilindro    
     var ejeBrazo = new THREE.Mesh(new THREE.CylinderGeometry(20,20,18,32),matRobot);
     ejeBrazo.rotation.z = Math.PI/2;
