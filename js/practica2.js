@@ -57,10 +57,6 @@ function loadScene() {
     var nervio4 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),matRobot);
     nervio4.position.set(8,34,4);
 
-    //CREACION DE LA MANO
-    var pinza = new THREE.BufferGeometry();
-    pinza.setAtrribute('position',new THREE.BufferGeometry(vertices,3));
-
     const vertices = new Float32Array( [
         //triangulo 1
          0, 20,  0,
