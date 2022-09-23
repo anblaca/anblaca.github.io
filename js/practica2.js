@@ -19,28 +19,28 @@ function init() {
 function loadScene() {
 
     //Practica 2
+
     //Creo el nodo del grafo
     robot = new THREE.Object3D();
     //todo el robot tendra el siguiente material
     var matRobot = new THREE.MeshBasicMaterial({ color: 'yellow', wireframe: true });
     
     //cilindro
-    var  base = new THREE.Mesh( new THREE.CylinderGeometry(50.0,50.0,15.0,32),matRobot); //r top, r bottom, height
-    base.position.set = (0.0,0.0,0.0);
+    var  base = new THREE.Mesh( new THREE.CylinderGeometry(50,50,15,32),matRobot); //r top, r bottom, height
+    base.position.set = (0,0,0);
     //cilindro    
-    var ejeBrazo = new THREE.Mesh(new THREE.CylinderGeometry(20.0,20.0,18.0,32),matRobot);
-    ejeBrazo.position.set = (0.0,0.0,0.0);
+    var ejeBrazo = new THREE.Mesh(new THREE.CylinderGeometry(20,20,18,32),matRobot);
     ejeBrazo.rotation.z = Math.PI/2;
     //esfera
-    var rotula = new THREE.Mesh(new THREE.SphereGeometry(20.0,30,15),matRobot);
-    rotula.position.set = (0.0,120.0,0.0);
+    var rotula = new THREE.Mesh(new THREE.SphereGeometry(20,30,15),matRobot);
+    rotula.position.set = (0,120,0);
 
     //cilindro
-    var cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22.0,22.0,6.0,32),matRobot);
+    var cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22,22,6,32),matRobot);
     //cilindroAntebrazo.position = (0.0,120.0,0.0);
 
     //cilindro
-    var cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15.0,15.0,40.0,32),matRobot);
+    var cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15,15,40,32),matRobot);
     cilindroMano.position = (0.0,80,0.0);
     cilindroMano.rotation.z = Math.PI/2;
 
@@ -59,9 +59,14 @@ function loadScene() {
 
     //GRAFO DE ESCENA
     robot.add(base)
-    
+    base.add(objetoBrazo)
+    scene.add(robot)
+
+    scene.add(new THREE.AxesHelper(1000));
+
     var suelo = new THREE.Mesh(new THREE.PlaneGeometry(1000, 1000, 50, 50),matRobot);
     suelo.rotation.x = -Math.PI / 2;
+    
     scene.add(suelo)
 }
 
