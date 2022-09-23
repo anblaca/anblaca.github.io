@@ -131,13 +131,13 @@ function loadScene() {
     //var mano = new THREE.Mesh(geometry,matRobot);
     var pinzaI = new THREE.Mesh(geometry, matRobot);
     //pinzaI.rotateY(Math.PI / 2);
-    pinzaI.rotation.z = Math.PI/2;
+    pinzaI.rotation.x = Math.PI/2;
     var pinzaD = new THREE.Mesh(geometry, matRobot);
     //pinzaD.rotateY(Math.PI / 2);
-    pinzaD.rotation.z = Math.PI/2;
-    pinzaD.position.set(0, 0, 20);
+    //pinzaD.rotation.z = Math.PI/2;
+    //pinzaD.position.set(0, 0, 20);
     //MANO
-    cilindroMano.add(pinzaD);
+    //cilindroMano.add(pinzaD);
     cilindroMano.add(pinzaI);
     //ANTEBRAZO
     objetoAntebrazo = new THREE.Object3D();
