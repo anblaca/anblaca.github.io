@@ -13,7 +13,7 @@ function init() {
     //camera.position.set(0,2,3);
 
     camera.position.set(90, 200, 350);
-    camera.lookAt(new THREE.Vector3(0, 0, 0));
+    //camera.lookAt(new THREE.Vector3(0, 0, 0));
 }
 
 function loadScene() {
