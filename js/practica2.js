@@ -139,7 +139,6 @@ function loadScene() {
     objetoAntebrazo.add(nervio2);
     objetoAntebrazo.add(nervio3);
     objetoAntebrazo.add(nervio4);
-    objetoAntebrazo.add(mano)
     objetoAntebrazo.position.set(0,120,0);
    
     //BRAZO
@@ -152,7 +151,6 @@ function loadScene() {
     //GRAFO DE ESCENA
     robot.add(base)
     base.add(objetoBrazo)
-
     scene.add(robot)
     //scene.add(cilindroMano)
     scene.add(new THREE.AxesHelper(1000));
@@ -168,7 +166,6 @@ function render() {
     //update();
     renderer.render(scene,camera);
 }
-
 
 init();
 loadScene();
