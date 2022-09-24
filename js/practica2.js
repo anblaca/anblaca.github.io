@@ -10,7 +10,8 @@ function init() {
 
     var aspectRatio = window.innerWidth/window.innerHeight;
     camera = new THREE.PerspectiveCamera(75,aspectRatio,0.1,1000);
-    camera.position.set(90, 200, -350);
+    camera.position.set(90, 200, 350);
+    //camera.position.set(90, 200, 350);
     camera.lookAt(new THREE.Vector3(0, 0, 0));
 }
 
@@ -42,7 +43,7 @@ function loadScene() {
     //cilindro
     var cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15,15,40,32),matRobot);
     cilindroMano.position.set(0,80,0);
-    cilindroMano.rotation.z = Math.PI/2;
+    //cilindroMano.rotation.z = Math.PI/2;
     //Nervios cada uno en una posicion del espacio
     //Nervio 1
     var nervio1 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),matRobot);
