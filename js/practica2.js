@@ -1,4 +1,5 @@
-var renderer, scene, camera
+var renderer, scene, camera;
+var angulo = 0;
 
 function init() {
     renderer = new THREE.WebGLRenderer();
@@ -164,8 +165,13 @@ function loadScene() {
 
 function render() {
     requestAnimationFrame(render);
-    //update();
+    update();
     renderer.render(scene,camera);
+}
+
+function update() {
+    angulo += 0.01
+    robot.rotation.y = angulo;
 }
 
 init();
