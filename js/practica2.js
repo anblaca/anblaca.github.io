@@ -165,14 +165,10 @@ function loadScene() {
 
 function render() {
     requestAnimationFrame(render);
-    update();
+    //update();
     renderer.render(scene,camera);
 }
 
-function update() {
-    angulo += 0.01
-    robot.rotation.y = angulo;
-}
 
 init();
 loadScene();
