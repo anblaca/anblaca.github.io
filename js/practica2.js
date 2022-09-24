@@ -23,10 +23,10 @@ function loadScene() {
     //todo el robot tendra el siguiente material
     var material = new THREE.MeshBasicMaterial({ color: 'red', wireframe: true });
     //cilindro 
-    var  base = new THREE.Mesh( new THREE.CylinderGeometry(50,50,15),material); //r top, r bottom, height
+    var  base = new THREE.Mesh( new THREE.CylinderGeometry(50,50,15,32),material); //r top, r bottom, height
     base.position.set(0, 0, 0);
     //cilindro    
-    var ejeBrazo = new THREE.Mesh(new THREE.CylinderGeometry(20,20,18),material);
+    var ejeBrazo = new THREE.Mesh(new THREE.CylinderGeometry(20,20,18,32),material);
     ejeBrazo.rotation.z = Math.PI/2;
     //esfera
     var rotula = new THREE.Mesh(new THREE.SphereGeometry(20,30,15),material);
@@ -35,7 +35,7 @@ function loadScene() {
     var esparrago = new THREE.Mesh(new THREE.BoxGeometry(18,120,12),material);
     esparrago.position.set(0,60,0);
     //cilindro
-    var cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22,22,6),material);
+    var cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22,22,6,32),material);
 
     var suelo = new THREE.Mesh(new THREE.PlaneGeometry(1000, 1000, 50, 50),material);
     suelo.rotation.x = -Math.PI / 2;
