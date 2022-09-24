@@ -23,7 +23,7 @@ function loadScene() {
     //todo el robot tendra el siguiente material
     var material = new THREE.MeshBasicMaterial({ color: 'red', wireframe: true });
     //cilindro 
-    var  base = new THREE.Mesh( new THREE.CylinderGeometry(50,50,15,32),material); //r top, r bottom, height
+    var  base = new THREE.Mesh( new THREE.CylinderGeometry(50,50,15,32),material);
     base.position.set(0, 0, 0);
     //cilindro    
     var ejeBrazo = new THREE.Mesh(new THREE.CylinderGeometry(20,20,18,32),material);
@@ -125,8 +125,8 @@ function loadScene() {
     pinzaIzquierda.rotation.y = Math.PI/2;
     //pinzaI.rotation.x = Math.PI/2;
     var pinzaDerecha = new THREE.Mesh(geometry, material);
-    pinzaDerecha.rotation.y = Math.PI/2;
-    //pinzaD.rotation.x = Math.PI/2;
+    //pinzaDerecha.rotation.y = Math.PI/2;
+    pinzaD.rotation.z = Math.PI/2;
     pinzaDerecha.position.set(0, 20, 0);
     //MANO
     cilindroMano.add(pinzaDerecha);
