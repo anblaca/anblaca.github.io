@@ -139,7 +139,7 @@ function loadScene() {
     objetoAntebrazo.add(nervio2);
     objetoAntebrazo.add(nervio3);
     objetoAntebrazo.add(nervio4);
-    //objetoAntebrazo.add(mano)
+    objetoAntebrazo.add(mano)
     objetoAntebrazo.position.set(0,120,0);
    
     //BRAZO
@@ -153,8 +153,8 @@ function loadScene() {
     robot.add(base)
     base.add(objetoBrazo)
 
-    //scene.add(robot)
-    scene.add(cilindroMano)
+    scene.add(robot)
+    //scene.add(cilindroMano)
     scene.add(new THREE.AxesHelper(1000));
 
     var suelo = new THREE.Mesh(new THREE.PlaneGeometry(1000, 1000, 50, 50),matRobot);
