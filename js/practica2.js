@@ -127,7 +127,7 @@ function loadScene() {
     var pinzaD = new THREE.Mesh(geometry, matRobot);
     pinzaD.rotation.z = Math.PI/2;
     pinzaD.rotation.x = Math.PI/2;
-    pinzaD.position.set(20, 0, 0);
+    pinzaD.position.set(0, 0, 20);
     //MANO
     cilindroMano.add(pinzaD);
     cilindroMano.add(pinzaI);
