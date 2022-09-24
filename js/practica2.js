@@ -129,7 +129,7 @@ function loadScene() {
     pinzaD.rotation.x = Math.PI/2;
     pinzaD.position.set(20, 0, 0);
     //MANO
-    //cilindroMano.add(pinzaD);
+    cilindroMano.add(pinzaD);
     cilindroMano.add(pinzaI);
     //ANTEBRAZO
     objetoAntebrazo = new THREE.Object3D();
