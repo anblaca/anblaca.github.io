@@ -127,7 +127,6 @@ function loadScene() {
 
     var pinzaDerecha = new THREE.Mesh(geometry, material);
     //pinzaDerecha.rotation.y = Math.PI/2;
-    pinzaDerecha.rotation.z = Math.PI/2;
     pinzaDerecha.rotation.y = -Math.PI/2;
     pinzaDerecha.position.set(0, 20, 0);
     //MANO
