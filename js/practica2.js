@@ -41,7 +41,7 @@ function loadScene() {
 
     //cilindro
     var cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15,15,40,32),matRobot);
-    cilindroMano.position.set(0.0,70,5);
+    cilindroMano.position.set(0,80,0);
     cilindroMano.rotation.z = Math.PI/2;
     //Nervios cada uno en una posicion del espacio
     //Nervio 1
@@ -56,41 +56,7 @@ function loadScene() {
     //Nervio 4
     var nervio4 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),matRobot);
     nervio4.position.set(8,34,4);
-
-    const vertices = new Float32Array( [
-        //triangulo 1
-         0, 20,  0,
-         0, -0,  0,
-         19,  0,  0,
-        //triangulo 2
-         19,  20,  0,
-         0,  20,   0,
-         19,  0,   0,
-        //triagulo 3
-         0,  20,  4,
-         0,  0,   4,
-         19,  0,   4,
-        //triagulo 4
-         19,  20,  4,
-         0,  20,   4,
-         19,  0,   4,
-        //triangulo 5
-         0,  20,   0,
-         19,  20,  0,
-         19,  20,   4,
-        //triangulo 6
-        0,  20,   4,
-        0,  20,  0,
-        19,  20,   4,
-        //triangulo 7
-        0,  0,   0,
-        19,  0,  0,
-        19,  0,   4,
-        //triangulo 8
-        0,  0,   4,
-        0,  0,  0,
-        19,  0,   4,
-    ] );
+     
     points = []
     //triangulo 1
     points.push(new THREE.Vector3(0, 20, 0));
@@ -150,12 +116,13 @@ function loadScene() {
     points.push(new THREE.Vector3(38, 10, 3));
     points.push(new THREE.Vector3(38, 10, 1));
   
-    let geometry = new THREE.BufferGeometry().setFromPoints( points )
+    let geometry = new THREE.BufferGeometry().setFromPoints(points)
     //CREACION DE LA MANO
     //var mano = new THREE.Mesh(geometry,matRobot);
     var pinzaI = new THREE.Mesh(geometry, matRobot);
     //pinzaI.rotateY(Math.PI / 2);
-    //pinzaI.rotation.z = Math.PI/2;
+    pinzaI.rotation.z = Math.PI/2;
+    pinzaI.rotation.x = Math.PI/2;
     var pinzaD = new THREE.Mesh(geometry, matRobot);
     //pinzaD.rotateY(Math.PI / 2);
     //pinzaD.rotation.z = Math.PI/2;
