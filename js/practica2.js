@@ -43,7 +43,7 @@ function loadScene() {
     //cilindro
     var cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15,15,40,32),matRobot);
     cilindroMano.position.set(0,80,0);
-    //cilindroMano.rotation.z = Math.PI/2;
+    cilindroMano.rotation.z = Math.PI/2;
     //Nervios cada uno en una posicion del espacio
     //Nervio 1
     var nervio1 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),matRobot);
@@ -125,9 +125,9 @@ function loadScene() {
     pinzaI.rotation.z = Math.PI/2;
     pinzaI.rotation.x = Math.PI/2;
     var pinzaD = new THREE.Mesh(geometry, matRobot);
-    //pinzaD.rotateY(Math.PI / 2);
-    //pinzaD.rotation.z = Math.PI/2;
-    //pinzaD.position.set(0, 0, 20);
+    pinzaD.rotation.z = Math.PI/2;
+    pinzaD.rotation.x = Math.PI/2;
+    pinzaD.position.set(20, 0, 0);
     //MANO
     //cilindroMano.add(pinzaD);
     cilindroMano.add(pinzaI);
