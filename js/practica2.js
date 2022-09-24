@@ -121,7 +121,7 @@ function loadScene() {
     //CREACION DE LA MANO
     //var mano = new THREE.Mesh(geometry,matRobot);
     var pinzaI = new THREE.Mesh(geometry, matRobot);
-    pinzaI.rotation.z = Math.PI/2;
+    pinzaI.rotation.y = Math.PI/2;
     //pinzaI.rotation.x = Math.PI/2;
     //var pinzaD = new THREE.Mesh(geometry, matRobot);
     //pinzaD.rotation.z = Math.PI/2;
