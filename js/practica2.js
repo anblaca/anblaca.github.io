@@ -121,7 +121,7 @@ function loadScene() {
 
     //CREACION DE LA MANO
     var pinzaIzquierda = new THREE.Mesh(geometry, material);
-    pinzaIzquierda.rotation.x = Math.PI/2;
+    pinzaIzquierda.rotation.z = -Math.PI/2;
     pinzaIzquierda.rotation.y = Math.PI/2;
     
 
