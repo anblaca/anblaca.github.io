@@ -41,7 +41,7 @@ function loadScene() {
 
     //cilindro
     var cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15,15,40),material);
-    cilindroMano.position.set(0,80,0);
+    cilindroMano.position.set(0,80,5);
     cilindroMano.rotation.z = Math.PI/2;
     //Nervios cada uno en una posicion del espacio
     //Nervio 1
