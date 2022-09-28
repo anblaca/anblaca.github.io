@@ -41,7 +41,7 @@ function loadScene() {
 
     //cilindro
     var cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15,15,40),material);
-    cilindroMano.position.set(0,80,5);
+    cilindroMano.position.set(0,80,0);
     cilindroMano.rotation.z = Math.PI/2;
     //Nervios cada uno en una posicion del espacio
     //Nervio 1
@@ -121,7 +121,9 @@ function loadScene() {
 
     //CREACION DE LA MANO
     var pinzaIzquierda = new THREE.Mesh(geometry, material);
+    pinzaIzquierda.rotation.x = Math.PI/2;
     pinzaIzquierda.rotation.y = Math.PI/2;
+    
 
     var pinzaDerecha = new THREE.Mesh(geometry, material);
     pinzaDerecha.rotation.y = Math.PI/2;
