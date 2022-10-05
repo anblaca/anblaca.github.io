@@ -121,7 +121,7 @@ function loadScene() {
     let geometry = new THREE.BufferGeometry().setFromPoints(points)
 */
 
-    var geoPinza = new THREE.Geometry();
+    var geoPinza = new THREE.BufferGeometry();
 
     geoPinza.vertices.push(
         new THREE.Vector3(0, -8, -10), 
