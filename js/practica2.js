@@ -33,6 +33,7 @@ function loadScene() {
     //Esparrago
     var esparrago = new THREE.Mesh(new THREE.BoxGeometry(18,120,12),material);
     esparrago.position.set(0,60,0);
+    //esparrago.rotation.y = Math.PI/2;
     //cilindro
     var cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22,22,6,32),material);
 
@@ -120,7 +121,7 @@ function loadScene() {
     let geometry = new THREE.BufferGeometry().setFromPoints(points)
 */
 
-var geoPinza = new THREE.Geometry();
+    var geoPinza = new THREE.Geometry();
 
     geoPinza.vertices.push(
         new THREE.Vector3(0, -8, -10), 
