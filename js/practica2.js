@@ -57,7 +57,7 @@ function loadScene() {
     var nervio4 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),material);
     nervio4.position.set(8,34,4);
      
-
+/*
     points = []
     //triangulo 1
     points.push(new THREE.Vector3(0, 20, 0));
@@ -118,19 +118,71 @@ function loadScene() {
     points.push(new THREE.Vector3(38, 10, 1));
   
     let geometry = new THREE.BufferGeometry().setFromPoints(points)
+*/
+
+var geoPinza = new THREE.Geometry();
+
+    geoPinza.vertices.push(
+        new THREE.Vector3(0, -8, -10), 
+        new THREE.Vector3(19, -8, -10), 
+        new THREE.Vector3(0, -8, 10), 
+        new THREE.Vector3(19, -8, 10), 
+        new THREE.Vector3(0, -12, -10), 
+        new THREE.Vector3(19, -12, -10), 
+        new THREE.Vector3(0, -12, 10), 
+        new THREE.Vector3(19, -12, 10), 
+        new THREE.Vector3(38, -8, -5), 
+        new THREE.Vector3(38, -12, -5),
+        new THREE.Vector3(38, -8, 5), 
+        new THREE.Vector3(38, -12, 5), 
+    );
+
+    geoPinza.faces.push(
+        new THREE.Face3(0, 3, 2),
+        new THREE.Face3(0, 1, 3),
+        new THREE.Face3(1, 7, 3),
+        new THREE.Face3(1, 5, 7),
+        new THREE.Face3(5, 6, 7),
+        new THREE.Face3(5, 4, 6),
+        new THREE.Face3(4, 2, 6),
+        new THREE.Face3(4, 0, 2),
+        new THREE.Face3(2, 7, 6),
+        new THREE.Face3(2, 3, 7),
+        new THREE.Face3(4, 1, 0),
+        new THREE.Face3(4, 5, 1),
+        new THREE.Face3(1, 10, 3),
+        new THREE.Face3(1, 8, 10),
+        new THREE.Face3(8, 11, 10),
+        new THREE.Face3(8, 9, 11),
+        new THREE.Face3(9, 7, 11),
+        new THREE.Face3(9, 5, 7),
+        new THREE.Face3(3, 11, 7),
+        new THREE.Face3(3, 10, 11),
+        new THREE.Face3(5, 8, 1),
+        new THREE.Face3(5, 9, 8),
+    );
+
+    var pinzaIz = new THREE.Mesh(geoPinza, material);
+    pinzaIz.rotation.y = Math.PI / 2;  
+
+    var pinzaDe = new THREE.Mesh(geoPinza, material);
+    pinzaDe.rotation.y = Math.PI / 2;
+    pinzaDe.position.set(0, 20, 0);
+
 
     //CREACION DE LA MANO
-    var pinzaIzquierda = new THREE.Mesh(geometry, material);
-    pinzaIzquierda.rotation.z = -Math.PI/2;
-    pinzaIzquierda.rotation.y = Math.PI/2;
+    //var pinzaIzquierda = new THREE.Mesh(geometry, material);
+    //pinzaIzquierda.rotation.z = -Math.PI/2;
+    //pinzaIzquierda.rotation.y = Math.PI/2;
     
 
-    var pinzaDerecha = new THREE.Mesh(geometry, material);
-    pinzaIzquierda.rotation.z = -Math.PI/2;
-    pinzaDerecha.rotation.y = Math.PI/2;
-    pinzaDerecha.position.set(0, 20, 0);
+    //var pinzaDerecha = new THREE.Mesh(geometry, material);
+    //pinzaIzquierda.rotation.z = -Math.PI/2;
+    //pinzaDerecha.rotation.y = Math.PI/2;
+    //pinzaDerecha.position.set(0, 20, 0);
+
     //MANO
-    cilindroMano.add(pinzaDerecha);
+    cilindroMano.add(pinzaIz);
     cilindroMano.add(pinzaIzquierda);
     //ANTEBRAZO
     objetoAntebrazo = new THREE.Object3D();
