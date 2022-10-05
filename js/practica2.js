@@ -139,31 +139,33 @@ function loadScene() {
     );
     
     let geoPinza = new THREE.BufferGeometry().setFromPoints(points)
-
-    geoPinza.setIndex.push(
-        new THREE.Face3(0, 3, 2),
-        new THREE.Face3(0, 1, 3),
-        new THREE.Face3(1, 7, 3),
-        new THREE.Face3(1, 5, 7),
-        new THREE.Face3(5, 6, 7),
-        new THREE.Face3(5, 4, 6),
-        new THREE.Face3(4, 2, 6),
-        new THREE.Face3(4, 0, 2),
-        new THREE.Face3(2, 7, 6),
-        new THREE.Face3(2, 3, 7),
-        new THREE.Face3(4, 1, 0),
-        new THREE.Face3(4, 5, 1),
-        new THREE.Face3(1, 10, 3),
-        new THREE.Face3(1, 8, 10),
-        new THREE.Face3(8, 11, 10),
-        new THREE.Face3(8, 9, 11),
-        new THREE.Face3(9, 7, 11),
-        new THREE.Face3(9, 5, 7),
-        new THREE.Face3(3, 11, 7),
-        new THREE.Face3(3, 10, 11),
-        new THREE.Face3(5, 8, 1),
-        new THREE.Face3(5, 9, 8),
+    indices = []
+    indices.push(
+    new THREE.Face3(0, 3, 2),
+    new THREE.Face3(0, 1, 3),
+    new THREE.Face3(1, 7, 3),
+    new THREE.Face3(1, 5, 7),
+    new THREE.Face3(5, 6, 7),
+    new THREE.Face3(5, 4, 6),
+    new THREE.Face3(4, 2, 6),
+    new THREE.Face3(4, 0, 2),
+    new THREE.Face3(2, 7, 6),
+    new THREE.Face3(2, 3, 7),
+    new THREE.Face3(4, 1, 0),
+    new THREE.Face3(4, 5, 1),
+    new THREE.Face3(1, 10, 3),
+    new THREE.Face3(1, 8, 10),
+    new THREE.Face3(8, 11, 10),
+    new THREE.Face3(8, 9, 11),
+    new THREE.Face3(9, 7, 11),
+    new THREE.Face3(9, 5, 7),
+    new THREE.Face3(3, 11, 7),
+    new THREE.Face3(3, 10, 11),
+    new THREE.Face3(5, 8, 1),
+    new THREE.Face3(5, 9, 8),
     );
+
+    geoPinza.index(indices)
 
     var pinzaIz = new THREE.Mesh(geoPinza, material);
     pinzaIz.rotation.y = Math.PI / 2;  
