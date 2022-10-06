@@ -213,7 +213,7 @@ function render() {
     renderer.setViewport(0,0,window.innerWidth, window.innerHeight);
     renderer.render(scene,camera);
 
-    renderer.setViewport(0,0, window.innerHeight/4, window.innerHeight/4);
+    renderer.setViewport(0,window.innerHeight - window.innerHeight/4, window.innerWidth/4, window.innerHeight/4);
     renderer.render(scene,camaraPlanta);
 }
 
