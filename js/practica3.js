@@ -50,7 +50,7 @@ function setCameras(ar) {
      camaraPlanta.up = new THREE.Vector3(0, 0, -1)
      camaraPlanta.lookAt(new THREE.Vector3(0, 0, 0))
      
-     //scene.add(camera)
+     scene.add(camera)
      scene.add(camaraPlanta)
 
 }
