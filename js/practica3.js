@@ -21,7 +21,7 @@ function setCameras(ar) {
     camaraPlanta = camaraOrtografica.clone()
     camaraPlanta.position.set(0, L, 0);
     camaraPlanta.lookAt(new THREE.Vector3(0, 0, 0));
-    camaraPlanta.up = new THREE.Vector3(0, 0, 1);
+    camaraPlanta.up = new THREE.Vector3(0, 0, -1);
     scene.add(camaraPlanta)
 }
 
@@ -213,7 +213,7 @@ function render() {
     renderer.setViewport(0,0,window.innerWidth, window.innerHeight);
     renderer.render(scene,camera);
 
-    renderer.setViewport(0,window.innerHeight - window.innerHeight/4, window.innerWidth/4, window.innerHeight/4);
+    renderer.setViewport(0,window.innerHeight - window.innerHeight/4, min(window.innerWidth, window.innerHeight)/4, min(window.innerWidth, window.innerHeight)/4);
     renderer.render(scene,camaraPlanta);
 }
 
