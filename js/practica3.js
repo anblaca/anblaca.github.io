@@ -51,7 +51,7 @@ function setCameras(ar) {
      camaraPlanta.lookAt(new THREE.Vector3(0, 0, 0))
      
      //scene.add(camera)
-     //scene.add(camaraPlanta)
+     scene.add(camaraPlanta)
 
 }
 
@@ -68,7 +68,7 @@ function init() {
     camera.lookAt(new THREE.Vector3(0, 0, 0));
 
     //orbitcontrols
-    cameraControls = new OrbitControls(camera,renderer.domElement);
+    cameraControls = new THREE.OrbitControls(camera,renderer.domElement);
     cameraControls.target.set(0,0,0);
 
     //otras camaras
