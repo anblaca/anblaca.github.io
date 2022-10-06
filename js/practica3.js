@@ -2,10 +2,6 @@
  * Practica 3
  */
 
-//Modulos necesarios
-//import * as THREE from "..lib/three.module.js";
-//import {GLTFLoader} from "..lib/GLTFLoader.module.js";
-//import {OrbitControls}  from "..lib/OrbitControls.module.js";
 
 //variables estandar
 var renderer, scene, camera, cameraControls, angulo, camaraPlanta;
@@ -37,8 +33,17 @@ function setCameras(ar) {
      camaraPlanta.up = new THREE.Vector3(0, 0, -1)
      camaraPlanta.lookAt(new THREE.Vector3(0, 0, 0))
      
-     //scene.add(camera)
-     //scene.add(camaraPlanta)
+
+
+
+
+     var camaraPerspectiva = new THREE.PerspectiveCamera(75, ar, 0.1, 100);
+     camaraPerspectiva.position.set(1, 2, 10);
+     camaraPerspectiva.lookAt(new THREE.Vector3(0, 0, 0))
+     camera = camaraPerspectiva.clone()
+     
+     scene.add(camera)
+     scene.add(camaraPlanta)
 
 }
 
