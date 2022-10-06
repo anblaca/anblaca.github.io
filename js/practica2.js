@@ -121,74 +121,62 @@ function loadScene() {
     let geometry = new THREE.BufferGeometry().setFromPoints(points)
 */
 
-    //var geoPinza = new THREE.BufferGeometry();
-    points = []
-    points.push(
-        new THREE.Vector3(0, -8, -10), 
-        new THREE.Vector3(19, -8, -10), 
-        new THREE.Vector3(0, -8, 10), 
-        new THREE.Vector3(19, -8, 10), 
-        new THREE.Vector3(0, -12, -10), 
-        new THREE.Vector3(19, -12, -10), 
-        new THREE.Vector3(0, -12, 10), 
-        new THREE.Vector3(19, -12, 10), 
-        new THREE.Vector3(38, -8, -5), 
-        new THREE.Vector3(38, -12, -5),
-        new THREE.Vector3(38, -8, 5), 
-        new THREE.Vector3(38, -12, 5), 
-    );
+    var pinza = new THREE.BufferGeometry();
     
-    let geoPinza = new THREE.BufferGeometry().setFromPoints(points)
-    indices = []
-    indices.push(
-    new THREE.Face(0, 3, 2),
-    new THREE.Face(0, 1, 3),
-    new THREE.Face(1, 7, 3),
-    new THREE.Face(1, 5, 7),
-    new THREE.Face(5, 6, 7),
-    new THREE.Face(5, 4, 6),
-    new THREE.Face(4, 2, 6),
-    new THREE.Face(4, 0, 2),
-    new THREE.Face(2, 7, 6),
-    new THREE.Face(2, 3, 7),
-    new THREE.Face(4, 1, 0),
-    new THREE.Face(4, 5, 1),
-    new THREE.Face(1, 10, 3),
-    new THREE.Face(1, 8, 10),
-    new THREE.Face(8, 11, 10),
-    new THREE.Face(8, 9, 11),
-    new THREE.Face(9, 7, 11),
-    new THREE.Face(9, 5, 7),
-    new THREE.Face(3, 11, 7),
-    new THREE.Face(3, 10, 11),
-    new THREE.Face(5, 8, 1),
-    new THREE.Face(5, 9, 8),
-    );
+    const vertex = [
+        0, -8, -10,
+        19, -8, -10,
+        0, -8, 10,
+        19, -8, 10,
+        0, -12, -10,
+        19, -12, -10,
+        0, -12, 10,
+        19, -12, 10,
+        38, -8, -5,
+        38, -12, -5,
+        38, -8, 5,
+        38, -12, 5
+    ];
+    
+    indices = [
+        0, 3, 2,
+        0, 1, 3,
+        1, 7, 3,
+        1, 5, 7,
+        5, 6, 7,
+        5, 4, 6,
+        4, 2, 6,
+        4, 0, 2,
+        2, 7, 6,
+        2, 3, 7,
+        4, 1, 0,
+        4, 5, 1,
+        1, 10, 3,
+        1, 8, 10,
+        8, 11, 10,
+        8, 9, 11,
+        9, 7, 11,
+        9, 5, 7,
+        3, 11, 7,
+        3, 10, 11,
+        5, 8, 1,
+        5, 9, 8
+    ];
 
-    geoPinza.index(indices)
+    pinza.setIndex(indices);
+    pinza.setAttribute('position', new THREE.Float32BufferAttribute(vertex,3));
 
-    var pinzaIz = new THREE.Mesh(geoPinza, material);
+    var pinzaIz = new THREE.Mesh(pinza, material);
     pinzaIz.rotation.y = Math.PI / 2;  
 
-    var pinzaDe = new THREE.Mesh(geoPinza, material);
+    var pinzaDe = new THREE.Mesh(pinza, material);
     pinzaDe.rotation.y = Math.PI / 2;
     pinzaDe.position.set(0, 20, 0);
 
-
-    //CREACION DE LA MANO
-    //var pinzaIzquierda = new THREE.Mesh(geometry, material);
-    //pinzaIzquierda.rotation.z = -Math.PI/2;
-    //pinzaIzquierda.rotation.y = Math.PI/2;
-    
-
-    //var pinzaDerecha = new THREE.Mesh(geometry, material);
-    //pinzaIzquierda.rotation.z = -Math.PI/2;
-    //pinzaDerecha.rotation.y = Math.PI/2;
-    //pinzaDerecha.position.set(0, 20, 0);
-
     //MANO
     cilindroMano.add(pinzaIz);
-    cilindroMano.add(pinzaIzquierda);
+    cilindroMano.add(pinzaDe);
+    
     //ANTEBRAZO
     objetoAntebrazo = new THREE.Object3D();
     objetoAntebrazo.add(cilindroAntebrazo);
