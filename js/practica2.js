@@ -33,7 +33,7 @@ function loadScene() {
     //Esparrago
     var esparrago = new THREE.Mesh(new THREE.BoxGeometry(18,120,12),material);
     esparrago.position.set(0,60,0);
-    //esparrago.rotation.y = Math.PI/2;
+
     //cilindro
     var cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22,22,6,32),material);
 
@@ -176,7 +176,7 @@ function loadScene() {
     //MANO
     cilindroMano.add(pinzaIz);
     cilindroMano.add(pinzaDe);
-    
+
     //ANTEBRAZO
     objetoAntebrazo = new THREE.Object3D();
     objetoAntebrazo.add(cilindroAntebrazo);
@@ -201,8 +201,7 @@ function loadScene() {
     scene.add(robot)
     scene.add(suelo)
     scene.add(new THREE.AxesHelper(1000));
-
-
+    
 }
 
 function render() {
