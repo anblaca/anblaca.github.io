@@ -1,4 +1,59 @@
-var renderer, scene, camera;
+/**
+ * Practica 3
+ */
+
+//Modulos necesarios
+import * as THREE from "..lib/three.module.js";
+import {GLTFLoader} from "..lib/GLTFLoader.module.js";
+import {OrbitControls}  from "..lib/OrbitControls.module.js";
+
+//variables estandar
+var renderer, scene, camera, cameraControls, angulo, camaraPlanta;
+angulo = 0;
+const L = 110;
+
+//Acciones
+init();
+loadScene();
+render();
+
+function setCameras(ar) {
+    /*
+    let camaraOrto;
+    //construir camara ortografica
+    if(ar>1) {
+        camaraOrto = new THREE.OrtographicCamera(-L*ar,L*ar,L,-L,-10,100);
+    } else {
+        camaraOrto = new THREE.OrtographicCamera(-L,L,L/ar,-L/ar,-10,100);
+    }
+    alzado = camaraOrto.clone();
+    alzado.position.set(0,0,10);
+    alzado.lookAt(0,0,0);
+
+    perfil = camaraOrto.clone();
+    perfil.position.set(10,0,0);
+    perfil.lookAt(0,0,0);
+
+    planta.camaraOrto.clone();
+    planta.position.set(0,10,0);
+    planta.lookAt(0,0,0);
+
+    planta.up = new THREE.Vector3(0,0,-1);
+*/
+     //configurar planta alsado, perfil y perspectiva 
+     var camaraOrtografica
+     camaraOrtografica = new THREE.OrthographicCamera(-L, L, L, -L, -1, 800);
+     camaraOrtografica.lookAt(new THREE.Vector3(0, 0, 0));
+ 
+     camaraPlanta = camaraOrtografica.clone()
+     camaraPlanta.position.set(0, L, 0);
+     camaraPlanta.up = new THREE.Vector3(0, 0, -1)
+     camaraPlanta.lookAt(new THREE.Vector3(0, 0, 0))
+     
+     //scene.add(camera)
+     //scene.add(camaraPlanta)
+
+}
 
 function init() {
     renderer = new THREE.WebGLRenderer();
@@ -6,11 +61,21 @@ function init() {
     renderer.setClearColor(new THREE.Color(0x0000AA),1.0);
     document.body.appendChild(renderer.domElement);
     scene = new THREE.Scene()
-    var aspectRatio = window.innerWidth/window.innerHeight;
 
-    camera = new THREE.PerspectiveCamera(75,aspectRatio,0.1,1000);
+    var ar = window.innerWidth/window.innerHeight;
+    camera = new THREE.PerspectiveCamera(75,ar,0.1,1000);
     camera.position.set(90, 200, 350);
     camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+    //orbitcontrols
+    cameraControls = new OrbitControls(camera,renderer.domElement);
+    cameraControls.target.set(0,0,0);
+
+    //otras camaras
+    setCameras(ar);
+    //captura de eventos
+    window.addEventListener('resize', updateAspectRatio);
+    //renderer.domElement.addEventListener('dblclick',rotateShape);
 }
 
 function loadScene() {
@@ -57,70 +122,8 @@ function loadScene() {
     //Nervio 4
     var nervio4 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),material);
     nervio4.position.set(8,34,4);
-     
-/*
-    points = []
-    //triangulo 1
-    points.push(new THREE.Vector3(0, 20, 0));
-    points.push(new THREE.Vector3(0, 0, 0));
-    points.push(new THREE.Vector3(19, 0, 0));
-    //triangulo 2
-    points.push(new THREE.Vector3(19, 20, 0));
-    points.push(new THREE.Vector3(0, 20, 0));
-    points.push(new THREE.Vector3(19, 0, 0));
-    //triangulo 3
-    points.push(new THREE.Vector3(0, 20, 0));
-    points.push(new THREE.Vector3(0, 0, 4));
-    points.push(new THREE.Vector3(19, 0, 4));
-    // triangulo 4
-    points.push(new THREE.Vector3(19, 20, 4));
-    points.push(new THREE.Vector3(0, 20, 4));
-    points.push(new THREE.Vector3(19, 0, 4));
-    // triangulo 5
-    points.push(new THREE.Vector3(0, 20, 0));
-    points.push(new THREE.Vector3(19, 20, 0));
-    points.push(new THREE.Vector3(19, 20, 4));
-    // triangulo 6
-    points.push(new THREE.Vector3(0, 20, 4));
-    points.push(new THREE.Vector3(0, 20, 0));
-    points.push(new THREE.Vector3(19, 20, 4));
-    // triangulo 7
-    points.push(new THREE.Vector3(0, 0, 0));
-    points.push(new THREE.Vector3(19, 0, 0));
-    points.push(new THREE.Vector3(19, 0, 4));
-    // triangulo 8
-    points.push(new THREE.Vector3(0, 0, 4));
-    points.push(new THREE.Vector3(0, 0, 0));
-    points.push(new THREE.Vector3(19, 0, 4));
-
-    //triangulo 9
-    points.push(new THREE.Vector3(19, 0, 0));
-    points.push(new THREE.Vector3(19, 20, 0));
-    points.push(new THREE.Vector3(38, 0, 1));
-    //triangulo 10
-    points.push(new THREE.Vector3(19, 20, 0));
-    points.push(new THREE.Vector3(38, 10, 1));
-    points.push(new THREE.Vector3(38, 0, 1));
-    //triangulo 11
-    points.push(new THREE.Vector3(19, 0, 4));
-    points.push(new THREE.Vector3(19, 20, 4));
-    points.push(new THREE.Vector3(38, 0, 3));
-    //triangulo 12
-    points.push(new THREE.Vector3(19, 20, 4));
-    points.push(new THREE.Vector3(38, 10, 3));
-    points.push(new THREE.Vector3(38, 0, 3));
-    //triangulo 13
-    points.push(new THREE.Vector3(38, 0, 1));
-    points.push(new THREE.Vector3(38, 0, 3));
-    points.push(new THREE.Vector3(38, 10, 3));
-    //triangulo 14
-    points.push(new THREE.Vector3(38, 0, 1));
-    points.push(new THREE.Vector3(38, 10, 3));
-    points.push(new THREE.Vector3(38, 10, 1));
-  
-    let geometry = new THREE.BufferGeometry().setFromPoints(points)
-*/
-
+    
+    //Creacion de la mano
     var pinza = new THREE.BufferGeometry();
     
     const vertex = [
@@ -204,12 +207,44 @@ function loadScene() {
     
 }
 
+function updateAspectRatio() {
+    //cambia las dimensiones del canvas
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    //Nuevo relacion aspecto de la camara
+    const ar = window.innerWidth/window.innerHeight;
+
+    //perspectiva
+    camera.aspect = ar;
+    camera.updateProjectionMatrix();
+
+    //ortografica
+    if (ar > 1) {
+        camaraPlanta.left = -L;
+        camaraPlanta.right = L;
+        camaraPlanta.top = L;
+        camaraPlanta.bottom = -L;
+    } else {
+        camaraPlanta.left = -L;
+        camaraPlanta.right = L;
+        camaraPlanta.top = L;
+        camaraPlanta.bottom = -L
+    }
+
+    camaraPlanta.updateProjectionMatrix();
+}
+function update() {
+    angulo += 0.01;
+}
+
 function render() {
     requestAnimationFrame(render);
     //update();
+    renderer.clear();
+    renderer.setViewport(0,0,window.innerWidth, window.innerHeight);
     renderer.render(scene,camera);
+
+    renderer.setViewport(0,0,Math.min(window.innerWidth, window.innerHeight)/4, Math.min(window.innerWidth, window.innerHeight)/4);
+    renderer.render(scene,cameraPlanta);
 }
 
-init();
-loadScene();
-render();
