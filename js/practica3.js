@@ -245,6 +245,6 @@ function render() {
     renderer.render(scene,camera);
 
     renderer.setViewport(0,0,Math.min(window.innerWidth, window.innerHeight)/4, Math.min(window.innerWidth, window.innerHeight)/4);
-    renderer.render(scene,cameraPlanta);
+    renderer.render(scene,camaraPlanta);
 }
 
