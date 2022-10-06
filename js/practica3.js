@@ -26,19 +26,6 @@ function setCameras(ar) {
     } else {
         camaraOrto = new THREE.OrtographicCamera(-L,L,L/ar,-L/ar,-10,100);
     }
-    alzado = camaraOrto.clone();
-    alzado.position.set(0,0,10);
-    alzado.lookAt(0,0,0);
-
-    perfil = camaraOrto.clone();
-    perfil.position.set(10,0,0);
-    perfil.lookAt(0,0,0);
-
-    planta.camaraOrto.clone();
-    planta.position.set(0,10,0);
-    planta.lookAt(0,0,0);
-
-    planta.up = new THREE.Vector3(0,0,-1);
 */
      //configurar planta alsado, perfil y perspectiva 
      var camaraOrtografica
@@ -50,8 +37,8 @@ function setCameras(ar) {
      camaraPlanta.up = new THREE.Vector3(0, 0, -1)
      camaraPlanta.lookAt(new THREE.Vector3(0, 0, 0))
      
-     scene.add(camera)
-     scene.add(camaraPlanta)
+     //scene.add(camera)
+     //scene.add(camaraPlanta)
 
 }
 
