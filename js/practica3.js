@@ -5,7 +5,6 @@
 
 //variables estandar
 var renderer, scene, camera, cameraControls, angulo, camaraPlanta;
-angulo = 0;
 const L = 110;
 
 //Acciones
@@ -14,57 +13,42 @@ loadScene();
 render();
 
 function setCameras(ar) {
-    /*
-    let camaraOrto;
-    //construir camara ortografica
-    if(ar>1) {
-        camaraOrto = new THREE.OrtographicCamera(-L*ar,L*ar,L,-L,-10,100);
-    } else {
-        camaraOrto = new THREE.OrtographicCamera(-L,L,L/ar,-L/ar,-10,100);
-    }
-*/
-     //configurar planta alsado, perfil y perspectiva 
-     var camaraOrtografica
-     camaraOrtografica = new THREE.OrthographicCamera(-L, L, L, -L, -1, 800);
-     camaraOrtografica.lookAt(new THREE.Vector3(0, 0, 0));
+    //configurar planta alsado, perfil y perspectiva 
+    var camaraOrtografica
+    camaraOrtografica = new THREE.OrthographicCamera(-L, L, L, -L, -100, 100);
+    camaraOrtografica.lookAt(new THREE.Vector3(0, 0, 0));
  
-     camaraPlanta = camaraOrtografica.clone()
-     camaraPlanta.position.set(0, L, 0);
-     camaraPlanta.up = new THREE.Vector3(0, 0, -1)
-     camaraPlanta.lookAt(new THREE.Vector3(0, 0, 0))
-     
+    camaraPlanta = camaraOrtografica.clone()
+    camaraPlanta.position.set(0, L, 0);
+    camaraPlanta.up = new THREE.Vector3(0, 0, -1);
+    camaraPlanta.lookAt(new THREE.Vector3(0, 0, 0));
 
-
-
-
-     var camaraPerspectiva = new THREE.PerspectiveCamera(75, ar, 0.1, 100);
-     camaraPerspectiva.position.set(1, 2, 10);
-     camaraPerspectiva.lookAt(new THREE.Vector3(0, 0, 0))
-     camera = camaraPerspectiva.clone()
-     
-     scene.add(camera)
-     scene.add(camaraPlanta)
-
+    scene.add(camaraPlanta)
 }
 
 function init() {
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(new THREE.Color(0x0000AA),1.0);
-    document.body.appendChild(renderer.domElement);
-    scene = new THREE.Scene()
+    renderer.setClearColor(new THREE.Color(0xFFFFFF));
+    renderer.autoClear = false;
+    document.getElementById('container').appendChild(renderer.domElement);
 
-    var ar = window.innerWidth/window.innerHeight;
-    camera = new THREE.PerspectiveCamera(75,ar,0.1,1000);
+    scene = new THREE.Scene();
+
+    //CAMARA
+    var aspectRatio = window.innerWidth/window.innerHeight;
+    camera = new THREE.PerspectiveCamera(75,aspectRatio,0.1,1000);
     camera.position.set(90, 200, 350);
     camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+    //otras camaras
+    setCameras(aspectRatio);
 
     //orbitcontrols
     cameraControls = new THREE.OrbitControls(camera,renderer.domElement);
     cameraControls.target.set(0,0,0);
 
-    //otras camaras
-    setCameras(ar);
+    
     //captura de eventos
     window.addEventListener('resize', updateAspectRatio);
     //renderer.domElement.addEventListener('dblclick',rotateShape);
@@ -204,29 +188,22 @@ function updateAspectRatio() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     //Nuevo relacion aspecto de la camara
-    const ar = window.innerWidth/window.innerHeight;
+    var ar = window.innerWidth/window.innerHeight;
 
     //perspectiva
     camera.aspect = ar;
     camera.updateProjectionMatrix();
 
     //ortografica
-    if (ar > 1) {
-        camaraPlanta.left = -L;
-        camaraPlanta.right = L;
-        camaraPlanta.top = L;
-        camaraPlanta.bottom = -L;
-    } else {
-        camaraPlanta.left = -L;
-        camaraPlanta.right = L;
-        camaraPlanta.top = L;
-        camaraPlanta.bottom = -L
-    }
+    camaraPlanta.left = -L;
+    camaraPlanta.right = L;
+    camaraPlanta.bottom = -L;
+    camaraPlanta.top = L;
 
     camaraPlanta.updateProjectionMatrix();
 }
 function update() {
-    angulo += 0.01;
+
 }
 
 function render() {
@@ -236,7 +213,7 @@ function render() {
     renderer.setViewport(0,0,window.innerWidth, window.innerHeight);
     renderer.render(scene,camera);
 
-    renderer.setViewport(0,0,Math.min(window.innerWidth, window.innerHeight)/4, Math.min(window.innerWidth, window.innerHeight)/4);
+    renderer.setViewport(0,0, window.innerHeight/4, window.innerHeight/4);
     renderer.render(scene,camaraPlanta);
 }
 
