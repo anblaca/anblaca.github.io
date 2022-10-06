@@ -21,7 +21,7 @@ function setCameras(ar) {
     camaraPlanta = camaraOrtografica.clone()
     camaraPlanta.position.set(0, L, 0);
     camaraPlanta.lookAt(new THREE.Vector3(0, 0, 0));
-    camaraPlanta.up = new THREE.Vector3(0, 0, -1);
+    camaraPlanta.up = new THREE.Vector3(0, 0, 1);
     scene.add(camaraPlanta)
 }
 
