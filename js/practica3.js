@@ -17,12 +17,11 @@ function setCameras(ar) {
     var camaraOrtografica
     camaraOrtografica = new THREE.OrthographicCamera(-L, L, L, -L, -100, 100);
     camaraOrtografica.lookAt(new THREE.Vector3(0, 0, 0));
- 
+
     camaraPlanta = camaraOrtografica.clone()
     camaraPlanta.position.set(0, L, 0);
-    camaraPlanta.up = new THREE.Vector3(0, 0, -1);
     camaraPlanta.lookAt(new THREE.Vector3(0, 0, 0));
-
+    camaraPlanta.up = new THREE.Vector3(0, 0, -1);
     scene.add(camaraPlanta)
 }
 
@@ -62,7 +61,7 @@ function loadScene() {
     robot = new THREE.Object3D();
     //todo el robot tendra el siguiente material
     //var material = new THREE.MeshBasicMaterial({ color: 'red', wireframe: true });
-    var material = NormalMeshMaterial({wireframe: true, flatShading: true})
+    var material = THREE.NormalMeshMaterial({wireframe: true, flatShading: true})
     //cilindro 
     var  base = new THREE.Mesh( new THREE.CylinderGeometry(50,50,15,32),material);
     base.position.set(0, 0, 0);
