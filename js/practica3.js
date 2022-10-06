@@ -3,9 +3,9 @@
  */
 
 //Modulos necesarios
-import * as THREE from "..lib/three.module.js";
-import {GLTFLoader} from "..lib/GLTFLoader.module.js";
-import {OrbitControls}  from "..lib/OrbitControls.module.js";
+//import * as THREE from "..lib/three.module.js";
+//import {GLTFLoader} from "..lib/GLTFLoader.module.js";
+//import {OrbitControls}  from "..lib/OrbitControls.module.js";
 
 //variables estandar
 var renderer, scene, camera, cameraControls, angulo, camaraPlanta;
