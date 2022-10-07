@@ -4,7 +4,7 @@
 
 
 //variables estandar
-var renderer, scene, camera, cameraControls, angulo, camaraPlanta, effectController, cilindroMano, pinzaDe, pinzaIz;
+var renderer, scene, camera, cameraControls, angulo, camaraPlanta, effectController;
 const L = 110;
 //Acciones
 init();
@@ -24,11 +24,6 @@ function setCameras(ar) {
     camaraPlanta.up = new THREE.Vector3(0, 0, -1);
     scene.add(camaraPlanta)
 }
-
-
-
-
-
 
 function init() {
     renderer = new THREE.WebGLRenderer();
