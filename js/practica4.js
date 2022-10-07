@@ -4,7 +4,7 @@
 
 
 //variables estandar
-var renderer, scene, camera, cameraControls, angulo, camaraPlanta, effectController;
+var renderer, scene, camera, cameraControls, angulo, camaraPlanta, effectController, cilindroMano;
 const L = 110;
 //Acciones
 init();
@@ -89,7 +89,7 @@ function loadScene() {
     suelo.rotation.x = -Math.PI / 2;
 
     //cilindro
-    var cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15,15,40),material);
+    cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15,15,40),material);
     cilindroMano.position.set(0,80,0);
     cilindroMano.rotation.z = Math.PI/2;
     //Nervios cada uno en una posicion del espacio
@@ -279,7 +279,6 @@ function giroPinza() {
     // Se obtiene el valor pasado por el GUI
     var grados = effectController.giroPinza;
     cilindroMano.rotation.z = grados * Math.PI / 180;
-
 }
 
 function separacionPinza() {
