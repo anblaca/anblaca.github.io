@@ -236,8 +236,12 @@ function updateAspectRatio() {
 
     camaraPlanta.updateProjectionMatrix();
 }
+
 function update() {
-    giroBase();
+    //giroBase();
+    // Se obtiene el valor pasado por el GUI
+    var grados = effectController.giroBase;
+    robot.rotation.y = grados * Math.PI / 180; //En radianes
     giroAntebrazoY();
     giroAntebrazoZ();
     moverRobot();
