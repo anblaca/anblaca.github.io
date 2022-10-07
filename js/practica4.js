@@ -2,7 +2,6 @@
  * Practica 4
  */
 
- 
 
 //variables estandar
 var renderer, scene, camera, cameraControls, angulo, camaraPlanta;
@@ -12,6 +11,7 @@ const L = 110;
 init();
 loadScene();
 render();
+setupGUI();
 
 function setCameras(ar) {
     //configurar planta alsado, perfil y perspectiva 
@@ -25,6 +25,95 @@ function setCameras(ar) {
     camaraPlanta.up = new THREE.Vector3(0, 0, -1);
     scene.add(camaraPlanta)
 }
+
+function setupGUI()
+{
+	// Definicion de los controles
+
+    effectController = {
+        giroBase: 0.0,
+		giroBrazo: 0.0,
+		giroAntebrazoY: 0.0,
+        giroAntebrazoZ: 0.0,
+        giroPinza: 0.0,
+        separacionPinza:0.0,
+        alambres: 0,
+	};
+
+	// Creacion interfaz
+	const gui = new GUI();
+
+	// Construccion del menu
+    const h = gui.addFolder("Control robot");
+	h.add(effectController, "giroBase", -180.0, 180.0, 0.025).name("Giro Base");
+    h.add(effectController, "giroBrazo", -45.0, 45.0, 0.025).name("Giro Brazo");
+    h.add(effectController, "giroAntebrazoY", -180.0, 180.0, 0.025).name("Giro Antebrazo Y");
+    h.add(effectController, "giroAntebrazoZ", -90.0, 90.0, 0.025).name("Giro Antebrazo Z");
+    h.add(effectController, "giroPinza", -40.0, 220.0, 0.025).name("Giro Pinza");
+    h.add(effectController, "separacionPinza", 0.0, 15.0, 0.025).name("Giro Pinza");
+}
+
+function giroBase() {
+    // Se obtiene el valor pasado por el GUI
+    var grados = effectController.giroBase;
+    robot.rotation.y = grados * Math.PI / 180; //En radianes
+}
+//posible cambio de la z a la x
+function giroBrazo() {
+    // Se obtiene el valor pasado por el GUI
+    var grados = effectController.giroBrazo;
+    objetoBrazo.rotation.z = grados * Math.PI / 180; //En radianes
+}
+
+function giroAntebrazoY() {
+    // Se obtiene el valor pasado por el GUI
+    var grados = effectController.giroAnteBrazoY;
+    objetoAntebrazo.rotation.y = grados * Math.PI / 180;
+}
+//posible cambio de la z a la x
+function giroAntebrazoZ() {
+    // Se obtiene el valor pasado por el GUI
+    var grados = effectController.giroAnteBrazoZ;
+    objetoAntebrazo.rotation.z = grados * Math.PI / 180;
+}
+
+function giroPinza() {
+    // Se obtiene el valor pasado por el GUI
+    var grados = effectController.giroPinza;
+    cilindroMano.rotation.z = grados * Math.PI / 180;
+
+}
+
+function separacionPinza() {
+    // Se obtiene el valor pasado por el GUI
+    var grados = effectController.separaPinza;
+    pinzaDe.position.y = grados;
+    pinzaIz.position.y = -grados + 20
+}
+
+
+function moverRobot(event){
+    var key = event
+
+    switch(key) {
+        case 'ArrowUp':
+            robot.position.x += 15.0
+            break;
+        case 'ArrowDown':
+            robot.position.x -= 15.0
+            break;
+        case 'ArrowLeft':
+            robot.position.z += 15.0
+            break;
+        case 'ArrowRight':
+            robot.position.z -= 15.0
+            break;
+    }
+
+
+}
+
+
 
 function init() {
     renderer = new THREE.WebGLRenderer();
@@ -52,6 +141,8 @@ function init() {
     //captura de eventos
     window.addEventListener('resize', updateAspectRatio);
     //renderer.domElement.addEventListener('dblclick',rotateShape);
+    window.addEventListener('keyup', moverRobot);
+
 }
 
 function loadScene() {
