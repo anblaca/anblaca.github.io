@@ -109,10 +109,7 @@ function moverRobot(event){
             robot.position.z -= 15.0
             break;
     }
-
-
 }
-
 
 
 function init() {
@@ -295,12 +292,18 @@ function updateAspectRatio() {
     camaraPlanta.updateProjectionMatrix();
 }
 function update() {
-
+    giroBase();
+    giroAntebrazoY();
+    giroAntebrazoZ();
+    moverRobot();
+    giroPinza();
+    giroBrazo();
+    separacionPinza();
 }
 
 function render() {
     requestAnimationFrame(render);
-    //update();
+    update();
     renderer.clear();
     renderer.setViewport(0,0,window.innerWidth, window.innerHeight);
     renderer.render(scene,camera);
