@@ -4,9 +4,8 @@
 
 
 //variables estandar
-var renderer, scene, camera, cameraControls, angulo, camaraPlanta;
+var renderer, scene, camera, cameraControls, angulo, camaraPlanta, effectController;
 const L = 110;
-
 //Acciones
 init();
 loadScene();
@@ -30,7 +29,7 @@ function setupGUI()
 {
 	// Definicion de los controles
 
-    const effectController = {
+    effectController = {
         giroBase: 0.0,
 		giroBrazo: 0.0,
 		giroAntebrazoY: 0.0,
