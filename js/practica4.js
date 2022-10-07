@@ -4,7 +4,7 @@
 
 
 //variables estandar
-var renderer, scene, camera, cameraControls, angulo, camaraPlanta, effectController, cilindroMano;
+var renderer, scene, camera, cameraControls, angulo, camaraPlanta, effectController, cilindroMano, pinzaDe, pinzaIz;
 const L = 110;
 //Acciones
 init();
@@ -152,10 +152,10 @@ function loadScene() {
     pinza.setIndex(indices);
     pinza.setAttribute('position', new THREE.Float32BufferAttribute(vertex,3));
 
-    var pinzaIz = new THREE.Mesh(pinza, material);
+    pinzaIz = new THREE.Mesh(pinza, material);
     pinzaIz.rotation.y = Math.PI / 2;  
 
-    var pinzaDe = new THREE.Mesh(pinza, material);
+    pinzaDe = new THREE.Mesh(pinza, material);
     pinzaDe.rotation.y = Math.PI / 2;
     pinzaDe.position.set(0, 20, 0);
 
