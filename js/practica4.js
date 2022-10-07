@@ -30,7 +30,7 @@ function setupGUI()
 {
 	// Definicion de los controles
 
-    effectController = {
+    const effectController = {
         giroBase: 0.0,
 		giroBrazo: 0.0,
 		giroAntebrazoY: 0.0,
