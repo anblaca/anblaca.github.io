@@ -9,8 +9,8 @@ const L = 110;
 //Acciones
 init();
 loadScene();
-render();
 setupGUI();
+render();
 
 function setCameras(ar) {
     //configurar planta alsado, perfil y perspectiva 
@@ -267,6 +267,7 @@ function giroAntebrazoY() {
     var grados = effectController.giroAnteBrazoY;
     objetoAntebrazo.rotation.y = grados * Math.PI / 180;
 }
+
 //posible cambio de la z a la x
 function giroAntebrazoZ() {
     // Se obtiene el valor pasado por el GUI
@@ -307,6 +308,7 @@ function moverRobot(event){
             break;
     }
 }
+
 function render() {
     requestAnimationFrame(render);
     update();
