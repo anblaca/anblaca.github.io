@@ -205,7 +205,7 @@ function setupGUI()
 	};
 
 	// Creacion interfaz
-	const gui = new THREE.GUI();
+	const gui = new dat.GUI();
 
 	// Construccion del menu
     const h = gui.addFolder("Control robot");
