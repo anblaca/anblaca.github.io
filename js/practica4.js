@@ -84,7 +84,7 @@ function loadScene() {
     suelo.rotation.x = -Math.PI / 2;
 
     //cilindro
-    cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15,15,40),material);
+    var cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15,15,40),material);
     cilindroMano.position.set(0,80,0);
     cilindroMano.rotation.z = Math.PI/2;
     //Nervios cada uno en una posicion del espacio
@@ -147,10 +147,10 @@ function loadScene() {
     pinza.setIndex(indices);
     pinza.setAttribute('position', new THREE.Float32BufferAttribute(vertex,3));
 
-    pinzaIz = new THREE.Mesh(pinza, material);
+    var pinzaIz = new THREE.Mesh(pinza, material);
     pinzaIz.rotation.y = Math.PI / 2;  
 
-    pinzaDe = new THREE.Mesh(pinza, material);
+    var pinzaDe = new THREE.Mesh(pinza, material);
     pinzaDe.rotation.y = Math.PI / 2;
     pinzaDe.position.set(0, 20, 0);
 
