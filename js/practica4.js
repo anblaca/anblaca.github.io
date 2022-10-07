@@ -2,8 +2,7 @@
  * Practica 4
  */
 
-import {TWEEN} from "../lib/tween.module.min.js";
-import {GUI} from "../lib/lil-gui.module.min.js";
+ 
 
 //variables estandar
 var renderer, scene, camera, cameraControls, angulo, camaraPlanta;
