@@ -195,7 +195,7 @@ function setupGUI()
     effectController = {
         giroBase: 0.0,
 		giroBrazo: 0.0,
-		giroAntebrazoY: Math.PI / 2,
+		giroAntebrazoY: 0,
         giroAntebrazoZ: 0,
         giroPinza: 0.0,
         separacionPinza:0.0,
@@ -294,7 +294,7 @@ function moverRobot(event){
 }
 
 function update() {
-    
+
     objetoAntebrazo.rotation.y = effectController.giroAnteBrazoY * Math.PI / 180;
     giroBase();
     // Se obtiene el valor pasado por el GUI
