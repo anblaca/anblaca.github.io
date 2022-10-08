@@ -236,21 +236,6 @@ function updateAspectRatio() {
     camaraPlanta.updateProjectionMatrix();
 }
 
-function update() {
-    giroBase();
-    // Se obtiene el valor pasado por el GUI
-    //giroAntebrazoY();
-    //giroAntebrazoZ();
-    //moverRobot();
-    //giroPinza();
-    //giroBrazo();
-    //separacionPinza();
-
-    // Se obtiene el valor pasado por el GUI
-    var grados = effectController.giroAnteBrazoY;
-    objetoAntebrazo.rotation.y = grados * Math.PI / 180;
-}
-
 function giroBase() {
     // Se obtiene el valor pasado por el GUI
     var grados = effectController.giroBase;
@@ -318,5 +303,20 @@ function render() {
 
     renderer.setViewport(0,window.innerHeight - window.innerHeight/4, Math.min(window.innerWidth, window.innerHeight)/4, Math.min(window.innerWidth, window.innerHeight)/4);
     renderer.render(scene,camaraPlanta);
+}
+
+function update() {
+    giroBase();
+    // Se obtiene el valor pasado por el GUI
+    //giroAntebrazoY();
+    //giroAntebrazoZ();
+    //moverRobot();
+    //giroPinza();
+    //giroBrazo();
+    //separacionPinza();
+
+    // Se obtiene el valor pasado por el GUI
+    //var grados = effectController.giroAnteBrazoY;
+    //objetoAntebrazo.rotation.y = grados * Math.PI / 180;
 }
 
