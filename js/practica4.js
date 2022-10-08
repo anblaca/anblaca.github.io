@@ -238,7 +238,7 @@ function updateAspectRatio() {
 function update() {
     giroBase();
     // Se obtiene el valor pasado por el GUI
-    //giroAntebrazoY();
+    giroAntebrazoY();
     //giroAntebrazoZ();
     //moverRobot();
     //giroPinza();
