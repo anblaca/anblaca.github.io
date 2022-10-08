@@ -211,7 +211,7 @@ function setupGUI()
     h.add(effectController, "giroAntebrazoY", -180.0, 180.0, 0.025).name("Giro Antebrazo Y");
     h.add(effectController, "giroAntebrazoZ", -90.0, 90.0, 0.025).name("Giro Antebrazo Z");
     h.add(effectController, "giroPinza", -40.0, 220.0, 0.025).name("Giro Pinza");
-    h.add(effectController, "separacionPinza", 0.0, 15.0, 0.025).name("Giro Pinza");
+    h.add(effectController, "separacionPinza", 0.0, 15.0, 0.025).name("Separación Pinza");
 }
 
 function updateAspectRatio() {
@@ -307,9 +307,9 @@ function update() {
     giroBase();
     // Se obtiene el valor pasado por el GUI
     //giroAntebrazoY();
-    //giroAntebrazoZ();
+    giroAntebrazoZ();
     //moverRobot();
-    giroPinza();
+    //giroPinza();
     giroBrazo();
     //separacionPinza();
 
