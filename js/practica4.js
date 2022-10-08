@@ -308,8 +308,8 @@ function render() {
 function update() {
     giroBase();
     // Se obtiene el valor pasado por el GUI
-    //giroAntebrazoY();
-    giroAntebrazoZ();
+    giroAntebrazoY();
+    //giroAntebrazoZ();
     //moverRobot();
     //giroPinza();
     giroBrazo();
