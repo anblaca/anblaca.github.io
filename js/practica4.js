@@ -55,6 +55,9 @@ function init() {
     //renderer.domElement.addEventListener('dblclick',rotateShape);
     //window.addEventListener('keyup', moverRobot);
 
+    stats = new Stats();
+    stats.showPanel(0); // FPS inicialmente. Picar para cambiar panel.
+    document.getElementById('container').appendChild(stats.domElement);
 }
 
 function loadScene() {
@@ -80,22 +83,22 @@ function loadScene() {
     esparrago.position.set(0,60,0);
 
     //cilindro
-    var cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22,22,6,32),material);
+    const cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22,22,6,32),material);
 
     var suelo = new THREE.Mesh(new THREE.PlaneGeometry(1000, 1000, 50, 50),material);
     suelo.rotation.x = -Math.PI / 2;
     //Nervios cada uno en una posicion del espacio
     //Nervio 1
-    var nervio1 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),material);
+    const nervio1 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),material);
     nervio1.position.set(8, 34, -4);
     //Nervio 2
-    var nervio2 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),material);
+    const nervio2 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),material);
     nervio2.position.set(-8,34,4);
     //Nervio 3
-    var nervio3 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),material);
+    const nervio3 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),material);
     nervio3.position.set(-8,34,-4);
     //Nervio 4
-    var nervio4 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),material);
+    const nervio4 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),material);
     nervio4.position.set(8,34,4);
 
     //cilindro
@@ -195,7 +198,7 @@ function setupGUI()
     effectController = {
         giroBase: 0.0,
 		giroBrazo: 0.0,
-		giroAntebrazoY: 0,
+		giroAntebrazoY: 0.0,
         giroAntebrazoZ: 0,
         giroPinza: 0.0,
         separacionPinza:0.0,
@@ -206,7 +209,7 @@ function setupGUI()
 	const gui = new dat.GUI();
 
 	// Construccion del menu
-    const h = gui.addFolder("Control robot");
+    var h = gui.addFolder("Control robot");
 	h.add(effectController, "giroBase", -180.0, 180.0, 0.025).name("Giro Base");
     h.add(effectController, "giroBrazo", -45.0, 45.0, 0.025).name("Giro Brazo");
     h.add(effectController, "giroAntebrazoY", -180.0, 180.0, 0.2).name("Giro Antebrazo Y");
@@ -244,13 +247,14 @@ function giroBase() {
 function giroBrazo() {
     // Se obtiene el valor pasado por el GUI
     var grados = effectController.giroBrazo;
-    objetoBrazo.rotation.z = grados * Math.PI / 180; //En radianes
+    //objetoBrazo.rotation.z = grados * Math.PI / 180; //En radianes
+    objetoBrazo.rotation.x = -(grados * Math.PI / 180);
 }
 
 function giroAntebrazoY() {
     // Se obtiene el valor pasado por el GUI
-    //var grados = effectController.giroAnteBrazoY;
-    //objetoAntebrazo.rotation.y = grados * Math.PI / 180;
+    var grados = effectController.giroAnteBrazoY;
+    objetoAntebrazo.rotation.y = grados * Math.PI / 180;
 }
 
 //posible cambio de la z a la x
@@ -295,16 +299,13 @@ function moverRobot(event){
 
 function update() {
 
-    objetoAntebrazo.rotation.y = effectController.giroAnteBrazoY * Math.PI / 180;
-    //giroBase();
-    // Se obtiene el valor pasado por el GUI
-    //giroAntebrazoY();
-    
-    //giroAntebrazoZ();
+    giroBase();
+    giroBrazo();
+    giroAntebrazoY();
+    giroAntebrazoZ();
     //moverRobot();
-    //giroPinza();
-    //giroBrazo();
-    //separacionPinza();
+    giroPinza();
+    separacionPinza();
 
 }
 
