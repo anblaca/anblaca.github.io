@@ -195,7 +195,7 @@ function setupGUI()
     effectController = {
         giroBase: 0.0,
 		giroBrazo: 0.0,
-		giroAntebrazoY: 0,
+		giroAntebrazoY: Math.PI / 2,
         giroAntebrazoZ: 0,
         giroPinza: 0.0,
         separacionPinza:0.0,
@@ -250,8 +250,7 @@ function giroBrazo() {
 function giroAntebrazoY() {
     // Se obtiene el valor pasado por el GUI
     var grados = effectController.giroAnteBrazoY;
-    //grados * Math.PI / 180;
-    objetoAntebrazo.rotation.y = Math.PI / 2;
+    objetoAntebrazo.rotation.y = grados * Math.PI / 180;
 }
 
 //posible cambio de la z a la x
