@@ -7,6 +7,7 @@
 var renderer, scene, camera, cameraControls, angulo, camaraPlanta, effectController;
 const L = 110;
 var cMano, pinzaIzquierda, pinzaDerecha;
+var objetoAntebrazo;
 
 //Acciones
 init();
