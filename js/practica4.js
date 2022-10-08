@@ -316,7 +316,7 @@ function update() {
     //separacionPinza();
 
     // Se obtiene el valor pasado por el GUI
-    //var grados = effectController.giroAnteBrazoY;
-    //objetoAntebrazo.rotation.y = grados * Math.PI / 180;
+    var grados = effectController.giroAnteBrazoY;
+    objetoAntebrazo.rotation.y = grados * Math.PI / 180;
 }
 
