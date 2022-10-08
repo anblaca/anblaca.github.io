@@ -296,14 +296,14 @@ function moverRobot(event){
 function update() {
 
     objetoAntebrazo.rotation.y = effectController.giroAnteBrazoY * Math.PI / 180;
-    giroBase();
+    //giroBase();
     // Se obtiene el valor pasado por el GUI
     //giroAntebrazoY();
     
     //giroAntebrazoZ();
     //moverRobot();
     //giroPinza();
-    giroBrazo();
+    //giroBrazo();
     //separacionPinza();
 
 }
