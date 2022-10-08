@@ -53,7 +53,7 @@ function init() {
     //captura de eventos
     window.addEventListener('resize', updateAspectRatio);
     //renderer.domElement.addEventListener('dblclick',rotateShape);
-    window.addEventListener('keyup', moverRobot);
+    //window.addEventListener('keyup', moverRobot);
 
 }
 
@@ -293,18 +293,8 @@ function moverRobot(event){
     }
 }
 
-function render() {
-    requestAnimationFrame(render);
-    update();
-    renderer.clear();
-    renderer.setViewport(0,0,window.innerWidth, window.innerHeight);
-    renderer.render(scene,camera);
-
-    renderer.setViewport(0,window.innerHeight - window.innerHeight/4, Math.min(window.innerWidth, window.innerHeight)/4, Math.min(window.innerWidth, window.innerHeight)/4);
-    renderer.render(scene,camaraPlanta);
-}
-
 function update() {
+    
     objetoAntebrazo.rotation.y = effectController.giroAnteBrazoY * Math.PI / 180;
     giroBase();
     // Se obtiene el valor pasado por el GUI
@@ -317,4 +307,17 @@ function update() {
     //separacionPinza();
 
 }
+
+function render() {
+    requestAnimationFrame(render);
+    update();
+    renderer.clear();
+    renderer.setViewport(0,0,window.innerWidth, window.innerHeight);
+    renderer.render(scene,camera);
+
+    renderer.setViewport(0,window.innerHeight - window.innerHeight/4, Math.min(window.innerWidth, window.innerHeight)/4, Math.min(window.innerWidth, window.innerHeight)/4);
+    renderer.render(scene,camaraPlanta);
+}
+
+
 
