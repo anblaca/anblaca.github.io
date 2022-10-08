@@ -6,7 +6,8 @@
 //variables estandar
 var renderer, scene, camera, cameraControls, angulo, camaraPlanta, effectController;
 const L = 110;
-
+var objetoAntebrazo, objetoBrazo, cilindroMano, pinzaDe, pinzaIz;
+var robot, base;
 //Acciones
 init();
 loadScene();
@@ -66,7 +67,7 @@ function loadScene() {
     //var material = new THREE.MeshBasicMaterial({ color: 'red', wireframe: true });
     var material = new THREE.MeshNormalMaterial({wireframe: true, flatShading: false})
     //cilindro 
-    var  base = new THREE.Mesh( new THREE.CylinderGeometry(50,50,15,32),material);
+    base = new THREE.Mesh( new THREE.CylinderGeometry(50,50,15,32),material);
     base.position.set(0, 0, 0);
     //cilindro    
     var ejeBrazo = new THREE.Mesh(new THREE.CylinderGeometry(20,20,18,32),material);
@@ -98,7 +99,7 @@ function loadScene() {
     nervio4.position.set(8,34,4);
 
     //cilindro
-    var cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15,15,40),material);
+    cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15,15,40),material);
     cilindroMano.position.set(0,80,0);
     cilindroMano.rotation.z = Math.PI/2;
    
@@ -149,10 +150,10 @@ function loadScene() {
     pinza.setIndex(indices);
     pinza.setAttribute('position', new THREE.Float32BufferAttribute(vertex,3));
 
-    var pinzaIz = new THREE.Mesh(pinza, material);
+    pinzaIz = new THREE.Mesh(pinza, material);
     pinzaIz.rotation.y = Math.PI / 2;  
 
-    var pinzaDe = new THREE.Mesh(pinza, material);
+    pinzaDe = new THREE.Mesh(pinza, material);
     pinzaDe.rotation.y = Math.PI / 2;
     pinzaDe.position.set(0, 20, 0);
 
