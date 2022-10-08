@@ -250,7 +250,6 @@ function giroBrazo() {
 function giroAntebrazoY() {
     // Se obtiene el valor pasado por el GUI
     var grados = effectController.giroAnteBrazoY;
-    print("entro")
     //objetoAntebrazo.rotation.y = grados * Math.PI / 180;
 }
 
