@@ -308,8 +308,8 @@ function update() {
     // Se obtiene el valor pasado por el GUI
     //giroAntebrazoY();
     //giroAntebrazoZ();
-    moverRobot();
-    //giroPinza();
+    //moverRobot();
+    giroPinza();
     giroBrazo();
     //separacionPinza();
 
