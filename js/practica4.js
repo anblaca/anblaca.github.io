@@ -195,8 +195,8 @@ function setupGUI()
     effectController = {
         giroBase: 0.0,
 		giroBrazo: 0.0,
-		giroAntebrazoY: 0.0,
-        giroAntebrazoZ: 0.0,
+		giroAntebrazoY: 0,
+        giroAntebrazoZ: 0,
         giroPinza: 0.0,
         separacionPinza:0.0,
         alambres: 0,
@@ -209,7 +209,7 @@ function setupGUI()
     const h = gui.addFolder("Control robot");
 	h.add(effectController, "giroBase", -180.0, 180.0, 0.025).name("Giro Base");
     h.add(effectController, "giroBrazo", -45.0, 45.0, 0.025).name("Giro Brazo");
-    h.add(effectController, "giroAntebrazoY", -180.0, 180.0, 0.025).name("Giro Antebrazo Y");
+    h.add(effectController, "giroAntebrazoY", -180.0, 180.0, 0.2).name("Giro Antebrazo Y");
     h.add(effectController, "giroAntebrazoZ", -90.0, 90.0, 0.025).name("Giro Antebrazo Z");
     h.add(effectController, "giroPinza", -40.0, 220.0, 0.025).name("Giro Pinza");
     h.add(effectController, "separacionPinza", 0.0, 15.0, 0.025).name("Separación Pinza");
