@@ -56,7 +56,7 @@ function init() {
     //window.addEventListener('keyup', moverRobot);
 
     stats = new Stats();
-    stats.showPanel(0); // FPS inicialmente. Picar para cambiar panel.
+    stats.showPanel(0);
     document.getElementById('container').appendChild(stats.domElement);
 }
 
