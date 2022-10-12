@@ -53,7 +53,7 @@ function init() {
     //captura de eventos
     window.addEventListener('resize', updateAspectRatio);
     //renderer.domElement.addEventListener('dblclick',rotateShape);
-    //window.addEventListener('keyup', moverRobot);
+    window.addEventListener('keyup', moverRobot);
 
     stats = new Stats();
     stats.showPanel(0);
@@ -303,7 +303,7 @@ function update() {
     giroBrazo();
     giroAntebrazoY();
     giroAntebrazoZ();
-    //moverRobot();
+    moverRobot();
     giroPinza();
     separacionPinza();
 
