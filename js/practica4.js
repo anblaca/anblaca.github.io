@@ -200,7 +200,7 @@ function setupGUI()
 		giroBrazo: 0.0,
 		giroAntebrazoY: 0.0,
         giroAntebrazoZ: 0,
-        giroPinza: 177.8,
+        giroPinza: 90.0,
         separacionPinza:0.0,
         alambres: 0,
 	};
