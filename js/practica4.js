@@ -200,7 +200,7 @@ function setupGUI()
 		giroBrazo: 0.0,
 		giroAntebrazoY: 0.0,
         giroAntebrazoZ: 0,
-        giroPinza: 0.0,
+        giroPinza:Math.PI / 2,
         separacionPinza:0.0,
         alambres: 0,
 	};
