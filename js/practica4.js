@@ -272,7 +272,7 @@ function giroPinza() {
 
 function separacionPinza() {
     // Se obtiene el valor pasado por el GUI
-    var grados = effectController.separaPinza;
+    var grados = effectController.separacionPinza;
     pinzaDe.position.y = grados;
     pinzaIz.position.y = -grados + 20
 }
