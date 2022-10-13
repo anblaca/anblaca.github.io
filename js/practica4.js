@@ -202,7 +202,7 @@ function loadScene() {
 
 
     //creo el teclado
-    keyborad = new THREEx.KeyboardState(renderer.domElement);
+    var keyborad = new THREEx.KeyboardState(renderer.domElement);
     renderer.domElement.setAttribute("tabIndex", "0");
     renderer.domElement.focus();
 
