@@ -130,7 +130,7 @@ function loadScene() {
         38, -12, 5
     ];
     
-    indices = [
+    const indices = [
         0, 3, 2,
         0, 1, 3,
         1, 7, 3,
