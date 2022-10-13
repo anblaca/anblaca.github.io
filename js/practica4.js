@@ -279,8 +279,9 @@ function separacionPinza() {
 
 
 function moverRobot(event){
-
-    switch (event.key) {
+    console.log(event)
+    aux = event.key
+    switch (aux) {
         case 'ArrowUp':
             robot.position.z -= 10.0;
             break;
