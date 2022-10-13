@@ -296,6 +296,7 @@ function moverRobot(event){
             robot.position.x += 10.0;
             break;
     }
+    render();
 }
 
 function update() {
