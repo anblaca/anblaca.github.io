@@ -240,7 +240,7 @@ function setupGUI()
     h.add(effectController, "giroAntebrazoZ", -90.0, 90.0, 0.025).name("Giro Antebrazo Z");
     h.add(effectController, "giroPinza", -40.0, 220.0, 0.025).name("Giro Pinza");
     h.add(effectController, "separacionPinza", 0.0, 15.0, 0.025).name("Separación Pinza");
-    h.add(controles, "animacion").name("Animacion").listen().onChange(animacion)
+    h.add(effectController, "animacion").name("Animacion").listen().onChange(animacion)
     //Control del cambio de color del mesh
     var sensorClick = h.add(effectController, "alambres").name("Alambres");
     sensorClick.onChange(
