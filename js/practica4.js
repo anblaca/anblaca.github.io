@@ -51,7 +51,7 @@ function init() {
     setCameras(aspectRatio);
 
     //orbitcontrols
-    cameraControls = new THREE.OrbitControls(camera,renderer.domElement);
+    cameraControls = new OrbitControls(camera,renderer.domElement);
     cameraControls.target.set(0,0,0);
 
     
