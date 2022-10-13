@@ -73,7 +73,7 @@ function loadScene() {
     robot = new THREE.Object3D();
     //todo el robot tendra el siguiente material
     //var material = new THREE.MeshBasicMaterial({ color: 'red', wireframe: true });
-    var material = new THREE.MeshNormalMaterial({wireframe: true, flatShading: false})
+    var material = new THREE.MeshNormalMaterial({color:'yellow', wireframe: false, flatShading: false})
     //cilindro 
     base = new THREE.Mesh( new THREE.CylinderGeometry(50,50,15,32),material);
     base.position.set(0, 0, 0);
@@ -221,6 +221,7 @@ function setupGUI()
     h.add(effectController, "giroAntebrazoZ", -90.0, 90.0, 0.025).name("Giro Antebrazo Z");
     h.add(effectController, "giroPinza", -40.0, 220.0, 0.025).name("Giro Pinza");
     h.add(effectController, "separacionPinza", 0.0, 15.0, 0.025).name("Separación Pinza");
+    h.add(effectController, "alambres", 0.0, 15.0, 0.025).name("Separación Pinza");
 }
 
 function updateAspectRatio() {
