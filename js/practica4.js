@@ -10,7 +10,7 @@
  
 //variables estandar
 var renderer, scene, camera, cameraControls, angulo, camaraPlanta, effectController;
-const L = 50;
+const L = 100;
 var objetoAntebrazo, objetoBrazo, cilindroMano, pinzaDe, pinzaIz;
 var robot, base;
 //Acciones
@@ -323,32 +323,31 @@ function separacionPinza() {
 
 
 function animate(){
-
-    new TWEEN.Tween(pinzaI.position).
+    new TWEEN.Tween(pinzaIz.position).
         to( {x: [0, 0], y:[0, 10], z:[0,0]}, 5000).
         interpolation( TWEEN.Interpolation.Linear).
         easing( TWEEN.Easing.Exponential.InOut).
         start();
 
-    new TWEEN.Tween(pinzaD.position).
+    new TWEEN.Tween(pinzaDe.position).
         to( {x: [0, 0], y:[0, -10], z:[0,0]}, 5000).
         interpolation( TWEEN.Interpolation.Linear). 
         easing( TWEEN.Easing.Exponential.InOut).
         start();
 
-    new TWEEN.Tween(mano.rotation).
+    new TWEEN.Tween(cilindroMano.rotation).
         to( {x: [-Math.PI,0], y:[0,0], z:[Math.PI/2,Math.PI/2]}, 5000).
         interpolation( TWEEN.Interpolation.Bezier). 
         easing( TWEEN.Easing.Bounce.Out).
         start();
 
-    new TWEEN.Tween(antebrazo.rotation).
+    new TWEEN.Tween(cilindroAntebrazo.rotation).
         to( {x: [0,0], y:[-Math.PI,0], z:[Math.PI/2,0]}, 5000).
         interpolation( TWEEN.Interpolation.Linear). 
         easing( TWEEN.Easing.Bounce.In).
         start();
 
-    new TWEEN.Tween(brazo.rotation).
+    new TWEEN.Tween(objetoBrazo.rotation).
         to( {x: [Math.PI/4,0], y:[0,0], z:[0,0]}, 5000).
         interpolation( TWEEN.Interpolation.Linear). 
         easing( TWEEN.Easing.Bounce.In).
