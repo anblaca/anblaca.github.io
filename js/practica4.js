@@ -193,6 +193,35 @@ function loadScene() {
     scene.add(robot)
     scene.add(suelo)
     scene.add(new THREE.AxesHelper(1000));
+
+
+
+
+
+
+
+
+    //creo el teclado
+    keyborad = new THREEx.KeyboardState(renderer.domElement);
+    renderer.domElement.setAttribute("tabIndex", "0");
+    renderer.domElement.focus();
+
+    //añado los eventos que moveran al robot
+    keyborad.domElement.addEventListener('keydown', function(event){
+        if(keyborad.eventMatches(event, 'left')){
+            robot.position.x -= 5; 
+        }
+        if(keyborad.eventMatches(event, 'right')){
+            robot.position.x += 5; 
+        }
+        if(keyborad.eventMatches(event, 'up')){
+            robot.position.z += 5; 
+        }
+        if(keyborad.eventMatches(event, 'down')){
+            robot.position.z -= 5; 
+        }
+
+    })
     
 }
 
@@ -299,6 +328,11 @@ function separacionPinza() {
 }
 
 
+
+
+
+
+
 function moverRobot(event){
     console.log(event)
     aux = event.key;
@@ -333,7 +367,11 @@ function update() {
 
 function render() {
     requestAnimationFrame(render);
+    renderer.domElement.setAttribute("tabIndex", "0");
+    renderer.domElement.focus();
     update();
+    //Borrar una unica vez
+    renderer.domElement.focus();
     renderer.clear();
     renderer.setViewport(0,0,window.innerWidth, window.innerHeight);
     renderer.render(scene,camera);
