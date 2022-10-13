@@ -226,10 +226,7 @@ function setupGUI()
         giroPinza: 90.0,
         separacionPinza:0.0,
         alambres: true,
-        animacion: function (){
-            angulo = 0
-            //location.reload();
-            animate();
+        animacion: function (){ animate()},
         }
 	};
     //var params ={checkbox=false}; gui.add(params, checkbox').onChange(function (value) { model(); });
@@ -244,7 +241,7 @@ function setupGUI()
     h.add(effectController, "giroAntebrazoZ", -90.0, 90.0, 0.025).name("Giro Antebrazo Z");
     h.add(effectController, "giroPinza", -40.0, 220.0, 0.025).name("Giro Pinza");
     h.add(effectController, "separacionPinza", 0.0, 15.0, 0.025).name("Separación Pinza");
-    h.add(effectController,"animacion").name("Animacion");
+    h.add(controles, "animacion").name("Animacion").listen().onChange(animacion)
     //Control del cambio de color del mesh
     var sensorClick = h.add(effectController, "alambres").name("Alambres");
     sensorClick.onChange(
@@ -323,6 +320,7 @@ function separacionPinza() {
 
 
 function animate(){
+
     new TWEEN.Tween(pinzaIz.position).
         to( {x: [0, 0], y:[0, 10], z:[0,0]}, 5000).
         interpolation( TWEEN.Interpolation.Linear).
