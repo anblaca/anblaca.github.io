@@ -10,7 +10,7 @@
  
 //variables estandar
 var renderer, scene, camera, cameraControls, angulo, camaraPlanta, effectController;
-const L = 110;
+const L = 50;
 var objetoAntebrazo, objetoBrazo, cilindroMano, pinzaDe, pinzaIz;
 var robot, base;
 //Acciones
@@ -193,14 +193,6 @@ function loadScene() {
     scene.add(suelo)
     scene.add(new THREE.AxesHelper(1000));
 
-
-
-
-
-
-
-
-    //creo el teclado
     var keyborad = new THREEx.KeyboardState(renderer.domElement);
     renderer.domElement.setAttribute("tabIndex", "0");
     renderer.domElement.focus();
@@ -219,9 +211,7 @@ function loadScene() {
         if(keyborad.eventMatches(event, 'down')){
             robot.position.z -= 5; 
         }
-
     })
-    
 }
 
 function setupGUI()
