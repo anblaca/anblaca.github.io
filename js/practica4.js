@@ -228,7 +228,7 @@ function setupGUI()
         function(click) {
             robot.traverse(function(hijo) {
                 if (hijo instanceof THREE.Mesh)
-                    if(hijo.material.wireframe == true) {
+                    if(click){
                         hijo.material.wireframe = false;
                     }else {
                         hijo.material.wireframe = true;
