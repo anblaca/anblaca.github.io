@@ -221,8 +221,6 @@ function setupGUI()
     h.add(effectController, "giroAntebrazoZ", -90.0, 90.0, 0.025).name("Giro Antebrazo Z");
     h.add(effectController, "giroPinza", -40.0, 220.0, 0.025).name("Giro Pinza");
     h.add(effectController, "separacionPinza", 0.0, 15.0, 0.025).name("Separación Pinza");
-    h.add(effectController, "alambres", 0.0, 15.0, 0.025).name("Separación Pinza");
-
 
     //Control del cambio de color del mesh
     var sensorClick = h.add(effectController, "alambres").name("Alambres");
@@ -230,7 +228,12 @@ function setupGUI()
         function(click) {
             robot.traverse(function(hijo) {
                 if (hijo instanceof THREE.Mesh)
-                    hijo.material.wireframe = true;
+                    if(hijo.material.wireframe == true) {
+                        hijo.material.wireframe = false;
+                    }else {
+                        hijo.material.wireframe = true;
+                    }
+                    
             });
         });
 
