@@ -53,7 +53,7 @@ function init() {
     //captura de eventos
     window.addEventListener('resize', updateAspectRatio);
     //renderer.domElement.addEventListener('dblclick',rotateShape);
-    window.addEventListener('keydown', moverRobot);
+    window.addEventListener('keyup', moverRobot);
 
     stats = new Stats();
     stats.showPanel(0);
