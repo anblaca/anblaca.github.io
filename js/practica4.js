@@ -237,6 +237,11 @@ function setupGUI()
         giroPinza: 90.0,
         separacionPinza:0.0,
         alambres: false,
+        animacion: function (){
+            angulo = 0
+            //location.reload();
+            animate();
+        }
 	};
     //var params ={checkbox=false}; gui.add(params, checkbox').onChange(function (value) { model(); });
 	// Creacion interfaz
@@ -347,13 +352,51 @@ function moverRobot(event){
     render();
 }
 
+function animate(){
+
+    new TWEEN.Tween(pinzaI.position).
+        to( {x: [0, 0], y:[0, 10], z:[0,0]}, 5000).
+        interpolation( TWEEN.Interpolation.Linear).
+        easing( TWEEN.Easing.Exponential.InOut).
+        start();
+
+    new TWEEN.Tween(pinzaD.position).
+        to( {x: [0, 0], y:[0, -10], z:[0,0]}, 5000).
+        interpolation( TWEEN.Interpolation.Linear). 
+        easing( TWEEN.Easing.Exponential.InOut).
+        start();
+
+    new TWEEN.Tween(mano.rotation).
+        to( {x: [-Math.PI,0], y:[0,0], z:[Math.PI/2,Math.PI/2]}, 5000).
+        interpolation( TWEEN.Interpolation.Bezier). 
+        easing( TWEEN.Easing.Bounce.Out).
+        start();
+
+    new TWEEN.Tween(antebrazo.rotation).
+        to( {x: [0,0], y:[-Math.PI,0], z:[Math.PI/2,0]}, 5000).
+        interpolation( TWEEN.Interpolation.Linear). 
+        easing( TWEEN.Easing.Bounce.In).
+        start();
+
+    new TWEEN.Tween(brazo.rotation).
+        to( {x: [Math.PI/4,0], y:[0,0], z:[0,0]}, 5000).
+        interpolation( TWEEN.Interpolation.Linear). 
+        easing( TWEEN.Easing.Bounce.In).
+        start();
+
+    new TWEEN.Tween(base.rotation).
+        to( {x: [0,0], y:[-Math.PI/2,0], z:[0,0]}, 4000).
+        interpolation( TWEEN.Interpolation.Linear). 
+        easing( TWEEN.Easing.Elastic.In).
+        start();
+}
+
 function update() {
 
     giroBase();
     giroBrazo();
     giroAntebrazoY();
     giroAntebrazoZ();
-    //moverRobot();
     giroPinza();
     separacionPinza();
 
