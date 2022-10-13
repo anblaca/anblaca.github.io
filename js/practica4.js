@@ -2,7 +2,11 @@
  * Practica 4
  */
 
+ import * as THREE from "../lib/three.module.js";
+ import {GLTFLoader} from "../lib/GLTFLoader.module.js";
+ import {OrbitControls} from "../lib/OrbitControls.module.js";
  import {TWEEN} from "../lib/tween.module.min.js";
+ import {GUI} from "../lib/lil-gui.module.min.js";
 
 //variables estandar
 var renderer, scene, camera, cameraControls, angulo, camaraPlanta, effectController;
