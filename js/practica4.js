@@ -58,8 +58,7 @@ function init() {
     //captura de eventos
     window.addEventListener('resize', updateAspectRatio);
     //renderer.domElement.addEventListener('dblclick',rotateShape);
-   //window.addEventListener('keyup', moverRobot);
-    renderer.domElement.addEventListener('keydown', moverRobot, false );
+
     //stats = new Stats();
     //stats.showPanel(0);
     //document.getElementById('container').appendChild(stats.domElement);
@@ -236,7 +235,7 @@ function setupGUI()
         giroAntebrazoZ: 0,
         giroPinza: 90.0,
         separacionPinza:0.0,
-        alambres: false,
+        alambres: true,
         animacion: function (){
             angulo = 0
             //location.reload();
@@ -332,25 +331,6 @@ function separacionPinza() {
     pinzaIz.position.y = -grados + 20
 }
 
-function moverRobot(event){
-    console.log(event)
-    aux = event.key;
-    switch (aux) {
-        case 'ArrowUp':
-            robot.position.z -= 10.0;
-            break;
-        case 'ArrowDown':
-            robot.position.z += 10.0;
-            break;
-        case 'ArrowLeft':
-            robot.position.x -= 10.0;
-            break;
-        case 'ArrowRight':
-            robot.position.x += 10.0;
-            break;
-    }
-    render();
-}
 
 function animate(){
 
