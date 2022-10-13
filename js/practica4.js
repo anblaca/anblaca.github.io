@@ -7,7 +7,7 @@
  import {OrbitControls} from "../lib/OrbitControls.module.js";
  import {TWEEN} from "../lib/tween.module.min.js";
  import {GUI} from "../lib/lil-gui.module.min.js";
-
+ 
 //variables estandar
 var renderer, scene, camera, cameraControls, angulo, camaraPlanta, effectController;
 const L = 110;
@@ -326,12 +326,6 @@ function separacionPinza() {
     pinzaDe.position.y = grados;
     pinzaIz.position.y = -grados + 20
 }
-
-
-
-
-
-
 
 function moverRobot(event){
     console.log(event)
