@@ -53,7 +53,7 @@ function init() {
     //captura de eventos
     window.addEventListener('resize', updateAspectRatio);
     //renderer.domElement.addEventListener('dblclick',rotateShape);
-    window.addEventListener('keyup', moverRobot);
+    window.addEventListener('keydown', moverRobot);
 
     stats = new Stats();
     stats.showPanel(0);
@@ -279,21 +279,17 @@ function separacionPinza() {
 
 
 function moverRobot(event){
-    var key = event
-    console.log(key)
-    switch(key) {
-        case 'ArrowUp':
-            robot.position.x += 15.0
-            break;
-        case 'ArrowDown':
-            robot.position.x -= 15.0
-            break;
-        case 'ArrowLeft':
-            robot.position.z += 15.0
-            break;
-        case 'ArrowRight':
-            robot.position.z -= 15.0
-            break;
+    if ( event.keyCode == 39 || event.keyCode==68) {
+        robot.position.x+=10;
+    }
+    if ( (event.keyCode == 38 || event.keyCode==87)) {
+      robot.position.z-=10;
+    }
+    if ( (event.keyCode == 37 || event.keyCode==65)) {
+      robot.position.x-=10;
+    }
+    if ((event.keyCode == 40 || event.keyCode==83)) {
+      robot.position.z+=10;
     }
 }
 
