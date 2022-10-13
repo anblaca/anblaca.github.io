@@ -279,18 +279,20 @@ function separacionPinza() {
 
 
 function moverRobot(event){
-    var keycode = event.which
-    if ( keycode == 39 || event.keyCode==68) {
-        robot.position.x+=10;
-    }
-    if ( (keycode == 38 || keycode==87)) {
-      robot.position.z-=10;
-    }
-    if ( (keycode == 37 || keycode==65)) {
-      robot.position.x-=10;
-    }
-    if ((keycode == 40 || keycode==83)) {
-      robot.position.z+=10;
+
+    switch (event.key) {
+        case 'ArrowUp':
+            robot.position.z -= 10.0;
+            break;
+        case 'ArrowDown':
+            robot.position.z += 10.0;
+            break;
+        case 'ArrowLeft':
+            robot.position.x -= 10.0;
+            break;
+        case 'ArrowRight':
+            robot.position.x += 10.0;
+            break;
     }
 }
 
