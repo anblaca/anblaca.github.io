@@ -225,9 +225,14 @@ function setupGUI()
         giroAntebrazoZ: 0,
         giroPinza: 90.0,
         separacionPinza:0.0,
+        animacion: function (){
+            angulo = 0
+            //location.reload();
+            animate();
+        },
         alambres: true,
-        animacion: function (){ animate(); },
-    }
+
+    };
     //var params ={checkbox=false}; gui.add(params, checkbox').onChange(function (value) { model(); });
 	// Creacion interfaz
 	const gui = new GUI();
@@ -240,19 +245,19 @@ function setupGUI()
     h.add(effectController, "giroAntebrazoZ", -90.0, 90.0, 0.025).name("Giro Antebrazo Z");
     h.add(effectController, "giroPinza", -40.0, 220.0, 0.025).name("Giro Pinza");
     h.add(effectController, "separacionPinza", 0.0, 15.0, 0.025).name("Separación Pinza");
-    h.add(effectController, "animacion").name("Animacion").listen().onChange(animate)
+    h.add(effectController, "animacion").name("Animacion").onChange(animate);
+
     //Control del cambio de color del mesh
     var sensorClick = h.add(effectController, "alambres").name("Alambres");
     sensorClick.onChange(
         function(click) {
             robot.traverse(function(hijo) {
                 if (hijo instanceof THREE.Mesh)
-                    if(click){
+                    if (click){
                         hijo.material.wireframe = false;
-                    }else {
+                    } else {
                         hijo.material.wireframe = true;
-                    }
-                    
+                    } 
             });
         });
 
