@@ -279,16 +279,17 @@ function separacionPinza() {
 
 
 function moverRobot(event){
-    if ( event.keyCode == 39 || event.keyCode==68) {
+    var keycode = event.which
+    if ( keycode == 39 || event.keyCode==68) {
         robot.position.x+=10;
     }
-    if ( (event.keyCode == 38 || event.keyCode==87)) {
+    if ( (keycode == 38 || keycode==87)) {
       robot.position.z-=10;
     }
-    if ( (event.keyCode == 37 || event.keyCode==65)) {
+    if ( (keycode == 37 || keycode==65)) {
       robot.position.x-=10;
     }
-    if ((event.keyCode == 40 || event.keyCode==83)) {
+    if ((keycode == 40 || keycode==83)) {
       robot.position.z+=10;
     }
 }
