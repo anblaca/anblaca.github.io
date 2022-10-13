@@ -211,7 +211,7 @@ function setupGUI()
 	};
 
 	// Creacion interfaz
-	const gui = new dat.GUI();
+	const gui = new GUI();
 
 	// Construccion del menu
     var h = gui.addFolder("Control robot");
