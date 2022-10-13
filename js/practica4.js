@@ -10,7 +10,7 @@
  
 //variables estandar
 var renderer, scene, camera, cameraControls, angulo, camaraPlanta, effectController;
-const L = 100;
+const L = 103;
 var objetoAntebrazo, objetoBrazo, cilindroMano, pinzaDe, pinzaIz;
 var robot, base;
 //Acciones
@@ -341,7 +341,7 @@ function animate(){
         easing( TWEEN.Easing.Bounce.Out).
         start();
 
-    new TWEEN.Tween(cilindroAntebrazo.rotation).
+    new TWEEN.Tween(objetoAntebrazo.rotation).
         to( {x: [0,0], y:[-Math.PI,0], z:[Math.PI/2,0]}, 5000).
         interpolation( TWEEN.Interpolation.Linear). 
         easing( TWEEN.Easing.Bounce.In).
