@@ -54,7 +54,7 @@ function init() {
     window.addEventListener('resize', updateAspectRatio);
     //renderer.domElement.addEventListener('dblclick',rotateShape);
    //window.addEventListener('keyup', moverRobot);
-    renderer.domElement.addEventListener('keydown', moverRobot );
+    renderer.domElement.addEventListener('keydown', moverRobot, false );
     stats = new Stats();
     stats.showPanel(0);
     document.getElementById('container').appendChild(stats.domElement);
@@ -280,7 +280,8 @@ function separacionPinza() {
 
 function moverRobot(event){
     console.log(event)
-    aux = event.key
+    aux = event.key;
+    ev
     switch (aux) {
         case 'ArrowUp':
             robot.position.z -= 10.0;
@@ -303,7 +304,7 @@ function update() {
     giroBrazo();
     giroAntebrazoY();
     giroAntebrazoZ();
-    moverRobot();
+    //moverRobot();
     giroPinza();
     separacionPinza();
 
