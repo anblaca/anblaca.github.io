@@ -226,9 +226,8 @@ function setupGUI()
         giroPinza: 90.0,
         separacionPinza:0.0,
         alambres: true,
-        animacion: function (){ animate()},
-        }
-	};
+        animacion: function (){ animate(); },
+    }
     //var params ={checkbox=false}; gui.add(params, checkbox').onChange(function (value) { model(); });
 	// Creacion interfaz
 	const gui = new GUI();
