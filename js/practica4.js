@@ -226,8 +226,6 @@ function setupGUI()
         giroPinza: 90.0,
         separacionPinza:0.0,
         animacion: function (){
-            angulo = 0
-            //location.reload();
             animate();
         },
         alambres: true,
@@ -331,31 +329,31 @@ function animate(){
         interpolation( TWEEN.Interpolation.Linear).
         easing( TWEEN.Easing.Exponential.InOut).
         start();
-
+    console.log("llego1")
     new TWEEN.Tween(pinzaDe.position).
         to( {x: [0, 0], y:[0, -10], z:[0,0]}, 5000).
         interpolation( TWEEN.Interpolation.Linear). 
         easing( TWEEN.Easing.Exponential.InOut).
         start();
-
+    console.log("llego2")
     new TWEEN.Tween(cilindroMano.rotation).
         to( {x: [-Math.PI,0], y:[0,0], z:[Math.PI/2,Math.PI/2]}, 5000).
         interpolation( TWEEN.Interpolation.Bezier). 
         easing( TWEEN.Easing.Bounce.Out).
         start();
-
+    console.log("llego3")
     new TWEEN.Tween(objetoAntebrazo.rotation).
         to( {x: [0,0], y:[-Math.PI,0], z:[Math.PI/2,0]}, 5000).
         interpolation( TWEEN.Interpolation.Linear). 
         easing( TWEEN.Easing.Bounce.In).
         start();
-
+    console.log("llego4")
     new TWEEN.Tween(objetoBrazo.rotation).
         to( {x: [Math.PI/4,0], y:[0,0], z:[0,0]}, 5000).
         interpolation( TWEEN.Interpolation.Linear). 
         easing( TWEEN.Easing.Bounce.In).
         start();
-
+    console.log("llego5")
     new TWEEN.Tween(base.rotation).
         to( {x: [0,0], y:[-Math.PI/2,0], z:[0,0]}, 4000).
         interpolation( TWEEN.Interpolation.Linear). 
