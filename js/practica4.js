@@ -361,6 +361,7 @@ function animate(){
         interpolation( TWEEN.Interpolation.Linear). 
         easing( TWEEN.Easing.Elastic.In).
         start();
+        console.log("salgo")
 }
 
 function update() {
