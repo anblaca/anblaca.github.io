@@ -370,6 +370,7 @@ function update() {
     giroAntebrazoZ();
     giroPinza();
     separacionPinza();
+    TWEEN.update();
 
 }
 
