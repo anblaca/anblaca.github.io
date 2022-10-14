@@ -245,6 +245,7 @@ function setupGUI()
     h.add(effectController, "giroAntebrazoZ", -90.0, 90.0, 0.025).name("Giro Antebrazo Z");
     h.add(effectController, "giroPinza", -40.0, 220.0, 0.025).name("Giro Pinza");
     h.add(effectController, "separacionPinza", 0.0, 15.0, 0.025).name("Separación Pinza");
+
     h.add(effectController, "animacion").name("Animacion").onChange(animate);
 
     //Control del cambio de color del mesh
@@ -324,7 +325,7 @@ function separacionPinza() {
 
 
 function animate(){
-
+    console.log("entrooo")
     new TWEEN.Tween(pinzaIz.position).
         to( {x: [0, 0], y:[0, 10], z:[0,0]}, 5000).
         interpolation( TWEEN.Interpolation.Linear).
