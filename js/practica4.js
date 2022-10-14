@@ -58,7 +58,7 @@ function init() {
     //captura de eventos
     window.addEventListener('resize', updateAspectRatio);
     //renderer.domElement.addEventListener('dblclick',rotateShape);
-
+    renderer.domElement.addEventListener('dblclick', animate );
     //stats = new Stats();
     //stats.showPanel(0);
     //document.getElementById('container').appendChild(stats.domElement);
