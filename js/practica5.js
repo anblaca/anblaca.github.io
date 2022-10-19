@@ -141,7 +141,7 @@ function loadScene() {
 
     //Nervios cada uno en una posicion del espacio
     //Nervio 1
-    var matNervios = new THREE.MeshLambertMaterial({color: 'white', map: texturaCilindro });
+    var matNervios = new THREE.MeshLambertMaterial({color: 'white', map: texturaMadera });
 
     const nervio1 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),matNervios);
     nervio1.position.set(8, 34, -4);
