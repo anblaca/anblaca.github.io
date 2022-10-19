@@ -47,7 +47,7 @@ function init() {
     camera = new THREE.PerspectiveCamera(75,aspectRatio,0.1,1000);
     camera.position.set(90, 200, 350);
     camera.lookAt(new THREE.Vector3(0, 0, 0));
-    
+
     //orbitcontrols
     cameraControls = new OrbitControls(camera,renderer.domElement);
     cameraControls.target.set(0,0,0);
@@ -83,15 +83,12 @@ function loadScene() {
     //cargar todas las texturas
     var path = "images/";
 
-   
 
     //material para la rotula
     var paredes = [path + "posx.jpg", path + "negx.jpg", path + "posy.jpg", path + "negy.jpg", path + "posz.jpg", path + "negz.jpg"];
 
     var mapaEntorno = new THREE.CubeTextureLoader().load(paredes);
-    var matRotula = new THREE.MeshPhongMaterial({ color: 'white', specular: 0x99BBFF, shininess: 50, envMap: mapaEntorno });
-
-
+    var materialRotula = new THREE.MeshPhongMaterial({ color: 'white', specular: 0x99BBFF, shininess: 50, envMap: mapaEntorno });
     //material para el robot
     var path = "images/";
     var texturaRobot = new THREE.TextureLoader().load(path + "metal_128.jpg");
@@ -100,7 +97,7 @@ function loadScene() {
     // Carga la escena
     robot = new THREE.Object3D();
 
-    var matCilindro = new THREE.MeshPhongMaterial({ color: 'red', specular: 0x99BBFF, shininess: 50, wireframe: false, map: texturaRobot });
+    
 
     //Practica 2
 
@@ -117,11 +114,13 @@ function loadScene() {
     ejeBrazo.rotation.z = Math.PI/2;
     ejeBrazo.castShadow = true;
     ejeBrazo.receiveShadow = true;
+
     //esfera
-    var rotula = new THREE.Mesh(new THREE.SphereGeometry(20,30,15),materialRobot);
+    var rotula = new THREE.Mesh(new THREE.SphereGeometry(20,30,15),materialRotula);
     rotula.position.set(0,120,0);
     rotula.castShadow = true;
     rotula.receiveShadow = true;
+
     //Esparrago
     var esparrago = new THREE.Mesh(new THREE.BoxGeometry(18,120,12),materialRobot);
     esparrago.position.set(0,60,0);
@@ -129,12 +128,17 @@ function loadScene() {
     esparrago.receiveShadow = true;
 
     //cilindro
-    const cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22,22,6,32),material);
+    var texturaCilindro = new THREE.TextureLoader().load(path + "wood512.jpg");
+    var matCilinAntebrazo = new THREE.MeshLambertMaterial({ color: 'red', map: texturaCilindro });
+
+    const cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22,22,6,32),matCilinAntebrazo);
 
     var cargarTextura = new THREE.TextureLoader().load(path + "pisometalico_1024.jpg");
     var materialSuelo = new THREE.MeshLambertMaterial({ color: 'white', map: cargarTextura });
     var suelo = new THREE.Mesh(new THREE.PlaneGeometry(1000, 1000, 50, 50),materialSuelo);
     suelo.rotation.x = -Math.PI / 2;
+
+
     //Nervios cada uno en una posicion del espacio
     //Nervio 1
     const nervio1 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),material);
