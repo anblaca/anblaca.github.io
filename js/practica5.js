@@ -128,8 +128,8 @@ function loadScene() {
     esparrago.receiveShadow = true;
 
     //cilindro
-    var texturaCilindro = new THREE.TextureLoader().load(path + "wood512.jpg");
-    var matCilinAntebrazo = new THREE.MeshLambertMaterial({color: 'white', map: texturaCilindro });
+    var texturaMadera = new THREE.TextureLoader().load(path + "wood512.jpg");
+    var matCilinAntebrazo = new THREE.MeshPhongMaterial({color: 'white', specular: 0x99BBFF, shininess: 50, map: texturaMadera });
 
     const cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22,22,6,32),matCilinAntebrazo);
 
@@ -141,20 +141,22 @@ function loadScene() {
 
     //Nervios cada uno en una posicion del espacio
     //Nervio 1
-    const nervio1 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),material);
+    var matNervios = new THREE.MeshLambertMaterial({color: 'white', map: texturaCilindro });
+
+    const nervio1 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),matNervios);
     nervio1.position.set(8, 34, -4);
     //Nervio 2
-    const nervio2 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),material);
+    const nervio2 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),matNervios);
     nervio2.position.set(-8,34,4);
     //Nervio 3
-    const nervio3 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),material);
+    const nervio3 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),matNervios);
     nervio3.position.set(-8,34,-4);
     //Nervio 4
-    const nervio4 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),material);
+    const nervio4 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),matNervios);
     nervio4.position.set(8,34,4);
 
     //cilindro
-    cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15,15,40),material);
+    cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15,15,40),matCilinAntebrazo);
     cilindroMano.position.set(0,80,0);
     cilindroMano.rotation.z = Math.PI/2;
    
