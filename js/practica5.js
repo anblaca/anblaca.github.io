@@ -129,7 +129,7 @@ function loadScene() {
 
     //cilindro
     var texturaCilindro = new THREE.TextureLoader().load(path + "wood512.jpg");
-    var matCilinAntebrazo = new THREE.MeshLambertMaterial({map: texturaCilindro });
+    var matCilinAntebrazo = new THREE.MeshLambertMaterial({color: 'white', map: texturaCilindro });
 
     const cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22,22,6,32),matCilinAntebrazo);
 
