@@ -89,7 +89,7 @@ function loadScene() {
 
     //material para el robot
     var path = "images/";
-    var texturaRobot = new THREE.TextureLoader().load(path + "metal.jpg");
+    var texturaRobot = new THREE.TextureLoader().load(path + "metal_128.jpg");
    
     //var matSuelo = new THREE.MeshLambertMaterial({ color: 'white', map: texturaRobot });
     // Carga la escena
@@ -126,7 +126,7 @@ function loadScene() {
     //cilindro
     const cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22,22,6,32),material);
 
-    var cargarTextura = new THREE.TextureLoader().load(path + "pisometal.jpg");
+    var cargarTextura = new THREE.TextureLoader().load(path + "pisometalico_1024.jpg");
     var materialSuelo = new THREE.MeshLambertMaterial({ color: 'white', map: cargarTextura });
     var suelo = new THREE.Mesh(new THREE.PlaneGeometry(1000, 1000, 50, 50),materialSuelo);
     suelo.rotation.x = -Math.PI / 2;
