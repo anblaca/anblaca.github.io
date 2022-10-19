@@ -129,7 +129,7 @@ function loadScene() {
 
     //cilindro
     var texturaMadera = new THREE.TextureLoader().load(path + "wood512.jpg");
-    var matCilinAntebrazo = new THREE.MeshPhongMaterial({color: 'white', specular: 0x99BBFF, shininess: 50, map: texturaMadera });
+    var matCilinAntebrazo = new THREE.MeshPhongMaterial({color: 'white', specular: 0x99BBFF, shininess: 70, map: texturaMadera });
 
     const cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22,22,6,32),matCilinAntebrazo);
 
@@ -144,22 +144,30 @@ function loadScene() {
     var matNervios = new THREE.MeshLambertMaterial({color: 'white', map: texturaMadera });
 
     const nervio1 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),matNervios);
+    nervio1.receiveShadow = true;
+    nervio1.castShadow = true;
     nervio1.position.set(8, 34, -4);
     //Nervio 2
     const nervio2 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),matNervios);
     nervio2.position.set(-8,34,4);
+    nervio2.receiveShadow = true;
+    nervio2.castShadow = true;
     //Nervio 3
     const nervio3 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),matNervios);
     nervio3.position.set(-8,34,-4);
+    nervio3.receiveShadow = true;
+    nervio3.castShadow = true;
     //Nervio 4
     const nervio4 = new THREE.Mesh(new THREE.BoxGeometry(4,80,4),matNervios);
     nervio4.position.set(8,34,4);
-
+    nervio4.receiveShadow = true;
+    nervio4.castShadow = true;
     //cilindro
     cilindroMano = new THREE.Mesh(new THREE.CylinderGeometry(15,15,40),matCilinAntebrazo);
     cilindroMano.position.set(0,80,0);
     cilindroMano.rotation.z = Math.PI/2;
-   
+    cilindroMano.receiveShadow = true;
+    cilindroMano.castShadow = true;
     
     //Creacion de la mano
     var pinza = new THREE.BufferGeometry();
@@ -209,11 +217,14 @@ function loadScene() {
 
     pinzaIz = new THREE.Mesh(pinza, material);
     pinzaIz.rotation.y = Math.PI / 2;  
+    pinzaIz.receiveShadow = true;
+    pinzaIz.castShadow = true;
 
     pinzaDe = new THREE.Mesh(pinza, material);
     pinzaDe.rotation.y = Math.PI / 2;
     pinzaDe.position.set(0, 20, 0);
-
+    pinzaDe.receiveShadow = true;
+    pinzaDe.castShadow = true;
     //MANO
     cilindroMano.add(pinzaIz);
     cilindroMano.add(pinzaDe);
