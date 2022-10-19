@@ -101,7 +101,7 @@ function loadScene() {
 
     //Creo el nodo del grafo
     robot = new THREE.Object3D();
-    //var material = new THREE.MeshNormalMaterial({color:'yellow', wireframe: false, flatShading: false})
+    var material = new THREE.MeshNormalMaterial({color:'yellow', wireframe: false, flatShading: false})
     //cilindro 
     var materialRobot = new THREE.MeshLambertMaterial({ color: 'white', wireframe: false, map: texturaRobot });
     base = new THREE.Mesh( new THREE.CylinderGeometry(50,50,15,32),materialRobot);
@@ -122,6 +122,7 @@ function loadScene() {
     esparrago.position.set(0,60,0);
     esparrago.castShadow = true;
     esparrago.receiveShadow = true;
+
     //cilindro
     const cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22,22,6,32),material);
 
