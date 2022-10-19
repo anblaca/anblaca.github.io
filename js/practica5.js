@@ -97,8 +97,6 @@ function loadScene() {
     // Carga la escena
     robot = new THREE.Object3D();
 
-    
-
     //Practica 2
 
     //Creo el nodo del grafo
