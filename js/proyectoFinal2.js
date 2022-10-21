@@ -8,7 +8,7 @@ var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,
 
 var constraintLB,constraintRB,constraintLF,constraintRF,world,cannonDebugRenderer, chaseCamPivot
 
-var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam
+var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, helper
 
 
 
@@ -38,7 +38,7 @@ function init() {
     light.shadow.camera.right = 100
     scene.add(light)
     
-    const helper = new THREE.CameraHelper(light.shadow.camera)
+    helper = new THREE.CameraHelper(light.shadow.camera)
     scene.add(helper)
 
     camera = new THREE.PerspectiveCamera(
