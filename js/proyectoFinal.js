@@ -89,7 +89,7 @@ function loadScene() {
     wheelMaterial.restitution = 0.25
 
     //ground mundo visual
-    const groundGeometry = THREE.PlaneGeometry = new THREE.PlaneGeometry(100, 100)
+    const groundGeometry = new THREE.PlaneGeometry(100, 100)
     const groundMesh =  new THREE.Mesh(groundGeometry, phongMaterial)
     groundMesh.rotateX(-Math.PI / 2)
     groundMesh.receiveShadow = true
