@@ -10,11 +10,11 @@ import {OrbitControls} from "../lib/OrbitControls.module.js";
 import {TWEEN} from "../lib/tween.module.min.js";
 import {GUI} from "../lib/lil-gui.module.min.js";
 import * as CANNON from '../lib/cannon-es.js'; 
-
+//import CannonDebugRenderer from './utils/cannonDebugRenderer'
 //variables estandar
 var renderer, scene, camera, cameraControls, angulo, camaraPlanta, effectController;
 const L = 103;
-var constraintLB,constraintRB,forwardVelocity,rightVelocity,constraintLF,constraintRF,world
+var constraintLB,constraintRB,forwardVelocity,rightVelocity,constraintLF,constraintRF,world,cannonDebugRenderer
 var robot, base;
 
 //Acciones
@@ -239,6 +239,8 @@ function loadScene() {
     renderer.domElement.setAttribute("tabIndex", "0");
     renderer.domElement.focus();
 
+    //cannonDebugRenderer = new CannonDebugRenderer(scene, world)
+
     //añado los eventos que moveran al coche
     keyborad.domElement.addEventListener('keydown', function(event){
         if(keyborad.eventMatches(event, 'left')){
@@ -268,7 +270,7 @@ function animate() {
     delta = Math.min(clock.getDelta(), 0.1)
     world.step(delta)
 
-    cannonDebugRenderer.update()
+    //cannonDebugRenderer.update()
 
     // Copy coordinates from Cannon to Three.js
     carBodyMesh.position.set(
