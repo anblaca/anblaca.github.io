@@ -87,8 +87,8 @@ function loadScene() {
     scene.add(sueloMesh)
     const sueloShape = new CANNON.Box(new CANNON.Vec3(1000, 1, 1000))
     const sueloBody = new CANNON.Body({ mass: 0, material: groundMaterial })
-    groundBody.addShape(sueloShape)
-    groundBody.position.set(0, -1, 0)
+    sueloBody.addShape(sueloShape)
+    sueloBody.position.set(0, -1, 0)
     world.addBody(sueloBody)
     
 
