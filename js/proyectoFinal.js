@@ -12,10 +12,9 @@ import {GUI} from "../lib/lil-gui.module.min.js";
 import * as CANNON from '../lib/cannon-es.js'; 
 //import CannonDebugRenderer from './utils/cannonDebugRenderer'
 //variables estandar
-var renderer, scene, camera, cameraControls, angulo, camaraPlanta, effectController;
+var renderer, scene, camera, cameraControls, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,wheelRBMesh ;
 const L = 103;
 var constraintLB,constraintRB,forwardVelocity,rightVelocity,constraintLF,constraintRF,world,cannonDebugRenderer
-var robot, base;
 
 //Acciones
 init();
@@ -103,7 +102,7 @@ function loadScene() {
 
     //CAR mundo visual
     const carBodyGeometry = new THREE.BoxGeometry(1, 1, 2)
-    const carBodyMesh = new THREE.Mesh(carBodyGeometry, phongMaterial)
+    carBodyMesh = new THREE.Mesh(carBodyGeometry, phongMaterial)
     carBodyMesh.position.y = 3
     carBodyMesh.castShadow = true
     scene.add(carBodyMesh)
@@ -124,7 +123,7 @@ function loadScene() {
     0.2
     )
     wheelRFGeometry.rotateZ(Math.PI / 2)
-    const wheelRFMesh = new THREE.Mesh(wheelRFGeometry, phongMaterial)
+    wheelRFMesh = new THREE.Mesh(wheelRFGeometry, phongMaterial)
     wheelRFMesh.position.y = 3
     wheelRFMesh.position.x = 1
     wheelRFMesh.position.z = -1
@@ -146,7 +145,7 @@ function loadScene() {
     0.2
     )
     wheelLFGeometry.rotateZ(Math.PI / 2)
-    const wheelLFMesh = new THREE.Mesh(wheelLFGeometry, phongMaterial)
+    wheelLFMesh = new THREE.Mesh(wheelLFGeometry, phongMaterial)
     wheelLFMesh.position.x = -1
     wheelLFMesh.position.y = 3
     wheelLFMesh.position.z = -1
@@ -168,7 +167,7 @@ function loadScene() {
     0.33
     )
     wheelLBGeometry.rotateZ(Math.PI / 2)
-    const wheelLBMesh = new THREE.Mesh(wheelLBGeometry, phongMaterial)
+    wheelLBMesh = new THREE.Mesh(wheelLBGeometry, phongMaterial)
     wheelLBMesh.position.y = 3
     wheelLBMesh.position.x = -1
     wheelLBMesh.position.z = 1
@@ -190,7 +189,7 @@ function loadScene() {
     0.33
     )
     wheelRBGeometry.rotateZ(Math.PI / 2)
-    const wheelRBMesh = new THREE.Mesh(wheelRBGeometry, phongMaterial)
+    wheelRBMesh = new THREE.Mesh(wheelRBGeometry, phongMaterial)
     wheelRBMesh.position.y = 3
     wheelRBMesh.position.x = 1
     wheelRBMesh.position.z = 1
