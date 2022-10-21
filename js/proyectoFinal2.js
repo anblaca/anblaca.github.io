@@ -89,7 +89,7 @@ function loadScene() {
     
     //ground
     const groundGeometry = new THREE.PlaneGeometry(100, 100)
-    groundMesh = new THREE.Mesh(groundGeometry, phongMaterial)
+    const groundMesh = new THREE.Mesh(groundGeometry, phongMaterial)
     groundMesh.rotateX(-Math.PI / 2)
     groundMesh.receiveShadow = true
     scene.add(groundMesh)
@@ -120,7 +120,7 @@ function loadScene() {
     }
     
     const carBodyGeometry = new THREE.BoxGeometry(1, 1, 2)
-    carBodyMesh = new THREE.Mesh(carBodyGeometry, phongMaterial)
+    const carBodyMesh = new THREE.Mesh(carBodyGeometry, phongMaterial)
     carBodyMesh.position.y = 3
     carBodyMesh.castShadow = true
     scene.add(carBodyMesh)
@@ -141,7 +141,7 @@ function loadScene() {
         0.2
     )
     wheelLFGeometry.rotateZ(Math.PI / 2)
-    wheelLFMesh = new THREE.Mesh(wheelLFGeometry, phongMaterial)
+    const wheelLFMesh = new THREE.Mesh(wheelLFGeometry, phongMaterial)
     wheelLFMesh.position.x = -1
     wheelLFMesh.position.y = 3
     wheelLFMesh.position.z = -1
@@ -162,7 +162,7 @@ function loadScene() {
         0.2
     )
     wheelRFGeometry.rotateZ(Math.PI / 2)
-    wheelRFMesh = new THREE.Mesh(wheelRFGeometry, phongMaterial)
+    const wheelRFMesh = new THREE.Mesh(wheelRFGeometry, phongMaterial)
     wheelRFMesh.position.y = 3
     wheelRFMesh.position.x = 1
     wheelRFMesh.position.z = -1
@@ -204,7 +204,7 @@ function loadScene() {
         0.33
     )
     wheelRBGeometry.rotateZ(Math.PI / 2)
-    wheelRBMesh = new THREE.Mesh(wheelRBGeometry, phongMaterial)
+    const wheelRBMesh = new THREE.Mesh(wheelRBGeometry, phongMaterial)
     wheelRBMesh.position.y = 3
     wheelRBMesh.position.x = 1
     wheelRBMesh.position.z = 1
