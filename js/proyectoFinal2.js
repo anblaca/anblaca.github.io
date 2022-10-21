@@ -89,12 +89,12 @@ function loadScene() {
     
     //ground
     const groundGeometry = new THREE.PlaneGeometry(100, 100)
-    const groundMesh = new THREE.Mesh(groundGeometry, phongMaterial)
+    groundMesh = new THREE.Mesh(groundGeometry, phongMaterial)
     groundMesh.rotateX(-Math.PI / 2)
     groundMesh.receiveShadow = true
     scene.add(groundMesh)
     const groundShape = new CANNON.Box(new CANNON.Vec3(50, 1, 50))
-    const groundBody = new CANNON.Body({ mass: 0, material: groundMaterial })
+    groundBody = new CANNON.Body({ mass: 0, material: groundMaterial })
     groundBody.addShape(groundShape)
     groundBody.position.set(0, -1, 0)
     world.addBody(groundBody)
@@ -120,14 +120,14 @@ function loadScene() {
     }
     
     const carBodyGeometry = new THREE.BoxGeometry(1, 1, 2)
-    const carBodyMesh = new THREE.Mesh(carBodyGeometry, phongMaterial)
+    carBodyMesh = new THREE.Mesh(carBodyGeometry, phongMaterial)
     carBodyMesh.position.y = 3
     carBodyMesh.castShadow = true
     scene.add(carBodyMesh)
     carBodyMesh.add(chaseCam)
     
     const carBodyShape = new CANNON.Box(new CANNON.Vec3(0.5, 0.5, 1))
-    const carBody = new CANNON.Body({ mass: 1 })
+    carBody = new CANNON.Body({ mass: 1 })
     carBody.addShape(carBodyShape)
     carBody.position.x = carBodyMesh.position.x
     carBody.position.y = carBodyMesh.position.y
@@ -141,14 +141,14 @@ function loadScene() {
         0.2
     )
     wheelLFGeometry.rotateZ(Math.PI / 2)
-    const wheelLFMesh = new THREE.Mesh(wheelLFGeometry, phongMaterial)
+    wheelLFMesh = new THREE.Mesh(wheelLFGeometry, phongMaterial)
     wheelLFMesh.position.x = -1
     wheelLFMesh.position.y = 3
     wheelLFMesh.position.z = -1
     wheelLFMesh.castShadow = true
     scene.add(wheelLFMesh)
     const wheelLFShape = new CANNON.Sphere(0.33)
-    const wheelLFBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
+    wheelLFBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
     wheelLFBody.addShape(wheelLFShape)
     wheelLFBody.position.x = wheelLFMesh.position.x
     wheelLFBody.position.y = wheelLFMesh.position.y
@@ -162,14 +162,14 @@ function loadScene() {
         0.2
     )
     wheelRFGeometry.rotateZ(Math.PI / 2)
-    const wheelRFMesh = new THREE.Mesh(wheelRFGeometry, phongMaterial)
+    wheelRFMesh = new THREE.Mesh(wheelRFGeometry, phongMaterial)
     wheelRFMesh.position.y = 3
     wheelRFMesh.position.x = 1
     wheelRFMesh.position.z = -1
     wheelRFMesh.castShadow = true
     scene.add(wheelRFMesh)
     const wheelRFShape = new CANNON.Sphere(0.33)
-    const wheelRFBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
+    wheelRFBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
     wheelRFBody.addShape(wheelRFShape)
     wheelRFBody.position.x = wheelRFMesh.position.x
     wheelRFBody.position.y = wheelRFMesh.position.y
@@ -190,7 +190,7 @@ function loadScene() {
     wheelLBMesh.castShadow = true
     scene.add(wheelLBMesh)
     const wheelLBShape = new CANNON.Sphere(0.4)
-    const wheelLBBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
+    wheelLBBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
     wheelLBBody.addShape(wheelLBShape)
     wheelLBBody.position.x = wheelLBMesh.position.x
     wheelLBBody.position.y = wheelLBMesh.position.y
@@ -204,14 +204,14 @@ function loadScene() {
         0.33
     )
     wheelRBGeometry.rotateZ(Math.PI / 2)
-    const wheelRBMesh = new THREE.Mesh(wheelRBGeometry, phongMaterial)
+    wheelRBMesh = new THREE.Mesh(wheelRBGeometry, phongMaterial)
     wheelRBMesh.position.y = 3
     wheelRBMesh.position.x = 1
     wheelRBMesh.position.z = 1
     wheelRBMesh.castShadow = true
     scene.add(wheelRBMesh)
     const wheelRBShape = new CANNON.Sphere(0.4)
-    const wheelRBBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
+    wheelRBBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
     wheelRBBody.addShape(wheelRBShape)
     wheelRBBody.position.x = wheelRBMesh.position.x
     wheelRBBody.position.y = wheelRBMesh.position.y
@@ -223,25 +223,25 @@ function loadScene() {
     const leftBackAxis = new CANNON.Vec3(1, 0, 0)
     const rightBackAxis = new CANNON.Vec3(1, 0, 0)
     
-    const constraintLF = new CANNON.HingeConstraint(carBody, wheelLFBody, {
+    constraintLF = new CANNON.HingeConstraint(carBody, wheelLFBody, {
         pivotA: new CANNON.Vec3(-1, -0.5, -1),
         axisA: leftFrontAxis,
         maxForce: 0.99,
     })
     world.addConstraint(constraintLF)
-    const constraintRF = new CANNON.HingeConstraint(carBody, wheelRFBody, {
+    constraintRF = new CANNON.HingeConstraint(carBody, wheelRFBody, {
         pivotA: new CANNON.Vec3(1, -0.5, -1),
         axisA: rightFrontAxis,
         maxForce: 0.99,
     })
     world.addConstraint(constraintRF)
-    const constraintLB = new CANNON.HingeConstraint(carBody, wheelLBBody, {
+    constraintLB = new CANNON.HingeConstraint(carBody, wheelLBBody, {
         pivotA: new CANNON.Vec3(-1, -0.5, 1),
         axisA: leftBackAxis,
         maxForce: 0.99,
     })
     world.addConstraint(constraintLB)
-    const constraintRB = new CANNON.HingeConstraint(carBody, wheelRBBody, {
+    constraintRB = new CANNON.HingeConstraint(carBody, wheelRBBody, {
         pivotA: new CANNON.Vec3(1, -0.5, 1),
         axisA: rightBackAxis,
         maxForce: 0.99,
