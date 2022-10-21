@@ -19,7 +19,7 @@ var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody
 //Acciones
 init();
 loadScene();
-//render();
+render();
 animate();
 
 function init() {
@@ -244,6 +244,7 @@ function loadScene() {
     keyborad.domElement.addEventListener('keydown', function(event){
         if(keyborad.eventMatches(event, 'left')){
             rightVelocity -= 0.1
+            console.log("Paso1")
         }
         if(keyborad.eventMatches(event, 'right')){
             rightVelocity -= 0.1 
@@ -334,12 +335,14 @@ function animate() {
 
     //thrusting = false
     
-
+    
     constraintLB.setMotorSpeed(forwardVelocity)
     constraintRB.setMotorSpeed(forwardVelocity)
     constraintLF.axisA.z = rightVelocity
     constraintRF.axisA.z = rightVelocity
 
+    console.log("Paso2")
+    
     camera.lookAt(carBodyMesh.position)
 
     chaseCamPivot.getWorldPosition(v)
@@ -347,8 +350,6 @@ function animate() {
         v.y = 1
     }
     camera.position.lerpVectors(camera.position, v, 0.05)
-
-    render()
 
 }
 
