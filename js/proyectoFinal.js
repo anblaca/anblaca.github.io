@@ -20,7 +20,8 @@ var robot, base;
 //Acciones
 init();
 loadScene();
-render();
+//render();
+animate();
 
 function init() {
     renderer = new THREE.WebGLRenderer();
@@ -351,7 +352,7 @@ function render() {
     requestAnimationFrame(render);
     renderer.domElement.setAttribute("tabIndex", "0");
     renderer.domElement.focus();
-    update();
+    //update();
     //Borrar una unica vez
     renderer.clear();
     renderer.setViewport(0,0,window.innerWidth, window.innerHeight);
