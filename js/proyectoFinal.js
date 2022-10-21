@@ -9,6 +9,7 @@ import {GLTFLoader} from "../lib/GLTFLoader.module.js";
 import {OrbitControls} from "../lib/OrbitControls.module.js";
 import {TWEEN} from "../lib/tween.module.min.js";
 import {GUI} from "../lib/lil-gui.module.min.js";
+import * as CANNON from '../lib/cannon-es.js'; 
 
 //variables estandar
 var renderer, scene, camera, cameraControls, angulo, camaraPlanta, effectController;
