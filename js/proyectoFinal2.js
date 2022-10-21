@@ -141,7 +141,7 @@ function loadScene() {
         0.2
     )
     wheelLFGeometry.rotateZ(Math.PI / 2)
-    const wheelLFMesh = new THREE.Mesh(wheelLFGeometry, phongMaterial)
+    wheelLFMesh = new THREE.Mesh(wheelLFGeometry, phongMaterial)
     wheelLFMesh.position.x = -1
     wheelLFMesh.position.y = 3
     wheelLFMesh.position.z = -1
@@ -162,7 +162,7 @@ function loadScene() {
         0.2
     )
     wheelRFGeometry.rotateZ(Math.PI / 2)
-    const wheelRFMesh = new THREE.Mesh(wheelRFGeometry, phongMaterial)
+    wheelRFMesh = new THREE.Mesh(wheelRFGeometry, phongMaterial)
     wheelRFMesh.position.y = 3
     wheelRFMesh.position.x = 1
     wheelRFMesh.position.z = -1
@@ -183,7 +183,7 @@ function loadScene() {
         0.33
     )
     wheelLBGeometry.rotateZ(Math.PI / 2)
-    const wheelLBMesh = new THREE.Mesh(wheelLBGeometry, phongMaterial)
+    wheelLBMesh = new THREE.Mesh(wheelLBGeometry, phongMaterial)
     wheelLBMesh.position.y = 3
     wheelLBMesh.position.x = -1
     wheelLBMesh.position.z = 1
@@ -204,7 +204,7 @@ function loadScene() {
         0.33
     )
     wheelRBGeometry.rotateZ(Math.PI / 2)
-    const wheelRBMesh = new THREE.Mesh(wheelRBGeometry, phongMaterial)
+    wheelRBMesh = new THREE.Mesh(wheelRBGeometry, phongMaterial)
     wheelRBMesh.position.y = 3
     wheelRBMesh.position.x = 1
     wheelRBMesh.position.z = 1
@@ -347,9 +347,6 @@ function animate() {
         wheelRBBody.quaternion.w
     )
 
-    thrusting = false
-    
-
     constraintLB.setMotorSpeed(forwardVelocity)
     constraintRB.setMotorSpeed(forwardVelocity)
     constraintLF.axisA.z = rightVelocity
@@ -365,7 +362,6 @@ function animate() {
 
     render()
 
-    stats.update()
 }
 
 function render() {
