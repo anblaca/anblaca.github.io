@@ -205,6 +205,11 @@ function loadScene() {
     wheelRBBody.position.z = wheelRBMesh.position.z
     world.addBody(wheelRBBody)
 
+    const leftFrontAxis = new CANNON.Vec3(1, 0, 0)
+    const rightFrontAxis = new CANNON.Vec3(1, 0, 0)
+    const leftBackAxis = new CANNON.Vec3(1, 0, 0)
+    const rightBackAxis = new CANNON.Vec3(1, 0, 0)
+    
     constraintLF = new CANNON.HingeConstraint(carBody, wheelLFBody, {
         pivotA: new CANNON.Vec3(-1, -0.5, -1),
         axisA: leftFrontAxis,
