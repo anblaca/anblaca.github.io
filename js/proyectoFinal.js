@@ -179,7 +179,7 @@ function loadScene() {
     const wheelLBBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
     wheelLBBody.addShape(wheelLBShape)
     wheelLBBody.position.x = wheelLBMesh.position.x
-    heelLBBody.position.y = wheelLBMesh.position.y
+    wheelLBBody.position.y = wheelLBMesh.position.y
     wheelLBBody.position.z = wheelLBMesh.position.z
     world.addBody(wheelLBBody)
 
