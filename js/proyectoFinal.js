@@ -342,7 +342,7 @@ function animate() {
     constraintRF.axisA.z = rightVelocity
 
     console.log("Paso2")
-    
+
     camera.lookAt(carBodyMesh.position)
 
     chaseCamPivot.getWorldPosition(v)
@@ -355,11 +355,6 @@ function animate() {
 
 function render() {
     requestAnimationFrame(render);
-    renderer.domElement.setAttribute("tabIndex", "0");
-    renderer.domElement.focus();
     //update();
-    //Borrar una unica vez
-    renderer.clear();
-    renderer.setViewport(0,0,window.innerWidth, window.innerHeight);
     renderer.render(scene,camera);
 }
