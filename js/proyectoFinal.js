@@ -14,7 +14,7 @@ import * as CANNON from '../lib/cannon-es.js';
 //variables estandar
 var renderer, scene, camera, cameraControls, angulo, camaraPlanta, effectController;
 const L = 103;
-var constraintLB,constraintRB,forwardVelocity,rightVelocity,constraintLF,constraintRF
+var constraintLB,constraintRB,forwardVelocity,rightVelocity,constraintLF,constraintRF,world
 var robot, base;
 
 //Acciones
@@ -77,7 +77,7 @@ function loadScene() {
     const phongMaterial = new THREE.MeshPhongMaterial()
 
     //creación del mundo fisico
-    const world = new CANNON.World()
+    world = new CANNON.World()
     world.gravity.set(0, -9.82, 0)
 
     const groundMaterial = new CANNON.Material('groundMaterial')
@@ -261,7 +261,7 @@ function animate() {
     //requestAnimationFrame(animate)
 
     //helper.update()
-    
+
     const clock = new THREE.Clock()
     let delta
 
