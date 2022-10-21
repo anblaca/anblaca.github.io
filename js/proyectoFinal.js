@@ -20,7 +20,6 @@ var robot, base;
 //Acciones
 init();
 loadScene();
-setupGUI();
 render();
 
 function init() {
@@ -238,7 +237,7 @@ function loadScene() {
     var keyborad = new THREEx.KeyboardState(renderer.domElement);
     renderer.domElement.setAttribute("tabIndex", "0");
     renderer.domElement.focus();
-    
+
     //añado los eventos que moveran al coche
     keyborad.domElement.addEventListener('keydown', function(event){
         if(keyborad.eventMatches(event, 'left')){
