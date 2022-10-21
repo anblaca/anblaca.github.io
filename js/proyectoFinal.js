@@ -348,7 +348,7 @@ function animate() {
     }
     camera.position.lerpVectors(camera.position, v, 0.05)
 
-    //render()
+    render()
 
 }
 
