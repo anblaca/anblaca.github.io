@@ -14,7 +14,7 @@ import * as CANNON from '../lib/cannon-es.js';
 //variables estandar
 var renderer, scene, camera, cameraControls, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,wheelRBMesh ;
 const L = 103;
-var constraintLB,constraintRB,forwardVelocity,rightVelocity,constraintLF,constraintRF,world,cannonDebugRenderer, chaseCamPivot
+var constraintLB,constraintRB,forwardVelocity,rightVelocity,constraintLF,constraintRF,world,cannonDebugRenderer, chaseCamPivot,v
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody
 //Acciones
 init();
@@ -74,7 +74,7 @@ function loadScene() {
     scene.add(chaseCam)
 
     const phongMaterial = new THREE.MeshPhongMaterial()
-
+    v = new THREE.Vector3()
     //creación del mundo fisico
     world = new CANNON.World()
     world.gravity.set(0, -9.82, 0)
