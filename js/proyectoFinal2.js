@@ -94,7 +94,7 @@ function loadScene() {
     groundMesh.receiveShadow = true
     scene.add(groundMesh)
     const groundShape = new CANNON.Box(new CANNON.Vec3(50, 1, 50))
-    groundBody = new CANNON.Body({ mass: 0, material: groundMaterial })
+    const groundBody = new CANNON.Body({ mass: 0, material: groundMaterial })
     groundBody.addShape(groundShape)
     groundBody.position.set(0, -1, 0)
     world.addBody(groundBody)
