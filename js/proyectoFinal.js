@@ -15,7 +15,7 @@ import * as CANNON from '../lib/cannon-es.js';
 var renderer, scene, camera, cameraControls, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,wheelRBMesh ;
 const L = 103;
 var constraintLB,constraintRB,forwardVelocity,rightVelocity,constraintLF,constraintRF,world,cannonDebugRenderer
-
+var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody
 //Acciones
 init();
 loadScene();
@@ -109,7 +109,7 @@ function loadScene() {
     carBodyMesh.add(chaseCam)
     //car mundo fisico
     const carBodyShape = new CANNON.Box(new CANNON.Vec3(0.5, 0.5, 1))
-    const carBody = new CANNON.Body({ mass: 1 })
+    carBody = new CANNON.Body({ mass: 1 })
     carBody.addShape(carBodyShape)
     carBody.position.x = carBodyMesh.position.x
     carBody.position.y = carBodyMesh.position.y
@@ -131,7 +131,7 @@ function loadScene() {
     scene.add(wheelRFMesh)
     //rueda derecha delantera fisica
     const wheelRFShape = new CANNON.Sphere(0.33)
-    const wheelRFBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
+    wheelRFBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
     wheelRFBody.addShape(wheelRFShape)
     wheelRFBody.position.x = wheelRFMesh.position.x
     wheelRFBody.position.y = wheelRFMesh.position.y
@@ -153,7 +153,7 @@ function loadScene() {
     scene.add(wheelLFMesh)
     //rueda izquierda delantera fisica
     const wheelLFShape = new CANNON.Sphere(0.33)
-    const wheelLFBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
+    wheelLFBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
     wheelLFBody.addShape(wheelLFShape)
     wheelLFBody.position.x = wheelLFMesh.position.x
     wheelLFBody.position.y = wheelLFMesh.position.y
@@ -175,7 +175,7 @@ function loadScene() {
     scene.add(wheelLBMesh)
     //rueda izquierda trasera fisica
     const wheelLBShape = new CANNON.Sphere(0.4)
-    const wheelLBBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
+    wheelLBBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
     wheelLBBody.addShape(wheelLBShape)
     wheelLBBody.position.x = wheelLBMesh.position.x
     wheelLBBody.position.y = wheelLBMesh.position.y
@@ -197,7 +197,7 @@ function loadScene() {
     scene.add(wheelRBMesh)
     //rueda derecha trasera fisica
     const wheelRBShape = new CANNON.Sphere(0.4)
-    const wheelRBBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
+    wheelRBBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
     wheelRBBody.addShape(wheelRBShape)
     wheelRBBody.position.x = wheelRBMesh.position.x
     wheelRBBody.position.y = wheelRBMesh.position.y
