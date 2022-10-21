@@ -120,7 +120,7 @@ function loadScene() {
     }
     
     const carBodyGeometry = new THREE.BoxGeometry(1, 1, 2)
-    const carBodyMesh = new THREE.Mesh(carBodyGeometry, phongMaterial)
+    carBodyMesh = new THREE.Mesh(carBodyGeometry, phongMaterial)
     carBodyMesh.position.y = 3
     carBodyMesh.castShadow = true
     scene.add(carBodyMesh)
