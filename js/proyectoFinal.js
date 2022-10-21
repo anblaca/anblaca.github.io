@@ -6,7 +6,7 @@
 
 import * as THREE from "../lib/three.module.js";
 import {GLTFLoader} from "../lib/GLTFLoader.module.js";
-import {OrbitControls} from "../lib/OrbitControls.module.js";
+//import {OrbitControls} from "../lib/OrbitControls.module.js";
 import {TWEEN} from "../lib/tween.module.min.js";
 import {GUI} from "../lib/lil-gui.module.min.js";
 import * as CANNON from '../lib/cannon-es.js'; 
@@ -19,7 +19,6 @@ var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody
 //Acciones
 init();
 loadScene();
-render();
 animate();
 var forwardVelocity = 0
 var rightVelocity = 0
@@ -43,8 +42,8 @@ function init() {
 
 
     //orbitcontrols
-    cameraControls = new OrbitControls(camera,renderer.domElement);
-    cameraControls.target.set(0,0,0);
+    //cameraControls = new OrbitControls(camera,renderer.domElement);
+    //ameraControls.target.set(0,0,0);
 
     
     //renderer.domElement.addEventListener('dblclick', animate );
@@ -358,7 +357,7 @@ function animate() {
         v.y = 1
     }
     camera.position.lerpVectors(camera.position, v, 0.05)
-    
+
     render()
 }
 
