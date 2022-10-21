@@ -76,7 +76,7 @@ function init() {
 function loadScene() {
     const phongMaterial = new THREE.MeshPhongMaterial()
 
-    const world = new CANNON.World()
+    world = new CANNON.World()
     world.gravity.set(0, -9.82, 0)
     
     const groundMaterial = new CANNON.Material('groundMaterial')
