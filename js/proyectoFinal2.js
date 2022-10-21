@@ -317,7 +317,7 @@ function loadScene() {
 function animate() {
     requestAnimationFrame(animate)
 
-    helper.update()
+    //helper.update()
 
     delta = Math.min(clock.getDelta(), 0.1)
     world.step(delta)
