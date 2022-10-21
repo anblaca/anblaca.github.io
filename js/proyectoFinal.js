@@ -37,16 +37,14 @@ function init() {
     //CAMARA
     var aspectRatio = window.innerWidth/window.innerHeight;
     camera = new THREE.PerspectiveCamera(75,aspectRatio,0.1,1000);
-    //camera.lookAt(new THREE.Vector3(0, 0, 0));
 
-
-    //orbitcontrols
-    //cameraControls = new OrbitControls(camera,renderer.domElement);
-    //ameraControls.target.set(0,0,0);
-
+    const chaseCam = new THREE.Object3D()
+    chaseCam.position.set(0, 0, 0)
+    chaseCamPivot = new THREE.Object3D()
+    chaseCamPivot.position.set(0, 2, 4)
+    chaseCam.add(chaseCamPivot)
+    scene.add(chaseCam)
     
-    //renderer.domElement.addEventListener('dblclick', animate );
-
     //LUZ
     const light = new THREE.DirectionalLight()
     light.position.set(25, 50, 25)
@@ -66,12 +64,7 @@ function init() {
 
 function loadScene() {
 
-    const chaseCam = new THREE.Object3D()
-    chaseCam.position.set(0, 0, 0)
-    chaseCamPivot = new THREE.Object3D()
-    chaseCamPivot.position.set(0, 2, 4)
-    chaseCam.add(chaseCamPivot)
-    scene.add(chaseCam)
+    
 
     const phongMaterial = new THREE.MeshPhongMaterial()
     v = new THREE.Vector3()
