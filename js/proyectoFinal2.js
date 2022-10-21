@@ -132,22 +132,23 @@ function loadScene() {
     }
 
     //Dibujar rampas
-    for (let i = 0; i < 100; i++) {
-        const rampa = new THREE.Mesh(new THREE.CylinderGeometry(1, 1, 1, 8, 1), phongMaterial)
-        rampa.position.x = Math.random() * 300 - 50
-        rampa.position.y = 1 //0.5
-        rampa.position.z = Math.random() * 300 - 50
-        rampa.rotation.z = Math.PI / 2
+    //for (let i = 0; i < 100; i++) {
+        //const rampa = new THREE.Mesh(new THREE.CylinderGeometry(1, 1, 1, 8, 1), phongMaterial)
+        //cons rampa = new THREE.Mesh(new THREE.PlaneGeometry(1, 1, 1, 8, 1), phongMaterial)
+        //rampa.position.x = Math.random() * 300 - 50
+        //rampa.position.y = 1 //0.5
+        //rampa.position.z = Math.random() * 300 - 50
+        //rampa.rotation.z = Math.PI / 2
         //scene.add(rampa)
         //mundo fisico
-        const cilindroShape = new CANNON.Cylinder(1, 1, 1, 8)
-        const cilindroBody = new CANNON.Body({ mass: 0 })
-        cilindroBody.addShape(cilindroShape, new CANNON.Vec3())
-        cilindroBody.position.x = moneda.position.x
-        cilindroBody.position.y = moneda.position.y
-        cilindroBody.position.z = moneda.position.z
+        //const cilindroShape = new CANNON.Cylinder(1, 1, 1, 8)
+        //const cilindroBody = new CANNON.Body({ mass: 0 })
+        //cilindroBody.addShape(cilindroShape, new CANNON.Vec3())
+        //cilindroBody.position.x = moneda.position.x
+        //cilindroBody.position.y = moneda.position.y
+        //cilindroBody.position.z = moneda.position.z
         //world.addBody(cilindroBody)
-    }
+    //}
     
     const carBodyGeometry = new THREE.BoxGeometry(1, 1, 2)
     carBodyMesh = new THREE.Mesh(carBodyGeometry, phongMaterial)
