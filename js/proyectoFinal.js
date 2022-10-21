@@ -45,8 +45,6 @@ function init() {
     cameraControls.target.set(0,0,0);
 
     
-    //captura de eventos
-    window.addEventListener('resize', updateAspectRatio);
     //renderer.domElement.addEventListener('dblclick', animate );
 
     //LUZ
