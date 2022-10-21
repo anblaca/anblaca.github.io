@@ -209,7 +209,7 @@ function loadScene() {
     const rightFrontAxis = new CANNON.Vec3(1, 0, 0)
     const leftBackAxis = new CANNON.Vec3(1, 0, 0)
     const rightBackAxis = new CANNON.Vec3(1, 0, 0)
-    
+
     constraintLF = new CANNON.HingeConstraint(carBody, wheelLFBody, {
         pivotA: new CANNON.Vec3(-1, -0.5, -1),
         axisA: leftFrontAxis,
@@ -235,6 +235,10 @@ function loadScene() {
     })
     world.addConstraint(constraintRB)
 
+    var keyborad = new THREEx.KeyboardState(renderer.domElement);
+    renderer.domElement.setAttribute("tabIndex", "0");
+    renderer.domElement.focus();
+    
     //añado los eventos que moveran al coche
     keyborad.domElement.addEventListener('keydown', function(event){
         if(keyborad.eventMatches(event, 'left')){
