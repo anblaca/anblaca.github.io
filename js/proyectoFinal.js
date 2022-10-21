@@ -261,6 +261,9 @@ function animate() {
     //requestAnimationFrame(animate)
 
     //helper.update()
+    
+    const clock = new THREE.Clock()
+    let delta
 
     delta = Math.min(clock.getDelta(), 0.1)
     world.step(delta)
