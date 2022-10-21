@@ -272,8 +272,8 @@ function loadScene() {
             }
     })
     
-    let forwardVelocity = 0
-    let rightVelocity = 0
+    forwardVelocity = 0
+    rightVelocity = 0
 }
 
 
