@@ -239,7 +239,8 @@ function loadScene() {
     renderer.domElement.focus();
 
     //cannonDebugRenderer = new CannonDebugRenderer(scene, world)
-
+    forwardVelocity = 0
+    rightVelocity = 0
     //añado los eventos que moveran al coche
     keyborad.domElement.addEventListener('keydown', function(event){
         if(keyborad.eventMatches(event, 'left')){
@@ -355,6 +356,7 @@ function animate() {
 
 function render() {
     requestAnimationFrame(render);
+
     //update();
     renderer.render(scene,camera);
 }
