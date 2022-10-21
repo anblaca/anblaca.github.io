@@ -18,22 +18,47 @@ const v = new THREE.Vector3()
 
 function init() {
     scene = new THREE.Scene()
+
+// Luces
+    const ambiental = new THREE.AmbientLight(0x222222);
+    scene.add(ambiental);
+    const direccional = new THREE.DirectionalLight(0xFFFFFF,0.3);
+    direccional.position.set(-1,1,-1);
+    direccional.position.set(100, 80, 100)
+    direccional.castShadow = true;
+    scene.add(direccional);
+
+    const puntual = new THREE.PointLight(0xFFFFFF,0.5);
+    puntual.position.set(2,7,-4);
+    scene.add(puntual);
+    const focal = new THREE.SpotLight(0xFFFFFF,0.3);
+    focal.position.set(-2,7,4);
+    focal.target.position.set(0,0,0);
+    focal.angle= Math.PI/7;
+    focal.penumbra = 0.3;
+    focal.castShadow= true;
+    focal.shadow.camera.far = 20;
+    focal.shadow.camera.fov = 80;
+    scene.add(focal);
+    scene.add(new THREE.CameraHelper(focal.shadow.camera));
+
+
     //añadir mas luces
-    const light = new THREE.DirectionalLight()
-    light.position.set(25, 50, 25)
-    light.castShadow = true
-    light.shadow.mapSize.width = 16384
-    light.shadow.mapSize.height = 16384
-    light.shadow.camera.near = 0.5
-    light.shadow.camera.far = 100
-    light.shadow.camera.top = 100
-    light.shadow.camera.bottom = -100
-    light.shadow.camera.left = -100
-    light.shadow.camera.right = 100
-    scene.add(light)
+    //const light = new THREE.DirectionalLight()
+    //light.position.set(25, 50, 25)
+    //light.castShadow = true
+    //light.shadow.mapSize.width = 16384
+    //light.shadow.mapSize.height = 16384
+    //light.shadow.camera.near = 0.5
+    //light.shadow.camera.far = 100
+    //light.shadow.camera.top = 100
+    //light.shadow.camera.bottom = -100
+    //light.shadow.camera.left = -100
+    //light.shadow.camera.right = 100
+    //scene.add(light)
     
-    helper = new THREE.CameraHelper(light.shadow.camera)
-    scene.add(helper)
+    //helper = new THREE.CameraHelper(light.shadow.camera)
+    //scene.add(helper)
 
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
 
@@ -77,7 +102,7 @@ function loadScene() {
     
     //ground
     const sueloMesh = new THREE.Mesh(new THREE.PlaneGeometry(300, 300, 50, 50), phongMaterial)
-    sueloMesh.rotateX(-Math.PI / 2)
+    sueloMesh.rotation.x = -Math.PI / 2
     sueloMesh.receiveShadow = true
     scene.add(sueloMesh)
     const sueloShape = new CANNON.Box(new CANNON.Vec3(300, 1, 300))
@@ -130,25 +155,6 @@ function loadScene() {
         //cilindroBody.position.z = moneda.position.z
         //world.addBody(cilindroBody)
     }
-
-    //Dibujar rampas
-    //for (let i = 0; i < 100; i++) {
-        //const rampa = new THREE.Mesh(new THREE.CylinderGeometry(1, 1, 1, 8, 1), phongMaterial)
-        //cons rampa = new THREE.Mesh(new THREE.PlaneGeometry(1, 1, 1, 8, 1), phongMaterial)
-        //rampa.position.x = Math.random() * 300 - 50
-        //rampa.position.y = 1 //0.5
-        //rampa.position.z = Math.random() * 300 - 50
-        //rampa.rotation.z = Math.PI / 2
-        //scene.add(rampa)
-        //mundo fisico
-        //const cilindroShape = new CANNON.Cylinder(1, 1, 1, 8)
-        //const cilindroBody = new CANNON.Body({ mass: 0 })
-        //cilindroBody.addShape(cilindroShape, new CANNON.Vec3())
-        //cilindroBody.position.x = moneda.position.x
-        //cilindroBody.position.y = moneda.position.y
-        //cilindroBody.position.z = moneda.position.z
-        //world.addBody(cilindroBody)
-    //}
     
     const carBodyGeometry = new THREE.BoxGeometry(1, 1, 2)
     carBodyMesh = new THREE.Mesh(carBodyGeometry, phongMaterial)
