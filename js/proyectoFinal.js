@@ -12,9 +12,10 @@ import {GUI} from "../lib/lil-gui.module.min.js";
 import * as CANNON from '../lib/cannon-es.js'; 
 //import CannonDebugRenderer from './utils/cannonDebugRenderer'
 //variables estandar
-var renderer, scene, camera, cameraControls, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,wheelRBMesh ;
-const L = 103;
+var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,wheelRBMesh ;
+
 var constraintLB,constraintRB,constraintLF,constraintRF,world,cannonDebugRenderer, chaseCamPivot,v
+
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam
 //Acciones
 init();
@@ -37,7 +38,7 @@ function init() {
     //CAMARA
     var aspectRatio = window.innerWidth/window.innerHeight;
     camera = new THREE.PerspectiveCamera(75,aspectRatio,0.1,1000);
-    
+
     camera.position.set(90, 200, 350);
     camera.lookAt(new THREE.Vector3(0, 0, 0));
 
@@ -67,7 +68,6 @@ function init() {
 
 function loadScene() {
 
-    
 
     const phongMaterial = new THREE.MeshPhongMaterial()
     v = new THREE.Vector3()

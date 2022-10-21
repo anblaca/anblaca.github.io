@@ -119,7 +119,7 @@ function loadScene() {
         moneda.position.x = Math.random() * 100 - 50
         moneda.position.y = 1 //0.5
         moneda.position.z = Math.random() * 100 - 50
-        moneda.rotate.z = Math.PI / 2
+        moneda.rotation.z = Math.PI / 2
         scene.add(moneda)
         //mundo fisico
         const cilindroShape = new CANNON.Cylinder(1, 1, 1, 8)
