@@ -15,7 +15,7 @@ import * as CANNON from '../lib/cannon-es.js';
 var renderer, scene, camera, cameraControls, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,wheelRBMesh ;
 const L = 103;
 var constraintLB,constraintRB,constraintLF,constraintRF,world,cannonDebugRenderer, chaseCamPivot,v
-var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody
+var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam
 //Acciones
 init();
 loadScene();
@@ -38,13 +38,13 @@ function init() {
     var aspectRatio = window.innerWidth/window.innerHeight;
     camera = new THREE.PerspectiveCamera(75,aspectRatio,0.1,1000);
 
-    const chaseCam = new THREE.Object3D()
+    chaseCam = new THREE.Object3D()
     chaseCam.position.set(0, 0, 0)
     chaseCamPivot = new THREE.Object3D()
     chaseCamPivot.position.set(0, 2, 4)
     chaseCam.add(chaseCamPivot)
     scene.add(chaseCam)
-    
+
     //LUZ
     const light = new THREE.DirectionalLight()
     light.position.set(25, 50, 25)
