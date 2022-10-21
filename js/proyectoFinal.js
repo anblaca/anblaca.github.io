@@ -332,7 +332,7 @@ function animate() {
         wheelRBBody.quaternion.w
     )
 
-    thrusting = false
+    //thrusting = false
     
 
     constraintLB.setMotorSpeed(forwardVelocity)
