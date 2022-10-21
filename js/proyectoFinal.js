@@ -14,13 +14,15 @@ import * as CANNON from '../lib/cannon-es.js';
 //variables estandar
 var renderer, scene, camera, cameraControls, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,wheelRBMesh ;
 const L = 103;
-var constraintLB,constraintRB,forwardVelocity,rightVelocity,constraintLF,constraintRF,world,cannonDebugRenderer, chaseCamPivot,v
+var constraintLB,constraintRB,constraintLF,constraintRF,world,cannonDebugRenderer, chaseCamPivot,v
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody
 //Acciones
 init();
 loadScene();
 render();
 animate();
+var forwardVelocity = 0
+var rightVelocity = 0
 
 function init() {
     renderer = new THREE.WebGLRenderer();
@@ -234,34 +236,41 @@ function loadScene() {
     })
     world.addConstraint(constraintRB)
 
+    constraintLB.enableMotor()
+    constraintRB.enableMotor()
+
+    window.addEventListener('resize', onWindowResize, false)
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight
+        camera.updateProjectionMatrix()
+        renderer.setSize(window.innerWidth, window.innerHeight)
+        render()
+    }
+
     var keyborad = new THREEx.KeyboardState(renderer.domElement);
     renderer.domElement.setAttribute("tabIndex", "0");
     renderer.domElement.focus();
 
-    //cannonDebugRenderer = new CannonDebugRenderer(scene, world)
-    forwardVelocity = 0
-    rightVelocity = 0
-    //añado los eventos que moveran al coche
+    //añado los eventos que moveran al robot
     keyborad.domElement.addEventListener('keydown', function(event){
         if(keyborad.eventMatches(event, 'left')){
             rightVelocity -= 0.1
-            console.log("Paso1")
         }
         if(keyborad.eventMatches(event, 'right')){
-            rightVelocity -= 0.1 
+            rightVelocity += 0.1 
         }
         if(keyborad.eventMatches(event, 'up')){
             forwardVelocity += 1 
         }
         if(keyborad.eventMatches(event, 'down')){
-            forwardVelocity -= 1
+            forwardVelocity -= 1 
         }
     })
-
+   
 }
 
 function animate() {
-    //requestAnimationFrame(animate)
+    requestAnimationFrame(animate)
 
     //helper.update()
 
@@ -285,7 +294,6 @@ function animate() {
         carBody.quaternion.z,
         carBody.quaternion.w
     )
-
     wheelLFMesh.position.set(
         wheelLFBody.position.x,
         wheelLFBody.position.y,
@@ -334,7 +342,6 @@ function animate() {
         wheelRBBody.quaternion.w
     )
 
-    //thrusting = false
     
     
     constraintLB.setMotorSpeed(forwardVelocity)
@@ -355,7 +362,7 @@ function animate() {
 }
 
 function render() {
-    requestAnimationFrame(render);
+    //requestAnimationFrame(render);
 
     //update();
     renderer.render(scene,camera);
