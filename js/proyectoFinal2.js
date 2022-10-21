@@ -10,14 +10,8 @@ var constraintLB,constraintRB,constraintLF,constraintRF,world,cannonDebugRendere
 
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, helper
 
-
-
-
-
-
 const clock = new THREE.Clock()
 let delta
-
 
 const v = new THREE.Vector3()
 
@@ -72,7 +66,6 @@ function init() {
 }
 
 
-
 function loadScene() {
     const phongMaterial = new THREE.MeshPhongMaterial()
 
@@ -88,17 +81,44 @@ function loadScene() {
     wheelMaterial.restitution = 0.25
     
     //ground
-    const groundGeometry = new THREE.PlaneGeometry(100, 100)
-    const groundMesh = new THREE.Mesh(groundGeometry, phongMaterial)
-    groundMesh.rotateX(-Math.PI / 2)
-    groundMesh.receiveShadow = true
-    scene.add(groundMesh)
-    const groundShape = new CANNON.Box(new CANNON.Vec3(50, 1, 50))
-    const groundBody = new CANNON.Body({ mass: 0, material: groundMaterial })
-    groundBody.addShape(groundShape)
+    const sueloMesh = new THREE.Mesh(new THREE.PlaneGeometry(1000, 1000, 50, 50), phongMaterial)
+    sueloMesh.rotateX(-Math.PI / 2)
+    sueloMesh.receiveShadow = true
+    scene.add(sueloMesh)
+    const sueloShape = new CANNON.Box(new CANNON.Vec3(1000, 1, 1000))
+    const sueloBody = new CANNON.Body({ mass: 0, material: groundMaterial })
+    groundBody.addShape(sueloShape)
     groundBody.position.set(0, -1, 0)
-    world.addBody(groundBody)
+    world.addBody(sueloBody)
     
+
+    // Paredes
+    const backWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+    backWall.addShape( new CANNON.Plane() );
+    backWall.position.z = -1000;
+    world.addBody( backWall );
+ 
+    const frontWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+    frontWall.addShape( new CANNON.Plane() );
+    frontWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
+    frontWall.position.z = 1000;
+    world.addBody( frontWall );
+ 
+    const leftWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+    leftWall.addShape( new CANNON.Plane() );
+    leftWall.position.x = -1000;
+    leftWall.quaternion.setFromEuler(0,Math.PI/2,0,'XYZ');
+    world.addBody( leftWall );
+ 
+    const rightWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+    rightWall.addShape( new CANNON.Plane() );
+    rightWall.position.x = 1000;
+    rightWall.quaternion.setFromEuler(0,-Math.PI/2,0,'XYZ');
+    world.addBody( rightWall );
+
+
+
+
     //jumps
     for (let i = 0; i < 100; i++) {
         const jump = new THREE.Mesh(
@@ -107,16 +127,15 @@ function loadScene() {
         )
         jump.position.x = Math.random() * 100 - 50
         jump.position.y = 0.5
-        jump.position.z = Math.random() * 100 - 50
-        scene.add(jump)
-    
+        jump.position.z = Math.random() * 100 - 50  
+        //scene.add(jump)
         const cylinderShape = new CANNON.Cylinder(0.01, 1, 0.5, 5)
         const cylinderBody = new CANNON.Body({ mass: 0 })
         cylinderBody.addShape(cylinderShape, new CANNON.Vec3())
         cylinderBody.position.x = jump.position.x
         cylinderBody.position.y = jump.position.y
         cylinderBody.position.z = jump.position.z
-        world.addBody(cylinderBody)
+        //world.addBody(cylinderBody)
     }
     
     const carBodyGeometry = new THREE.BoxGeometry(1, 1, 2)
