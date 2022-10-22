@@ -47,7 +47,7 @@ function init() {
     //scene.add(new THREE.CameraHelper(focal.shadow.camera));
     scene.add( new THREE.AmbientLight( 0x222222 ) );
 
-	const light = new THREE.DirectionalLight( 0xffffff, 2.25 );
+	const light = new THREE.DirectionalLight( 0xffffff, 0.3 );
 	light.position.set( 200, 450, 500 );
 
 	light.castShadow = true;
