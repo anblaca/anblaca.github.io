@@ -389,7 +389,7 @@ function animate() {
     //para todas las monedas
     //si el coche pasa por alguna de las monedas
     //borrar moneda de la pantalla(pintar todas menos esa)
-    for (let i = 0; i < monedas.length(); i++) {
+    for (let i = 0; i < monedas.length; i++) {
         let x = monedas[i].position.x
         let y = monedas[i].position.y
         let z = monedas[i].position.z
