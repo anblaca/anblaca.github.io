@@ -8,10 +8,11 @@ var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,
 
 var constraintLB,constraintRB,constraintLF,constraintRF,world,cannonDebugRenderer, chaseCamPivot
 
-var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, helper
+var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda
 
 const clock = new THREE.Clock()
 let delta
+const monedas = []
 
 const v = new THREE.Vector3()
 
@@ -105,7 +106,7 @@ function loadScene() {
     sueloMesh.rotation.x = -Math.PI / 2
     sueloMesh.receiveShadow = true
     scene.add(sueloMesh)
-    const sueloShape = new CANNON.Box(new CANNON.Vec3(300, 1, 300))
+    const sueloShape = new CANNON.Box(new CANNON.Vec3(300, 300, 300))
     const sueloBody = new CANNON.Body({ mass: 0, material: groundMaterial })
     sueloBody.addShape(sueloShape)
     sueloBody.position.set(0, -1, 0)
@@ -140,7 +141,8 @@ function loadScene() {
     //dibujar monedas aleatoriamente
 
     for (let i = 0; i < 100; i++) {
-        const moneda = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.5, 8, 1), phongMaterial)
+        moneda = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.5, 8, 1), phongMaterial)
+        monedas.add(moneda)
         moneda.position.x = Math.random() * 300 - 50
         moneda.position.y = 1 //0.5
         moneda.position.z = Math.random() * 300 - 50
@@ -321,7 +323,7 @@ function animate() {
 
     delta = Math.min(clock.getDelta(), 0.1)
     world.step(delta)
-
+    
 
     // Copy coordinates from Cannon to Three.js
     carBodyMesh.position.set(
@@ -383,6 +385,24 @@ function animate() {
         wheelRBBody.quaternion.z,
         wheelRBBody.quaternion.w
     )
+    
+    //para todas las monedas
+    //si el coche pasa por alguna de las monedas
+    //borrar moneda de la pantalla(pintar todas menos esa)
+    for (let i = 0; i < monedas.length(); i++) {
+        let x = monedas[i].position.x
+        let y = monedas[i].position.y
+        let z = monedas[i].position.z
+        let a = x - carBody.position.x
+        let b = y - carBody.position.y
+        let c = z - carBody.position.z
+        //normalizar la resta
+        if(Math.sqrt(Math.pow(a,2)) < 0.5 && Math.sqrt(Math.pow(b,2)) < 0.5 
+            && Math.sqrt(Math.pow(c,2)) < 0.5) {
+                monedas.splice(1,1)
+        }
+    }
+
 
     constraintLB.setMotorSpeed(forwardVelocity)
     constraintRB.setMotorSpeed(forwardVelocity)
