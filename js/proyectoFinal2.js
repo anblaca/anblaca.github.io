@@ -60,7 +60,7 @@ function init() {
     ctx = canvas.getContext("2d");
 
     drawScore()
-    
+
     window.addEventListener('resize', onWindowResize, false)
     function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight
@@ -316,10 +316,6 @@ function loadScene() {
     constraintLB.enableMotor()
     constraintRB.enableMotor()
 
-    //scene.remove(mesh);
-    //textGeometry = new THREE.TextGeometry( 'V = new text', text3dparams );
-    //text3dItemV = new THREE.Mesh(text3d_volume, material); 
-    //scene.add(text3dItemV);
 
     var keyborad = new THREEx.KeyboardState(renderer.domElement);
         renderer.domElement.setAttribute("tabIndex", "0");
@@ -438,14 +434,14 @@ function animate() {
 
     drawScore()
 
-    for (let i = 0; i < monedas.length; i++) {
+    //for (let i = 0; i < monedas.length; i++) {
 
-        new TWEEN.Tween(monedas[i].position).
-        to( {x: [monedas[i].position, monedas[i].position + 3], y:[monedas[i].position, monedas[i].position], z:[0,monedas[i].position + 3]}, 5000 ).
-        interpolation( TWEEN.Interpolation.Linear).
-        easing( TWEEN.Easing.Exponential.InOut).
-        start();
-    }
+        //new TWEEN.Tween(monedas[i].position).
+        //to( {x: [monedas[i].position, monedas[i].position + 3], y:[monedas[i].position, monedas[i].position], z:[0,monedas[i].position + 3]}, 5000 ).
+        //interpolation( TWEEN.Interpolation.Linear).
+        //easing( TWEEN.Easing.Exponential.InOut).
+      //  start();
+    //}
 
     TWEEN.update();
 
