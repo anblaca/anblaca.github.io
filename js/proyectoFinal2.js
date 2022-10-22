@@ -443,7 +443,6 @@ function animate() {
       //  start();
     //}
 
-    TWEEN.update();
 
     constraintLB.setMotorSpeed(forwardVelocity)
     constraintRB.setMotorSpeed(forwardVelocity)
