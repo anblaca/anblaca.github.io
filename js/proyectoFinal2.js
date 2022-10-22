@@ -56,7 +56,7 @@ function init() {
 
 
 
-    canvas = document.getElementById("myCanvas");
+    canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
 
     window.addEventListener('resize', onWindowResize, false)
