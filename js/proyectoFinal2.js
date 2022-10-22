@@ -140,7 +140,7 @@ function loadScene() {
 
 
     //dibujar monedas aleatoriamente
-    let monedaObjeto = THREE.Object3D()
+    let monedaObjeto = new THREE.Object3D()
 
     for (let i = 0; i < 100; i++) {
         moneda = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.5, 8, 1), phongMaterial)
