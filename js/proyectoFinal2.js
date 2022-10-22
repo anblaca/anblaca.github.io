@@ -29,13 +29,13 @@ function init() {
     direccional.castShadow = true;
     scene.add(direccional);
 
-    const puntual = new THREE.PointLight(0xFFFFFF,0.5);
-    puntual.position.set(100, 80, -100);
+    const puntual = new THREE.PointLight(0xFFFFFF,0.5,300);
+    puntual.position.set(0, 80, 0); //100,80,-100
     scene.add(puntual);
 
     const focal = new THREE.SpotLight(0xFFFFFF,0.3);
     focal.position.set(-100, 80, 100);
-    focal.target.position.set(0,0,0);
+    //focal.target.position.set(0,0,0);
     focal.angle= Math.PI/7;
     focal.penumbra = 0.3;
     focal.castShadow= true;
@@ -402,14 +402,7 @@ function animate() {
         //normalizar la resta
         if(Math.sqrt(Math.pow(a,2)) < 0.5 && Math.sqrt(Math.pow(c,2)) < 0.5) {
                 console.log("la borro")
-                monedas[i].visible = false
-            //monedas.splice(1,1)
-                //console.log("la borro")
-                //for (let j = 0; j < monedas.length; j++) {
-                  //  scene.add(monedas[j])
-                   // console.log("vuelvo a pintar")
-                //}
-                
+                monedas[i].visible = false        
         }
         
     }
