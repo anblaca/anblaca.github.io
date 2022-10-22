@@ -106,7 +106,7 @@ function loadScene() {
     sueloMesh.rotation.x = -Math.PI / 2
     sueloMesh.receiveShadow = true
     scene.add(sueloMesh)
-    const sueloShape = new CANNON.Box(new CANNON.Vec3(300, 300, 300))
+    const sueloShape = new CANNON.Box(new CANNON.Vec3(300, 1, 300))
     const sueloBody = new CANNON.Body({ mass: 0, material: groundMaterial })
     sueloBody.addShape(sueloShape)
     sueloBody.position.set(0, -1, 0)
@@ -297,16 +297,16 @@ function loadScene() {
     
         //añado los eventos que moveran al robot
         keyborad.domElement.addEventListener('keydown', function(event){
-            if(keyborad.eventMatches(event, 'left')){
+            if(keyborad.eventMatches(event, 'left') || keyborad.eventMatches(event, 'a') ){
                 rightVelocity -= 0.1
             }
-            if(keyborad.eventMatches(event, 'right')){
+            if(keyborad.eventMatches(event, 'right')|| keyborad.eventMatches(event, 'd') ){
                 rightVelocity += 0.1 
             }
-            if(keyborad.eventMatches(event, 'up')){
+            if(keyborad.eventMatches(event, 'up') || keyborad.eventMatches(event, 'w')  ){
                 forwardVelocity += 1 
             }
-            if(keyborad.eventMatches(event, 'down')){
+            if(keyborad.eventMatches(event, 'down') || keyborad.eventMatches(event, 's') ){
                 forwardVelocity -= 1 
             }
     })
