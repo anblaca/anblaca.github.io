@@ -461,8 +461,8 @@ function animate() {
 
 }
 
-//function setupGUI()
-//{
+function setupGUI()
+{
 	// Definicion de los controles
 
  //   effectController = {
@@ -481,23 +481,8 @@ function animate() {
 	// Construccion del menu
     //var h = gui.addFolder("Control robot");
 
-    //h.add(effectController, "animacion").name("Animacion").onChange(animate);
 
-    //Control del cambio de color del mesh
-    //var sensorClick = h.add(effectController, "alambres").name("Alambres");
-    //sensorClick.onChange(
-      //  function(click) {
-        //    robot.traverse(function(hijo) {
-          //      if (hijo instanceof THREE.Mesh)
-            //        if (click){
-              //          hijo.material.wireframe = false;
-                //    } else {
-                  //      hijo.material.wireframe = true;
-                   // } 
-            //});
-        //});
-
-//}
+}
 
 function render() {
     renderer.render(scene, camera)
