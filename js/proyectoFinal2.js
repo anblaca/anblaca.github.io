@@ -23,8 +23,9 @@ function init() {
 // Luces
     const ambiental = new THREE.AmbientLight(0x222222);
     scene.add(ambiental);
+
     const direccional = new THREE.DirectionalLight(0xFFFFFF,0.3);
-    direccional.position.set(100, 80, 100)
+    direccional.position.set(0, 80, 0) //100
     direccional.castShadow = true;
     scene.add(direccional);
 
@@ -389,19 +390,18 @@ function animate() {
     //para todas las monedas
     //si el coche pasa por alguna de las monedas
     //borrar moneda de la pantalla(pintar todas menos esa)
-    //for (let i = 0; i < monedas.length; i++) {
-      //  let x = monedas[i].position.x
+    for (let i = 0; i < monedas.length; i++) {
+        let x = monedas[i].position.x
         //let y = monedas[i].position.y
-        //let z = monedas[i].position.z
-        //let a = x - carBody.position.x
+        let z = monedas[i].position.z
+        let a = x - carBody.position.x
         //let b = y - carBody.position.y
-        //let c = z - carBody.position.z
+        let c = z - carBody.position.z
         //normalizar la resta
-        //if(Math.sqrt(Math.pow(a,2)) < 0.5 && Math.sqrt(Math.pow(b,2)) < 0.5 
-          //  && Math.sqrt(Math.pow(c,2)) < 0.5) {
-            //    monedas.splice(1,1)
-        //}
-    //}
+        if(Math.sqrt(Math.pow(a,2)) < 0.5 && Math.sqrt(Math.pow(c,2)) < 0.5) {
+                monedas.splice(1,1)
+        }
+    }
 
 
     constraintLB.setMotorSpeed(forwardVelocity)
