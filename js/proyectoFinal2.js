@@ -400,7 +400,9 @@ function animate() {
         //normalizar la resta
         if(Math.sqrt(Math.pow(a,2)) < 0.5 && Math.sqrt(Math.pow(c,2)) < 0.5) {
                 monedas.splice(1,1)
+                scene.add(monedas)
         }
+        
     }
 
 
