@@ -44,25 +44,20 @@ function init() {
     //direccional.shadow.camera.left = -100
     //direccional.shadow.camera.right = 100
     //scene.add(focal);
-    //scene.add(new THREE.CameraHelper(focal.shadow.camera));
     scene.add( new THREE.AmbientLight( 0x222222 ) );
-
 	const light = new THREE.DirectionalLight( 0xffffff, 0.3 );
 	light.position.set( 200, 450, 500 );
-
 	light.castShadow = true;
-
-	light.shadow.mapSize.width = 1024;
-	light.shadow.mapSize.height = 512;
-
+	light.shadow.mapSize.width = 16384;
+	light.shadow.mapSize.height = 16384;
 	light.shadow.camera.near = 0.5;
 	light.shadow.camera.far = 300;
-
 	light.shadow.camera.left = - 300;
 	light.shadow.camera.right = 300;
 	light.shadow.camera.top = 350;
 	light.shadow.camera.bottom = - 350;
     scene.add(light);
+
     //añadir mas luces
     //const light = new THREE.DirectionalLight()
     //light.position.set(25, 50, 25)
