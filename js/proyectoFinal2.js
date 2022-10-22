@@ -32,11 +32,11 @@ function init() {
 	light.shadow.mapSize.width = 16384;
 	light.shadow.mapSize.height = 16384;
 	light.shadow.camera.near = 0.5;
-	light.shadow.camera.far = 300;
-	light.shadow.camera.left = - 300;
-	light.shadow.camera.right = 300;
-	light.shadow.camera.top = 350;
-	light.shadow.camera.bottom = - 350;
+	light.shadow.camera.far = 100;
+	light.shadow.camera.left = - 100;
+	light.shadow.camera.right = 100;
+	light.shadow.camera.top = 150;
+	light.shadow.camera.bottom = - 150;
     scene.add(light);
 
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
@@ -74,7 +74,7 @@ function init() {
 function drawScore() {
     console.log("entro a dibujar")
     ctx.font = "50px Arial";
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "#FF0000";
     ctx.fillText("Score: " + cuentaMonedas, 0, 0);
 }
 
@@ -432,7 +432,7 @@ function animate() {
         
     }
 
-    drawScore()
+    //drawScore()
 
     //for (let i = 0; i < monedas.length; i++) {
 
@@ -460,6 +460,46 @@ function animate() {
     render()
 
 }
+
+function setupGUI()
+{
+	// Definicion de los controles
+
+    effectController = {
+        dificil: false,
+        pelota: false,
+        animacion: function (){
+            animate();
+        },
+        alambres: true,
+
+    };
+    //var params ={checkbox=false}; gui.add(params, checkbox').onChange(function (value) { model(); });
+	// Creacion interfaz
+	const gui = new GUI();
+
+	// Construccion del menu
+    var h = gui.addFolder("Control robot");
+
+
+
+    //h.add(effectController, "animacion").name("Animacion").onChange(animate);
+
+    //Control del cambio de color del mesh
+    //var sensorClick = h.add(effectController, "alambres").name("Alambres");
+    //sensorClick.onChange(
+      //  function(click) {
+        //    robot.traverse(function(hijo) {
+          //      if (hijo instanceof THREE.Mesh)
+            //        if (click){
+              //          hijo.material.wireframe = false;
+                //    } else {
+                  //      hijo.material.wireframe = true;
+                   // } 
+            //});
+        //});
+
+//}
 
 function render() {
     renderer.render(scene, camera)
