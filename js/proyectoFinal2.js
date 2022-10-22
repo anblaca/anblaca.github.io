@@ -144,13 +144,13 @@ function loadScene() {
 
     for (let i = 0; i < 100; i++) {
         moneda = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.5, 8, 1), phongMaterial)
-        monedaObjeto.add(moneda)
-        monedas.push(monedaObjeto)
+        //monedaObjeto.add(moneda)
+        monedas.push(moneda)
         moneda.position.x = Math.random() * 300 - 50
         moneda.position.y = 1 //0.5
         moneda.position.z = Math.random() * 300 - 50
         moneda.rotation.x = Math.PI / 2
-        scene.add(monedaObjeto)
+        scene.add(moneda)
         //mundo fisico
         //const cilindroShape = new CANNON.Cylinder(1, 1, 1, 8)
         //const cilindroBody = new CANNON.Body({ mass: 0 })
@@ -402,7 +402,10 @@ function animate() {
         //normalizar la resta
         if(Math.sqrt(Math.pow(a,2)) < 0.5 && Math.sqrt(Math.pow(c,2)) < 0.5) {
                 monedas.splice(1,1)
-                scene.add(monedas)
+                for (let j = 0; j < monedas.length; j++) {
+                    scene.add(monedas[j])
+                }
+                
         }
         
     }
