@@ -52,7 +52,7 @@ function init() {
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     document.body.appendChild(renderer.domElement)
 
-    loader  = new THREE.FontLoader()
+    loader  = GLTFLoader()
 
     window.addEventListener('resize', onWindowResize, false)
     function onWindowResize() {
@@ -118,7 +118,6 @@ function loadScene() {
 
 
     //dibujar monedas aleatoriamente
-    let monedaObjeto = new THREE.Object3D()
 
     for (let i = 0; i < 10; i++) {
         moneda = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.5, 8, 1), phongMaterial)
