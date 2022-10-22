@@ -3,12 +3,14 @@ import {GLTFLoader} from "../lib/GLTFLoader.module.js";
 import {TWEEN} from "../lib/tween.module.min.js";
 import {GUI} from "../lib/lil-gui.module.min.js";
 import * as CANNON from '../lib/cannon-es.js'; 
+import { FontLoader } from 'https://threejs.org/examples/jsm/loaders/FontLoader.js';	
+import { TextGeometry } from 'https://threejs.org/examples/jsm/geometries/TextGeometry.js';
 
 var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,wheelRBMesh, forwardVelocity, rightVelocity ;
 
 var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 
-var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader
+var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader,text3dItemV, text3d_volume
 
 var cuentaMonedas = 0
 
@@ -63,8 +65,8 @@ function init() {
     }
 
     var material = new THREE.MeshBasicMaterial({color: 0xFF5555});
-    var text3d_volume = new THREE.TextGeometry( "V = 300 m³", text3dparams );
-    var text3dItemV = new THREE.Mesh(text3d_volume, material); 
+    text3d_volume = new TextGeometry( "V = 300 m³", text3dparams );
+    text3dItemV = new THREE.Mesh(text3d_volume, material); 
     scene.add(text3dItemV);
 
     window.addEventListener('resize', onWindowResize, false)
@@ -290,7 +292,7 @@ function loadScene() {
     text3d_volume = new THREE.TextGeometry( 'V = new text', text3dparams );
     text3dItemV = new THREE.Mesh(text3d_volume, material); 
     scene.add(text3dItemV);
-    
+
     var keyborad = new THREEx.KeyboardState(renderer.domElement);
         renderer.domElement.setAttribute("tabIndex", "0");
         renderer.domElement.focus();
