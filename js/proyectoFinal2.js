@@ -11,7 +11,7 @@ var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,
 var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader,text3dItemV, text3d_volume
-
+var textGeometry, mesh
 var cuentaMonedas = 0
 
 const clock = new THREE.Clock()
@@ -54,20 +54,6 @@ function init() {
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     document.body.appendChild(renderer.domElement)
 
-    //loader  = new GLTFLoader()
-    var text3dparams = {
-        size:           0.3,    // size of the text
-        height:     0.05,   // thickness to extrude text
-        curveSegments: 2,       // number of points on the curves
-        font:           'helvetiker',       // font name
-        weight:         'normal',       // font weight (normal, bold)
-        style:      'normal',       // font style  (normal, italics)
-    }
-
-    var material = new THREE.MeshBasicMaterial({color: 0xFF5555});
-    text3d_volume = new TextGeometry( "V = 300 m³", text3dparams );
-    text3dItemV = new THREE.Mesh(text3d_volume, material); 
-    scene.add(text3dItemV);
 
     window.addEventListener('resize', onWindowResize, false)
     function onWindowResize() {
@@ -105,6 +91,35 @@ function loadScene() {
     sueloBody.position.set(0, -1, 0)
     world.addBody(sueloBody)
     
+    loader = new FontLoader();
+
+
+    loader.load( 'fonts/fontname.js', function ( font ) {
+
+    textGeometry = new THREE.TextGeometry( "text", {
+
+        font: font,
+
+        size: 50,
+        height: 10,
+        curveSegments: 12,
+
+        bevelThickness: 1,
+        bevelSize: 1,
+        bevelEnabled: true
+
+    });
+
+    var textMaterial = new THREE.MeshPhongMaterial( 
+        { color: 0xff0000, specular: 0xffffff }
+    );
+
+    mesh = new THREE.Mesh( textGeometry, textMaterial );
+
+    scene.add( mesh );
+
+    });   
+
     
 
     // Paredes
@@ -288,10 +303,10 @@ function loadScene() {
     constraintLB.enableMotor()
     constraintRB.enableMotor()
 
-    scene.remove(text3dItemV);
-    text3d_volume = new THREE.TextGeometry( 'V = new text', text3dparams );
-    text3dItemV = new THREE.Mesh(text3d_volume, material); 
-    scene.add(text3dItemV);
+    //scene.remove(mesh);
+    //textGeometry = new THREE.TextGeometry( 'V = new text', text3dparams );
+    //text3dItemV = new THREE.Mesh(text3d_volume, material); 
+    //scene.add(text3dItemV);
 
     var keyborad = new THREEx.KeyboardState(renderer.domElement);
         renderer.domElement.setAttribute("tabIndex", "0");
