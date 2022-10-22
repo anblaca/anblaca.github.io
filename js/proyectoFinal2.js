@@ -61,7 +61,7 @@ function init() {
         weight:         'normal',       // font weight (normal, bold)
         style:      'normal',       // font style  (normal, italics)
     }
-    
+
     var material = new THREE.MeshBasicMaterial({color: 0xFF5555});
     var text3d_volume = new THREE.TextGeometry( "V = 300 m³", text3dparams );
     var text3dItemV = new THREE.Mesh(text3d_volume, material); 
@@ -286,12 +286,11 @@ function loadScene() {
     constraintLB.enableMotor()
     constraintRB.enableMotor()
 
-    loader.load('fonts/droid_serif_regular.typeface.json', 
-        function(font){
-        const geometry = THREE.TextGeometry("Monedas totales : " + cuentaMonedas, {size : 1, height:0.1, font: font})
-        const malla = new THREE.Mesh(geometry, new THREE)
-        scene.add(malla)        
-    })
+    scene.remove(text3dItemV);
+    text3d_volume = new THREE.TextGeometry( 'V = new text', text3dparams );
+    text3dItemV = new THREE.Mesh(text3d_volume, material); 
+    scene.add(text3dItemV);
+    
     var keyborad = new THREEx.KeyboardState(renderer.domElement);
         renderer.domElement.setAttribute("tabIndex", "0");
         renderer.domElement.focus();
