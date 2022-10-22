@@ -140,15 +140,17 @@ function loadScene() {
 
 
     //dibujar monedas aleatoriamente
+    let monedaObjeto = THREE.Object3D()
 
     for (let i = 0; i < 100; i++) {
         moneda = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.5, 8, 1), phongMaterial)
-        monedas.push(moneda)
+        monedaObjeto.add(moneda)
+        monedas.push(monedaObjeto)
         moneda.position.x = Math.random() * 300 - 50
         moneda.position.y = 1 //0.5
         moneda.position.z = Math.random() * 300 - 50
         moneda.rotation.x = Math.PI / 2
-        scene.add(moneda)
+        scene.add(monedaObjeto)
         //mundo fisico
         //const cilindroShape = new CANNON.Cylinder(1, 1, 1, 8)
         //const cilindroBody = new CANNON.Body({ mass: 0 })
