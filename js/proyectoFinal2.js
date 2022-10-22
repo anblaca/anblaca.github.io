@@ -36,11 +36,13 @@ function init() {
     const focal = new THREE.SpotLight(0xFFFFFF,0.3);
     focal.position.set(-100, 80, 100);
     //focal.target.position.set(0,0,0);
-    focal.angle= Math.PI/7;
+    focal.angle= Math.PI/2;
     focal.penumbra = 0.3;
     focal.castShadow= true;
-    focal.shadow.camera.far = 100;
-    focal.shadow.camera.fov = 100;
+    focal.shadow.camera.far = 300;
+    focal.shadow.camera.fov = 300;
+    direccional.shadow.camera.left = -100
+    direccional.shadow.camera.right = 100
     scene.add(focal);
     scene.add(new THREE.CameraHelper(focal.shadow.camera));
 
