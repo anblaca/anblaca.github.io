@@ -46,7 +46,7 @@ function init() {
     //scene.add(focal);
     scene.add( new THREE.AmbientLight( 0x222222 ) );
 	const light = new THREE.DirectionalLight( 0xFFFFFF, 0.6 );
-	light.position.set( 200, 450, 500 );
+	light.position.set( 25, 50, 25 );
 	light.castShadow = true;
 	light.shadow.mapSize.width = 16384;
 	light.shadow.mapSize.height = 16384;
