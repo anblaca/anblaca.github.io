@@ -52,7 +52,20 @@ function init() {
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     document.body.appendChild(renderer.domElement)
 
-    loader  = new GLTFLoader()
+    //loader  = new GLTFLoader()
+    var text3dparams = {
+        size:           0.3,    // size of the text
+        height:     0.05,   // thickness to extrude text
+        curveSegments: 2,       // number of points on the curves
+        font:           'helvetiker',       // font name
+        weight:         'normal',       // font weight (normal, bold)
+        style:      'normal',       // font style  (normal, italics)
+    }
+    
+    var material = new THREE.MeshBasicMaterial({color: 0xFF5555});
+    var text3d_volume = new THREE.TextGeometry( "V = 300 m³", text3dparams );
+    var text3dItemV = new THREE.Mesh(text3d_volume, material); 
+    scene.add(text3dItemV);
 
     window.addEventListener('resize', onWindowResize, false)
     function onWindowResize() {
