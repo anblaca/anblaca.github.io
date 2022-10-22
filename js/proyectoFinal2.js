@@ -21,32 +21,48 @@ function init() {
     scene = new THREE.Scene()
 
 // Luces
-    const ambiental = new THREE.AmbientLight(0x222222);
-    scene.add(ambiental);
+    //const ambiental = new THREE.AmbientLight(0x222222);
+    //scene.add(ambiental);
 
-    const direccional = new THREE.DirectionalLight(0xFFFFFF,0.3);
-    direccional.position.set(0, 80, 0) //100
-    direccional.castShadow = true;
-    scene.add(direccional);
+    //const direccional = new THREE.DirectionalLight(0xFFFFFF,0.3);
+    //direccional.position.set(0, 80, 0) //100
+    //direccional.castShadow = true;
+    //scene.add(direccional);
 
-    const puntual = new THREE.PointLight(0xFFFFFF,0.5,300);
-    puntual.position.set(0, 80, 0); //100,80,-100
-    scene.add(puntual);
+    //const puntual = new THREE.PointLight(0xFFFFFF,0.5,300);
+    //puntual.position.set(0, 80, 0); //100,80,-100
+    //scene.add(puntual);
 
-    const focal = new THREE.SpotLight(0xFFFFFF,0.3);
-    focal.position.set(-100, 80, 100);
+    //const focal = new THREE.SpotLight(0xFFFFFF,0.3);
+    //focal.position.set(-100, 80, 100);
     //focal.target.position.set(0,0,0);
-    focal.angle= Math.PI/2;
-    focal.penumbra = 0.3;
-    focal.castShadow= true;
-    focal.shadow.camera.far = 300;
-    focal.shadow.camera.fov = 300;
-    direccional.shadow.camera.left = -100
-    direccional.shadow.camera.right = 100
-    scene.add(focal);
-    scene.add(new THREE.CameraHelper(focal.shadow.camera));
+    //focal.angle= Math.PI/2;
+    //focal.penumbra = 0.3;
+    //focal.castShadow= true;
+    //focal.shadow.camera.far = 300;
+    //focal.shadow.camera.fov = 300;
+    //direccional.shadow.camera.left = -100
+    //direccional.shadow.camera.right = 100
+    //scene.add(focal);
+    //scene.add(new THREE.CameraHelper(focal.shadow.camera));
+    scene.add( new THREE.AmbientLight( 0x222222 ) );
 
+	const light = new THREE.DirectionalLight( 0xffffff, 2.25 );
+	light.position.set( 200, 450, 500 );
 
+	light.castShadow = true;
+
+	light.shadow.mapSize.width = 1024;
+	light.shadow.mapSize.height = 512;
+
+	light.shadow.camera.near = 100;
+	light.shadow.camera.far = 1200;
+
+	light.shadow.camera.left = - 1000;
+	light.shadow.camera.right = 1000;
+	light.shadow.camera.top = 350;
+	light.shadow.camera.bottom = - 350;
+    scene.add(light);
     //añadir mas luces
     //const light = new THREE.DirectionalLight()
     //light.position.set(25, 50, 25)
