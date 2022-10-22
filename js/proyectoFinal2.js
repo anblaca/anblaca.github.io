@@ -53,12 +53,14 @@ function init() {
     renderer.shadowMap.enabled = true
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     document.body.appendChild(renderer.domElement)
-    drawScore()
+    
 
 
     canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
 
+    drawScore()
+    
     window.addEventListener('resize', onWindowResize, false)
     function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight
