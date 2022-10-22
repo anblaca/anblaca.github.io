@@ -8,7 +8,9 @@ var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,
 
 var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 
-var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda
+var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader
+
+var cuentaMonedas = 0
 
 const clock = new THREE.Clock()
 let delta
@@ -50,6 +52,8 @@ function init() {
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     document.body.appendChild(renderer.domElement)
 
+    loader  = new THREE.FontLoader()
+
     window.addEventListener('resize', onWindowResize, false)
     function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight
@@ -85,6 +89,7 @@ function loadScene() {
     sueloBody.addShape(sueloShape)
     sueloBody.position.set(0, -1, 0)
     world.addBody(sueloBody)
+    
     
 
     // Paredes
@@ -268,7 +273,13 @@ function loadScene() {
     //rear wheel drive
     constraintLB.enableMotor()
     constraintRB.enableMotor()
-    
+
+    loader.load('fonts/droid_serif_regular.typeface.json', 
+        function(font){
+        const geometry = THREE.TextGeometry("Monedas totales : " + cuentaMonedas, {size : 1, height:0.1, font: font})
+        const malla = new THREE.Mesh(geometry, new THREE)
+        scene.add(malla)        
+    })
     var keyborad = new THREEx.KeyboardState(renderer.domElement);
         renderer.domElement.setAttribute("tabIndex", "0");
         renderer.domElement.focus();
@@ -378,20 +389,22 @@ function animate() {
         let c = z - carBody.position.z
         //normalizar la resta
         if(Math.sqrt(Math.pow(a,2)) < 0.5 && Math.sqrt(Math.pow(c,2)) < 0.5) {
-                console.log("la borro")
+                cuentaMonedas += 1
                 monedas[i].visible = false        
         }
         
     }
 
-    for (let i = 0; i < monedas.length; i++) {
+    
 
-        new TWEEN.Tween(monedas[i].position).
-        to( {x: [monedas[i].position, monedas[i].position + 3], y:[monedas[i].position, monedas[i].position], z:[0,monedas[i].position + 3]}, 5000 ).
-        interpolation( TWEEN.Interpolation.Linear).
-        easing( TWEEN.Easing.Exponential.InOut).
-        start();
-    }
+    //for (let i = 0; i < monedas.length; i++) {
+
+      //  new TWEEN.Tween(monedas[i].position).
+       // to( {x: [monedas[i].position, monedas[i].position + 3], y:[monedas[i].position, monedas[i].position], z:[0,monedas[i].position + 3]}, 5000 ).
+       // interpolation( TWEEN.Interpolation.Linear).
+        //easing( TWEEN.Easing.Exponential.InOut).
+        //start();
+    //}
     
 
     constraintLB.setMotorSpeed(forwardVelocity)
