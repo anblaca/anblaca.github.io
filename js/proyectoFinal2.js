@@ -401,12 +401,14 @@ function animate() {
         let c = z - carBody.position.z
         //normalizar la resta
         if(Math.sqrt(Math.pow(a,2)) < 0.5 && Math.sqrt(Math.pow(c,2)) < 0.5) {
-                monedas.splice(1,1)
                 console.log("la borro")
-                for (let j = 0; j < monedas.length; j++) {
-                    scene.add(monedas[j])
-                    console.log("vuelvo a pintar")
-                }
+                monedas[i].visible = false
+            //monedas.splice(1,1)
+                //console.log("la borro")
+                //for (let j = 0; j < monedas.length; j++) {
+                  //  scene.add(monedas[j])
+                   // console.log("vuelvo a pintar")
+                //}
                 
         }
         
