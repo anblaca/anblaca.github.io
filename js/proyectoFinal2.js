@@ -6,7 +6,7 @@ import * as CANNON from '../lib/cannon-es.js';
 
 var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,wheelRBMesh, forwardVelocity, rightVelocity ;
 
-var constraintLB,constraintRB,constraintLF,constraintRF,world,cannonDebugRenderer, chaseCamPivot
+var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda
 
@@ -35,7 +35,7 @@ function init() {
 	light.shadow.camera.bottom = - 350;
     scene.add(light);
 
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000)
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
 
     chaseCam = new THREE.Object3D()
     chaseCam.position.set(0, 0, 0)
@@ -294,15 +294,17 @@ function loadScene() {
 }
 
 
+function animarMonedas() {
+
+    
+}
+
 function animate() {
     requestAnimationFrame(animate)
-
-    //helper.update()
 
     delta = Math.min(clock.getDelta(), 0.1)
     world.step(delta)
     
-
     // Copy coordinates from Cannon to Three.js
     carBodyMesh.position.set(
         carBody.position.x,
@@ -382,6 +384,15 @@ function animate() {
         
     }
 
+    for (let i = 0; i < monedas.length; i++) {
+
+        new TWEEN.Tween(monedas[i].position).
+        to( {x: [monedas[i].position, monedas[i].position + 3], y:[monedas[i].position, monedas[i].position], z:[0,monedas[i].position + 3]}, 5000 ).
+        interpolation( TWEEN.Interpolation.Linear).
+        easing( TWEEN.Easing.Exponential.InOut).
+        start();
+    }
+    
 
     constraintLB.setMotorSpeed(forwardVelocity)
     constraintRB.setMotorSpeed(forwardVelocity)
