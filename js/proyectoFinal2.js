@@ -389,19 +389,19 @@ function animate() {
     //para todas las monedas
     //si el coche pasa por alguna de las monedas
     //borrar moneda de la pantalla(pintar todas menos esa)
-    for (let i = 0; i < monedas.length; i++) {
-        let x = monedas[i].position.x
-        let y = monedas[i].position.y
-        let z = monedas[i].position.z
-        let a = x - carBody.position.x
-        let b = y - carBody.position.y
-        let c = z - carBody.position.z
+    //for (let i = 0; i < monedas.length; i++) {
+      //  let x = monedas[i].position.x
+        //let y = monedas[i].position.y
+        //let z = monedas[i].position.z
+        //let a = x - carBody.position.x
+        //let b = y - carBody.position.y
+        //let c = z - carBody.position.z
         //normalizar la resta
-        if(Math.sqrt(Math.pow(a,2)) < 0.5 && Math.sqrt(Math.pow(b,2)) < 0.5 
-            && Math.sqrt(Math.pow(c,2)) < 0.5) {
-                monedas.splice(1,1)
-        }
-    }
+        //if(Math.sqrt(Math.pow(a,2)) < 0.5 && Math.sqrt(Math.pow(b,2)) < 0.5 
+          //  && Math.sqrt(Math.pow(c,2)) < 0.5) {
+            //    monedas.splice(1,1)
+        //}
+    //}
 
 
     constraintLB.setMotorSpeed(forwardVelocity)
