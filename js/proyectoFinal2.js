@@ -53,11 +53,11 @@ function init() {
     renderer.shadowMap.enabled = true
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     document.body.appendChild(renderer.domElement)
+    drawScore()
 
 
-
-    //canvas = document.getElementById("canvas");
-    //ctx = canvas.getContext("2d");
+    canvas = document.getElementById("canvas");
+    ctx = canvas.getContext("2d");
 
     window.addEventListener('resize', onWindowResize, false)
     function onWindowResize() {
@@ -70,9 +70,10 @@ function init() {
 }
 
 function drawScore() {
-    ctx.font = "16px Arial";
+    console.log("entro a dibujar")
+    ctx.font = "50px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText("Score: "+cuentaMonedas, 8, 20);
+    ctx.fillText("Score: " + cuentaMonedas, 0, 0);
 }
 
 function loadScene() {
@@ -101,7 +102,7 @@ function loadScene() {
     world.addBody(sueloBody)
     
     //loader = new FontLoader();
-    drawScore()
+
 
     //loader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
 
@@ -433,7 +434,7 @@ function animate() {
         
     }
 
-    drawScore();
+    drawScore()
 
     for (let i = 0; i < monedas.length; i++) {
 
@@ -443,7 +444,7 @@ function animate() {
         easing( TWEEN.Easing.Exponential.InOut).
         start();
     }
-    
+
     TWEEN.update();
 
     constraintLB.setMotorSpeed(forwardVelocity)
