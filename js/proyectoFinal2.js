@@ -52,7 +52,7 @@ function init() {
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     document.body.appendChild(renderer.domElement)
 
-    loader  = GLTFLoader()
+    loader  = new GLTFLoader()
 
     window.addEventListener('resize', onWindowResize, false)
     function onWindowResize() {
