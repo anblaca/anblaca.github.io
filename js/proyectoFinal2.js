@@ -481,8 +481,6 @@ function animate() {
 	// Construccion del menu
     //var h = gui.addFolder("Control robot");
 
-
-
     //h.add(effectController, "animacion").name("Animacion").onChange(animate);
 
     //Control del cambio de color del mesh
