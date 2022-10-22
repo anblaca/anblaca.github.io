@@ -20,30 +20,7 @@ const v = new THREE.Vector3()
 function init() {
     scene = new THREE.Scene()
 
-// Luces
-    //const ambiental = new THREE.AmbientLight(0x222222);
-    //scene.add(ambiental);
-
-    //const direccional = new THREE.DirectionalLight(0xFFFFFF,0.3);
-    //direccional.position.set(0, 80, 0) //100
-    //direccional.castShadow = true;
-    //scene.add(direccional);
-
-    //const puntual = new THREE.PointLight(0xFFFFFF,0.5,300);
-    //puntual.position.set(0, 80, 0); //100,80,-100
-    //scene.add(puntual);
-
-    //const focal = new THREE.SpotLight(0xFFFFFF,0.3);
-    //focal.position.set(-100, 80, 100);
-    //focal.target.position.set(0,0,0);
-    //focal.angle= Math.PI/2;
-    //focal.penumbra = 0.3;
-    //focal.castShadow= true;
-    //focal.shadow.camera.far = 300;
-    //focal.shadow.camera.fov = 300;
-    //direccional.shadow.camera.left = -100
-    //direccional.shadow.camera.right = 100
-    //scene.add(focal);
+    // Luces
     scene.add( new THREE.AmbientLight( 0x222222 ) );
 	const light = new THREE.DirectionalLight( 0xFFFFFF, 0.6 );
 	light.position.set( 25, 50, 25 );
@@ -58,24 +35,7 @@ function init() {
 	light.shadow.camera.bottom = - 350;
     scene.add(light);
 
-    //añadir mas luces
-    //const light = new THREE.DirectionalLight()
-    //light.position.set(25, 50, 25)
-    //light.castShadow = true
-    //light.shadow.mapSize.width = 16384
-    //light.shadow.mapSize.height = 16384
-    //light.shadow.camera.near = 0.5
-    //light.shadow.camera.far = 100
-    //light.shadow.camera.top = 100
-    //light.shadow.camera.bottom = -100
-    //light.shadow.camera.left = -100
-    //light.shadow.camera.right = 100
-    //scene.add(light)
-    
-    //helper = new THREE.CameraHelper(light.shadow.camera)
-    //scene.add(helper)
-
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000)
 
     chaseCam = new THREE.Object3D()
     chaseCam.position.set(0, 0, 0)
@@ -157,6 +117,8 @@ function loadScene() {
 
     for (let i = 0; i < 100; i++) {
         moneda = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.5, 8, 1), phongMaterial)
+        moneda.receiveShadow = true
+        moneda.castShadow = true
         //monedaObjeto.add(moneda)
         monedas.push(moneda)
         moneda.position.x = Math.random() * 300 - 50
