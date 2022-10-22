@@ -142,7 +142,7 @@ function loadScene() {
 
     for (let i = 0; i < 100; i++) {
         moneda = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.5, 8, 1), phongMaterial)
-        monedas.add(moneda)
+        monedas.push(moneda)
         moneda.position.x = Math.random() * 300 - 50
         moneda.position.y = 1 //0.5
         moneda.position.z = Math.random() * 300 - 50
