@@ -56,8 +56,8 @@ function init() {
 
 
 
-    canvas = document.getElementById("canvas");
-    ctx = canvas.getContext("2d");
+    //canvas = document.getElementById("canvas");
+    //ctx = canvas.getContext("2d");
 
     window.addEventListener('resize', onWindowResize, false)
     function onWindowResize() {
@@ -435,15 +435,16 @@ function animate() {
 
     drawScore();
 
-    //for (let i = 0; i < monedas.length; i++) {
+    for (let i = 0; i < monedas.length; i++) {
 
-      //  new TWEEN.Tween(monedas[i].position).
-       // to( {x: [monedas[i].position, monedas[i].position + 3], y:[monedas[i].position, monedas[i].position], z:[0,monedas[i].position + 3]}, 5000 ).
-       // interpolation( TWEEN.Interpolation.Linear).
-        //easing( TWEEN.Easing.Exponential.InOut).
-        //start();
-    //}
+        new TWEEN.Tween(monedas[i].position).
+        to( {x: [monedas[i].position, monedas[i].position + 3], y:[monedas[i].position, monedas[i].position], z:[0,monedas[i].position + 3]}, 5000 ).
+        interpolation( TWEEN.Interpolation.Linear).
+        easing( TWEEN.Easing.Exponential.InOut).
+        start();
+    }
     
+    TWEEN.update();
 
     constraintLB.setMotorSpeed(forwardVelocity)
     constraintRB.setMotorSpeed(forwardVelocity)
