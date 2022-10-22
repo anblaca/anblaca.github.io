@@ -461,19 +461,19 @@ function animate() {
 
 }
 
-function setupGUI()
-{
+//function setupGUI()
+//{
 	// Definicion de los controles
 
-    effectController = {
-        dificil: false,
-        pelota: false,
-        animacion: function (){
-            animate();
-        },
-        alambres: true,
+ //   effectController = {
+   //     dificil: false,
+     //   pelota: false,
+       // animacion: function (){
+         //   animate();
+        //},
+        //alambres: true,
 
-    };
+    //};
     //var params ={checkbox=false}; gui.add(params, checkbox').onChange(function (value) { model(); });
 	// Creacion interfaz
 	const gui = new GUI();
