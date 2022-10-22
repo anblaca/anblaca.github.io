@@ -75,7 +75,7 @@ function drawScore() {
     console.log("entro a dibujar")
     ctx.font = "50px Arial";
     ctx.fillStyle = "#FF0000";
-    ctx.fillText("Score: " + cuentaMonedas, 0, 0);
+    ctx.fillText("Score: " + cuentaMonedas, 60, 60);
 }
 
 function loadScene() {
