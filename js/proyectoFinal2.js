@@ -10,8 +10,8 @@ var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,
 
 var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 
-var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader,text3dItemV, text3d_volume
-var textGeometry, mesh
+var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader
+var canvas, ctx
 var cuentaMonedas = 0
 
 const clock = new THREE.Clock()
@@ -55,6 +55,10 @@ function init() {
     document.body.appendChild(renderer.domElement)
 
 
+
+    canvas = document.getElementById("myCanvas");
+    ctx = canvas.getContext("2d");
+
     window.addEventListener('resize', onWindowResize, false)
     function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight
@@ -65,6 +69,11 @@ function init() {
 
 }
 
+function drawScore() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Score: "+cuentaMonedas, 8, 20);
+}
 
 function loadScene() {
     const phongMaterial = new THREE.MeshPhongMaterial()
@@ -91,35 +100,36 @@ function loadScene() {
     sueloBody.position.set(0, -1, 0)
     world.addBody(sueloBody)
     
-    loader = new FontLoader();
+    //loader = new FontLoader();
+    drawScore()
 
+    //loader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
 
-    loader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
+    //textGeometry = new TextGeometry( "text", {
 
-    textGeometry = new TextGeometry( "text", {
+      //  font: font,
 
-        font: font,
+        //size: 50,
+        //height: 10,
+        //curveSegments: 12,
 
-        size: 50,
-        height: 10,
-        curveSegments: 12,
+        //bevelThickness: 1,
+        //bevelSize: 1,
+        //bevelEnabled: true
 
-        bevelThickness: 1,
-        bevelSize: 1,
-        bevelEnabled: true
+    //});
 
-    });
+    //var textMaterial = new THREE.MeshPhongMaterial( 
+      //  { color: 0xff0000, specular: 0xffffff }
+    //);
 
-    var textMaterial = new THREE.MeshPhongMaterial( 
-        { color: 0xff0000, specular: 0xffffff }
-    );
+    //mesh = new THREE.Mesh( textGeometry, textMaterial );
 
-    mesh = new THREE.Mesh( textGeometry, textMaterial );
+    //scene.add( mesh );
 
-    scene.add( mesh );
+    //});   
 
-    });   
-
+    
     
 
     // Paredes
@@ -149,7 +159,7 @@ function loadScene() {
 
     //dibujar monedas aleatoriamente
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 100; i++) {
         moneda = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.5, 8, 1), phongMaterial)
         moneda.receiveShadow = true
         moneda.castShadow = true
