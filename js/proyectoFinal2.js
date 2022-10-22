@@ -476,10 +476,10 @@ function animate() {
     //};
     //var params ={checkbox=false}; gui.add(params, checkbox').onChange(function (value) { model(); });
 	// Creacion interfaz
-	const gui = new GUI();
+	//const gui = new GUI();
 
 	// Construccion del menu
-    var h = gui.addFolder("Control robot");
+    //var h = gui.addFolder("Control robot");
 
 
 
