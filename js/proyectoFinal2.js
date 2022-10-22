@@ -55,11 +55,11 @@ function init() {
 	light.shadow.mapSize.width = 1024;
 	light.shadow.mapSize.height = 512;
 
-	light.shadow.camera.near = 100;
-	light.shadow.camera.far = 1200;
+	light.shadow.camera.near = 0.5;
+	light.shadow.camera.far = 300;
 
-	light.shadow.camera.left = - 1000;
-	light.shadow.camera.right = 1000;
+	light.shadow.camera.left = - 300;
+	light.shadow.camera.right = 300;
 	light.shadow.camera.top = 350;
 	light.shadow.camera.bottom = - 350;
     scene.add(light);
