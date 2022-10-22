@@ -433,7 +433,7 @@ function animate() {
         
     }
 
-    
+    drawScore();
 
     //for (let i = 0; i < monedas.length; i++) {
 
