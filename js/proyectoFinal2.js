@@ -94,7 +94,7 @@ function loadScene() {
     loader = new FontLoader();
 
 
-    loader.load( 'fonts/fontname.js', function ( font ) {
+    loader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
 
     textGeometry = new THREE.TextGeometry( "text", {
 
