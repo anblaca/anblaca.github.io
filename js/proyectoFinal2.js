@@ -402,8 +402,10 @@ function animate() {
         //normalizar la resta
         if(Math.sqrt(Math.pow(a,2)) < 0.5 && Math.sqrt(Math.pow(c,2)) < 0.5) {
                 monedas.splice(1,1)
-                for (let j = 0; j < monedas.length; j++) {
+                console.log("la borro")
+                for (let j = 0; j < monedas.length; j++) {s
                     scene.add(monedas[j])
+                    console.log("vuelvo a pintar")
                 }
                 
         }
