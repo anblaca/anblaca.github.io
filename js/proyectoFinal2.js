@@ -563,7 +563,7 @@ function dificultad() {
     backWall.position.z = paredTrasera.position.z 
     world.addBody( backWall );
  
-    const frontWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+    const frontWall = new CANNON.Body( {mass:1, material:groundMaterial} );
     frontWall.addShape( new CANNON.Plane(5,5) );
     frontWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
     //frontWall.position.z = 30;
@@ -572,7 +572,7 @@ function dificultad() {
     frontWall.position.z = paredDelantera.position.z 
     world.addBody( frontWall );
  
-    const leftWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+    const leftWall = new CANNON.Body( {mass:1, material:groundMaterial} );
     leftWall.addShape( new CANNON.Plane(5,5) );
     //leftWall.position.x = -30;
     leftWall.quaternion.setFromEuler(0,Math.PI/2,0,'XYZ');
@@ -581,7 +581,7 @@ function dificultad() {
     leftWall.position.z = paredIzquierda.position.z
     world.addBody( leftWall );
  
-    const rightWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+    const rightWall = new CANNON.Body( {mass:1, material:groundMaterial} );
     rightWall.addShape( new CANNON.Plane(5,5) );
     //rightWall.position.x = 30;
     rightWall.quaternion.setFromEuler(0,-Math.PI/2,0,'XYZ');
@@ -595,7 +595,7 @@ function dificultad() {
     //const sphereGeometry = new THREE.SphereGeometry(0.5, 8, 8)
     //const sphereMesh = new THREE.Mesh(sphereGeometry, phongMaterial)
     //sphereMesh.position.x = Math.random() * 10 - 5
-    //sphereMesh.position.y = 5
+    //sphereMesh.position.y = 0
     //sphereMesh.position.z = Math.random() * 10 - 5
     //sphereMesh.castShadow = true
     //sphereMesh.receiveShadow = true
