@@ -441,8 +441,8 @@ function animate() {
     if (dificil == true) { scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 ); }
 
     //drawScore()
-
-    sphereBody.position.x = sphereMesh.position.x
+    if (dificil == true) { sphereBody.position.x = sphereMesh.position.x }
+    
 
     TWEEN.update()
 
