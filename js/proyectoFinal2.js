@@ -99,14 +99,14 @@ function loadScene() {
     //ground
     const sueloMesh = new THREE.Mesh(new THREE.PlaneGeometry(100, 100, 1, 1), phongMaterial)
     sueloMesh.rotation.x = -Math.PI / 2
-    sueloMesh.position.y = -1
+    sueloMesh.position.y = -0.25
     sueloMesh.receiveShadow = true
     scene.add(sueloMesh)
 
     const sueloShape = new CANNON.Plane()
     const sueloBody = new CANNON.Body({ mass: 0, material: groundMaterial })
     sueloBody.addShape(sueloShape)
-    sueloBody.position.y = -1;
+    sueloBody.position.y = -0.25;
     sueloBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1,0,0),-Math.PI/2);
     //sueloBody.position.set(0, -1, 0)
     world.addBody(sueloBody)
