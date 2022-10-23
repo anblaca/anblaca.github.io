@@ -578,7 +578,7 @@ function dificultad() {
     world.addBody( rightWall );
     //añadir una pelota
     const sphereGeometry = new THREE.SphereGeometry(0.5, 8, 8)
-    sphereMesh = new THREE.Mesh(sphereGeometry, phongMaterial)
+    const sphereMesh = new THREE.Mesh(sphereGeometry, phongMaterial)
     sphereMesh.position.x = Math.random() * 10 - 5
     sphereMesh.position.y = 5
     sphereMesh.position.z = Math.random() * 10 - 5
@@ -587,7 +587,7 @@ function dificultad() {
     scene.add(sphereMesh)
 
     const sphereShape = new CANNON.Sphere(0.5)
-    sphereBody = new CANNON.Body({ mass: 1 })
+    const sphereBody = new CANNON.Body({ mass: 1 })
     sphereBody.addShape(sphereShape)
     sphereBody.position.x = sphereMesh.position.x
     sphereBody.position.y = sphereMesh.position.y
