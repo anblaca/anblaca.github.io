@@ -11,7 +11,7 @@ var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,
 var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, dificil, effectController
-var canvas, ctx, phongMaterial
+var canvas, ctx, phongMaterial, sphereMesh,sphereBody
 var cuentaMonedas = 0
 const timestep = 1/60
 const clock = new THREE.Clock()
@@ -442,6 +442,8 @@ function animate() {
 
     //drawScore()
 
+    sphereBody.position.x = sphereMesh.position.x
+
     TWEEN.update()
 
     constraintLB.setMotorSpeed(forwardVelocity)
@@ -568,7 +570,6 @@ function dificultad() {
 
     const backWall = new CANNON.Body( {mass:1, material:groundMaterial} );
     backWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
-    //backWall.position.z = -30;
     backWall.position.x = paredTrasera.position.x+30
     backWall.position.y = paredTrasera.position.y
     backWall.position.z = paredTrasera.position.z 
@@ -576,8 +577,6 @@ function dificultad() {
  
     const frontWall = new CANNON.Body( {mass:1, material:groundMaterial} );
     frontWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
-    //frontWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
-    //frontWall.position.z = 30;
     frontWall.position.x = paredDelantera.position.x+30
     frontWall.position.y = paredDelantera.position.y
     frontWall.position.z = paredDelantera.position.z 
@@ -585,8 +584,6 @@ function dificultad() {
  
     const leftWall = new CANNON.Body( {mass:1, material:groundMaterial} );
     leftWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
-    //leftWall.position.x = -30;
-    //leftWall.quaternion.setFromEuler(0,Math.PI/2,0,'XYZ');
     leftWall.position.x = paredIzquierda.position.x+30
     leftWall.position.y = paredIzquierda.position.y
     leftWall.position.z = paredIzquierda.position.z
@@ -594,8 +591,6 @@ function dificultad() {
  
     const rightWall = new CANNON.Body( {mass:1, material:groundMaterial} );
     rightWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
-    //rightWall.position.x = 30;
-    //rightWall.quaternion.setFromEuler(0,-Math.PI/2,0,'XYZ');
     rightWall.position.x = paredDerecha.position.x+30
     rightWall.position.y = paredDerecha.position.y
     rightWall.position.z = paredDerecha.position.z
@@ -603,22 +598,22 @@ function dificultad() {
 
     //añadir una pelota
 
-    //const sphereGeometry = new THREE.SphereGeometry(0.5, 8, 8)
-    //const sphereMesh = new THREE.Mesh(sphereGeometry, phongMaterial)
-    //sphereMesh.position.x = Math.random() * 10 - 5
+    const sphereGeometry = new THREE.SphereGeometry(0.5, 8, 8)
+    sphereMesh = new THREE.Mesh(sphereGeometry, phongMaterial)
+    sphereMesh.position.x = 35
     //sphereMesh.position.y = 0
     //sphereMesh.position.z = Math.random() * 10 - 5
-    //sphereMesh.castShadow = true
-    //sphereMesh.receiveShadow = true
-    //scene.add(sphereMesh)
+    sphereMesh.castShadow = true
+    sphereMesh.receiveShadow = true
+    scene.add(sphereMesh)
 
-    //const sphereShape = new CANNON.Sphere(0.5)
-    //const sphereBody = new CANNON.Body({ mass: 1 })
-    //sphereBody.addShape(sphereShape)
-    //sphereBody.position.x = sphereMesh.position.x
+    const sphereShape = new CANNON.Sphere(0.5)
+    sphereBody = new CANNON.Body({ mass: 1 })
+    sphereBody.addShape(sphereShape)
+    
     //sphereBody.position.y = sphereMesh.position.y
     //sphereBody.position.z = sphereMesh.position.z
-    //world.addBody(sphereBody)
+    world.addBody(sphereBody)
 }
 
 function render() {
