@@ -442,7 +442,7 @@ function animate() {
     }
 
     if (dificil == true) { scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 ); }
-       
+
     //drawScore()
 
     TWEEN.update()
@@ -549,7 +549,7 @@ function dificultad() {
     cubo.add(paredIzquierda)
     cubo.add(paredTrasera)
     cubo.position.x = 30
-    cubo.position.z = 30
+    //cubo.position.z = 30
     scene.add(cubo)
 
     //parte fisica
@@ -558,18 +558,18 @@ function dificultad() {
     const backWall = new CANNON.Body( {mass:1, material:groundMaterial} );
     backWall.addShape( new CANNON.Plane(5,5) );
     //backWall.position.z = -30;
-    backWall.position.x = paredTrasera.position.x
+    backWall.position.x = paredTrasera.position.x+30
     backWall.position.y = paredTrasera.position.y
-    backWall.position.z = paredTrasera.position.z +30
+    backWall.position.z = paredTrasera.position.z 
     world.addBody( backWall );
  
     const frontWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     frontWall.addShape( new CANNON.Plane(5,5) );
     frontWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
     //frontWall.position.z = 30;
-    frontWall.position.x = paredDelantera.position.x
+    frontWall.position.x = paredDelantera.position.x+30
     frontWall.position.y = paredDelantera.position.y
-    frontWall.position.z = paredDelantera.position.z +30
+    frontWall.position.z = paredDelantera.position.z 
     world.addBody( frontWall );
  
     const leftWall = new CANNON.Body( {mass:0, material:groundMaterial} );
@@ -589,24 +589,25 @@ function dificultad() {
     rightWall.position.y = paredDerecha.position.y
     rightWall.position.z = paredDerecha.position.z
     world.addBody( rightWall );
+
     //añadir una pelota
 
-    const sphereGeometry = new THREE.SphereGeometry(0.5, 8, 8)
-    const sphereMesh = new THREE.Mesh(sphereGeometry, phongMaterial)
-    sphereMesh.position.x = Math.random() * 10 - 5
-    sphereMesh.position.y = 5
-    sphereMesh.position.z = Math.random() * 10 - 5
-    sphereMesh.castShadow = true
-    sphereMesh.receiveShadow = true
-    scene.add(sphereMesh)
+    //const sphereGeometry = new THREE.SphereGeometry(0.5, 8, 8)
+    //const sphereMesh = new THREE.Mesh(sphereGeometry, phongMaterial)
+    //sphereMesh.position.x = Math.random() * 10 - 5
+    //sphereMesh.position.y = 5
+    //sphereMesh.position.z = Math.random() * 10 - 5
+    //sphereMesh.castShadow = true
+    //sphereMesh.receiveShadow = true
+    //scene.add(sphereMesh)
 
-    const sphereShape = new CANNON.Sphere(0.5)
-    const sphereBody = new CANNON.Body({ mass: 1 })
-    sphereBody.addShape(sphereShape)
-    sphereBody.position.x = sphereMesh.position.x
-    sphereBody.position.y = sphereMesh.position.y
-    sphereBody.position.z = sphereMesh.position.z
-    world.addBody(sphereBody)
+    //const sphereShape = new CANNON.Sphere(0.5)
+    //const sphereBody = new CANNON.Body({ mass: 1 })
+    //sphereBody.addShape(sphereShape)
+    //sphereBody.position.x = sphereMesh.position.x
+    //sphereBody.position.y = sphereMesh.position.y
+    //sphereBody.position.z = sphereMesh.position.z
+    //world.addBody(sphereBody)
 }
 
 function render() {
