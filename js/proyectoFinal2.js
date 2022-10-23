@@ -514,23 +514,26 @@ function dificultad() {
     //ground
     //-----------------
     const paredIzquierda = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), phongMaterial)
-    paredIzquierda.position.x = -30
-
+    //paredIzquierda.position.x = -30
+    paredIzquierda.position.x = -5
     paredIzquierda.receiveShadow = true
     paredIzquierda.castShadow = true
     //-----------------------------------
     const paredDerecha = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), phongMaterial)
-    paredDerecha.position.x = 30
+    //paredDerecha.position.x = 30
+    paredDerecha.position.x = 5
     paredDerecha.receiveShadow = true
     paredDerecha.castShadow = true
     //-----------------------------------
     const paredDelantera = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), phongMaterial)
-    paredDelantera.position.z = 30
+    //paredDelantera.position.z = 30
+    paredDelantera.position.z = 5
     paredDelantera.receiveShadow = true
     paredDelantera.castShadow = true
     //---------------------------------
     const paredTrasera = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), phongMaterial)
-    paredTrasera.position.z = -30
+    //paredTrasera.position.z = -30
+    paredTrasera.position.z = -5
     paredTrasera.receiveShadow = true
     paredTrasera.castShadow = true
     
