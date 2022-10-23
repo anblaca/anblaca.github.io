@@ -518,12 +518,14 @@ function dificultad() {
     paredIzquierda.position.x = -5
     paredIzquierda.receiveShadow = true
     paredIzquierda.castShadow = true
+    paredIzquierda.rotation.y = Math.PI/2
     //-----------------------------------
     const paredDerecha = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), phongMaterial)
     //paredDerecha.position.x = 30
     paredDerecha.position.x = 5
     paredDerecha.receiveShadow = true
     paredDerecha.castShadow = true
+    paredDerecha.rotation.y = -Math.PI/2
     //-----------------------------------
     const paredDelantera = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), phongMaterial)
     //paredDelantera.position.z = 30
