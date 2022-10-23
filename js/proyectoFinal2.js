@@ -539,10 +539,16 @@ function dificultad() {
     paredTrasera.receiveShadow = true
     paredTrasera.castShadow = true
     
-    scene.add(paredIzquierda)
-    scene.add(paredDerecha)
-    scene.add(paredDelantera)
-    scene.add(paredTrasera)
+    var cubo = THREE.Object3D()
+    cubo.add(paredDelantera)
+    cubo.add(paredDerecha)
+    cubo.add(paredIzquierda)
+    cubo.add(paredTrasera)
+    cubo.position.x = 30
+    cubo.position.z = 30
+    
+    scene.add(cubo)
+
     //parte fisica
     const groundMaterial = new CANNON.Material('groundMaterial')
 
