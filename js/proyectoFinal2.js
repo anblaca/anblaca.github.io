@@ -429,7 +429,9 @@ function animate() {
     }
 
     if (dificil == true) { scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 ); }
-
+    for (let i = 0; i < monedas.length; i++) {
+        monedas[i].rotation.y += 0.01
+    }
     //drawScore()
 
     TWEEN.update()
