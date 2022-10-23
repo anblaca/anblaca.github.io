@@ -161,15 +161,14 @@ function loadScene() {
 
     //dibujar monedas aleatoriamente
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 10; i++) {
         moneda = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.5, 8, 1), phongMaterial)
         moneda.receiveShadow = true
         moneda.castShadow = true
-        //monedaObjeto.add(moneda)
         monedas.push(moneda)
-        moneda.position.x = Math.random() * 300 - 50
+        moneda.position.x = Math.random() * 100 - 50
         moneda.position.y = 1 //0.5
-        moneda.position.z = Math.random() * 300 - 50
+        moneda.position.z = Math.random() * 100 - 50
         moneda.rotation.x = Math.PI / 2
         scene.add(moneda)
         //mundo fisico
@@ -525,7 +524,6 @@ function dificultad() {
 
 function render() {
     renderer.render(scene, camera)
-    console.log("e")
 }
 
 init()
