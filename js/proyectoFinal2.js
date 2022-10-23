@@ -528,4 +528,5 @@ function render() {
 
 init()
 loadScene()
+setupGUI()
 animate()
