@@ -479,24 +479,24 @@ function dificultad() {
     //añadir obstaculos
     dificil = true
 
-    for (let i = 0; i < 100; i++) {
-        const jump = new THREE.Mesh(
-            new THREE.CylinderGeometry(0, 1, 0.5, 5),
-            phongMaterial
-        )
-        jump.position.x = Math.random() * 100 - 50
-        jump.position.y = 0.5
-        jump.position.z = Math.random() * 100 - 50
-        scene.add(jump)
+    //for (let i = 0; i < 100; i++) {
+      //  const jump = new THREE.Mesh(
+        //    new THREE.CylinderGeometry(0, 1, 0.5, 5),
+         //   phongMaterial
+        //)
+        //jump.position.x = Math.random() * 100 - 50
+        //jump.position.y = 0.5
+        //jump.position.z = Math.random() * 100 - 50
+        //scene.add(jump)
 
-        const cylinderShape = new CANNON.Cylinder(0.01, 1, 0.5, 5)
-        const cylinderBody = new CANNON.Body({ mass: 0 })
-        cylinderBody.addShape(cylinderShape, new CANNON.Vec3())
-        cylinderBody.position.x = jump.position.x
-        cylinderBody.position.y = jump.position.y
-        cylinderBody.position.z = jump.position.z
-        world.addBody(cylinderBody)
-    }
+        //const cylinderShape = new CANNON.Cylinder(0.01, 1, 0.5, 5)
+        //const cylinderBody = new CANNON.Body({ mass: 0 })
+        //cylinderBody.addShape(cylinderShape, new CANNON.Vec3())
+        //cylinderBody.position.x = jump.position.x
+        //cylinderBody.position.y = jump.position.y
+        //cylinderBody.position.z = jump.position.z
+        //world.addBody(cylinderBody)
+    //}
 
         //scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 );
 
