@@ -515,6 +515,7 @@ function dificultad() {
     //-----------------
     const paredIzquierda = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), phongMaterial)
     paredIzquierda.position.x = -30
+
     paredIzquierda.receiveShadow = true
     paredIzquierda.castShadow = true
     //-----------------------------------
@@ -550,7 +551,7 @@ function dificultad() {
  
     const frontWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     frontWall.addShape( new CANNON.Plane() );
-    frontWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
+    //frontWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
     //frontWall.position.z = 30;
     frontWall.position.x = paredDelantera.position.x
     frontWall.position.y = paredDelantera.position.y
@@ -560,7 +561,7 @@ function dificultad() {
     const leftWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     leftWall.addShape( new CANNON.Plane() );
     //leftWall.position.x = -30;
-    leftWall.quaternion.setFromEuler(0,Math.PI/2,0,'XYZ');
+    //leftWall.quaternion.setFromEuler(0,Math.PI/2,0,'XYZ');
     leftWall.position.x = paredIzquierda.position.x
     leftWall.position.y = paredIzquierda.position.y
     leftWall.position.z = paredIzquierda.position.z
@@ -569,7 +570,7 @@ function dificultad() {
     const rightWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     rightWall.addShape( new CANNON.Plane() );
     //rightWall.position.x = 30;
-    rightWall.quaternion.setFromEuler(0,-Math.PI/2,0,'XYZ');
+    //rightWall.quaternion.setFromEuler(0,-Math.PI/2,0,'XYZ');
     rightWall.position.x = paredDerecha.position.x
     rightWall.position.y = paredDerecha.position.y
     rightWall.position.z = paredDerecha.position.z
