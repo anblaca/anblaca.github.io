@@ -427,21 +427,13 @@ function animate() {
         }
         
     }
+
     if (dificil == true) { scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 ); }
 
     //drawScore()
 
-    //for (let i = 0; i < monedas.length; i++) {
-
-        //new TWEEN.Tween(monedas[i].position).
-        //to( {x: [monedas[i].position, monedas[i].position + 3], y:[monedas[i].position, monedas[i].position], z:[0,monedas[i].position + 3]}, 5000 ).
-        //interpolation( TWEEN.Interpolation.Linear).
-        //easing( TWEEN.Easing.Exponential.InOut).
-      //  start();
-    //}
-
     TWEEN.update()
-    
+
     constraintLB.setMotorSpeed(forwardVelocity)
     constraintRB.setMotorSpeed(forwardVelocity)
     constraintLF.axisA.z = rightVelocity
@@ -551,36 +543,36 @@ function dificultad() {
     const backWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     backWall.addShape( new CANNON.Plane() );
     //backWall.position.z = -30;
-    backWall.wall.position.x = paredTrasera.position.x
-    backWall.wall.position.y = paredTrasera.position.y
-    backWall.wall.position.z = paredTrasera.position.z
+    backWall.position.x = paredTrasera.position.x
+    backWall.position.y = paredTrasera.position.y
+    backWall.position.z = paredTrasera.position.z
     world.addBody( backWall );
  
     const frontWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     frontWall.addShape( new CANNON.Plane() );
     frontWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
     //frontWall.position.z = 30;
-    frontWall.wall.position.x = paredDelantera.position.x
-    frontWall.wall.position.y = paredDelantera.position.y
-    frontWall.wall.position.z = paredDelantera.position.z
+    frontWall.position.x = paredDelantera.position.x
+    frontWall.position.y = paredDelantera.position.y
+    frontWall.position.z = paredDelantera.position.z
     world.addBody( frontWall );
  
     const leftWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     leftWall.addShape( new CANNON.Plane() );
     //leftWall.position.x = -30;
     leftWall.quaternion.setFromEuler(0,Math.PI/2,0,'XYZ');
-    leftWall.wall.position.x = paredIzquierda.position.x
-    leftWall.wall.position.y = paredIzquierda.position.y
-    leftWall.wall.position.z = paredIzquierda.position.z
+    leftWall.position.x = paredIzquierda.position.x
+    leftWall.position.y = paredIzquierda.position.y
+    leftWall.position.z = paredIzquierda.position.z
     world.addBody( leftWall );
  
     const rightWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     rightWall.addShape( new CANNON.Plane() );
     //rightWall.position.x = 30;
     rightWall.quaternion.setFromEuler(0,-Math.PI/2,0,'XYZ');
-    rightWall.wall.position.x = paredDerecha.position.x
-    rightWall.wall.position.y = paredDerecha.position.y
-    rightWall.wall.position.z = paredDerecha.position.z
+    rightWall.position.x = paredDerecha.position.x
+    rightWall.position.y = paredDerecha.position.y
+    rightWall.position.z = paredDerecha.position.z
     world.addBody( rightWall );
 }
 
