@@ -539,14 +539,14 @@ function dificultad() {
     paredTrasera.receiveShadow = true
     paredTrasera.castShadow = true
     
-    var cubo = THREE.Object3D()
+    var cubo = new THREE.Object3D()
     cubo.add(paredDelantera)
     cubo.add(paredDerecha)
     cubo.add(paredIzquierda)
     cubo.add(paredTrasera)
     cubo.position.x = 30
     cubo.position.z = 30
-    
+
     scene.add(cubo)
 
     //parte fisica
