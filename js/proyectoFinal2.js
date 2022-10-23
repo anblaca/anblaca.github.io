@@ -13,7 +13,7 @@ var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, dificil, effectController
 var canvas, ctx, phongMaterial
 var cuentaMonedas = 0
-
+const timestep = 1/60
 const clock = new THREE.Clock()
 let delta
 const monedas = []
@@ -351,17 +351,12 @@ function loadScene() {
 }
 
 
-function animarMonedas() {
-
-    
-}
-
 function animate() {
     requestAnimationFrame(animate)
 
-    delta = Math.min(clock.getDelta(), 0.1)
-    world.step(delta)
-    
+    //delta = Math.min(clock.getDelta(), 0.1)
+    //world.step(delta)
+    world.step(timestep)
     // Copy coordinates from Cannon to Three.js
     carBodyMesh.position.set(
         carBody.position.x,
