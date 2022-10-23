@@ -101,7 +101,7 @@ function loadScene() {
     sueloMesh.rotation.x = -Math.PI / 2
     sueloMesh.receiveShadow = true
     scene.add(sueloMesh)
-    const sueloShape = new CANNON.Box(new CANNON.Vec3(100, 1, 100))
+    const sueloShape = new CANNON.Plane(new CANNON.Vec3(50, 50))
     const sueloBody = new CANNON.Body({ mass: 0, material: groundMaterial })
     sueloBody.addShape(sueloShape)
     sueloBody.position.set(0, -1, 0)
