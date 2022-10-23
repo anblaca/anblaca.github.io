@@ -576,24 +576,23 @@ function dificultad() {
     rightWall.position.y = paredDerecha.position.y
     rightWall.position.z = paredDerecha.position.z
     world.addBody( rightWall );
+    //añadir una pelota
+    const sphereGeometry = new THREE.SphereGeometry(0.5, 8, 8)
+    sphereMesh = new THREE.Mesh(sphereGeometry, phongMaterial)
+    sphereMesh.position.x = Math.random() * 10 - 5
+    sphereMesh.position.y = 5
+    sphereMesh.position.z = Math.random() * 10 - 5
+    sphereMesh.castShadow = true
+    sphereMesh.receiveShadow = true
+    scene.add(sphereMesh)
 
-    //Crear Pelota
-    const mesh = new THREE.Mesh(new THREE.SphereGeometry(2, 2, 2), new THREE.MeshPhongMaterial())
-
-    mesh.position.x = Math.floor(Math.random() * 10) - 5
-    mesh.position.z = Math.floor(Math.random() * 10) - 5
-    mesh.position.y = 5
-    mesh.castShadow = true
-    scene.add(mesh)
-
-    const shape = new CANNON.Sphere(new CANNON.Vec3(1))
-    const body = new CANNON.Sphere({ mass: 1 })
-    body.addShape(shape)
-    body.position.x = mesh.position.x
-    body.position.y = mesh.position.y
-    body.position.z = mesh.position.z
-
-    world.addBody(body)
+    const sphereShape = new CANNON.Sphere(0.5)
+    sphereBody = new CANNON.Body({ mass: 1 })
+    sphereBody.addShape(sphereShape)
+    sphereBody.position.x = sphereMesh.position.x
+    sphereBody.position.y = sphereMesh.position.y
+    sphereBody.position.z = sphereMesh.position.z
+    world.addBody(sphereBody)
 }
 
 function render() {
