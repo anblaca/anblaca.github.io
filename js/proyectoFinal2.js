@@ -520,7 +520,7 @@ function dificultad() {
     //-----------------------------------
     const paredDelantera = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), phongMaterial)
     paredDelantera.position.z = 5
-    paredDelantera.position.x = -30
+    paredDelantera.position.x = -26.5
     paredDelantera.receiveShadow = true
     paredDelantera.castShadow = true
     //---------------------------------
