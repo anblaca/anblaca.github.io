@@ -63,7 +63,7 @@ function init() {
     //canvas = document.getElementById("canvas");
     //ctx = canvas.getContext("2d");
 
-    drawScore()
+    //drawScore()
 
     window.addEventListener('resize', onWindowResize, false)
 
