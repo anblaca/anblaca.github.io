@@ -11,7 +11,7 @@ var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,
 var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, dificil, effectController
-var canvas, ctx
+var canvas, ctx, phongMaterial
 var cuentaMonedas = 0
 
 const clock = new THREE.Clock()
@@ -79,7 +79,7 @@ function drawScore() {
 }
 
 function loadScene() {
-    const phongMaterial = new THREE.MeshPhongMaterial()
+    phongMaterial = new THREE.MeshPhongMaterial()
 
     world = new CANNON.World()
     world.gravity.set(0, -9.82, 0)
@@ -519,7 +519,6 @@ function dificultad() {
     //construir muros pequeños juntos y una pelota en medio
     //parte visual
     //ground
-    const phongMaterial = new THREE.MeshPhongMaterial()
     //-----------------
     const paredIzquierda = new THREE.Mesh(new THREE.PlaneGeometry(30, 30, 50, 50), phongMaterial)
     paredIzquierda.position.x = -30
