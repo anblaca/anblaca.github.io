@@ -333,19 +333,22 @@ function loadScene() {
         renderer.domElement.focus();
     
         //añado los eventos que moveran al robot
-        keyborad.domElement.addEventListener('keydown', function(event){
-            if(keyborad.eventMatches(event, 'left') || keyborad.eventMatches(event, 'a') ){
-                rightVelocity -= 0.1
-            }
-            if(keyborad.eventMatches(event, 'right')|| keyborad.eventMatches(event, 'd') ){
-                rightVelocity += 0.1 
-            }
-            if(keyborad.eventMatches(event, 'up') || keyborad.eventMatches(event, 'w')  ){
-                forwardVelocity += 1 
-            }
-            if(keyborad.eventMatches(event, 'down') || keyborad.eventMatches(event, 's') ){
-                forwardVelocity -= 1 
-            }
+    keyborad.domElement.addEventListener('keydown', function(event){
+        if(keyborad.eventMatches(event, 'left') || keyborad.eventMatches(event, 'a') ){
+            rightVelocity -= 0.1
+        }
+
+        if(keyborad.eventMatches(event, 'right')|| keyborad.eventMatches(event, 'd') ){
+            rightVelocity += 0.1 
+        }
+
+        if(keyborad.eventMatches(event, 'up') || keyborad.eventMatches(event, 'w')  ){
+            forwardVelocity += 1 
+        }
+
+        if(keyborad.eventMatches(event, 'down') || keyborad.eventMatches(event, 's') ){
+            forwardVelocity -= 1 
+        }
     })
     
     forwardVelocity = 0
@@ -371,7 +374,6 @@ function animate() {
         carBody.quaternion.z,
         carBody.quaternion.w
     )
-
     wheelLFMesh.position.set(
         wheelLFBody.position.x,
         wheelLFBody.position.y,
@@ -383,7 +385,6 @@ function animate() {
         wheelLFBody.quaternion.z,
         wheelLFBody.quaternion.w
     )
-
     wheelRFMesh.position.set(
         wheelRFBody.position.x,
         wheelRFBody.position.y,
@@ -395,7 +396,6 @@ function animate() {
         wheelRFBody.quaternion.z,
         wheelRFBody.quaternion.w
     )
-
     wheelLBMesh.position.set(
         wheelLBBody.position.x,
         wheelLBBody.position.y,
@@ -407,7 +407,6 @@ function animate() {
         wheelLBBody.quaternion.z,
         wheelLBBody.quaternion.w
     )
-
     wheelRBMesh.position.set(
         wheelRBBody.position.x,
         wheelRBBody.position.y,
@@ -553,7 +552,7 @@ function dificultad() {
     const groundMaterial = new CANNON.Material('groundMaterial')
 
     const backWall = new CANNON.Body( {mass:1, material:groundMaterial} );
-    backWall.addShape( new CANNON.Plane(5,5) );
+    backWall.addShape( new CANNON.Plane(2.5,4) );
     //backWall.position.z = -30;
     backWall.position.x = paredTrasera.position.x+30
     backWall.position.y = paredTrasera.position.y
@@ -561,7 +560,7 @@ function dificultad() {
     world.addBody( backWall );
  
     const frontWall = new CANNON.Body( {mass:1, material:groundMaterial} );
-    frontWall.addShape( new CANNON.Plane(5,5) );
+    frontWall.addShape( new CANNON.Plane(2.5,4) );
     frontWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
     //frontWall.position.z = 30;
     frontWall.position.x = paredDelantera.position.x+30
@@ -570,7 +569,7 @@ function dificultad() {
     world.addBody( frontWall );
  
     const leftWall = new CANNON.Body( {mass:1, material:groundMaterial} );
-    leftWall.addShape( new CANNON.Plane(5,5) );
+    leftWall.addShape( new CANNON.Plane(2.5,4) );
     //leftWall.position.x = -30;
     leftWall.quaternion.setFromEuler(0,Math.PI/2,0,'XYZ');
     leftWall.position.x = paredIzquierda.position.x+30
@@ -579,7 +578,7 @@ function dificultad() {
     world.addBody( leftWall );
  
     const rightWall = new CANNON.Body( {mass:1, material:groundMaterial} );
-    rightWall.addShape( new CANNON.Plane(5,5) );
+    rightWall.addShape( new CANNON.Plane(2.5,4) );
     //rightWall.position.x = 30;
     rightWall.quaternion.setFromEuler(0,-Math.PI/2,0,'XYZ');
     rightWall.position.x = paredDerecha.position.x+30
