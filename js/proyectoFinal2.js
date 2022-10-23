@@ -10,7 +10,7 @@ var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,
 
 var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 
-var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader
+var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, dificil
 var canvas, ctx
 var cuentaMonedas = 0
 
@@ -47,7 +47,7 @@ function init() {
     chaseCamPivot.position.set(0, 2, 4)
     chaseCam.add(chaseCamPivot)
     scene.add(chaseCam)
-    
+    dificil = false
     renderer = new THREE.WebGLRenderer()
     renderer.setSize(window.innerWidth, window.innerHeight)
     renderer.shadowMap.enabled = true
@@ -93,11 +93,11 @@ function loadScene() {
     wheelMaterial.restitution = 0.25
     
     //ground
-    const sueloMesh = new THREE.Mesh(new THREE.PlaneGeometry(300, 300, 50, 50), phongMaterial)
+    const sueloMesh = new THREE.Mesh(new THREE.PlaneGeometry(100, 100, 50, 50), phongMaterial)
     sueloMesh.rotation.x = -Math.PI / 2
     sueloMesh.receiveShadow = true
     scene.add(sueloMesh)
-    const sueloShape = new CANNON.Box(new CANNON.Vec3(300, 1, 300))
+    const sueloShape = new CANNON.Box(new CANNON.Vec3(100, 1, 100))
     const sueloBody = new CANNON.Body({ mass: 0, material: groundMaterial })
     sueloBody.addShape(sueloShape)
     sueloBody.position.set(0, -1, 0)
@@ -133,29 +133,28 @@ function loadScene() {
     //});   
 
     
-    
 
     // Paredes
     const backWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     backWall.addShape( new CANNON.Plane() );
-    backWall.position.z = -300;
+    backWall.position.z = -100;
     world.addBody( backWall );
  
     const frontWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     frontWall.addShape( new CANNON.Plane() );
     frontWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
-    frontWall.position.z = 300;
+    frontWall.position.z = 100;
     world.addBody( frontWall );
  
     const leftWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     leftWall.addShape( new CANNON.Plane() );
-    leftWall.position.x = -300;
+    leftWall.position.x = -100;
     leftWall.quaternion.setFromEuler(0,Math.PI/2,0,'XYZ');
     world.addBody( leftWall );
  
     const rightWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     rightWall.addShape( new CANNON.Plane() );
-    rightWall.position.x = 300;
+    rightWall.position.x = 100;
     rightWall.quaternion.setFromEuler(0,-Math.PI/2,0,'XYZ');
     world.addBody( rightWall );
 
@@ -431,6 +430,7 @@ function animate() {
         }
         
     }
+    if (dificil == true) { scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 ); }
 
     //drawScore()
 
@@ -465,21 +465,60 @@ function setupGUI()
 {
 	// Definicion de los controles
 
- //   effectController = {
-   //     dificil: false,
-     //   pelota: false,
-       // animacion: function (){
-         //   animate();
-        //},
-        //alambres: true,
+    effectController = {
+        dificil: false,
+        pelota: false,
+        animacion: function (){
+            animate();
+        }
+    };
 
-    //};
-    //var params ={checkbox=false}; gui.add(params, checkbox').onChange(function (value) { model(); });
 	// Creacion interfaz
-	//const gui = new GUI();
+	const gui = new GUI();
 
 	// Construccion del menu
-    //var h = gui.addFolder("Control robot");
+    var h = gui.addFolder("Menu");
+
+    h.add(effectController, "dificil").name("Dificultad").onChange(dificultad);
+    //Control del cambio de color del mesh
+
+}
+
+
+function dificultad() {
+    //añadir obstaculos
+    dificil = true
+
+    for (let i = 0; i < 100; i++) {
+        const jump = new THREE.Mesh(
+            new THREE.CylinderGeometry(0, 1, 0.5, 5),
+            phongMaterial
+        )
+        jump.position.x = Math.random() * 100 - 50
+        jump.position.y = 0.5
+        jump.position.z = Math.random() * 100 - 50
+        scene.add(jump)
+
+        const cylinderShape = new CANNON.Cylinder(0.01, 1, 0.5, 5)
+        const cylinderBody = new CANNON.Body({ mass: 0 })
+        cylinderBody.addShape(cylinderShape, new CANNON.Vec3())
+        cylinderBody.position.x = jump.position.x
+        cylinderBody.position.y = jump.position.y
+        cylinderBody.position.z = jump.position.z
+        world.addBody(cylinderBody)
+    }
+
+        //scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 );
+
+    for(let i; i < 3; i++) {
+
+        new TWEEN.Tween(monedas[i].position).
+        to( {x: [monedas[i].position, monedas[i].position+10], y:[0, 10], z:[monedas[i].position,monedas[i].position+10]}, 5000).
+        interpolation( TWEEN.Interpolation.Linear).
+        easing( TWEEN.Easing.Exponential.InOut).
+        start();
+    }
+    
 
 
 }
@@ -488,6 +527,7 @@ function render() {
     renderer.render(scene, camera)
     console.log("e")
 }
+
 init()
 loadScene()
 animate()
