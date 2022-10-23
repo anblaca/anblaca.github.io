@@ -542,7 +542,7 @@ function dificultad() {
     //parte fisica
     const groundMaterial = new CANNON.Material('groundMaterial')
 
-    const backWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+    const backWall = new CANNON.Body( {mass:1, material:groundMaterial} );
     backWall.addShape( new CANNON.Plane(5,5) );
     //backWall.position.z = -30;
     backWall.position.x = paredTrasera.position.x
@@ -576,6 +576,24 @@ function dificultad() {
     rightWall.position.y = paredDerecha.position.y
     rightWall.position.z = paredDerecha.position.z
     world.addBody( rightWall );
+
+    //Crear Pelota
+    const mesh = new THREE.Mesh(new THREE.SphereGeometry(2, 2, 2), new THREE.MeshPhongMaterial())
+
+    mesh.position.x = Math.floor(Math.random() * 10) - 5
+    mesh.position.z = Math.floor(Math.random() * 10) - 5
+    mesh.position.y = 5
+    mesh.castShadow = true
+    scene.add(mesh)
+
+    const shape = new CANNON.Sphere(new CANNON.Vec3(1))
+    const body = new CANNON.Sphere({ mass: 1 })
+    body.addShape(shape)
+    body.position.x = mesh.position.x
+    body.position.y = mesh.position.y
+    body.position.z = mesh.position.z
+
+    world.addBody(body)
 }
 
 function render() {
