@@ -504,43 +504,40 @@ function dificultad() {
     //parte visual
     //ground
     //-----------------
-    const paredIzquierda = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), phongMaterial)
-    //paredIzquierda.position.x = -5
-    paredIzquierda.position.x = -30
+    const paredIzquierda = new THREE.Mesh(new THREE.PlaneGeometry(5, 8), phongMaterial)
+    paredIzquierda.position.x = -7.5
+    //paredIzquierda.position.x = -30
     paredIzquierda.receiveShadow = true
     paredIzquierda.castShadow = true
     paredIzquierda.rotation.y = Math.PI/2
     //-----------------------------------
-    const paredDerecha = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), phongMaterial)
-    //paredDerecha.position.x = 5
-    paredDerecha.position.x = -25
+    const paredDerecha = new THREE.Mesh(new THREE.PlaneGeometry(5, 8), phongMaterial)
+    paredDerecha.position.x = 7.5
+    //paredDerecha.position.x = -25
     paredDerecha.receiveShadow = true
     paredDerecha.castShadow = true
     paredDerecha.rotation.y = -Math.PI/2
     //-----------------------------------
-    const paredDelantera = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), phongMaterial)
-    paredDelantera.position.z = 5
-    paredDelantera.position.x = -26.5
+    const paredDelantera = new THREE.Mesh(new THREE.PlaneGeometry(5, 8), phongMaterial)
+    paredDelantera.position.z = 7.5
+    //paredDelantera.position.x = -26.5
     paredDelantera.receiveShadow = true
     paredDelantera.castShadow = true
     //---------------------------------
-    const paredTrasera = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), phongMaterial)
-    paredTrasera.position.z = -5
-    paredTrasera.position.x = -30
+    const paredTrasera = new THREE.Mesh(new THREE.PlaneGeometry(5, 8), phongMaterial)
+    paredTrasera.position.z = -7.5
+    //paredTrasera.position.x = -30
     paredTrasera.receiveShadow = true
     paredTrasera.castShadow = true
     
-    //var cubo = new THREE.Object3D()
-    //cubo.add(paredDelantera)
-    //cubo.add(paredDerecha)
-    //cubo.add(paredIzquierda)
-    //cubo.add(paredTrasera)
-    //cubo.position.x = 30
-    //cubo.position.z = 30
-    scene.add(paredDelantera)
-    scene.add(paredDerecha)
-    scene.add(paredTrasera)
-    scene.add(paredIzquierda)
+    var cubo = new THREE.Object3D()
+    cubo.add(paredDelantera)
+    cubo.add(paredDerecha)
+    cubo.add(paredIzquierda)
+    cubo.add(paredTrasera)
+    cubo.position.x = 30
+    cubo.position.z = 30
+    scene.add(cubo)
 
     //parte fisica
     const groundMaterial = new CANNON.Material('groundMaterial')
