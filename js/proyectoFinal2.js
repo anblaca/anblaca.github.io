@@ -60,13 +60,13 @@ function init() {
     
 
 
-    canvas = document.getElementById("canvas");
-    ctx = canvas.getContext("2d");
+    //canvas = document.getElementById("canvas");
+    //ctx = canvas.getContext("2d");
 
     drawScore()
 
     window.addEventListener('resize', onWindowResize, false)
-    
+
     function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight
     camera.updateProjectionMatrix()
