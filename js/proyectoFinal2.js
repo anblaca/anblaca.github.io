@@ -11,7 +11,7 @@ var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,
 var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, dificil, effectController
-var canvas, ctx, phongMaterial, sphereMesh,sphereBody
+var canvas, ctx, phongMaterial, sphereMesh,sphereBody, traseroWall,delanteroWall,izquieroWall,derechaWall
 var cuentaMonedas = 0
 const timestep = 1/60
 const clock = new THREE.Clock()
@@ -481,27 +481,27 @@ function setupGUI()
 	// Construccion del menu
     var h = gui.addFolder("Menu");
 
-    h.add(effectController, "dificil").name("Dificultad").onChange(dificultad);
+    //h.add(effectController, "dificil").name("Dificultad").onChange(dificultad);
     //Control del cambio de color del mesh
 
-    //h.add(effectController, "dificil").name("Dificil").onChange(
-      //  function(click) {
-        //            if (click){
-          //              dificil = true;
-            //            dificultad()
-              //      } else {
-                //        dificil = false
-                  //      easy()
-                   // } 
+    h.add(effectController, "dificil").name("Dificil").onChange(
+        function(click) {
+                    if (click){
+                       dificil = true;
+                        dificultad()
+                    } else {
+                        dificil = false
+                        dificultad()
+                    } 
     
-        //});
+        });
 }
 
 
 function dificultad() {
     //añadir obstaculos
     dificil = true
-
+    if(dificil) {
     //for (let i = 0; i < 100; i++) {
       //  const jump = new THREE.Mesh(
         //    new THREE.CylinderGeometry(0, 1, 0.5, 5),
@@ -522,10 +522,10 @@ function dificultad() {
     //}
 
         //scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 );
-    var rojo = new THREE.MeshBasicMaterial({ color: 'red', wireframe: true });
-    var azul = new THREE.MeshBasicMaterial({ color: 'blue', wireframe: true });
-    var amarillo = new THREE.MeshBasicMaterial({ color: 'yellow', wireframe: true });
-    var negro = new THREE.MeshBasicMaterial({ color: 'black', wireframe: true });
+        var rojo = new THREE.MeshBasicMaterial({ color: 'red', wireframe: true });
+        var azul = new THREE.MeshBasicMaterial({ color: 'blue', wireframe: true });
+        var amarillo = new THREE.MeshBasicMaterial({ color: 'yellow', wireframe: true });
+        var negro = new THREE.MeshBasicMaterial({ color: 'black', wireframe: true });
     //construir muros pequeños juntos y una pelota en medio
     //parte visual
     //ground
@@ -568,33 +568,33 @@ function dificultad() {
     //parte fisica
     //const groundMaterial = new CANNON.Material('groundMaterial')
 
-    const backWall = new CANNON.Body( {mass:1, material:groundMaterial} );
-    backWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
-    backWall.position.x = paredTrasera.position.x+30
-    backWall.position.y = paredTrasera.position.y
-    backWall.position.z = paredTrasera.position.z 
-    world.addBody( backWall );
+    traseroWall = new CANNON.Body( {mass:1, material:groundMaterial} );
+    traseroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
+    traseroWall.position.x = paredTrasera.position.x+30
+    traseroWall.position.y = paredTrasera.position.y
+    traseroWall.position.z = paredTrasera.position.z 
+    world.addBody( traseroWall );
  
-    const frontWall = new CANNON.Body( {mass:1, material:groundMaterial} );
-    frontWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
-    frontWall.position.x = paredDelantera.position.x+30
-    frontWall.position.y = paredDelantera.position.y
-    frontWall.position.z = paredDelantera.position.z 
-    world.addBody( frontWall );
+    const delanteroWall = new CANNON.Body( {mass:1, material:groundMaterial} );
+    delanteroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
+    delanteroWall.position.x = paredDelantera.position.x+30
+    delanteroWall.position.y = paredDelantera.position.y
+    delanteroWall.position.z = paredDelantera.position.z 
+    world.addBody( delanteroWall );
  
-    const leftWall = new CANNON.Body( {mass:1, material:groundMaterial} );
-    leftWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
-    leftWall.position.x = paredIzquierda.position.x+30
-    leftWall.position.y = paredIzquierda.position.y
-    leftWall.position.z = paredIzquierda.position.z
-    world.addBody( leftWall );
+    izquieroWall = new CANNON.Body( {mass:1, material:groundMaterial} );
+    izquieroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
+    izquieroWall.position.x = paredIzquierda.position.x+30
+    izquieroWall.position.y = paredIzquierda.position.y
+    izquieroWall.position.z = paredIzquierda.position.z
+    world.addBody( izquieroWall );
  
-    const rightWall = new CANNON.Body( {mass:1, material:groundMaterial} );
-    rightWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
-    rightWall.position.x = paredDerecha.position.x+30
-    rightWall.position.y = paredDerecha.position.y
-    rightWall.position.z = paredDerecha.position.z
-    world.addBody( rightWall );
+    derechaWall = new CANNON.Body( {mass:1, material:groundMaterial} );
+    derechaWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
+    derechaWall.position.x = paredDerecha.position.x+30
+    derechaWall.position.y = paredDerecha.position.y
+    derechaWall.position.z = paredDerecha.position.z
+    world.addBody( derechaWall );
 
     //añadir una pelota
 
@@ -614,6 +614,13 @@ function dificultad() {
     //sphereBody.position.y = sphereMesh.position.y
     //sphereBody.position.z = sphereMesh.position.z
     world.addBody(sphereBody)
+    } else {
+        sphereBody.visible = false;
+        izquieroWall.visible = false
+        derechaWall.visible = false
+        delanteroWall.visible = false
+        traseroWall.visible = false
+    }
 }
 
 function render() {
