@@ -10,7 +10,7 @@ var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,
 
 var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 
-var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, dificil
+var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, dificil, effectController
 var canvas, ctx
 var cuentaMonedas = 0
 
@@ -131,8 +131,6 @@ function loadScene() {
     //scene.add( mesh );
 
     //});   
-
-    
 
     // Paredes
     const backWall = new CANNON.Body( {mass:0, material:groundMaterial} );
@@ -518,8 +516,72 @@ function dificultad() {
         start();
     }
     
+    //construir muros pequeños juntos y una pelota en medio
+    //parte visual
+    //ground
+    const phongMaterial = new THREE.MeshPhongMaterial()
+    //-----------------
+    const paredIzquierda = new THREE.Mesh(new THREE.PlaneGeometry(30, 30, 50, 50), phongMaterial)
+    paredIzquierda.position.x = -30
+    paredIzquierda.receiveShadow = true
+    paredIzquierda.castShadow = true
+    //-----------------------------------
+    const paredDerecha = new THREE.Mesh(new THREE.PlaneGeometry(30, 30, 50, 50), phongMaterial)
+    paredDerecha.position.x = 30
+    paredDerecha.receiveShadow = true
+    paredDerecha.castShadow = true
+    //-----------------------------------
+    const paredDelantera = new THREE.Mesh(new THREE.PlaneGeometry(30, 30, 50, 50), phongMaterial)
+    paredDelantera.position.z = 30
+    paredDelantera.receiveShadow = true
+    paredDelantera.castShadow = true
+    //---------------------------------
+    const paredTrasera = new THREE.Mesh(new THREE.PlaneGeometry(30, 30, 50, 50), phongMaterial)
+    paredTrasera.position.z = -30
+    paredTrasera.receiveShadow = true
+    paredTrasera.castShadow = true
+    
+    scene.add(paredIzquierda)
+    scene.add(paredDerecha)
+    scene.add(paredDelantera)
+    scene.add(paredTrasera)
+    //parte fisica
+    const groundMaterial = new CANNON.Material('groundMaterial')
 
-
+    const backWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+    backWall.addShape( new CANNON.Plane() );
+    //backWall.position.z = -30;
+    backWall.wall.position.x = paredTrasera.position.x
+    backWall.wall.position.y = paredTrasera.position.y
+    backWall.wall.position.z = paredTrasera.position.z
+    world.addBody( backWall );
+ 
+    const frontWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+    frontWall.addShape( new CANNON.Plane() );
+    frontWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
+    //frontWall.position.z = 30;
+    frontWall.wall.position.x = paredDelantera.position.x
+    frontWall.wall.position.y = paredDelantera.position.y
+    frontWall.wall.position.z = paredDelantera.position.z
+    world.addBody( frontWall );
+ 
+    const leftWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+    leftWall.addShape( new CANNON.Plane() );
+    //leftWall.position.x = -30;
+    leftWall.quaternion.setFromEuler(0,Math.PI/2,0,'XYZ');
+    leftWall.wall.position.x = paredIzquierda.position.x
+    leftWall.wall.position.y = paredIzquierda.position.y
+    leftWall.wall.position.z = paredIzquierda.position.z
+    world.addBody( leftWall );
+ 
+    const rightWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+    rightWall.addShape( new CANNON.Plane() );
+    //rightWall.position.x = 30;
+    rightWall.quaternion.setFromEuler(0,-Math.PI/2,0,'XYZ');
+    rightWall.wall.position.x = paredDerecha.position.x
+    rightWall.wall.position.y = paredDerecha.position.y
+    rightWall.wall.position.z = paredDerecha.position.z
+    world.addBody( rightWall );
 }
 
 function render() {
