@@ -482,6 +482,17 @@ function setupGUI()
     h.add(effectController, "dificil").name("Dificultad").onChange(dificultad);
     //Control del cambio de color del mesh
 
+    //h.add(effectController, "dificil").name("Dificil").onChange(
+      //  function(click) {
+        //            if (click){
+          //              dificil = true;
+            //            dificultad()
+              //      } else {
+                //        dificil = false
+                  //      easy()
+                   // } 
+    
+        //});
 }
 
 
@@ -509,12 +520,15 @@ function dificultad() {
     //}
 
         //scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 );
-    
+    var material1 = new THREE.MeshBasicMaterial({ color: 'red', wireframe: true });
+    var material2 = new THREE.MeshBasicMaterial({ color: 'blue', wireframe: true });
+    var material3 = new THREE.MeshBasicMaterial({ color: 'yellow', wireframe: true });
+    var material4 = new THREE.MeshBasicMaterial({ color: 'black', wireframe: true });
     //construir muros pequeños juntos y una pelota en medio
     //parte visual
     //ground
     //-----------------
-    const paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), phongMaterial)
+    const paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), pMaterial)
     paredIzquierda.position.x = -7.5
     //paredIzquierda.position.x = -30
     paredIzquierda.receiveShadow = true
@@ -528,7 +542,7 @@ function dificultad() {
     paredDerecha.castShadow = true
     paredDerecha.rotation.y = -Math.PI/2
     //-----------------------------------
-    const paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), phongMaterial)
+    const paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), pMaterial)
     paredDelantera.position.z = 7.5
     //paredDelantera.position.x = -26.5
     paredDelantera.receiveShadow = true
