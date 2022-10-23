@@ -66,6 +66,7 @@ function init() {
     drawScore()
 
     window.addEventListener('resize', onWindowResize, false)
+    
     function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight
     camera.updateProjectionMatrix()
@@ -88,7 +89,7 @@ function loadScene() {
     world = new CANNON.World()
     world.gravity.set(0, -9.82, 0)
     
-    const groundMaterial = new CANNON.Material('groundMaterial')
+    //groundMaterial = new CANNON.Material('groundMaterial')
     groundMaterial.friction = 0.25
     groundMaterial.restitution = 0.25
     
@@ -513,27 +514,27 @@ function dificultad() {
     //parte visual
     //ground
     //-----------------
-    const paredIzquierda = new THREE.Mesh(new THREE.PlaneGeometry(5, 8), phongMaterial)
+    const paredIzquierda = new THREE.Mesh(new THREE.PlaneGeometry(5, 3), phongMaterial)
     paredIzquierda.position.x = -7.5
     //paredIzquierda.position.x = -30
     paredIzquierda.receiveShadow = true
     paredIzquierda.castShadow = true
     paredIzquierda.rotation.y = Math.PI/2
     //-----------------------------------
-    const paredDerecha = new THREE.Mesh(new THREE.PlaneGeometry(5, 8), phongMaterial)
+    const paredDerecha = new THREE.Mesh(new THREE.PlaneGeometry(5, 3), phongMaterial)
     paredDerecha.position.x = 7.5
     //paredDerecha.position.x = -25
     paredDerecha.receiveShadow = true
     paredDerecha.castShadow = true
     paredDerecha.rotation.y = -Math.PI/2
     //-----------------------------------
-    const paredDelantera = new THREE.Mesh(new THREE.PlaneGeometry(5, 8), phongMaterial)
+    const paredDelantera = new THREE.Mesh(new THREE.PlaneGeometry(5, 3), phongMaterial)
     paredDelantera.position.z = 7.5
     //paredDelantera.position.x = -26.5
     paredDelantera.receiveShadow = true
     paredDelantera.castShadow = true
     //---------------------------------
-    const paredTrasera = new THREE.Mesh(new THREE.PlaneGeometry(5, 8), phongMaterial)
+    const paredTrasera = new THREE.Mesh(new THREE.PlaneGeometry(5, 3), phongMaterial)
     paredTrasera.position.z = -7.5
     //paredTrasera.position.x = -30
     paredTrasera.receiveShadow = true
@@ -549,10 +550,10 @@ function dificultad() {
     scene.add(cubo)
 
     //parte fisica
-    const groundMaterial = new CANNON.Material('groundMaterial')
+    //const groundMaterial = new CANNON.Material('groundMaterial')
 
     const backWall = new CANNON.Body( {mass:0, material:groundMaterial} );
-    backWall.addShape( new CANNON.Plane(2.5,4) );
+    backWall.addShape( new CANNON.Plane(2.5,3/2) );
     //backWall.position.z = -30;
     backWall.position.x = paredTrasera.position.x+30
     backWall.position.y = paredTrasera.position.y
@@ -560,7 +561,7 @@ function dificultad() {
     world.addBody( backWall );
  
     const frontWall = new CANNON.Body( {mass:0, material:groundMaterial} );
-    frontWall.addShape( new CANNON.Plane(2.5,4) );
+    frontWall.addShape( new CANNON.Plane(2.5,3/2) );
     frontWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
     //frontWall.position.z = 30;
     frontWall.position.x = paredDelantera.position.x+30
@@ -569,7 +570,7 @@ function dificultad() {
     world.addBody( frontWall );
  
     const leftWall = new CANNON.Body( {mass:0, material:groundMaterial} );
-    leftWall.addShape( new CANNON.Plane(2.5,4) );
+    leftWall.addShape( new CANNON.Plane(2.5,3/2) );
     //leftWall.position.x = -30;
     leftWall.quaternion.setFromEuler(0,Math.PI/2,0,'XYZ');
     leftWall.position.x = paredIzquierda.position.x+30
@@ -578,7 +579,7 @@ function dificultad() {
     world.addBody( leftWall );
  
     const rightWall = new CANNON.Body( {mass:0, material:groundMaterial} );
-    rightWall.addShape( new CANNON.Plane(2.5,4) );
+    rightWall.addShape( new CANNON.Plane(2.5,3/2) );
     //rightWall.position.x = 30;
     rightWall.quaternion.setFromEuler(0,-Math.PI/2,0,'XYZ');
     rightWall.position.x = paredDerecha.position.x+30
