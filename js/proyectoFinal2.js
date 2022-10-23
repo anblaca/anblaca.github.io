@@ -520,35 +520,35 @@ function dificultad() {
     //}
 
         //scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 );
-    var material1 = new THREE.MeshBasicMaterial({ color: 'red', wireframe: true });
-    var material2 = new THREE.MeshBasicMaterial({ color: 'blue', wireframe: true });
-    var material3 = new THREE.MeshBasicMaterial({ color: 'yellow', wireframe: true });
-    var material4 = new THREE.MeshBasicMaterial({ color: 'black', wireframe: true });
+    var rojo = new THREE.MeshBasicMaterial({ color: 'red', wireframe: true });
+    var azul = new THREE.MeshBasicMaterial({ color: 'blue', wireframe: true });
+    var amarillo = new THREE.MeshBasicMaterial({ color: 'yellow', wireframe: true });
+    var negro = new THREE.MeshBasicMaterial({ color: 'black', wireframe: true });
     //construir muros pequeños juntos y una pelota en medio
     //parte visual
     //ground
     //-----------------
-    const paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), material1)
+    const paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), rojo)
     paredIzquierda.position.x = -7.5
     //paredIzquierda.position.x = -30
     paredIzquierda.receiveShadow = true
     paredIzquierda.castShadow = true
     paredIzquierda.rotation.y = Math.PI/2
     //-----------------------------------
-    const paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), material2)
+    const paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), azul)
     paredDerecha.position.x = 7.5
     //paredDerecha.position.x = -25
     paredDerecha.receiveShadow = true
     paredDerecha.castShadow = true
     paredDerecha.rotation.y = -Math.PI/2
     //-----------------------------------
-    const paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), material3)
+    const paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), amarillo)
     paredDelantera.position.z = 7.5
     //paredDelantera.position.x = -26.5
     paredDelantera.receiveShadow = true
     paredDelantera.castShadow = true
     //---------------------------------
-    const paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), material4)
+    const paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), negro)
     paredTrasera.position.z = -7.5
     //paredTrasera.position.x = -30
     paredTrasera.receiveShadow = true
