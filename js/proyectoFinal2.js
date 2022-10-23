@@ -19,6 +19,10 @@ let delta
 const monedas = []
 
 const v = new THREE.Vector3()
+const groundMaterial = new CANNON.Material("groundMaterial");
+const materialEsfera = new CANNON.Material("sphereMaterial");
+
+
 
 
 function init() {
@@ -132,6 +136,11 @@ function loadScene() {
 
     //});   
 
+    const sphereGroundContactMaterial = new CANNON.ContactMaterial(groundMaterial,materialEsfera,
+        { friction: 0.7, 
+            restitution: 0.7 });
+        world.addContactMaterial(sphereGroundContactMaterial);
+
     // Paredes
     const backWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     backWall.addShape( new CANNON.Plane() );
@@ -169,6 +178,9 @@ function loadScene() {
         moneda.position.z = Math.random() * 100 - 50
         moneda.rotation.x = Math.PI / 2
         scene.add(moneda)
+        const giro = new TWEEN.Tween( moneda.rotation ).to( {x:0, y:2*Math.PI, z:0}, 3000 );
+        giro.repeat(Infinity);
+        giro.start();
         //mundo fisico
         //const cilindroShape = new CANNON.Cylinder(1, 1, 1, 8)
         //const cilindroBody = new CANNON.Body({ mass: 0 })
@@ -178,7 +190,8 @@ function loadScene() {
         //cilindroBody.position.z = moneda.position.z
         //world.addBody(cilindroBody)
     }
-    
+
+
     const carBodyGeometry = new THREE.BoxGeometry(1, 1, 2)
     carBodyMesh = new THREE.Mesh(carBodyGeometry, phongMaterial)
     carBodyMesh.position.y = 3
@@ -429,9 +442,7 @@ function animate() {
     }
 
     if (dificil == true) { scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 ); }
-    for (let i = 0; i < monedas.length; i++) {
-        monedas[i].rotation.y += 0.01
-    }
+       
     //drawScore()
 
     TWEEN.update()
@@ -579,6 +590,7 @@ function dificultad() {
     rightWall.position.z = paredDerecha.position.z
     world.addBody( rightWall );
     //añadir una pelota
+
     const sphereGeometry = new THREE.SphereGeometry(0.5, 8, 8)
     const sphereMesh = new THREE.Mesh(sphereGeometry, phongMaterial)
     sphereMesh.position.x = Math.random() * 10 - 5
