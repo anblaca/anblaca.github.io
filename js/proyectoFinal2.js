@@ -99,7 +99,7 @@ function loadScene() {
     //ground
     const sueloMesh = new THREE.Mesh(new THREE.PlaneGeometry(100, 100, 1, 1), phongMaterial)
     sueloMesh.rotation.x = -Math.PI / 2
-    sueloMesh.position.y = -0.25;
+    sueloMesh.position.y = -1
     sueloMesh.receiveShadow = true
     scene.add(sueloMesh)
 
@@ -112,8 +112,6 @@ function loadScene() {
     world.addBody(sueloBody)
     
     //loader = new FontLoader();
-
-
     //loader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
 
     //textGeometry = new TextGeometry( "text", {
