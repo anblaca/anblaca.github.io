@@ -514,27 +514,27 @@ function dificultad() {
     //parte visual
     //ground
     //-----------------
-    const paredIzquierda = new THREE.Mesh(new THREE.PlaneGeometry(5, 3), phongMaterial)
+    const paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), phongMaterial)
     paredIzquierda.position.x = -7.5
     //paredIzquierda.position.x = -30
     paredIzquierda.receiveShadow = true
     paredIzquierda.castShadow = true
     paredIzquierda.rotation.y = Math.PI/2
     //-----------------------------------
-    const paredDerecha = new THREE.Mesh(new THREE.PlaneGeometry(5, 3), phongMaterial)
+    const paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), phongMaterial)
     paredDerecha.position.x = 7.5
     //paredDerecha.position.x = -25
     paredDerecha.receiveShadow = true
     paredDerecha.castShadow = true
     paredDerecha.rotation.y = -Math.PI/2
     //-----------------------------------
-    const paredDelantera = new THREE.Mesh(new THREE.PlaneGeometry(5, 3), phongMaterial)
+    const paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), phongMaterial)
     paredDelantera.position.z = 7.5
     //paredDelantera.position.x = -26.5
     paredDelantera.receiveShadow = true
     paredDelantera.castShadow = true
     //---------------------------------
-    const paredTrasera = new THREE.Mesh(new THREE.PlaneGeometry(5, 3), phongMaterial)
+    const paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), phongMaterial)
     paredTrasera.position.z = -7.5
     //paredTrasera.position.x = -30
     paredTrasera.receiveShadow = true
@@ -552,36 +552,36 @@ function dificultad() {
     //parte fisica
     //const groundMaterial = new CANNON.Material('groundMaterial')
 
-    const backWall = new CANNON.Body( {mass:0, material:groundMaterial} );
-    backWall.addShape( new CANNON.Plane(2.5,3/2) );
+    const backWall = new CANNON.Body( {mass:1, material:groundMaterial} );
+    backWall.addShape( new CANNON.Box(CANNON.Vec3(2.5,1,0.5)) );
     //backWall.position.z = -30;
     backWall.position.x = paredTrasera.position.x+30
     backWall.position.y = paredTrasera.position.y
     backWall.position.z = paredTrasera.position.z 
     world.addBody( backWall );
  
-    const frontWall = new CANNON.Body( {mass:0, material:groundMaterial} );
-    frontWall.addShape( new CANNON.Plane(2.5,3/2) );
-    frontWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
+    const frontWall = new CANNON.Body( {mass:1, material:groundMaterial} );
+    frontWall.addShape( CANNON.Box(CANNON.Vec3(2.5,1,0.5)) );
+    //frontWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
     //frontWall.position.z = 30;
     frontWall.position.x = paredDelantera.position.x+30
     frontWall.position.y = paredDelantera.position.y
     frontWall.position.z = paredDelantera.position.z 
     world.addBody( frontWall );
  
-    const leftWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+    const leftWall = new CANNON.Body( {mass:1, material:groundMaterial} );
     leftWall.addShape( new CANNON.Plane(2.5,3/2) );
     //leftWall.position.x = -30;
-    leftWall.quaternion.setFromEuler(0,Math.PI/2,0,'XYZ');
+    //leftWall.quaternion.setFromEuler(0,Math.PI/2,0,'XYZ');
     leftWall.position.x = paredIzquierda.position.x+30
     leftWall.position.y = paredIzquierda.position.y
     leftWall.position.z = paredIzquierda.position.z
     world.addBody( leftWall );
  
-    const rightWall = new CANNON.Body( {mass:0, material:groundMaterial} );
-    rightWall.addShape( new CANNON.Plane(2.5,3/2) );
+    const rightWall = new CANNON.Body( {mass:1, material:groundMaterial} );
+    rightWall.addShape( new CANNON.Box(CANNON.Vec3(2.5,1,0.5)) );
     //rightWall.position.x = 30;
-    rightWall.quaternion.setFromEuler(0,-Math.PI/2,0,'XYZ');
+    //rightWall.quaternion.setFromEuler(0,-Math.PI/2,0,'XYZ');
     rightWall.position.x = paredDerecha.position.x+30
     rightWall.position.y = paredDerecha.position.y
     rightWall.position.z = paredDerecha.position.z
