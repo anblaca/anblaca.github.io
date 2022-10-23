@@ -528,27 +528,27 @@ function dificultad() {
     //parte visual
     //ground
     //-----------------
-    const paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), pMaterial)
+    const paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), material1)
     paredIzquierda.position.x = -7.5
     //paredIzquierda.position.x = -30
     paredIzquierda.receiveShadow = true
     paredIzquierda.castShadow = true
     paredIzquierda.rotation.y = Math.PI/2
     //-----------------------------------
-    const paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), phongMaterial)
+    const paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), material2)
     paredDerecha.position.x = 7.5
     //paredDerecha.position.x = -25
     paredDerecha.receiveShadow = true
     paredDerecha.castShadow = true
     paredDerecha.rotation.y = -Math.PI/2
     //-----------------------------------
-    const paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), pMaterial)
+    const paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), material3)
     paredDelantera.position.z = 7.5
     //paredDelantera.position.x = -26.5
     paredDelantera.receiveShadow = true
     paredDelantera.castShadow = true
     //---------------------------------
-    const paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), phongMaterial)
+    const paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), material4)
     paredTrasera.position.z = -7.5
     //paredTrasera.position.x = -30
     paredTrasera.receiveShadow = true
