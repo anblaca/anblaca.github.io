@@ -146,24 +146,24 @@ function loadScene() {
     // Paredes
     const backWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     backWall.addShape( new CANNON.Plane() );
-    backWall.position.z = -100;
+    backWall.position.z = -50;
     world.addBody( backWall );
  
     const frontWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     frontWall.addShape( new CANNON.Plane() );
     frontWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
-    frontWall.position.z = 100;
+    frontWall.position.z = 50;
     world.addBody( frontWall );
  
     const leftWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     leftWall.addShape( new CANNON.Plane() );
-    leftWall.position.x = -100;
+    leftWall.position.x = -50;
     leftWall.quaternion.setFromEuler(0,Math.PI/2,0,'XYZ');
     world.addBody( leftWall );
  
     const rightWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     rightWall.addShape( new CANNON.Plane() );
-    rightWall.position.x = 100;
+    rightWall.position.x = 50;
     rightWall.quaternion.setFromEuler(0,-Math.PI/2,0,'XYZ');
     world.addBody( rightWall );
 
@@ -551,7 +551,7 @@ function dificultad() {
     //parte fisica
     const groundMaterial = new CANNON.Material('groundMaterial')
 
-    const backWall = new CANNON.Body( {mass:1, material:groundMaterial} );
+    const backWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     backWall.addShape( new CANNON.Plane(2.5,4) );
     //backWall.position.z = -30;
     backWall.position.x = paredTrasera.position.x+30
@@ -559,7 +559,7 @@ function dificultad() {
     backWall.position.z = paredTrasera.position.z 
     world.addBody( backWall );
  
-    const frontWall = new CANNON.Body( {mass:1, material:groundMaterial} );
+    const frontWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     frontWall.addShape( new CANNON.Plane(2.5,4) );
     frontWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
     //frontWall.position.z = 30;
@@ -568,7 +568,7 @@ function dificultad() {
     frontWall.position.z = paredDelantera.position.z 
     world.addBody( frontWall );
  
-    const leftWall = new CANNON.Body( {mass:1, material:groundMaterial} );
+    const leftWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     leftWall.addShape( new CANNON.Plane(2.5,4) );
     //leftWall.position.x = -30;
     leftWall.quaternion.setFromEuler(0,Math.PI/2,0,'XYZ');
@@ -577,7 +577,7 @@ function dificultad() {
     leftWall.position.z = paredIzquierda.position.z
     world.addBody( leftWall );
  
-    const rightWall = new CANNON.Body( {mass:1, material:groundMaterial} );
+    const rightWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     rightWall.addShape( new CANNON.Plane(2.5,4) );
     //rightWall.position.x = 30;
     rightWall.quaternion.setFromEuler(0,-Math.PI/2,0,'XYZ');
