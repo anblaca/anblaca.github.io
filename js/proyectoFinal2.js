@@ -99,7 +99,7 @@ function loadScene() {
     //ground
     const sueloMesh = new THREE.Mesh(new THREE.PlaneGeometry(100, 100, 1, 1), phongMaterial)
     sueloMesh.rotation.x = -Math.PI / 2
-    suelo.position.y = -0.25;
+    sueloMesh.position.y = -0.25;
     sueloMesh.receiveShadow = true
     scene.add(sueloMesh)
 
