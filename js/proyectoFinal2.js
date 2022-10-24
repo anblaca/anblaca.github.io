@@ -668,7 +668,7 @@ function dificultad() {
     } else {
         console.log("entro a borrar")
         for( var i = scene.children.length - 1; i >= 0; i--) { 
-            obj = scene.children[i];
+            var obj = scene.children[i];
             scene.remove(obj); 
        }
     }
