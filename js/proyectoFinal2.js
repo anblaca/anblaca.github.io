@@ -635,7 +635,8 @@ function dificultad() {
     delanteroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
     delanteroWall.position.x = paredDelantera.position.x+30
     delanteroWall.position.y = paredDelantera.position.y
-    delanteroWall.position.z = paredDelantera.position.z 
+    delanteroWall.position.z = paredDelantera.position.z
+    delanteroWall.name = "delanteroWall"
     world.addBody( delanteroWall );
  
     izquieroWall = new CANNON.Body( {mass:0, material:groundMaterial} );
@@ -678,8 +679,7 @@ function dificultad() {
         for( var i = scene.children.length - 1; i >= 0; i--) { 
             var obj = scene.children[i];
             if(obj.name == "cubo" || obj.name == "jump" || obj.name == "bola") {
-                scene.remove(obj);
-                
+                scene.remove(obj);  
             }    
        }
     }
@@ -695,6 +695,7 @@ function calcularVictoria() {
 
     //if (cuentaMonedas == 10 && dificil == true && )
 }
+
 function render() {
     renderer.render(scene, camera)
 }
