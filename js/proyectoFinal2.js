@@ -10,16 +10,17 @@ var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,
 
 var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 
-var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, dificil, effectController
+var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, effectController
 var canvas, ctx, phongMaterial, sphereMesh,sphereBody, texstone,texball, texwall
 
 var  traseroWall, delanteroWall, izquieroWall, derechaWall
 var paredDelantera, paredDerecha, paredIzquierda, paredTrasera
 var cuentaMonedas = 0
 const timestep = 1/60
-const clock = new THREE.Clock()
-let delta
+
 const monedas = []
+
+var dificil = false
 
 const v = new THREE.Vector3()
 const groundMaterial = new CANNON.Material("groundMaterial");
@@ -537,9 +538,10 @@ function setupGUI()
                     if (click && dificil == false){
 
                         dificil = true;
-                        console.log(dificil)
+                        console.log("dificil")
                         dificultad()
                     } else {
+                        console.log("easy")
                         dificil = false
                         
                         dificultad()
