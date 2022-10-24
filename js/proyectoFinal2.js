@@ -55,7 +55,6 @@ function init() {
     chaseCamPivot.position.set(0, 2, 4)
     chaseCam.add(chaseCamPivot)
     scene.add(chaseCam)
-    dificil = false
     renderer = new THREE.WebGLRenderer()
     renderer.setSize(window.innerWidth, window.innerHeight)
     renderer.shadowMap.enabled = true
@@ -536,14 +535,12 @@ function setupGUI()
     h.add(effectController, "boton").name("Dificil").onChange(
         function(click) {
                     if (click && dificil == false){
-
                         dificil = true;
                         console.log("dificil")
                         dificultad()
                     } else {
                         console.log("easy")
                         dificil = false
-                        
                         dificultad()
                     } 
     
@@ -553,7 +550,6 @@ function setupGUI()
 
 function dificultad() {
     //añadir obstaculos
-    dificil = true
     const matStone = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texstone});
 
     if(dificil) {
