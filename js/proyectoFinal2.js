@@ -11,7 +11,9 @@ var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,
 var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, dificil, effectController
-var canvas, ctx, phongMaterial, sphereMesh,sphereBody, traseroWall,delanteroWall,izquieroWall,derechaWall, texstone,texball
+var canvas, ctx, phongMaterial, sphereMesh,sphereBody, texstone,texball
+
+var  traseroWall, delanteroWall, izquieroWall, derechaWall
 var paredDelantera, paredDerecha, paredIzquierda, paredTrasera
 var cuentaMonedas = 0
 const timestep = 1/60
@@ -268,7 +270,7 @@ function loadScene() {
         0.33,
         0.2
     )
-    wheelLFGeometry.rotateZ(Math.PI / 2)
+    wheelLFGeometry.rotation.z = Math.PI / 2
     wheelLFMesh = new THREE.Mesh(wheelLFGeometry, phongMaterial)
     wheelLFMesh.position.x = -1
     wheelLFMesh.position.y = 3
@@ -289,7 +291,7 @@ function loadScene() {
         0.33,
         0.2
     )
-    wheelRFGeometry.rotateZ(Math.PI / 2)
+    wheelRFGeometry.rotation.z = Math.PI / 2
     wheelRFMesh = new THREE.Mesh(wheelRFGeometry, phongMaterial)
     wheelRFMesh.position.y = 3
     wheelRFMesh.position.x = 1
@@ -310,7 +312,7 @@ function loadScene() {
         0.4,
         0.33
     )
-    wheelLBGeometry.rotateZ(Math.PI / 2)
+    wheelLBGeometry.rotation.z = Math.PI / 2
     wheelLBMesh = new THREE.Mesh(wheelLBGeometry, phongMaterial)
     wheelLBMesh.position.y = 3
     wheelLBMesh.position.x = -1
@@ -331,7 +333,7 @@ function loadScene() {
         0.4,
         0.33
     )
-    wheelRBGeometry.rotateZ(Math.PI / 2)
+    wheelRBGeometry.rotation.z = Math.PI / 2
     wheelRBMesh = new THREE.Mesh(wheelRBGeometry, phongMaterial)
     wheelRBMesh.position.y = 3
     wheelRBMesh.position.x = 1
@@ -493,8 +495,7 @@ function animate() {
 
     //drawScore()
     if (dificil == true) { 
-        console.log("entro a la pelota")
-        
+
         //MOVER LA PELOTA
         sphereMesh.position.y = sphereBody.position.y
         sphereMesh.position.z = sphereBody.position.z
@@ -651,7 +652,7 @@ function dificultad() {
     traseroWall.position.z = paredTrasera.position.z 
     world.addBody( traseroWall );
  
-    const delanteroWall = new CANNON.Body( {mass:1, material:groundMaterial} );
+    delanteroWall = new CANNON.Body( {mass:1, material:groundMaterial} );
     delanteroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
     delanteroWall.position.x = paredDelantera.position.x+30
     delanteroWall.position.y = paredDelantera.position.y
@@ -667,6 +668,7 @@ function dificultad() {
  
     derechaWall = new CANNON.Body( {mass:1, material:groundMaterial} );
     derechaWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
+
     derechaWall.position.x = paredDerecha.position.x+30
     derechaWall.position.y = paredDerecha.position.y
     derechaWall.position.z = paredDerecha.position.z
@@ -675,7 +677,7 @@ function dificultad() {
     //añadir una pelota
     const matball = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texball})
     const sphereGeometry = new THREE.SphereGeometry(0.5, 8, 8)
-    sphereMesh = new THREE.Mesh(sphereGeometry, matball)
+    sphereMesh = new THREE.Mesh(sphereGeometry, phongMaterial)
     sphereMesh.position.x = 0
     sphereMesh.position.y = 0.25
     //sphereMesh.position.z = Math.random() * 10 - 5
