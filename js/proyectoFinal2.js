@@ -11,7 +11,7 @@ var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,
 var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, dificil, effectController
-var canvas, ctx, phongMaterial, sphereMesh,sphereBody, texstone,texball
+var canvas, ctx, phongMaterial, sphereMesh,sphereBody, texstone,texball, texwall
 
 var  traseroWall, delanteroWall, izquieroWall, derechaWall
 var paredDelantera, paredDerecha, paredIzquierda, paredTrasera
@@ -97,7 +97,9 @@ function loadScene() {
 
     texstone = new THREE.TextureLoader().load(path+"stone.jpg");
     texball = new THREE.TextureLoader().load(path+"ball.jpg");
-
+    texwall = new THREE.TextureLoader().load(path+"muro.jpg");
+    //texwall.repeat.set(4,3);
+    //texwall.wrapS= texsuelo.wrapT = THREE.RepeatWrapping;
     // Habitacion
     const paredes = [];
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
@@ -115,7 +117,7 @@ function loadScene() {
     const habitacion = new THREE.Mesh( new THREE.BoxGeometry(100,100,100),paredes);
     scene.add(habitacion);
 
-    scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 );
+    //scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 );
     //const entorno = [ path+"posx.jpg", path+"negx.jpg",
         //               path+"posy.jpg", path+"negy.jpg",
       //                 path+"posz.jpg", path+"negz.jpg"];
@@ -192,10 +194,6 @@ function loadScene() {
             restitution: 0.7 });
         world.addContactMaterial(sphereGroundContactMaterial);
     
-    const carSphereContactMaterial = new CANNON.ContactMaterial(groundMaterial,materialEsfera,
-        { friction: 0.7, 
-            restitution: 0.7 });
-        world.addContactMaterial(sphereGroundContactMaterial);
 
     // Paredes
     const backWall = new CANNON.Body( {mass:0, material:groundMaterial} );
@@ -223,7 +221,8 @@ function loadScene() {
 
 
     //dibujar monedas aleatoriamente
-    const matCoin = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texcoin});
+    const matCoin = new THREE.MeshPhongMaterial({color:"rgb(150,150,150)",map:texcoin, specular:'gray',
+    shininess: 30,});
 
     for (let i = 0; i < 10; i++) {
         moneda = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.5, 8, 1), matCoin)
@@ -587,28 +586,29 @@ function dificultad() {
     //construir muros pequeños juntos y una pelota en medio
     //parte visual
     //ground
+    const matsuelo = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texwall});
     //-----------------
-    paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), rojo)
+    paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
     paredIzquierda.position.x = -7.5
     //paredIzquierda.position.x = -30
     paredIzquierda.receiveShadow = true
     paredIzquierda.castShadow = true
     paredIzquierda.rotation.y = Math.PI/2
     //-----------------------------------
-    paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), azul)
+    paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
     paredDerecha.position.x = 7.5
     //paredDerecha.position.x = -25
     paredDerecha.receiveShadow = true
     paredDerecha.castShadow = true
     paredDerecha.rotation.y = -Math.PI/2
     //-----------------------------------
-    paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), amarillo)
+    paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
     paredDelantera.position.z = 7.5
     //paredDelantera.position.x = -26.5
     paredDelantera.receiveShadow = true
     paredDelantera.castShadow = true
     //---------------------------------
-    paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), negro)
+    paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
     paredTrasera.position.z = -7.5
     //paredTrasera.position.x = -30
     paredTrasera.receiveShadow = true
@@ -624,7 +624,6 @@ function dificultad() {
     scene.add(cubo)
 
     //parte fisica
-    //const groundMaterial = new CANNON.Material('groundMaterial')
 
     traseroWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     traseroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
@@ -674,6 +673,7 @@ function dificultad() {
     //sphereBody.position.z = sphereMesh.position.z
     world.addBody(sphereBody)
     } else {
+
         sphereBody.visible = false;
         izquieroWall.visible = false
         derechaWall.visible = false
@@ -682,6 +682,16 @@ function dificultad() {
     }
 }
 
+function calcularVictoria() {
+
+
+    if (cuentaMonedas == 10 &&  dificil == false) {
+        console.log("Victoria!")
+    
+    }
+
+    //if (cuentaMonedas == 10 && dificil == true && )
+}
 function render() {
     renderer.render(scene, camera)
 }
