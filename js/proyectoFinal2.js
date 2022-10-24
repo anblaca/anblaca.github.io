@@ -11,7 +11,7 @@ var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,
 var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, dificil, effectController
-var canvas, ctx, phongMaterial, sphereMesh,sphereBody, traseroWall,delanteroWall,izquieroWall,derechaWall, texstone
+var canvas, ctx, phongMaterial, sphereMesh,sphereBody, traseroWall,delanteroWall,izquieroWall,derechaWall, texstone,texball
 var cuentaMonedas = 0
 const timestep = 1/60
 const clock = new THREE.Clock()
@@ -93,12 +93,30 @@ function loadScene() {
     texsuelo.wrapS= texsuelo.wrapT = THREE.RepeatWrapping;
 
     texstone = new THREE.TextureLoader().load(path+"stone.jpg");
-    //texsuelo.repeat.set(4,3);
-    //texsuelo.wrapS= texsuelo.wrapT = THREE.RepeatWrapping;
+    texball = new THREE.TextureLoader().load(path+"ball.jpg");
+
+    // Habitacion
+    const paredes = [];
+    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                  map: new THREE.TextureLoader().load(path+"posx.jpg")}) );
+    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                  map: new THREE.TextureLoader().load(path+"negx.jpg")}) );
+    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                  map: new THREE.TextureLoader().load(path+"posy.jpg")}) );
+    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                  map: new THREE.TextureLoader().load(path+"negy.jpg")}) );
+    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                  map: new THREE.TextureLoader().load(path+"posz.jpg")}) );
+    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                  map: new THREE.TextureLoader().load(path+"negz.jpg")}) );
+    const habitacion = new THREE.Mesh( new THREE.BoxGeometry(100,100,100),paredes);
+    scene.add(habitacion);
+
 
     //const entorno = [ path+"posx.jpg", path+"negx.jpg",
-      //                 path+"posy.jpg", path+"negy.jpg",
-        //               path+"posz.jpg", path+"negz.jpg"];
+        //               path+"posy.jpg", path+"negy.jpg",
+      //                 path+"posz.jpg", path+"negz.jpg"];
+
     //const texesfera = new THREE.CubeTextureLoader().load(entorno);
  
     //const matcubo = new THREE.MeshLambertMaterial({color:'yellow',map:texcubo});
@@ -631,11 +649,11 @@ function dificultad() {
     world.addBody( derechaWall );
 
     //añadir una pelota
-
+    const matball = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texball})
     const sphereGeometry = new THREE.SphereGeometry(0.5, 8, 8)
-    sphereMesh = new THREE.Mesh(sphereGeometry, phongMaterial)
+    sphereMesh = new THREE.Mesh(sphereGeometry, matball)
     sphereMesh.position.x = 0
-    //sphereMesh.position.y = 0
+    sphereMesh.position.y = 0.25
     //sphereMesh.position.z = Math.random() * 10 - 5
     sphereMesh.castShadow = true
     sphereMesh.receiveShadow = true
@@ -644,8 +662,8 @@ function dificultad() {
     const sphereShape = new CANNON.Sphere(0.5)
     sphereBody = new CANNON.Body({ mass: 1, material: materialEsfera})
     sphereBody.addShape(sphereShape)
-    
-    //sphereBody.position.y = sphereMesh.position.y
+
+    sphereBody.position.y = sphereMesh.position.y
     //sphereBody.position.z = sphereMesh.position.z
     world.addBody(sphereBody)
     } else {
