@@ -529,11 +529,7 @@ function setupGUI()
 	// Definicion de los controles
 
     effectController = {
-        dificil: false,
-        pelota: false,
-        animacion: function (){
-            animate();
-        }
+        boton: false,
     };
 
 	// Creacion interfaz
@@ -545,7 +541,7 @@ function setupGUI()
     //h.add(effectController, "dificil").name("Dificultad").onChange(dificultad);
     //Control del cambio de color del mesh
 
-    h.add(effectController, "dificil").name("Dificil").onChange(
+    h.add(effectController, "boton").name("Dificil").onChange(
         function(click) {
                     if (click){
                        dificil = true;
