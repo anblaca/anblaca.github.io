@@ -559,6 +559,7 @@ function dificultad() {
         jump.position.x = Math.random() * 100 - 50
         jump.position.y = 0.25
         jump.position.z = Math.random() * 100 - 50
+        jump.name = "jump"
         scene.add(jump)
 
         const cylinderShape = new CANNON.Cylinder(0.01, 1, 0.5, 5)
@@ -587,6 +588,7 @@ function dificultad() {
     paredIzquierda.receiveShadow = true
     paredIzquierda.castShadow = true
     paredIzquierda.rotation.y = Math.PI/2
+    paredIzquierda.name = "paredIzquierda"
     //-----------------------------------
     paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
     paredDerecha.position.x = 7.5
@@ -594,20 +596,24 @@ function dificultad() {
     paredDerecha.receiveShadow = true
     paredDerecha.castShadow = true
     paredDerecha.rotation.y = -Math.PI/2
+    paredDerecha.name = "paredDerecha"
     //-----------------------------------
     paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
     paredDelantera.position.z = 7.5
     //paredDelantera.position.x = -26.5
     paredDelantera.receiveShadow = true
     paredDelantera.castShadow = true
+    paredDelantera.name = "paredDelantera"
     //---------------------------------
     paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
     paredTrasera.position.z = -7.5
     //paredTrasera.position.x = -30
     paredTrasera.receiveShadow = true
     paredTrasera.castShadow = true
-    
+    paredTrasera.name = "paredTrasera"
+
     var cubo = new THREE.Object3D()
+    cubo.name = "cubo"
     cubo.add(paredDelantera)
     cubo.add(paredDerecha)
     cubo.add(paredIzquierda)
@@ -669,8 +675,12 @@ function dificultad() {
         console.log("entro a borrar")
         for( var i = scene.children.length - 1; i >= 0; i--) { 
             var obj = scene.children[i];
-            console.log(obj.name)
-            //scene.remove(obj); 
+            if(obj.name == "cubo") {
+                console.log("borro El cubo")
+                scene.remove(obj); 
+            }
+
+           
        }
     }
 }
