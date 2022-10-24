@@ -97,10 +97,11 @@ function init() {
       );
     mesh1.position.set(25, 5, -5);
     mesh1.rotation.x = -0.9;
-    var texto = new THREE.Shape.add(mesh1);
+
+    //var texto = new THREE.Shape.add(mesh1);
     // Note that mesh1 gets added to the shape and not to the scene
 
-   scene.add(texto)
+   scene.add(mesh1)
 
     //canvas = document.getElementById("canvas");
     //ctx = canvas.getContext("2d");
