@@ -265,12 +265,8 @@ function loadScene() {
     world.addBody(carBody)
     
     //front left wheel
-    const wheelLFGeometry = new THREE.CylinderGeometry(
-        0.33,
-        0.33,
-        0.2
-    )
-    wheelLFGeometry.rotation.z = Math.PI / 2
+    const wheelLFGeometry = new THREE.CylinderGeometry(0.33,0.33,0.2) 
+    wheelLFGeometry.rotateZ(Math.PI / 2)
     wheelLFMesh = new THREE.Mesh(wheelLFGeometry, phongMaterial)
     wheelLFMesh.position.x = -1
     wheelLFMesh.position.y = 3
@@ -286,12 +282,8 @@ function loadScene() {
     world.addBody(wheelLFBody)
     
     //front right wheel
-    const wheelRFGeometry = new THREE.CylinderGeometry(
-        0.33,
-        0.33,
-        0.2
-    )
-    wheelRFGeometry.rotation.z = Math.PI / 2
+    const wheelRFGeometry = new THREE.CylinderGeometry(0.33,0.33,0.2)
+    wheelRFGeometry.rotateZ(Math.PI / 2)
     wheelRFMesh = new THREE.Mesh(wheelRFGeometry, phongMaterial)
     wheelRFMesh.position.y = 3
     wheelRFMesh.position.x = 1
@@ -307,12 +299,8 @@ function loadScene() {
     world.addBody(wheelRFBody)
     
     //back left wheel
-    const wheelLBGeometry = new THREE.CylinderGeometry(
-        0.4,
-        0.4,
-        0.33
-    )
-    wheelLBGeometry.rotation.z = Math.PI / 2
+    const wheelLBGeometry = new THREE.CylinderGeometry(0.4,0.4,0.33)
+    wheelLBGeometry.rotateZ(Math.PI / 2)
     wheelLBMesh = new THREE.Mesh(wheelLBGeometry, phongMaterial)
     wheelLBMesh.position.y = 3
     wheelLBMesh.position.x = -1
@@ -328,12 +316,9 @@ function loadScene() {
     world.addBody(wheelLBBody)
     
     //back right wheel
-    const wheelRBGeometry = new THREE.CylinderGeometry(
-        0.4,
-        0.4,
-        0.33
-    )
-    wheelRBGeometry.rotation.z = Math.PI / 2
+    const wheelRBGeometry = new THREE.CylinderGeometry(0.4,0.4,0.33)
+    
+    wheelRBGeometry.rotateZ(Math.PI / 2)
     wheelRBMesh = new THREE.Mesh(wheelRBGeometry, phongMaterial)
     wheelRBMesh.position.y = 3
     wheelRBMesh.position.x = 1
