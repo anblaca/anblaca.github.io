@@ -494,10 +494,9 @@ function animate() {
     //drawScore()
     if (dificil == true) { 
         console.log("entro a la pelota")
-        
-        sphereBody.position.y = sphereMesh.position.y
-        sphereBody.position.z = sphereMesh.position.z
-        sphereBody.position.x = sphereMesh.position.x
+        sphereMesh.position.y =sphereBody.position.y
+        sphereMesh.position.z = sphereBody.position.z
+        sphereMesh.position.x = sphereBody.position.x
 
     }
     
