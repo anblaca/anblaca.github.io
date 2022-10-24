@@ -78,16 +78,10 @@ function init() {
     
     //scene.add( sprite);
 
-    var text2 = document.createElement('div');
-    text2.style.position = 'absolute';
-    text2.style.zIndex = 1;    // if you still don't see the label, try uncommenting this
-    text2.style.width = 100;
-    text2.style.height = 100;
-    text2.style.backgroundColor = "blue";
-    text2.innerHTML = "hi there!";
-    text2.style.top = 200 +5
-    text2.style.left = 200 +5
-    document.body.appendChild(text2);
+    var textShapes = THREE.FontUtils.generateShapes( text, options );
+    var text = new THREE.ShapeGeometry( textShapes );
+    var textMesh = new THREE.Mesh( text, new THREE.MeshBasicMaterial( { color: 0xff0000 } ) ) ;
+    scene.add(textMesh);
 
     //canvas = document.getElementById("canvas");
     //ctx = canvas.getContext("2d");
