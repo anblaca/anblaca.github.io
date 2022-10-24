@@ -492,7 +492,14 @@ function animate() {
     if (dificil == true) { scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 ); }
 
     //drawScore()
-    if (dificil == true) { sphereBody.position.x = sphereMesh.position.x }
+    if (dificil == true) { 
+        console.log("entro a la pelota")
+        
+        sphereBody.position.y = sphereMesh.position.y
+        sphereBody.position.z = sphereMesh.position.z
+        sphereBody.position.x = sphereMesh.position.x
+
+    }
     
 
     TWEEN.update()
