@@ -541,7 +541,7 @@ function dificultad() {
     for (let i = 0; i < 100; i++) {
         const jump = new THREE.Mesh(new THREE.CylinderGeometry(0, 1, 0.5, 5), matStone)
         jump.position.x = Math.random() * 100 - 50
-        jump.position.y = 0.5
+        jump.position.y = 0.25
         jump.position.z = Math.random() * 100 - 50
         scene.add(jump)
 
