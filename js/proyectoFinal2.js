@@ -535,7 +535,9 @@ function setupGUI()
     h.add(effectController, "boton").name("Dificil").onChange(
         function(click) {
                     if (click && dificil == false){
-                       dificil = true;
+
+                        dificil = true;
+                        console.log(dificil)
                         dificultad()
                     } else {
                         dificil = false
@@ -666,7 +668,7 @@ function dificultad() {
     //sphereBody.position.z = sphereMesh.position.z
     world.addBody(sphereBody)
     } else {
-
+        console.log("entro a borrar")
         sphereBody.visible = false;
         izquieroWall.visible = false
         derechaWall.visible = false
