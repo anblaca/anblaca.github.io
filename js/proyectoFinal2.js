@@ -11,7 +11,7 @@ var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,
 var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, dificil, effectController
-var canvas, ctx, phongMaterial, sphereMesh,sphereBody, traseroWall,delanteroWall,izquieroWall,derechaWall
+var canvas, ctx, phongMaterial, sphereMesh,sphereBody, traseroWall,delanteroWall,izquieroWall,derechaWall, texstone
 var cuentaMonedas = 0
 const timestep = 1/60
 const clock = new THREE.Clock()
@@ -84,6 +84,33 @@ function drawScore() {
 }
 
 function loadScene() {
+
+    // Materiales 
+    const path ="./images/";
+    const texcoin = new THREE.TextureLoader().load(path+"coin.png");
+    const texsuelo = new THREE.TextureLoader().load(path+"grassGround.jpg");
+    texsuelo.repeat.set(4,3);
+    texsuelo.wrapS= texsuelo.wrapT = THREE.RepeatWrapping;
+
+    texstone = new THREE.TextureLoader().load(path+"stone.jpg");
+    //texsuelo.repeat.set(4,3);
+    //texsuelo.wrapS= texsuelo.wrapT = THREE.RepeatWrapping;
+
+    //const entorno = [ path+"posx.jpg", path+"negx.jpg",
+      //                 path+"posy.jpg", path+"negy.jpg",
+        //               path+"posz.jpg", path+"negz.jpg"];
+    //const texesfera = new THREE.CubeTextureLoader().load(entorno);
+ 
+    //const matcubo = new THREE.MeshLambertMaterial({color:'yellow',map:texcubo});
+
+    //const matesfera = new THREE.MeshPhongMaterial({color:'white',
+      //                                              specular:'gray',
+        //                                            shininess: 30,
+          //                                          envMap: texesfera });
+
+    const matsuelo = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texsuelo});
+
+
     phongMaterial = new THREE.MeshPhongMaterial()
 
     world = new CANNON.World()
@@ -98,7 +125,7 @@ function loadScene() {
     wheelMaterial.restitution = 0.25
     
     //ground
-    const sueloMesh = new THREE.Mesh(new THREE.PlaneGeometry(100, 100, 1, 1), phongMaterial)
+    const sueloMesh = new THREE.Mesh(new THREE.PlaneGeometry(100, 100, 1, 1), matsuelo)
     sueloMesh.rotation.x = -Math.PI / 2
     sueloMesh.position.y = -0.25
     sueloMesh.receiveShadow = true
@@ -143,6 +170,11 @@ function loadScene() {
         { friction: 0.7, 
             restitution: 0.7 });
         world.addContactMaterial(sphereGroundContactMaterial);
+    
+    const carSphereContactMaterial = new CANNON.ContactMaterial(groundMaterial,materialEsfera,
+        { friction: 0.7, 
+            restitution: 0.7 });
+        world.addContactMaterial(sphereGroundContactMaterial);
 
     // Paredes
     const backWall = new CANNON.Body( {mass:0, material:groundMaterial} );
@@ -170,9 +202,10 @@ function loadScene() {
 
 
     //dibujar monedas aleatoriamente
+    const matCoin = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texcoin});
 
     for (let i = 0; i < 10; i++) {
-        moneda = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.5, 8, 1), phongMaterial)
+        moneda = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.5, 8, 1), matCoin)
         moneda.receiveShadow = true
         moneda.castShadow = true
         monedas.push(moneda)
@@ -181,7 +214,7 @@ function loadScene() {
         moneda.position.z = Math.random() * 100 - 50
         moneda.rotation.x = Math.PI / 2
         scene.add(moneda)
-        const giro = new TWEEN.Tween( moneda.rotation ).to( {x:0, y:2*Math.PI, z:0}, 3000 );
+        const giro = new TWEEN.Tween( moneda.rotation ).to( {x:0, y:Math.PI/2, z:0}, 3000 );
         giro.repeat(Infinity);
         giro.start();
         //mundo fisico
@@ -203,7 +236,7 @@ function loadScene() {
     carBodyMesh.add(chaseCam)
     
     const carBodyShape = new CANNON.Box(new CANNON.Vec3(0.5, 0.5, 1))
-    carBody = new CANNON.Body({ mass: 1 })
+    carBody = new CANNON.Body({ mass: 1, material: groundMaterial })
     carBody.addShape(carBodyShape)
     carBody.position.x = carBodyMesh.position.x
     carBody.position.y = carBodyMesh.position.y
@@ -501,31 +534,32 @@ function setupGUI()
 function dificultad() {
     //añadir obstaculos
     dificil = true
+    const matStone = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texstone});
+
     if(dificil) {
-    //for (let i = 0; i < 100; i++) {
-      //  const jump = new THREE.Mesh(
-        //    new THREE.CylinderGeometry(0, 1, 0.5, 5),
-         //   phongMaterial
-        //)
-        //jump.position.x = Math.random() * 100 - 50
-        //jump.position.y = 0.5
-        //jump.position.z = Math.random() * 100 - 50
-        //scene.add(jump)
+        
+    for (let i = 0; i < 100; i++) {
+        const jump = new THREE.Mesh(new THREE.CylinderGeometry(0, 1, 0.5, 5), matStone)
+        jump.position.x = Math.random() * 100 - 50
+        jump.position.y = 0.5
+        jump.position.z = Math.random() * 100 - 50
+        scene.add(jump)
 
-        //const cylinderShape = new CANNON.Cylinder(0.01, 1, 0.5, 5)
-        //const cylinderBody = new CANNON.Body({ mass: 0 })
-        //cylinderBody.addShape(cylinderShape, new CANNON.Vec3())
-        //cylinderBody.position.x = jump.position.x
-        //cylinderBody.position.y = jump.position.y
-        //cylinderBody.position.z = jump.position.z
-        //world.addBody(cylinderBody)
-    //}
+        const cylinderShape = new CANNON.Cylinder(0.01, 1, 0.5, 5)
+        const cylinderBody = new CANNON.Body({ mass: 0 })
+        cylinderBody.addShape(cylinderShape, new CANNON.Vec3())
+        cylinderBody.position.x = jump.position.x
+        cylinderBody.position.y = jump.position.y
+        cylinderBody.position.z = jump.position.z
+        world.addBody(cylinderBody)
+    }
 
-        //scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 );
-        var rojo = new THREE.MeshBasicMaterial({ color: 'red', wireframe: true });
-        var azul = new THREE.MeshBasicMaterial({ color: 'blue', wireframe: true });
-        var amarillo = new THREE.MeshBasicMaterial({ color: 'yellow', wireframe: true });
-        var negro = new THREE.MeshBasicMaterial({ color: 'black', wireframe: true });
+    //scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 );
+    var rojo = new THREE.MeshBasicMaterial({ color: 'red', wireframe: true });
+    var azul = new THREE.MeshBasicMaterial({ color: 'blue', wireframe: true });
+    var amarillo = new THREE.MeshBasicMaterial({ color: 'yellow', wireframe: true });
+    var negro = new THREE.MeshBasicMaterial({ color: 'black', wireframe: true });
+
     //construir muros pequeños juntos y una pelota en medio
     //parte visual
     //ground
@@ -608,7 +642,7 @@ function dificultad() {
     scene.add(sphereMesh)
 
     const sphereShape = new CANNON.Sphere(0.5)
-    sphereBody = new CANNON.Body({ mass: 1 })
+    sphereBody = new CANNON.Body({ mass: 1, material: materialEsfera})
     sphereBody.addShape(sphereShape)
     
     //sphereBody.position.y = sphereMesh.position.y
