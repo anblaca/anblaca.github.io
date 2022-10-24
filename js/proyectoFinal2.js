@@ -667,11 +667,10 @@ function dificultad() {
     world.addBody(sphereBody)
     } else {
         console.log("entro a borrar")
-        sphereBody.visible = false;
-        izquieroWall.visible = false
-        derechaWall.visible = false
-        delanteroWall.visible = false
-        traseroWall.visible = false
+        for( var i = scene.children.length - 1; i >= 0; i--) { 
+            obj = scene.children[i];
+            scene.remove(obj); 
+       }
     }
 }
 
