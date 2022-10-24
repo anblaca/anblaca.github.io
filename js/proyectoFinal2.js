@@ -20,6 +20,7 @@ const timestep = 1/60
 
 const monedas = []
 const cylyndersBody = []
+const L = 103;
 
 var dificil = false
 
@@ -60,48 +61,35 @@ function init() {
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     document.body.appendChild(renderer.domElement)
     
-    const canvas = document.createElement( "canvas" );
+    //const canvas = document.createElement( "canvas" );
     //canvas.width = 1024;
     //canvas.height = 1024;
 
-    const ctx = canvas.getContext( "2d" );
-    ctx.font = "32pt LucidaSansUnicode";
-    ctx.fillStyle = "#000000";
-    ctx.textAlign = "left";
-    ctx.textBaseline = "top";   
-    ctx.fillText("Score: " + cuentaMonedas, 0, 0);
 
-    const tex = new THREE.Texture( canvas );
-    tex.needsUpdate = true;
-    const spriteMat = new THREE.SpriteMaterial( { map: tex } );
-    const sprite = new THREE.Sprite( spriteMat );
-    
-    scene.add( sprite);
-
-    //var canvas1 = document.createElement('canvas');
-    //var context1 = canvas1.getContext('2d');
-    //context1.font = "Bold 10px Arial";
-    //context1.fillStyle = "rgba(255,0,0,1)";
-    //context1.fillText('Hello, world!', 0, 60);
+    var canvas1 = document.createElement('canvas');
+    var context1 = canvas1.getContext('2d');
+    context1.font = "Bold 10px Arial";
+    context1.fillStyle = "rgba(255,0,0,1)";
+    context1.fillText('Hello, world!', 0, 60);
 
     // canvas contents will be used for a texture
-    //var texture1 = new THREE.Texture(canvas1)
-    //texture1.needsUpdate = true;
+    var texture1 = new THREE.Texture(canvas1)
+    texture1.needsUpdate = true;
 
-    //var material1 = new THREE.MeshBasicMaterial({ map: texture1, side: THREE.DoubleSide });
-    //material1.transparent = true;
+    var material1 = new THREE.MeshBasicMaterial({ map: texture1, side: THREE.DoubleSide });
+    material1.transparent = true;
 
-    //var mesh1 = new THREE.Mesh(
-      //  new THREE.PlaneGeometry(50, 10),
-        //material1
-      //);
-    //mesh1.position.set(25, 5, -5);
+    var mesh1 = new THREE.Mesh(
+        new THREE.PlaneGeometry(50, 10),
+        material1
+      );
+    mesh1.position.set(0, 0, 0);
     //mesh1.rotation.x = -0.9;
 
-    //var texto = new THREE.Shape.add(mesh1);
+    var texto = new THREE.Shape.add(mesh1);
     // Note that mesh1 gets added to the shape and not to the scene
 
-   //scene.add(mesh1)
+   scene.add(mesh1)
 
     //canvas = document.getElementById("canvas");
     //ctx = canvas.getContext("2d");
@@ -117,6 +105,19 @@ function init() {
     render()
     }
 
+}
+
+function setCameras(ar) {
+    //configurar planta alsado, perfil y perspectiva 
+    var camaraOrtografica
+    camaraOrtografica = new THREE.OrthographicCamera(-L, L, L, -L, -100, 100);
+    camaraOrtografica.lookAt(new THREE.Vector3(0, 0, 0));
+
+    camaraPlanta = camaraOrtografica.clone()
+    camaraPlanta.position.set(0, L, 0);
+    camaraPlanta.lookAt(new THREE.Vector3(0, 0, 0));
+    camaraPlanta.up = new THREE.Vector3(0, 0, -1);
+    scene.add(camaraPlanta)
 }
 
 function drawScore() {
