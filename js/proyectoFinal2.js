@@ -11,12 +11,13 @@ var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,
 var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, effectController
-var canvas, ctx, phongMaterial, sphereMesh,sphereBody, texstone,texball, texwall
+var ctx, phongMaterial, sphereMesh,sphereBody, texstone,texball, texwall
 
 var  traseroWall, delanteroWall, izquieroWall, derechaWall
 var paredDelantera, paredDerecha, paredIzquierda, paredTrasera
 var cuentaMonedas = 0
 const timestep = 1/60
+var camaraPlanta
 
 const monedas = []
 const cylyndersBody = []
@@ -65,6 +66,7 @@ function init() {
     //canvas.width = 1024;
     //canvas.height = 1024;
 
+    setCameras(window.innerWidth / window.innerHeight);
 
     var canvas1 = document.createElement('canvas');
     var context1 = canvas1.getContext('2d');
@@ -83,6 +85,7 @@ function init() {
         new THREE.PlaneGeometry(50, 10),
         material1
       );
+    
     mesh1.position.set(0, 0, 0);
     //mesh1.rotation.x = -0.9;
 
@@ -98,7 +101,6 @@ function init() {
 
     window.addEventListener('resize', onWindowResize, false)
 
-    
 
 }
 
@@ -107,6 +109,14 @@ function onWindowResize() {
     camera.updateProjectionMatrix()
     renderer.setSize(window.innerWidth, window.innerHeight)
     render()
+
+    //ortografica
+    camaraPlanta.left = -L;
+    camaraPlanta.right = L;
+    camaraPlanta.bottom = -L;
+    camaraPlanta.top = L;
+
+    camaraPlanta.updateProjectionMatrix();
 }
 
 function setCameras(ar) {
@@ -753,6 +763,9 @@ function calcularVictoria() {
 
 function render() {
     renderer.render(scene, camera)
+
+    renderer.setViewport(0,window.innerHeight - window.innerHeight/4, Math.min(window.innerWidth, window.innerHeight)/4, Math.min(window.innerWidth, window.innerHeight)/4);
+    renderer.render(scene,camaraPlanta);
 }
 
 init()
