@@ -27,14 +27,12 @@ const v = new THREE.Vector3()
 const groundMaterial = new CANNON.Material("groundMaterial");
 const materialEsfera = new CANNON.Material("sphereMaterial");
 
-
-
-
 function init() {
     scene = new THREE.Scene()
 
     // Luces
     scene.add( new THREE.AmbientLight( 0x222222 ) );
+
 	const light = new THREE.DirectionalLight( 0xFFFFFF, 0.6 );
 	light.position.set( 25, 50, 25 );
 	light.castShadow = true;
@@ -71,7 +69,7 @@ function init() {
     ctx.fillStyle = "#000000";
     ctx.textAlign = "left";
     ctx.textBaseline = "top";   
-    ctx.fillText("Score: " + cuentaMonedas, 60, 60);
+    ctx.fillText("Score: " + cuentaMonedas, 0, 0);
 
     const tex = new THREE.Texture( canvas );
     tex.needsUpdate = true;
