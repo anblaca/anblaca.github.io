@@ -682,7 +682,10 @@ function dificultad() {
                 scene.remove(obj);  
             }    
        }
-       console.log(world.children)
+       //console.log(world.remove)
+       world.removeBody(izquieroWall)
+       world.removeBody(derechaWall)
+       world.removeBody(sphereBody)
        //for( var i = world.children.length - 1; i >= 0; i--) { 
          //   var obj = scene.children[i]
            // if(obj.name == "delanteroWall" ) {
