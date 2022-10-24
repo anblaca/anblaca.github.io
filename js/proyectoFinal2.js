@@ -66,7 +66,7 @@ function init() {
     //canvas.width = 1024;
     //canvas.height = 1024;
 
-    setCameras(window.innerWidth / window.innerHeight);
+    //setCameras(window.innerWidth / window.innerHeight);
 
     var canvas1 = document.createElement('canvas');
     var context1 = canvas1.getContext('2d');
@@ -111,12 +111,12 @@ function onWindowResize() {
     render()
 
     //ortografica
-    camaraPlanta.left = -L;
-    camaraPlanta.right = L;
-    camaraPlanta.bottom = -L;
-    camaraPlanta.top = L;
+    //camaraPlanta.left = -L;
+    //camaraPlanta.right = L;
+    //camaraPlanta.bottom = -L;
+    //camaraPlanta.top = L;
 
-    camaraPlanta.updateProjectionMatrix();
+    //camaraPlanta.updateProjectionMatrix();
 }
 
 function setCameras(ar) {
