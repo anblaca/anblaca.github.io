@@ -564,6 +564,9 @@ function animate() {
     }
     camera.position.lerpVectors(camera.position, v, 0.05)
 
+    renderer.setViewport(0,window.innerHeight - window.innerHeight/4, Math.min(window.innerWidth, window.innerHeight)/4, Math.min(window.innerWidth, window.innerHeight)/4);
+    
+
     render()
 
 }
@@ -764,8 +767,8 @@ function calcularVictoria() {
 function render() {
     renderer.render(scene, camera)
 
-    renderer.setViewport(0,window.innerHeight - window.innerHeight/4, Math.min(window.innerWidth, window.innerHeight)/4, Math.min(window.innerWidth, window.innerHeight)/4);
     renderer.render(scene,camaraPlanta);
+    
 }
 
 init()
