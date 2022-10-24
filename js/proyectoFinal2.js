@@ -86,7 +86,7 @@ function init() {
     mesh1.position.set(0, 0, 0);
     //mesh1.rotation.x = -0.9;
 
-    var texto = new THREE.Shape.add(mesh1);
+    //var texto = new THREE.Shape.add(mesh1);
     // Note that mesh1 gets added to the shape and not to the scene
 
    scene.add(mesh1)
@@ -98,13 +98,15 @@ function init() {
 
     window.addEventListener('resize', onWindowResize, false)
 
-    function onWindowResize() {
+    
+
+}
+
+function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight
     camera.updateProjectionMatrix()
     renderer.setSize(window.innerWidth, window.innerHeight)
     render()
-    }
-
 }
 
 function setCameras(ar) {
