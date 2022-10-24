@@ -60,23 +60,35 @@ function init() {
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     document.body.appendChild(renderer.domElement)
     
-    const canvas = document.createElement( "canvas" );
-    canvas.width = 1024;
-    canvas.height = 1024;
+    //const canvas = document.createElement( "canvas" );
+    //canvas.width = 1024;
+    //canvas.height = 1024;
 
-    const ctx = canvas.getContext( "2d" );
-    ctx.font = "32pt LucidaSansUnicode";
-    ctx.fillStyle = "#000000";
-    ctx.textAlign = "left";
-    ctx.textBaseline = "top";   
-    ctx.fillText("Score: " + cuentaMonedas, 0, 0);
+    //const ctx = canvas.getContext( "2d" );
+    //ctx.font = "32pt LucidaSansUnicode";
+    //ctx.fillStyle = "#000000";
+    //ctx.textAlign = "left";
+    //ctx.textBaseline = "top";   
+    //ctx.fillText("Score: " + cuentaMonedas, 0, 0);
 
-    const tex = new THREE.Texture( canvas );
-    tex.needsUpdate = true;
-    const spriteMat = new THREE.SpriteMaterial( { map: tex } );
-    const sprite = new THREE.Sprite( spriteMat );
+    //const tex = new THREE.Texture( canvas );
+    //tex.needsUpdate = true;
+    //const spriteMat = new THREE.SpriteMaterial( { map: tex } );
+    //const sprite = new THREE.Sprite( spriteMat );
     
-    scene.add( sprite);
+    //scene.add( sprite);
+
+    var text2 = document.createElement('div');
+    text2.style.position = 'absolute';
+    //text2.style.zIndex = 1;    // if you still don't see the label, try uncommenting this
+    text2.style.width = 100;
+    text2.style.height = 100;
+    text2.style.backgroundColor = "blue";
+    text2.innerHTML = "hi there!";
+    text2.style.top = 200 +5
+    text2.style.left = 200 +5
+    document.body.appendChild(text2);
+
     //canvas = document.getElementById("canvas");
     //ctx = canvas.getContext("2d");
 
