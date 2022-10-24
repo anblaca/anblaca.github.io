@@ -317,7 +317,7 @@ function loadScene() {
     
     //back right wheel
     const wheelRBGeometry = new THREE.CylinderGeometry(0.4,0.4,0.33)
-    
+
     wheelRBGeometry.rotateZ(Math.PI / 2)
     wheelRBMesh = new THREE.Mesh(wheelRBGeometry, phongMaterial)
     wheelRBMesh.position.y = 3
@@ -487,21 +487,21 @@ function animate() {
         sphereMesh.position.x = sphereBody.position.x
 
         // MOVER LAS PAREDES
-        paredTrasera.position.x = traseroWall.position.x
-        paredTrasera.position.y = traseroWall.position.y
-        paredTrasera.position.z = traseroWall.position.z
+        //paredTrasera.position.x = traseroWall.position.x
+        //paredTrasera.position.y = traseroWall.position.y
+        //paredTrasera.position.z = traseroWall.position.z
 
-        paredDelantera.position.x = delanteroWall.position.x
-        paredDelantera.position.y = delanteroWall.position.y
-        paredDelantera.position.z = delanteroWall.position.z
+        //paredDelantera.position.x = delanteroWall.position.x
+        //paredDelantera.position.y = delanteroWall.position.y
+        //paredDelantera.position.z = delanteroWall.position.z
 
-        paredDerecha.position.x = derechaWall.position.x
-        paredDerecha.position.y = derechaWall.position.y
-        paredDerecha.position.z = derechaWall.position.z
+        //paredDerecha.position.x = derechaWall.position.x
+        //paredDerecha.position.y = derechaWall.position.y
+        //paredDerecha.position.z = derechaWall.position.z
 
-        paredIzquierda.position.x = izquieroWall.position.x 
-        paredIzquierda.position.x = izquieroWall.position.y
-        paredIzquierda.position.x = izquieroWall.position.z 
+        //paredIzquierda.position.x = izquieroWall.position.x 
+        //paredIzquierda.position.x = izquieroWall.position.y
+        //paredIzquierda.position.x = izquieroWall.position.z 
     }
     
 
@@ -630,28 +630,28 @@ function dificultad() {
     //parte fisica
     //const groundMaterial = new CANNON.Material('groundMaterial')
 
-    traseroWall = new CANNON.Body( {mass:1, material:groundMaterial} );
+    traseroWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     traseroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
     traseroWall.position.x = paredTrasera.position.x+30
     traseroWall.position.y = paredTrasera.position.y
     traseroWall.position.z = paredTrasera.position.z 
     world.addBody( traseroWall );
  
-    delanteroWall = new CANNON.Body( {mass:1, material:groundMaterial} );
+    delanteroWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     delanteroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
     delanteroWall.position.x = paredDelantera.position.x+30
     delanteroWall.position.y = paredDelantera.position.y
     delanteroWall.position.z = paredDelantera.position.z 
     world.addBody( delanteroWall );
  
-    izquieroWall = new CANNON.Body( {mass:1, material:groundMaterial} );
+    izquieroWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     izquieroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
     izquieroWall.position.x = paredIzquierda.position.x+30
     izquieroWall.position.y = paredIzquierda.position.y
     izquieroWall.position.z = paredIzquierda.position.z
     world.addBody( izquieroWall );
  
-    derechaWall = new CANNON.Body( {mass:1, material:groundMaterial} );
+    derechaWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     derechaWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
 
     derechaWall.position.x = paredDerecha.position.x+30
