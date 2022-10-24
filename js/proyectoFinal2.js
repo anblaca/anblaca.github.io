@@ -674,7 +674,7 @@ function dificultad() {
     //sphereBody.position.z = sphereMesh.position.z
     world.addBody(sphereBody)
     } else {
-      
+
         console.log("entro a borrar")
         for( var i = scene.children.length - 1; i >= 0; i--) { 
             var obj = scene.children[i];
@@ -682,13 +682,13 @@ function dificultad() {
                 scene.remove(obj);  
             }    
        }
-
-       for( var i = world.children.length - 1; i >= 0; i--) { 
-            var obj = scene.children[i]
-            if(obj.name == "delanteroWall" ) {
-                world.remove(obj);  
-            }    
-        }
+       console.log(world.children)
+       //for( var i = world.children.length - 1; i >= 0; i--) { 
+         //   var obj = scene.children[i]
+           // if(obj.name == "delanteroWall" ) {
+             //   world.remove(obj);  
+            //}    
+        //}
     }
 }
 
