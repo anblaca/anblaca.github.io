@@ -12,6 +12,7 @@ var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, dificil, effectController
 var canvas, ctx, phongMaterial, sphereMesh,sphereBody, traseroWall,delanteroWall,izquieroWall,derechaWall, texstone,texball
+var paredDelantera, paredDerecha, paredIzquierda, paredTrasera
 var cuentaMonedas = 0
 const timestep = 1/60
 const clock = new THREE.Clock()
@@ -493,11 +494,28 @@ function animate() {
     //drawScore()
     if (dificil == true) { 
         console.log("entro a la pelota")
+        
+        //MOVER LA PELOTA
         sphereMesh.position.y = sphereBody.position.y
         sphereMesh.position.z = sphereBody.position.z
         sphereMesh.position.x = sphereBody.position.x
-        
 
+        // MOVER LAS PAREDES
+        paredTrasera.position.x = traseroWall.position.x
+        paredTrasera.position.y = traseroWall.position.y
+        paredTrasera.position.z = traseroWall.position.z
+
+        paredDelantera.position.x = delanteroWall.position.x
+        paredDelantera.position.y = delanteroWall.position.y
+        paredDelantera.position.z = delanteroWall.position.z
+
+        paredDerecha.position.x = derechaWall.position.x
+        paredDerecha.position.y = derechaWall.position.y
+        paredDerecha.position.z = derechaWall.position.z
+
+        paredIzquierda.position.x = izquieroWall.position.x 
+        paredIzquierda.position.x = izquieroWall.position.y
+        paredIzquierda.position.x = izquieroWall.position.z 
     }
     
 
@@ -588,27 +606,27 @@ function dificultad() {
     //parte visual
     //ground
     //-----------------
-    const paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), rojo)
+    paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), rojo)
     paredIzquierda.position.x = -7.5
     //paredIzquierda.position.x = -30
     paredIzquierda.receiveShadow = true
     paredIzquierda.castShadow = true
     paredIzquierda.rotation.y = Math.PI/2
     //-----------------------------------
-    const paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), azul)
+    paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), azul)
     paredDerecha.position.x = 7.5
     //paredDerecha.position.x = -25
     paredDerecha.receiveShadow = true
     paredDerecha.castShadow = true
     paredDerecha.rotation.y = -Math.PI/2
     //-----------------------------------
-    const paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), amarillo)
+    paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), amarillo)
     paredDelantera.position.z = 7.5
     //paredDelantera.position.x = -26.5
     paredDelantera.receiveShadow = true
     paredDelantera.castShadow = true
     //---------------------------------
-    const paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), negro)
+    paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), negro)
     paredTrasera.position.z = -7.5
     //paredTrasera.position.x = -30
     paredTrasera.receiveShadow = true
