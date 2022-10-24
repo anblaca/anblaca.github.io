@@ -13,7 +13,7 @@ var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, effectController
 var canvas, ctx, phongMaterial, sphereMesh,sphereBody, texstone,texball, texwall
 
-var  traseroWall, delanteroWall, izquieroWall, derechaWall
+var  traseroWall, delanteroWall, izquieroWall, derechaWall, cylinderBody
 var paredDelantera, paredDerecha, paredIzquierda, paredTrasera
 var cuentaMonedas = 0
 const timestep = 1/60
@@ -563,7 +563,7 @@ function dificultad() {
         scene.add(jump)
 
         const cylinderShape = new CANNON.Cylinder(0.01, 1, 0.5, 5)
-        const cylinderBody = new CANNON.Body({ mass: 0 })
+        cylinderBody = new CANNON.Body({ mass: 0 })
         cylinderBody.addShape(cylinderShape, new CANNON.Vec3())
         cylinderBody.position.x = jump.position.x
         cylinderBody.position.y = jump.position.y
@@ -682,16 +682,14 @@ function dificultad() {
                 scene.remove(obj);  
             }    
        }
-       //console.log(world.remove)
+
        world.removeBody(izquieroWall)
        world.removeBody(derechaWall)
+       world.removeBody(traseroWall)
+       world.removeBody(delanteroWall)
        world.removeBody(sphereBody)
-       //for( var i = world.children.length - 1; i >= 0; i--) { 
-         //   var obj = scene.children[i]
-           // if(obj.name == "delanteroWall" ) {
-             //   world.remove(obj);  
-            //}    
-        //}
+       world.removeBody(cylinderBody)
+
     }
 }
 
