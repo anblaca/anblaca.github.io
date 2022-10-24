@@ -659,6 +659,7 @@ function dificultad() {
     sphereMesh = new THREE.Mesh(sphereGeometry, rojo)
     sphereMesh.position.x = 0
     sphereMesh.position.y = 0.25
+    sphereMesh.name = "bola"
     //sphereMesh.position.z = Math.random() * 10 - 5
     sphereMesh.castShadow = true
     sphereMesh.receiveShadow = true
@@ -672,15 +673,14 @@ function dificultad() {
     //sphereBody.position.z = sphereMesh.position.z
     world.addBody(sphereBody)
     } else {
+      
         console.log("entro a borrar")
         for( var i = scene.children.length - 1; i >= 0; i--) { 
             var obj = scene.children[i];
-            if(obj.name == "cubo") {
-                console.log("borro El cubo")
-                scene.remove(obj); 
-            }
-
-           
+            if(obj.name == "cubo" || obj.name == "jump" || obj.name == "bola") {
+                scene.remove(obj);
+                
+            }    
        }
     }
 }
