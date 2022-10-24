@@ -13,12 +13,13 @@ var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, effectController
 var canvas, ctx, phongMaterial, sphereMesh,sphereBody, texstone,texball, texwall
 
-var  traseroWall, delanteroWall, izquieroWall, derechaWall, cylinderBody
+var  traseroWall, delanteroWall, izquieroWall, derechaWall
 var paredDelantera, paredDerecha, paredIzquierda, paredTrasera
 var cuentaMonedas = 0
 const timestep = 1/60
 
 const monedas = []
+const cylyndersBody = []
 
 var dificil = false
 
@@ -71,7 +72,7 @@ function init() {
     ctx.textAlign = "left";
     ctx.textBaseline = "top";   
     ctx.fillText("Score: " + cuentaMonedas, 60, 60);
-    
+
     const tex = new THREE.Texture( canvas );
     tex.needsUpdate = true;
     const spriteMat = new THREE.SpriteMaterial( { map: tex } );
@@ -578,11 +579,12 @@ function dificultad() {
         scene.add(jump)
 
         const cylinderShape = new CANNON.Cylinder(0.01, 1, 0.5, 5)
-        cylinderBody = new CANNON.Body({ mass: 0 })
+        const cylinderBody = new CANNON.Body({ mass: 0 })
         cylinderBody.addShape(cylinderShape, new CANNON.Vec3())
         cylinderBody.position.x = jump.position.x
         cylinderBody.position.y = jump.position.y
         cylinderBody.position.z = jump.position.z
+        cylyndersBody.push(cylinderBody)
         world.addBody(cylinderBody)
     }
 
@@ -698,13 +700,16 @@ function dificultad() {
             }    
        }
 
+       for (var i = 0; i < cylyndersBody.length; i++) {
+            world.removeBody(cylyndersBody[i])
+       }
+       cylyndersBody
        world.removeBody(izquieroWall)
        world.removeBody(derechaWall)
        world.removeBody(traseroWall)
        world.removeBody(delanteroWall)
        world.removeBody(sphereBody)
-       world.removeBody(cylinderBody)
-
+       
     }
 }
 
