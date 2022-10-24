@@ -90,7 +90,7 @@ function loadScene() {
 
     // Materiales 
     const path ="./images/";
-    const texcoin = new THREE.TextureLoader().load(path+"1euro.jpg");
+    const texcoin = new THREE.TextureLoader().load(path+"metal.jpg");
     const texsuelo = new THREE.TextureLoader().load(path+"grassGround.jpg");
     texsuelo.repeat.set(4,3);
     texsuelo.wrapS= texsuelo.wrapT = THREE.RepeatWrapping;
@@ -237,14 +237,6 @@ function loadScene() {
         const giro = new TWEEN.Tween( moneda.rotation ).to( {x:0, y:Math.PI/2, z:0}, 3000 );
         giro.repeat(Infinity);
         giro.start();
-        //mundo fisico
-        //const cilindroShape = new CANNON.Cylinder(1, 1, 1, 8)
-        //const cilindroBody = new CANNON.Body({ mass: 0 })
-        //cilindroBody.addShape(cilindroShape, new CANNON.Vec3())
-        //cilindroBody.position.x = moneda.position.x
-        //cilindroBody.position.y = moneda.position.y
-        //cilindroBody.position.z = moneda.position.z
-        //world.addBody(cilindroBody)
     }
 
 
@@ -542,11 +534,12 @@ function setupGUI()
 
     h.add(effectController, "boton").name("Dificil").onChange(
         function(click) {
-                    if (click){
+                    if (click && dificil == false){
                        dificil = true;
                         dificultad()
                     } else {
                         dificil = false
+                        
                         dificultad()
                     } 
     
