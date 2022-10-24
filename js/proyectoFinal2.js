@@ -682,6 +682,13 @@ function dificultad() {
                 scene.remove(obj);  
             }    
        }
+
+       for( var i = world.children.length - 1; i >= 0; i--) { 
+            var obj = scene.children[i]
+            if(obj.name == "delanteroWall" ) {
+                world.remove(obj);  
+            }    
+        }
     }
 }
 
