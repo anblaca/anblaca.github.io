@@ -634,7 +634,7 @@ function dificultad() {
 
     const sphereGeometry = new THREE.SphereGeometry(0.5, 8, 8)
     sphereMesh = new THREE.Mesh(sphereGeometry, phongMaterial)
-    sphereMesh.position.x = 35
+    sphereMesh.position.x = 0
     //sphereMesh.position.y = 0
     //sphereMesh.position.z = Math.random() * 10 - 5
     sphereMesh.castShadow = true
