@@ -61,8 +61,23 @@ function init() {
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     document.body.appendChild(renderer.domElement)
     
+    const canvas = document.createElement( "canvas" );
+    canvas.width = 1024;
+    canvas.height = 1024;
 
-
+    const ctx = canvas.getContext( "2d" );
+    ctx.font = "32pt LucidaSansUnicode";
+    ctx.fillStyle = "#000000";
+    ctx.textAlign = "left";
+    ctx.textBaseline = "top";   
+    ctx.fillText("Score: " + cuentaMonedas, 60, 60);
+    
+    const tex = new THREE.Texture( canvas );
+    tex.needsUpdate = true;
+    const spriteMat = new THREE.SpriteMaterial( { map: tex } );
+    const sprite = new THREE.Sprite( spriteMat );
+    
+    scene.add( sprite);
     //canvas = document.getElementById("canvas");
     //ctx = canvas.getContext("2d");
 
