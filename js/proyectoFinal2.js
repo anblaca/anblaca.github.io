@@ -112,7 +112,7 @@ function loadScene() {
     const habitacion = new THREE.Mesh( new THREE.BoxGeometry(100,100,100),paredes);
     scene.add(habitacion);
 
-
+    scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 );
     //const entorno = [ path+"posx.jpg", path+"negx.jpg",
         //               path+"posy.jpg", path+"negy.jpg",
       //                 path+"posz.jpg", path+"negz.jpg"];
@@ -482,21 +482,21 @@ function animate() {
         //let b = y - carBody.position.y
         let c = z - carBody.position.z
         //normalizar la resta
-        if(Math.sqrt(Math.pow(a,2)) < 0.5 && Math.sqrt(Math.pow(c,2)) < 0.5) {
+        if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
                 cuentaMonedas += 1
                 monedas[i].visible = false        
         }
         
     }
 
-    if (dificil == true) { scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 ); }
 
     //drawScore()
     if (dificil == true) { 
         console.log("entro a la pelota")
-        sphereMesh.position.y =sphereBody.position.y
+        sphereMesh.position.y = sphereBody.position.y
         sphereMesh.position.z = sphereBody.position.z
         sphereMesh.position.x = sphereBody.position.x
+        
 
     }
     
