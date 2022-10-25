@@ -141,8 +141,7 @@ function loadScene() {
     texstone = new THREE.TextureLoader().load(path+"stone.jpg");
     texball = new THREE.TextureLoader().load(path+"ball.jpg");
     texwall = new THREE.TextureLoader().load(path+"muro.jpg");
-    //texwall.repeat.set(4,3);
-    //texwall.wrapS= texsuelo.wrapT = THREE.RepeatWrapping;
+
     // Habitacion
     const paredes = [];
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
@@ -159,18 +158,6 @@ function loadScene() {
                   map: new THREE.TextureLoader().load(path+"negz.jpg")}) );
     const habitacion = new THREE.Mesh( new THREE.BoxGeometry(100,100,100),paredes);
     scene.add(habitacion);
-
-    //const entorno = [ path+"posx.jpg", path+"negx.jpg",
-        //               path+"posy.jpg", path+"negy.jpg",
-      //                 path+"posz.jpg", path+"negz.jpg"];
-
-    //const texesfera = new THREE.CubeTextureLoader().load(entorno);
- 
-
-    //const matesfera = new THREE.MeshPhongMaterial({color:'white',
-      //                                              specular:'gray',
-        //                                            shininess: 30,
-          //                                          envMap: texesfera });
 
     const matsuelo = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texsuelo});
 
@@ -263,35 +250,15 @@ function loadScene() {
         }),
         new THREE.MeshStandardMaterial({ //y positive
             color:'green'
-            //map: THREE.TextureLoader.load(path+"lado.png")
         }),
         new THREE.MeshStandardMaterial({ // z negative
             map: new THREE.TextureLoader().load(path+"enfrente.png")
         }),
         new THREE.MeshStandardMaterial({ // x negative
-            //map: new THREE.TextureLoader().load(path+"enfrente.png")
             color:'green'
         })
     ]
-    //var texCarLado = new THREE.TextureLoader().load(path+"lado.jpg");
-    //var texCarArriba = new THREE.TextureLoader().load(path+"arriba.jpg");
-    //var texCarEnfrente = new THREE.TextureLoader().load(path+"Enfrente.jpg");
-    //const texturaCar = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texCar});
-
-    //var a = new THREE.CubeTextureLoader()
-	//.load( [
-	//	'enfrente.png',
-	//	'enfrente.png',
-	//	'detras.png',
-	//	'detras.png',
-	//	'lado.png',
-	//	'lado.png'
-	//] );
-
-    //const texturaWheel = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texWheel});
-
-    //texWheel.repeat.set(1,1);
-    //texWheel.wrapS= texWheel.wrapT = THREE.RepeatWrapping;
+   
     carBodyMesh = new THREE.Mesh(carBodyGeometry, textureCube3)
     carBodyMesh.position.y = 3
     carBodyMesh.castShadow = true
@@ -878,7 +845,7 @@ function dificultad() {
     scene.add(cubo)
 
     //parte fisica
-    //frontWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
+    
     traseroWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     traseroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
     traseroWall.position.x = paredTrasera.position.x+30
@@ -899,6 +866,7 @@ function dificultad() {
     izquieroWall.position.x = paredIzquierda.position.x+30
     izquieroWall.position.y = paredIzquierda.position.y
     izquieroWall.position.z = paredIzquierda.position.z
+    izquieroWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
     world.addBody( izquieroWall );
  
     derechaWall = new CANNON.Body( {mass:0, material:groundMaterial} );
@@ -907,6 +875,7 @@ function dificultad() {
     derechaWall.position.x = paredDerecha.position.x+30
     derechaWall.position.y = paredDerecha.position.y
     derechaWall.position.z = paredDerecha.position.z
+    derechaWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
     world.addBody( derechaWall );
 
     //añadir una pelota
