@@ -13,7 +13,7 @@ var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, effectController
 var ctx, phongMaterial, sphereMesh,sphereBody, texstone,texball, texwall
 
-var  traseroWall, delanteroWall, izquieroWall, derechaWall
+var  traseroWall, delanteroWall, izquieroWall, derechaWall, cubo
 var paredDelantera, paredDerecha, paredIzquierda, paredTrasera
 var cuentaMonedas = 0
 
@@ -563,8 +563,14 @@ function animate() {
 
 function area(pT, pD, pI, pDe) {
 
-    if(!(sphereMesh.position.x > pI.position.x && sphereMesh.position.x < pDe.position.x && sphereMesh.position.z > pT.position.z && sphereMesh.position.z < pD.position.z)) {
-        console.log("Estoy donde me toca")
+    //if(!(sphereMesh.position.x > pI.position.x+30 && sphereMesh.position.x < pDe.position.x +30 && sphereMesh.position.z > pT.position.z && sphereMesh.position.z < pD.position.z)) {
+      //  console.log("Estoy donde me toca")
+    //}
+    let a = sphereMesh.position.x -  cubo.position.x
+    let c = sphereMesh.position.z - cubo.position.z
+   
+    if( Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
+       console.log("Estoy donde me toca")
     }
 }
 
@@ -683,7 +689,7 @@ function nivelMedio() {
     paredTrasera.castShadow = true
     paredTrasera.name = "paredTrasera"
 
-    var cubo = new THREE.Object3D()
+    cubo = new THREE.Object3D()
     cubo.name = "cubo"
     cubo.add(paredDelantera)
     cubo.add(paredDerecha)
