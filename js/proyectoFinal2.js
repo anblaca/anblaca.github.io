@@ -254,7 +254,11 @@ function loadScene() {
     }
 
     const carBodyGeometry = new THREE.BoxGeometry(1, 1, 2)
-    carBodyMesh = new THREE.Mesh(carBodyGeometry, phongMaterial)
+    var texCar = new THREE.TextureLoader().load(path+"mysterymachine.jpg");
+    const texturaCar = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texCar});
+    //texWheel.repeat.set(1,1);
+    //texWheel.wrapS= texWheel.wrapT = THREE.RepeatWrapping;
+    carBodyMesh = new THREE.Mesh(carBodyGeometry, texturaCar)
     carBodyMesh.position.y = 3
     carBodyMesh.castShadow = true
     scene.add(carBodyMesh)
