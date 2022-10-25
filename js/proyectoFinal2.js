@@ -530,9 +530,9 @@ function animate() {
                 console.log(i)
                 monedas[i].visible = false   
                 arrayMonedas[i] = 1
-                
+                break;
         }
-        break;
+        
     }
 
     //console.log(estaDentro)
