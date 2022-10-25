@@ -551,6 +551,7 @@ function animate() {
                 monedas[i].visible = false
                 //borrar la moneda del array y sumar 1
                 monedas.slice(i, 1)
+                console.log(monedas.length)
                 estaDentro()
             }
         }
