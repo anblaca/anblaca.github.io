@@ -569,7 +569,7 @@ function area(pT, pD, pI, pDe) {
     let a = sphereMesh.position.x -  cubo.position.x
     let c = sphereMesh.position.z - cubo.position.z
    console.log(a)
-    if( Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
+    if( Math.sqrt(Math.pow(a,2)) < 3 && Math.sqrt(Math.pow(c,2)) < 3) {
        console.log("Estoy donde me toca")
     }
 }
