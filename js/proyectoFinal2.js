@@ -11,14 +11,14 @@ var renderer, scene, camera, carBodyMesh, wheelLFMesh, wheelRFMesh, wheelLBMesh,
 var constraintLB,constraintRB,constraintLF,constraintRF,world, chaseCamPivot
 
 var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moneda, loader, effectController
-var ctx, phongMaterial, sphereMesh,sphereBody, texstone,texball, texwall
+var sphereMesh,sphereBody, texstone,texball, texwall
 
 var  traseroWall, delanteroWall, izquieroWall, derechaWall, cubo
 var paredDelantera, paredDerecha, paredIzquierda, paredTrasera
 var cuentaMonedas = 0
 var dentro = false
 const timestep = 1/60
-var camaraPlanta
+
 var final = false
 const monedas = []
 const cylyndersBody = []
@@ -64,8 +64,6 @@ function init() {
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     document.body.appendChild(renderer.domElement)
     
-    //setCameras(window.innerWidth / window.innerHeight);
-
     window.addEventListener('resize', onWindowResize, false)
 
 }
@@ -74,17 +72,8 @@ function onWindowResize() {
     
     camera.aspect = window.innerWidth / window.innerHeight
     camera.updateProjectionMatrix()
-
-    //ortografica
-    //camaraPlanta.left = -L;
-    //camaraPlanta.right = L;
-    //camaraPlanta.bottom = -L;
-    //camaraPlanta.top = L;
-
-    //camaraPlanta.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight)
     render()
-
     
 }
 
@@ -134,7 +123,6 @@ function loadScene() {
     const path ="./images/";
     const texcoin = new THREE.TextureLoader().load(path+"metal.jpg");
     const texsuelo = new THREE.TextureLoader().load(path+"grassGround.jpg");
-    //const texsuelo = new THREE.TextureLoader().load(path+"negy.jpg");
     texsuelo.repeat.set(4,3);
     texsuelo.wrapS= texsuelo.wrapT = THREE.RepeatWrapping;
 
@@ -239,27 +227,22 @@ function loadScene() {
         giro.repeat(Infinity);
         giro.start();
     }
+    const entorno = [ path+"posx.jpg", path+"negx.jpg",
+                    path+"posy.png", path+"negy.jpg",
+                    path+"posz.jpg", path+"negz.jpg"];
+
+    const texesfera = new THREE.CubeTextureLoader().load(entorno);
+
+        const matesfera = new THREE.MeshPhongMaterial({color:'white',
+                                specular:'gray',
+                                shininess: 30,
+                                envMap: texesfera });
+
+
 
     const carBodyGeometry = new THREE.BoxGeometry(1, 1, 2)
-    const textureCube3 = [
-        new THREE.MeshStandardMaterial({ //x positive
-            map: new THREE.TextureLoader().load(path+"lado.png")
-        }),
-        new THREE.MeshStandardMaterial({ // x negative
-            map: new THREE.TextureLoader().load(path+"lado.png")
-        }),
-        new THREE.MeshStandardMaterial({ //y positive
-            color:'green'
-        }),
-        new THREE.MeshStandardMaterial({ // z negative
-            map: new THREE.TextureLoader().load(path+"enfrente.png")
-        }),
-        new THREE.MeshStandardMaterial({ // x negative
-            color:'green'
-        })
-    ]
    
-    carBodyMesh = new THREE.Mesh(carBodyGeometry, textureCube3)
+    carBodyMesh = new THREE.Mesh(carBodyGeometry, matesfera)
     carBodyMesh.position.y = 3
     carBodyMesh.castShadow = true
     scene.add(carBodyMesh)
