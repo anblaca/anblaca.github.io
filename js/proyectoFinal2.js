@@ -563,7 +563,7 @@ function animate() {
 
 function area(pT, pD, pI, pDe) {
 
-    if(sphereMesh.position.x > pI.position.x && sphereMesh.position.x < pDe.position.x && sphereMesh.position.z > pT.position.z && sphereMesh.position.z < pD.position.z) {
+    if(!(sphereMesh.position.x > pI.position.x && sphereMesh.position.x < pDe.position.x && sphereMesh.position.z > pT.position.z && sphereMesh.position.z < pD.position.z)) {
         console.log("Estoy donde me toca")
     }
 }
