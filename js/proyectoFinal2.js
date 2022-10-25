@@ -511,7 +511,7 @@ function animate() {
             }
         }
     }
-    if (final = false) { calcularVictoria()}
+    if (final == false) { calcularVictoria()}
    
 
     if (dificil == true || medio == true) { 
