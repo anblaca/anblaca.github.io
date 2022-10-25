@@ -450,7 +450,14 @@ function loadScene() {
     forwardVelocity = 0
     rightVelocity = 0
 }
+function calcularPuntuacion() {
+    for(let i = 0; i < monedas.length; i++) {
 
+        if (monedas[i].visible == false) {
+            cuentaMonedas += 1
+        }
+    }
+}
 function estaDentro(x) {
     let cuantas = 0
     if(pasa) {
@@ -537,6 +544,7 @@ function animate() {
     //para todas las monedas
     //si el coche pasa por alguna de las monedas
     //borrar moneda de la pantalla(pintar todas menos esa)
+    if(cuentaMonedas <10) {
     for (let i = 0; i < monedas.length; i++) {
         let x = monedas[i].position.x
         let z = monedas[i].position.z
@@ -546,11 +554,13 @@ function animate() {
         //normalizar la resta
         if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
                 monedas[i].visible = false   
-                monedasVisitadas.push(i)
-                pasa = true
+                //monedasVisitadas.push(i)
+                //pasa = true
+                cuentaMonedas += 1
         }
-        estaDentro(i);
+        //estaDentro(i);
     }
+}
 
     //console.log(estaDentro)
     
