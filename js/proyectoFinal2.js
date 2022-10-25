@@ -456,9 +456,9 @@ function estaDentro(x) {
     for(let i = 0; i < monedasVisitadas.length; i++) {
 
         if (monedasVisitadas[i] != x) {
-           
+           cuantas += 1
         }
-        console.log(cuantas)
+        
         if(cuantas == monedasVisitadas.length) {
             cuentaMonedas +=1
         }
