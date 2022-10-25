@@ -959,7 +959,7 @@ function escribirVictoria() {
         { color: 0xff0000, specular: 0xffffff }
     );
 
-    mesh = new THREE.Mesh( textGeometry, textMaterial );
+    var mesh = new THREE.Mesh( textGeometry, textMaterial );
 
     scene.add( mesh );
 
