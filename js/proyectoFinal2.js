@@ -527,7 +527,7 @@ function animate() {
         //normalizar la resta
         if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
                 console.log("entro al if")
-
+                console.log(monedas[i])
                 monedas[i].visible = false        
         }
         
