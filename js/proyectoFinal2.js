@@ -17,6 +17,7 @@ var  traseroWall, delanteroWall, izquieroWall, derechaWall
 var paredDelantera, paredDerecha, paredIzquierda, paredTrasera
 var cuentaMonedas = 0
 var arrayMonedas = []
+var monedasVisitadas = []
 const timestep = 1/60
 var camaraPlanta
 
@@ -451,10 +452,20 @@ function loadScene() {
 }
 
 function estaDentro(x) {
-    if(arrayMonedas[x] == 1) {
-        arrayMonedas[x] == 0
-        cuentaMonedas += 1
+    let cuantas = 0
+    for(let i = 0; i < monedasVisitadas.length; i++) {
+
+        if (monedasVisitadas[i] != x) {
+            cuantas += 1
+        }
+        
+        if(cuantas == monedasVisitadas.length) {
+            cuentaMonedas +=1
+        }
+        
     }
+
+    
     
 }
 
@@ -533,15 +544,13 @@ function animate() {
         if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
                 console.log(i)
                 monedas[i].visible = false   
-                arrayMonedas[i] = 1
-                estaDentro(i);
-                break;
+                monedasVisitadas.push(i) 
         }
-        
+        estaDentro(i);
     }
 
     //console.log(estaDentro)
-
+    
     drawScore()
 
     if (dificil == true || medio == true) { 
