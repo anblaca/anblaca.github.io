@@ -254,21 +254,38 @@ function loadScene() {
     }
 
     const carBodyGeometry = new THREE.BoxGeometry(1, 1, 2)
-
+    const textureCube3 = [
+        new THREE.MeshStandardMaterial({ //x positive
+            map: THREE.TextureLoader.load(path+"lado.png")
+        }),
+        new THREE.MeshStandardMaterial({ // x negative
+            map: THREE.TextureLoader.load(path+"lado.png")
+        }),
+        new THREE.MeshStandardMaterial({ //y positive
+            color:'green'
+            //map: THREE.TextureLoader.load(path+"lado.png")
+        }),
+        new THREE.MeshStandardMaterial({ // y negative
+            map: THREE.TextureLoader.load(path+"enfrente.png")
+        }),
+        new THREE.MeshStandardMaterial({ // x negative
+            map: THREE.TextureLoader.load(path+"enfrente.png")
+        }),
+    ]
     //var texCarLado = new THREE.TextureLoader().load(path+"lado.jpg");
     //var texCarArriba = new THREE.TextureLoader().load(path+"arriba.jpg");
     //var texCarEnfrente = new THREE.TextureLoader().load(path+"Enfrente.jpg");
     //const texturaCar = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texCar});
 
-    var a = new THREE.CubeTextureLoader()
-	.load( [
-		'enfrente.png',
-		'enfrente.png',
-		'detras.png',
-		'detras.png',
-		'lado.png',
-		'lado.png'
-	] );
+    //var a = new THREE.CubeTextureLoader()
+	//.load( [
+	//	'enfrente.png',
+	//	'enfrente.png',
+	//	'detras.png',
+	//	'detras.png',
+	//	'lado.png',
+	//	'lado.png'
+	//] );
 
     //const texturaWheel = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texWheel});
 
