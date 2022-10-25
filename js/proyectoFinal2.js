@@ -563,7 +563,7 @@ function animate() {
 
 function area(pT, pD, pI, pDe) {
 
-    if(sphereMesh.position.x > pI.position.x && sphereMesh.position.x < pDe.position.x &&sphereMesh.position.z >pT.position.z && sphereMesh.position.z < pD.position.z) {
+    if(sphereMesh.position.x > pI.position.x && sphereMesh.position.x < pDe.position.x && sphereMesh.position.z > pT.position.z && sphereMesh.position.z < pD.position.z) {
         console.log("Estoy donde me toca")
     }
 }
@@ -737,9 +737,16 @@ function nivelMedio() {
     sphereMesh.castShadow = true
     sphereMesh.receiveShadow = true
     scene.add(sphereMesh)
- 
+
+    const materialBola = new CANNON.Material("sphereMaterial");
+
+    const bolaGroundContactMaterial = new CANNON.ContactMaterial(groundMaterial, materialBola,
+        { friction: 0, 
+            restitution: 0.7 });
+        world.addContactMaterial(sphereGroundContactMaterial);
+
     const sphereShape = new CANNON.Sphere(0.5)
-    sphereBody = new CANNON.Body({ mass: 1, material: materialEsfera})
+    sphereBody = new CANNON.Body({ mass: 1, material: bolaGroundContactMaterial})
     sphereBody.addShape(sphereShape)
 
     sphereBody.position.y = sphereMesh.position.y
