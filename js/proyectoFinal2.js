@@ -254,11 +254,28 @@ function loadScene() {
     }
 
     const carBodyGeometry = new THREE.BoxGeometry(1, 1, 2)
-    var texCar = new THREE.TextureLoader().load(path+"mysterymachine.jpg");
-    const texturaCar = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texCar});
+
+    //var texCarLado = new THREE.TextureLoader().load(path+"lado.jpg");
+    //var texCarArriba = new THREE.TextureLoader().load(path+"arriba.jpg");
+    //var texCarEnfrente = new THREE.TextureLoader().load(path+"Enfrente.jpg");
+    //const texturaCar = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texCar});
+
+    var a = new THREE.CubeTextureLoader()
+	.setPath( 'textures/cubeMaps/' )
+	.load( [
+		'enfrente.png',
+		'enfrente.png',
+		'detras.png',
+		'detras.png',
+		'lado.png',
+		'lado.png'
+	] );
+
+    //const texturaWheel = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texWheel});
+
     //texWheel.repeat.set(1,1);
     //texWheel.wrapS= texWheel.wrapT = THREE.RepeatWrapping;
-    carBodyMesh = new THREE.Mesh(carBodyGeometry, texturaCar)
+    carBodyMesh = new THREE.Mesh(carBodyGeometry, a)
     carBodyMesh.position.y = 3
     carBodyMesh.castShadow = true
     scene.add(carBodyMesh)
@@ -278,10 +295,6 @@ function loadScene() {
     //------------------------------------------------------------------------------------------------------------------------------------
     var texWheel = new THREE.TextureLoader().load(path+"wheel.png");
     const texturaWheel = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texWheel});
-    //const sideMaterial = texturaWheel
-    //const topMaterial = new THREE.MeshStandardMaterial({color:'black' ,map:texWheel});
-    //const bottomMaterial = new THREE.MeshStandardMaterial({color:'black' ,map:texWheel});
-
     const sideMaterial = new THREE.MeshStandardMaterial({color:'black' ,map:texWheel});
     const topMaterial = texturaWheel
     const bottomMaterial = texturaWheel
@@ -290,9 +303,7 @@ function loadScene() {
         sideMaterial,
         topMaterial,
         bottomMaterial
-      ]
-    //texWheel.repeat.set(1,1);
-    //texWheel.wrapS= texWheel.wrapT = THREE.RepeatWrapping;
+    ]
 
     wheelLFMesh = new THREE.Mesh(wheelLFGeometry, materials)
     wheelLFMesh.position.x = -1
