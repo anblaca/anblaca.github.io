@@ -16,7 +16,7 @@ var ctx, phongMaterial, sphereMesh,sphereBody, texstone,texball, texwall
 var  traseroWall, delanteroWall, izquieroWall, derechaWall, cubo
 var paredDelantera, paredDerecha, paredIzquierda, paredTrasera
 var cuentaMonedas = 0
-
+var dentro = false
 const timestep = 1/60
 var camaraPlanta
 var final = false
@@ -537,7 +537,7 @@ function animate() {
         //paredIzquierda.position.x = izquieroWall.position.x 
         //paredIzquierda.position.x = izquieroWall.position.y
         //paredIzquierda.position.x = izquieroWall.position.z 
-        area(paredTrasera, paredDelantera, paredIzquierda, paredDerecha)
+        area()
     }
     
    
@@ -563,14 +563,12 @@ function animate() {
 
 function area(pT, pD, pI, pDe) {
 
-    //if(!(sphereMesh.position.x > pI.position.x+30 && sphereMesh.position.x < pDe.position.x +30 && sphereMesh.position.z > pT.position.z && sphereMesh.position.z < pD.position.z)) {
-      //  console.log("Estoy donde me toca")
-    //}
     let a = sphereMesh.position.x -  cubo.position.x
     let c = sphereMesh.position.z - cubo.position.z
-   console.log(a)
+    console.log(a)
     if( Math.sqrt(Math.pow(a,2)) < 6 && Math.sqrt(Math.pow(c,2)) < 6) {
-       console.log("Estoy donde me toca")
+        console.log("Estoy donde me toca")
+        dentro = true
     }
 }
 
@@ -949,14 +947,31 @@ function calcularVictoria() {
             console.log("HAS GANADO")
             final = true
             escribirVictoria();
+            reproducirVideo();
         }
     }
-    if (cuentaMonedas == 10 &&  dificil == true) {
-      //  console.log("Victoria!")
-        //if()
+
+    if (cuentaMonedas == 10 &&  dentro == true) {
+        escribirVictoria();
+        reproducirVideo()
     }
 
-    //if (cuentaMonedas == 10 && dificil == true && )
+
+
+}
+function reproducirVideo() {
+
+    // Cine
+    video = document.createElement('video');
+    video.src = "./videos/fernandoAlonso.mp4";
+    video.load();
+    video.muted = true;
+    video.play();
+    const texvideo = new THREE.VideoTexture(video);
+    const pantalla = new THREE.Mesh(new THREE.PlaneGeometry(20,6, 4,4), 
+                                    new THREE.MeshBasicMaterial({map:texvideo}));
+    pantalla.position.set(0,4.5,-5);
+    scene.add(pantalla);
 }
 
 function escribirVictoria() {
@@ -964,7 +979,7 @@ function escribirVictoria() {
     loader = new FontLoader();
     loader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
 
-    var textGeometry = new TextGeometry( "text", {
+    var textGeometry = new TextGeometry( "WIN", {
 
         font: font,
 
