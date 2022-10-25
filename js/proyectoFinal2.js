@@ -111,10 +111,33 @@ function setCameras(ar) {
 }
 
 function drawScore() {
-    console.log("entro a dibujar")
-    ctx.font = "50px Arial";
-    ctx.fillStyle = "#FF0000";
-    ctx.fillText("Score: " + cuentaMonedas, 60, 60);
+    
+    //texto inicial
+    var canvas1 = document.createElement('canvas');
+    var context1 = canvas1.getContext('2d');
+    context1.font = "Bold 10px Arial";
+    context1.fillStyle = "rgba(255,0,0,1)";
+    context1.fillText('Score:' + cuentaMonedas, 0, 60);
+
+    // canvas contents will be used for a texture
+    var texture1 = new THREE.Texture(canvas1)
+    texture1.needsUpdate = true;
+
+    var material1 = new THREE.MeshBasicMaterial({ map: texture1, side: THREE.DoubleSide });
+    material1.transparent = true;
+
+    var mesh1 = new THREE.Mesh(
+        new THREE.PlaneGeometry(50, 10),
+        material1
+      );
+    
+    mesh1.position.set(0, 0, 0);
+    //mesh1.rotation.x = -0.9;
+
+    //var texto = new THREE.Shape.add(mesh1);
+    // Note that mesh1 gets added to the shape and not to the scene
+
+   scene.add(mesh1)
 }
 
 function loadScene() {
@@ -219,32 +242,7 @@ function loadScene() {
 
     //});   
 
-        //texto inicial
-    var canvas1 = document.createElement('canvas');
-    var context1 = canvas1.getContext('2d');
-    context1.font = "Bold 10px Arial";
-    context1.fillStyle = "rgba(255,0,0,1)";
-    context1.fillText('Score:' + cuentaMonedas, 0, 60);
-
-    // canvas contents will be used for a texture
-    var texture1 = new THREE.Texture(canvas1)
-    texture1.needsUpdate = true;
-
-    var material1 = new THREE.MeshBasicMaterial({ map: texture1, side: THREE.DoubleSide });
-    material1.transparent = true;
-
-    var mesh1 = new THREE.Mesh(
-        new THREE.PlaneGeometry(50, 10),
-        material1
-      );
-    
-    mesh1.position.set(0, 0, 0);
-    //mesh1.rotation.x = -0.9;
-
-    //var texto = new THREE.Shape.add(mesh1);
-    // Note that mesh1 gets added to the shape and not to the scene
-
-   scene.add(mesh1)
+    drawScore()
 
     const sphereGroundContactMaterial = new CANNON.ContactMaterial(groundMaterial,materialEsfera,
         { friction: 0.7, 
@@ -525,8 +523,10 @@ function animate() {
         
     }
 
+    
 
-    //drawScore()
+    drawScore()
+    
     if (dificil == true) { 
 
         //MOVER LA PELOTA
