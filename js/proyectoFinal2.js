@@ -37,7 +37,7 @@ function init() {
     // Luces
     scene.add( new THREE.AmbientLight( 0x222222 ) );
 
-	const light = new THREE.DirectionalLight( 0xFFFFFF, 0.6 );
+	const light = new THREE.DirectionalLight( 0xFFFFFF, 0.9 );
 	light.position.set( 25, 50, 25 );
 	light.castShadow = true;
 	light.shadow.mapSize.width = 16384;
