@@ -87,18 +87,6 @@ function onWindowResize() {
     
 }
 
-function setCameras(ar) {
-    //configurar planta alsado, perfil y perspectiva 
-    var camaraOrtografica
-    camaraOrtografica = new THREE.OrthographicCamera(-L, L, L, -L, -100, 100);
-    camaraOrtografica.lookAt(new THREE.Vector3(0, 0, 0));
-
-    camaraPlanta = camaraOrtografica.clone()
-    camaraPlanta.position.set(0, L, 0);
-    camaraPlanta.lookAt(new THREE.Vector3(0, 0, 0));
-    camaraPlanta.up = new THREE.Vector3(0, 0, -1);
-    scene.add(camaraPlanta)
-}
 
 function drawScore() {
     
@@ -254,9 +242,9 @@ function loadScene() {
         moneda.receiveShadow = true
         moneda.castShadow = true
         monedas.push(moneda)
-        let x = moneda.position.x = Math.random() * 100 - 75
+        let x = moneda.position.x = Math.random() * 100 - 50
         moneda.position.y = 1 //0.5
-        let z = moneda.position.z = Math.random() * 100 - 75
+        let z = moneda.position.z = Math.random() * 100 - 50
         moneda.rotation.x = Math.PI / 2
         scene.add(moneda)
         const giro = new TWEEN.Tween( moneda.rotation ).to( {x:0, y:Math.PI/2, z:0}, 3000 );
