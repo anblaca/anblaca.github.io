@@ -550,7 +550,7 @@ function animate() {
 
 }
 
-function area(pT, pD, pI, pDe) {
+function area() {
 
     let a = sphereMesh.position.x -  cubo.position.x
     let c = sphereMesh.position.z - cubo.position.z
@@ -575,9 +575,6 @@ function setupGUI()
 
 	// Construccion del menu
     var h = gui.addFolder("Menu");
-
-    //h.add(effectController, "dificil").name("Dificultad").onChange(dificultad);
-    //Control del cambio de color del mesh
 
     h.add(effectController, "medio").name("Medio").onChange(
         function(click) {
@@ -961,7 +958,7 @@ function reproducirVideo() {
     const pantalla = new THREE.Mesh(new THREE.PlaneGeometry(20,6, 4,4), 
                                     new THREE.MeshBasicMaterial({map:texvideo}));
     //pantalla.position.set(0,4.5,-5);
-    pantalla.position.set(0,1.5,0);
+    pantalla.position.set(0,4.5,-50);
     scene.add(pantalla);
 }
 
