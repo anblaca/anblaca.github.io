@@ -236,8 +236,8 @@ function loadScene() {
 
 
     //dibujar monedas aleatoriamente
-    const matCoin = new THREE.MeshPhongMaterial({color:"rgb(150,150,150)",map:texcoin, specular:'gray',
-    shininess: 30});
+    const matCoin = new THREE.MeshPhongMaterial({color:"rgb(150,150,150)",map:texcoin, specular:'yellow',
+    shininess: 65});
 
     for (let i = 0; i < 10; i++) {
         moneda = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.5, 8, 1), matCoin)
