@@ -256,20 +256,20 @@ function loadScene() {
     const carBodyGeometry = new THREE.BoxGeometry(1, 1, 2)
     const textureCube3 = [
         new THREE.MeshStandardMaterial({ //x positive
-            map: THREE.TextureLoader.load(path+"lado.png")
+            map: new THREE.TextureLoader.load(path+"lado.png")
         }),
         new THREE.MeshStandardMaterial({ // x negative
-            map: THREE.TextureLoader.load(path+"lado.png")
+            map: new THREE.TextureLoader.load(path+"lado.png")
         }),
         new THREE.MeshStandardMaterial({ //y positive
             color:'green'
             //map: THREE.TextureLoader.load(path+"lado.png")
         }),
         new THREE.MeshStandardMaterial({ // y negative
-            map: THREE.TextureLoader.load(path+"enfrente.png")
+            map: new THREE.TextureLoader.load(path+"enfrente.png")
         }),
         new THREE.MeshStandardMaterial({ // x negative
-            map: THREE.TextureLoader.load(path+"enfrente.png")
+            map: new THREE.TextureLoader.load(path+"enfrente.png")
         }),
     ]
     //var texCarLado = new THREE.TextureLoader().load(path+"lado.jpg");
