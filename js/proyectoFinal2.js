@@ -451,27 +451,10 @@ function loadScene() {
     rightVelocity = 0
 }
 
-function estaDentro(x) {
-    let cuantas = 0
-    //if(pasa) {
-
-        cuentaMonedas = 10 - monedas.length
-
-    //for(let i = 0; i < monedasVisitadas.length; i++) {
-
-      //  if (monedasVisitadas[i] != x) {
-        //   cuantas += 1
-        //}
-
-        //if(cuantas == monedasVisitadas.length) {
-          //  cuentaMonedas +=1
-        //}
-        console.log(cuentaMonedas)
-    //}
-    //pasa = false
-//}
-
-    //[1,1,1,1,1,1,1,,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3]
+function estaDentro() {
+    cuentaMonedas = 10 - monedas.length
+    console.log(cuentaMonedas)
+   
     
 }
 
@@ -551,14 +534,13 @@ function animate() {
                 monedas[i].visible = false
                 //borrar la moneda del array y sumar 1
                 monedas.splice(i, 1)
-                console.log(monedas.length)
                 estaDentro()
             }
         }
     }
     if (final = false) { calcularVictoria()}
    
-    //drawScore()
+    drawScore()
 
     if (dificil == true || medio == true) { 
 
@@ -584,6 +566,7 @@ function animate() {
         //paredIzquierda.position.x = izquieroWall.position.y
         //paredIzquierda.position.x = izquieroWall.position.z 
     }
+    
     
     TWEEN.update()
 
@@ -958,11 +941,16 @@ function dificultad() {
 function calcularVictoria() {
 
     if(medio == false && dificil == false) {
-        var contar = 0
-        for (let i = 0; i < monedas.length; i++) {
-            if (monedas[i].visible == false) {contar += 1}
-        }
-        if(contar == monedas.length) {
+        //var contar = 0
+        //for (let i = 0; i < monedas.length; i++) {
+          //  if (monedas[i].visible == false) {contar += 1}
+        //}
+        //if(contar == monedas.length) {
+            //console.log("HAS GANADO")
+          //  final = true
+        //}
+
+        if(cuentaMonedas == 10) {
             console.log("HAS GANADO")
             final = true
         }
