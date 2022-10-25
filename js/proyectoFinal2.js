@@ -704,6 +704,7 @@ function nivelMedio() {
 
     //añadir una pelota
     const matball = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texball})
+
     const sphereGeometry = new THREE.SphereGeometry(0.5, 8, 8)
     sphereMesh = new THREE.Mesh(sphereGeometry, rojo)
     sphereMesh.position.x = 0
@@ -713,7 +714,11 @@ function nivelMedio() {
     sphereMesh.castShadow = true
     sphereMesh.receiveShadow = true
     scene.add(sphereMesh)
-
+    const materialBola = new CANNON.Material("bolaMaterial");
+    world.addContactMaterial(materialBola,groundMaterial, {
+        restitution : 0.22
+        
+    })
     const sphereShape = new CANNON.Sphere(0.5)
     sphereBody = new CANNON.Body({ mass: 1, material: materialEsfera})
     sphereBody.addShape(sphereShape)
@@ -734,7 +739,7 @@ function nivelMedio() {
        for (var i = 0; i < cylyndersBody.length; i++) {
             world.removeBody(cylyndersBody[i])
        }
-       cylyndersBody
+       
        world.removeBody(izquieroWall)
        world.removeBody(derechaWall)
        world.removeBody(traseroWall)
