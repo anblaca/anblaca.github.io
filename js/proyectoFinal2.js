@@ -962,7 +962,8 @@ function calcularVictoria() {
 function reproducirVideo() {
 
     // Cine
-    video = document.createElement('video');
+
+    var video = document.createElement('video');
     video.src = "./videos/fernandoAlonso.mp4";
     video.load();
     video.muted = true;
