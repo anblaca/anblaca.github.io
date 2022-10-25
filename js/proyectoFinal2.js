@@ -462,7 +462,7 @@ function estaDentro(x) {
         if(cuantas == monedasVisitadas.length) {
             cuentaMonedas +=1
         }
-        
+        console.log(cuentaMonedas)
     }
 
     
@@ -551,7 +551,7 @@ function animate() {
 
     //console.log(estaDentro)
     
-    drawScore()
+    //drawScore()
 
     if (dificil == true || medio == true) { 
 
