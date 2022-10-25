@@ -453,20 +453,23 @@ function loadScene() {
 
 function estaDentro(x) {
     let cuantas = 0
-    if(pasa) {
-    for(let i = 0; i < monedasVisitadas.length; i++) {
+    //if(pasa) {
 
-        if (monedasVisitadas[i] != x) {
-           cuantas += 1
-        }
+        cuentaMonedas = 10 - monedas.length
 
-        if(cuantas == monedasVisitadas.length) {
-            cuentaMonedas +=1
-        }
+    //for(let i = 0; i < monedasVisitadas.length; i++) {
+
+      //  if (monedasVisitadas[i] != x) {
+        //   cuantas += 1
+        //}
+
+        //if(cuantas == monedasVisitadas.length) {
+          //  cuentaMonedas +=1
+        //}
         console.log(cuentaMonedas)
-    }
-    pasa = false
-}
+    //}
+    //pasa = false
+//}
 
     //[1,1,1,1,1,1,1,,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3]
     
@@ -536,7 +539,7 @@ function animate() {
     //para todas las monedas
     //si el coche pasa por alguna de las monedas
     //borrar moneda de la pantalla(pintar todas menos esa)
-
+    if(monedas.length > 0) {
     for (let i = 0; i < monedas.length; i++) {
         let x = monedas[i].position.x
         let z = monedas[i].position.z
@@ -545,10 +548,13 @@ function animate() {
 
         //normalizar la resta
         if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
-                monedas[i].visible = false 
-                cuentaMonedas += 1
+                monedas[i].visible = false
+                //borrar la moneda del array y sumar 1
+                monedas.remove(i)
+                estaDentro()
+            }
         }
-        }
+    }
 
     
     //drawScore()
