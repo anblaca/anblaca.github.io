@@ -456,9 +456,9 @@ function estaDentro(x) {
     for(let i = 0; i < monedasVisitadas.length; i++) {
 
         if (monedasVisitadas[i] != x) {
-            cuantas += 1
+           
         }
-        
+        console.log(cuantas)
         if(cuantas == monedasVisitadas.length) {
             cuentaMonedas +=1
         }
@@ -542,9 +542,9 @@ function animate() {
 
         //normalizar la resta
         if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
-                console.log(i)
                 monedas[i].visible = false   
-                monedasVisitadas.push(i) 
+                monedasVisitadas.push(i)
+
         }
         estaDentro(i);
     }
