@@ -984,7 +984,7 @@ function escribirVictoria() {
 
         font: font,
 
-        size: 15,
+        size: 5,
         height: 5,
         curveSegments: 12,
 
