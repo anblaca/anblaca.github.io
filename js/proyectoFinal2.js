@@ -450,8 +450,12 @@ function loadScene() {
     rightVelocity = 0
 }
 
-function estaDentro() {
-    cuentaMonedas += 1
+function estaDentro(x) {
+    if(arrayMonedas[x] == 1) {
+        arrayMonedas[x] == 0
+        cuentaMonedas += 1
+    }
+    
 }
 
 function animate() {
@@ -530,6 +534,7 @@ function animate() {
                 console.log(i)
                 monedas[i].visible = false   
                 arrayMonedas[i] = 1
+                estaDentro(i);
                 break;
         }
         
