@@ -173,7 +173,7 @@ function loadScene() {
     const habitacion = new THREE.Mesh( new THREE.BoxGeometry(100,100,100),paredes);
     scene.add(habitacion);
 
-    scene.fog = new THREE.Fog( 0xffffff, 10, 15 );
+    scene.fog = new THREE.Fog( 0xffffff, 10, 25 );
     //const entorno = [ path+"posx.jpg", path+"negx.jpg",
         //               path+"posy.jpg", path+"negy.jpg",
       //                 path+"posz.jpg", path+"negz.jpg"];
@@ -608,7 +608,9 @@ function dificultad() {
     const matStone = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texstone});
 
     if(dificil) {
-        
+
+    scene.fog = new THREE.Fog( 0xffffff, 10, 25 );
+
     for (let i = 0; i < 100; i++) {
         const jump = new THREE.Mesh(new THREE.CylinderGeometry(0, 1, 0.5, 5), matStone)
         jump.position.x = Math.random() * 100 - 50
@@ -748,7 +750,7 @@ function dificultad() {
        world.removeBody(traseroWall)
        world.removeBody(delanteroWall)
        world.removeBody(sphereBody)
-       
+       scene.fog = null
     }
 }
 
