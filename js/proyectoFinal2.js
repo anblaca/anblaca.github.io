@@ -133,8 +133,8 @@ function loadScene() {
     // Materiales 
     const path ="./images/";
     const texcoin = new THREE.TextureLoader().load(path+"metal.jpg");
-    //const texsuelo = new THREE.TextureLoader().load(path+"grassGround.jpg");
-    const texsuelo = new THREE.TextureLoader().load(path+"negy.jpg");
+    const texsuelo = new THREE.TextureLoader().load(path+"grassGround.jpg");
+    //const texsuelo = new THREE.TextureLoader().load(path+"negy.jpg");
     texsuelo.repeat.set(4,3);
     texsuelo.wrapS= texsuelo.wrapT = THREE.RepeatWrapping;
 
@@ -172,8 +172,8 @@ function loadScene() {
         //                                            shininess: 30,
           //                                          envMap: texesfera });
 
-    //const matsuelo = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texsuelo});
-    const matsuelo = new THREE.MeshLambertMaterial({color:"rgb(150,150,150)",map:texsuelo});
+    const matsuelo = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texsuelo});
+    //const matsuelo = new THREE.MeshLambertMaterial({color:"rgb(150,150,150)",map:texsuelo});
 
     phongMaterial = new THREE.MeshPhongMaterial()
 
