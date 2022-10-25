@@ -295,9 +295,9 @@ function loadScene() {
         moneda.receiveShadow = true
         moneda.castShadow = true
         monedas.push(moneda)
-        moneda.position.x = Math.random() * 100 - 50
+        let x = moneda.position.x = Math.random() * 100 - 50
         moneda.position.y = 1 //0.5
-        moneda.position.z = Math.random() * 100 - 50
+        let z = moneda.position.z = Math.random() * 100 - 50
         arrayMonedas.push([x,z])
         moneda.rotation.x = Math.PI / 2
         scene.add(moneda)
@@ -559,6 +559,7 @@ function animate() {
             //monedasVisitadas.push(i)
             //pasa = true
             cuentaMonedas += 1
+
         }
     }
 
