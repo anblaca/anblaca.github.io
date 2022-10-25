@@ -848,7 +848,7 @@ function dificultad() {
     paredTrasera.castShadow = true
     paredTrasera.name = "paredTrasera"
 
-    var cubo = new THREE.Object3D()
+    cubo = new THREE.Object3D()
     cubo.name = "cubo"
     cubo.add(paredDelantera)
     cubo.add(paredDerecha)
