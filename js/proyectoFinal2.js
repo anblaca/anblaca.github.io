@@ -173,7 +173,7 @@ function loadScene() {
     const habitacion = new THREE.Mesh( new THREE.BoxGeometry(100,100,100),paredes);
     scene.add(habitacion);
 
-    //scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 );
+    scene.fog = new THREE.Fog( 0xffffff, 10, 60 );
     //const entorno = [ path+"posx.jpg", path+"negx.jpg",
         //               path+"posy.jpg", path+"negy.jpg",
       //                 path+"posz.jpg", path+"negz.jpg"];
