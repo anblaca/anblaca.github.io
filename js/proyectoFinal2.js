@@ -172,8 +172,8 @@ function loadScene() {
         //                                            shininess: 30,
           //                                          envMap: texesfera });
 
-    const matsuelo = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texsuelo});
-    //const matsuelo = new THREE.MeshBasicMaterial({color:"rgb(150,150,150)",map:texsuelo});
+    //const matsuelo = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texsuelo});
+    const matsuelo = new THREE.MeshLambertMaterial({color:"rgb(150,150,150)",map:texsuelo});
 
     phongMaterial = new THREE.MeshPhongMaterial()
 
@@ -273,7 +273,7 @@ function loadScene() {
     const wheelLFGeometry = new THREE.CylinderGeometry(0.33,0.33,0.2) 
     wheelLFGeometry.rotateZ(Math.PI / 2)
     //------------------------------------------------------------------------------------------------------------------------------------
-    texWheel = new THREE.TextureLoader().load(path+"tyre.jpg");
+    var texWheel = new THREE.TextureLoader().load(path+"tyre.jpg");
     const texturaWheel = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texWheel});
 
     wheelLFMesh = new THREE.Mesh(wheelLFGeometry, texturaWheel)
