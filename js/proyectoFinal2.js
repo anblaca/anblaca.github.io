@@ -112,6 +112,15 @@ function setCameras(ar) {
 
 function drawScore() {
     
+    if(cuentaMonedas != 0) {
+        for( var i = scene.children.length - 1; i >= 0; i--) { 
+            var obj = scene.children[i];
+            if(obj.name == "puntuacion") {
+                scene.remove(obj);  
+            }    
+       }
+    }
+
     //texto inicial
     var canvas1 = document.createElement('canvas');
     var context1 = canvas1.getContext('2d');
@@ -132,12 +141,11 @@ function drawScore() {
       );
     
     mesh1.position.set(0, 0, 0);
-    //mesh1.rotation.x = -0.9;
 
-    //var texto = new THREE.Shape.add(mesh1);
-    // Note that mesh1 gets added to the shape and not to the scene
+    mesh1.name = "puntacion"
 
    scene.add(mesh1)
+
 }
 
 function loadScene() {
@@ -171,7 +179,6 @@ function loadScene() {
     const habitacion = new THREE.Mesh( new THREE.BoxGeometry(100,100,100),paredes);
     scene.add(habitacion);
 
-    scene.fog = new THREE.Fog( 0xffffff, 10, 25 );
     //const entorno = [ path+"posx.jpg", path+"negx.jpg",
         //               path+"posy.jpg", path+"negy.jpg",
       //                 path+"posz.jpg", path+"negz.jpg"];
@@ -526,7 +533,7 @@ function animate() {
     
 
     drawScore()
-    
+
     if (dificil == true) { 
 
         //MOVER LA PELOTA
