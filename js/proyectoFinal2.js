@@ -277,12 +277,19 @@ function loadScene() {
     wheelLFGeometry.rotateZ(Math.PI / 2)
     //------------------------------------------------------------------------------------------------------------------------------------
     var texWheel = new THREE.TextureLoader().load(path+"wheel.png");
-    const texturaWheel = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texWheel, side:THREE.BackSide});
-    
-    texWheel.repeat.set(1,1);
-    texWheel.wrapS= texWheel.wrapT = THREE.RepeatWrapping;
+    const texturaWheel = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texWheel});
+    const sideMaterial = texturaWheel
+    const topMaterial = new THREE.MeshStandardMaterial({color:'black' ,map:texWheel});
+    const bottomMaterial = new THREE.MeshStandardMaterial({color:'black' ,map:texWheel});
+    const materials = [
+        sideMaterial,
+        topMaterial,
+        bottomMaterial
+      ]
+    //texWheel.repeat.set(1,1);
+    //texWheel.wrapS= texWheel.wrapT = THREE.RepeatWrapping;
 
-    wheelLFMesh = new THREE.Mesh(wheelLFGeometry, texturaWheel)
+    wheelLFMesh = new THREE.Mesh(wheelLFGeometry, materials)
     wheelLFMesh.position.x = -1
     wheelLFMesh.position.y = 3
     wheelLFMesh.position.z = -1
@@ -299,7 +306,7 @@ function loadScene() {
     //front right wheel
     const wheelRFGeometry = new THREE.CylinderGeometry(0.33,0.33,0.2)
     wheelRFGeometry.rotateZ(Math.PI / 2)
-    wheelRFMesh = new THREE.Mesh(wheelRFGeometry, texturaWheel)
+    wheelRFMesh = new THREE.Mesh(wheelRFGeometry, materials)
     wheelRFMesh.position.y = 3
     wheelRFMesh.position.x = 1
     wheelRFMesh.position.z = -1
@@ -316,7 +323,7 @@ function loadScene() {
     //back left wheel
     const wheelLBGeometry = new THREE.CylinderGeometry(0.4,0.4,0.33)
     wheelLBGeometry.rotateZ(Math.PI / 2)
-    wheelLBMesh = new THREE.Mesh(wheelLBGeometry, texturaWheel)
+    wheelLBMesh = new THREE.Mesh(wheelLBGeometry, materials)
     wheelLBMesh.position.y = 3
     wheelLBMesh.position.x = -1
     wheelLBMesh.position.z = 1
@@ -334,7 +341,7 @@ function loadScene() {
     const wheelRBGeometry = new THREE.CylinderGeometry(0.4,0.4,0.33)
 
     wheelRBGeometry.rotateZ(Math.PI / 2)
-    wheelRBMesh = new THREE.Mesh(wheelRBGeometry, texturaWheel)
+    wheelRBMesh = new THREE.Mesh(wheelRBGeometry, materials)
     wheelRBMesh.position.y = 3
     wheelRBMesh.position.x = 1
     wheelRBMesh.position.z = 1
