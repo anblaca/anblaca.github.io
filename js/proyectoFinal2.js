@@ -550,14 +550,14 @@ function animate() {
         if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
                 monedas[i].visible = false
                 //borrar la moneda del array y sumar 1
-                monedas.slice(i, 1)
+                monedas.splice(i, 1)
                 console.log(monedas.length)
                 estaDentro()
             }
         }
     }
-
-    calcularVictoria()
+    if (final = false) { calcularVictoria()}
+   
     //drawScore()
 
     if (dificil == true || medio == true) { 
@@ -964,6 +964,7 @@ function calcularVictoria() {
         }
         if(contar == monedas.length) {
             console.log("HAS GANADO")
+            final = true
         }
     }
     //if (cuentaMonedas == 10 &&  dificil == false) {
