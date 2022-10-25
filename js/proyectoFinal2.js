@@ -504,32 +504,16 @@ function animate() {
         paredDelantera.position.y = delanteroWall.position.y
         //paredDelantera.position.z = delanteroWall.position.z
         //calculamos si esta dentro del cuadrado
-        if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
+        if(Math.sqrt(Math.pow(a,2)) < 1 && Math.sqrt(Math.pow(c,2)) < 1) {
             monedas[i].visible = false
             //borrar la moneda del array y sumar 1
             monedas.splice(i, 1)
             estaDentro()
         }
-        // MOVER LAS PAREDES
-        //paredTrasera.position.x = traseroWall.position.x
-        //paredTrasera.position.y = traseroWall.position.y
-        //paredTrasera.position.z = traseroWall.position.z
-
-        //paredDelantera.position.x = delanteroWall.position.x
-        //paredDelantera.position.y = delanteroWall.position.y
-        //paredDelantera.position.z = delanteroWall.position.z
-
-        //paredDerecha.position.x = derechaWall.position.x
-        //paredDerecha.position.y = derechaWall.position.y
-        //paredDerecha.position.z = derechaWall.position.z
-
-        //paredIzquierda.position.x = izquieroWall.position.x 
-        //paredIzquierda.position.x = izquieroWall.position.y
-        //paredIzquierda.position.x = izquieroWall.position.z 
         area()
     }
     
-   
+
     
     TWEEN.update()
 
@@ -843,7 +827,7 @@ function dificultad() {
     scene.add(cubo)
 
     //parte fisica
-
+    //frontWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
     traseroWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     traseroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
     traseroWall.position.x = paredTrasera.position.x+30
@@ -931,13 +915,13 @@ function calcularVictoria() {
     }
 
     if (cuentaMonedas == 10 &&  dentro == true) {
+        scene.fog = null
         escribirVictoria();
         reproducirVideo()
     }
 
-
-
 }
+
 function reproducirVideo() {
 
     // Cine
