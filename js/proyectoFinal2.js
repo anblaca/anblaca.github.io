@@ -550,7 +550,7 @@ function animate() {
         if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
                 monedas[i].visible = false
                 //borrar la moneda del array y sumar 1
-                monedas.remove(i)
+                monedas.slice(i, 1)
                 estaDentro()
             }
         }
