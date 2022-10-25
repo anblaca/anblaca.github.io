@@ -818,7 +818,7 @@ function dificultad() {
     //ground
     const matsuelo = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texwall});
     //-----------------
-    paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
+    paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), rojo)
     paredIzquierda.position.x = -7.5
     //paredIzquierda.position.x = -30
     paredIzquierda.receiveShadow = true
@@ -826,7 +826,7 @@ function dificultad() {
     paredIzquierda.rotation.y = Math.PI/2
     paredIzquierda.name = "paredIzquierda"
     //-----------------------------------
-    paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
+    paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), azul)
     paredDerecha.position.x = 7.5
     //paredDerecha.position.x = -25
     paredDerecha.receiveShadow = true
@@ -834,14 +834,14 @@ function dificultad() {
     paredDerecha.rotation.y = -Math.PI/2
     paredDerecha.name = "paredDerecha"
     //-----------------------------------
-    paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
+    paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), amarillo)
     paredDelantera.position.z = 7.5
     //paredDelantera.position.x = -26.5
     paredDelantera.receiveShadow = true
     paredDelantera.castShadow = true
     paredDelantera.name = "paredDelantera"
     //---------------------------------
-    paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
+    paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), negro)
     paredTrasera.position.z = -7.5
     //paredTrasera.position.x = -30
     paredTrasera.receiveShadow = true
@@ -907,6 +907,7 @@ function dificultad() {
     sphereBody.addShape(sphereShape)
 
     sphereBody.position.y = sphereMesh.position.y
+    sphereBody.linearDamping = 0.31
     //sphereBody.position.z = sphereMesh.position.z
     world.addBody(sphereBody)
     } else {
