@@ -449,6 +449,9 @@ function loadScene() {
     rightVelocity = 0
 }
 
+function estaDentro() {
+    cuentaMonedas += 1
+}
 
 function animate() {
     requestAnimationFrame(animate)
@@ -517,24 +520,24 @@ function animate() {
     //borrar moneda de la pantalla(pintar todas menos esa)
     for (let i = 0; i < monedas.length; i++) {
         let x = monedas[i].position.x
-        //let y = monedas[i].position.y
         let z = monedas[i].position.z
         let a = x - carBody.position.x
-        //let b = y - carBody.position.y
         let c = z - carBody.position.z
+
         //normalizar la resta
         if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
-                cuentaMonedas += 1
+                estaDentro()
+
                 monedas[i].visible = false        
         }
         
     }
 
-    console.log(cuentaMonedas)
+    console.log(estaDentro)
 
     drawScore()
 
-    if (dificil == true) { 
+    if (dificil == true || medio == true) { 
 
         //MOVER LA PELOTA
         sphereMesh.position.y = sphereBody.position.y
