@@ -14,7 +14,7 @@ var carBody, wheelLFBody, wheelRFBody, wheelLBBody, wheelRBBody, chaseCam, moned
 var sphereMesh,sphereBody, texstone,texball, texwall
 
 var  traseroWall, delanteroWall, izquieroWall, derechaWall, cubo
-var paredDelantera, paredDerecha, paredIzquierda, paredTrasera
+var paredDelantera, paredDerecha, paredIzquierda, paredTrasera, phongMaterial
 var cuentaMonedas = 0
 var dentro = false
 const timestep = 1/60
