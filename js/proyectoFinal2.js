@@ -261,7 +261,6 @@ function loadScene() {
     //const texturaCar = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texCar});
 
     var a = new THREE.CubeTextureLoader()
-	.setPath( 'textures/cubeMaps/' )
 	.load( [
 		'enfrente.png',
 		'enfrente.png',
