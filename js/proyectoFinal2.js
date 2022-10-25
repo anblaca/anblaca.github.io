@@ -182,8 +182,8 @@ function loadScene() {
         //                                            shininess: 30,
           //                                          envMap: texesfera });
 
-    const matsuelo = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texsuelo});
-
+    //const matsuelo = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texsuelo});
+    const matsuelo = new THREE.MeshBasicMaterial({color:"rgb(150,150,150)",map:texsuelo});
 
     phongMaterial = new THREE.MeshPhongMaterial()
 
@@ -254,9 +254,9 @@ function loadScene() {
         moneda.receiveShadow = true
         moneda.castShadow = true
         monedas.push(moneda)
-        let x = moneda.position.x = Math.random() * 100 - 50
+        let x = moneda.position.x = Math.random() * 100 - 75
         moneda.position.y = 1 //0.5
-        let z = moneda.position.z = Math.random() * 100 - 50
+        let z = moneda.position.z = Math.random() * 100 - 75
         moneda.rotation.x = Math.PI / 2
         scene.add(moneda)
         const giro = new TWEEN.Tween( moneda.rotation ).to( {x:0, y:Math.PI/2, z:0}, 3000 );
