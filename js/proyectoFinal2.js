@@ -298,7 +298,6 @@ function loadScene() {
         let x = moneda.position.x = Math.random() * 100 - 50
         moneda.position.y = 1 //0.5
         let z = moneda.position.z = Math.random() * 100 - 50
-        arrayMonedas.push([x,z])
         moneda.rotation.x = Math.PI / 2
         scene.add(moneda)
         const giro = new TWEEN.Tween( moneda.rotation ).to( {x:0, y:Math.PI/2, z:0}, 3000 );
@@ -476,7 +475,6 @@ function estaDentro(x) {
 function animate() {
     requestAnimationFrame(animate)
 
-
     world.step(timestep)
 
     carBodyMesh.position.set(
@@ -538,54 +536,20 @@ function animate() {
     //para todas las monedas
     //si el coche pasa por alguna de las monedas
     //borrar moneda de la pantalla(pintar todas menos esa)
-    if(arrayEncima.length == arrayMonedas.length) {arrayEncima = []}
 
-    for (let i = 0; i < arrayMonedas.length; i++) {
-
-        let x = monedas[i][0]
-        let z = monedas[i][1]
-        
+    for (let i = 0; i < monedas.length; i++) {
+        let x = monedas[i].position.x
+        let z = monedas[i].position.z
         let a = x - carBody.position.x
         let c = z - carBody.position.z
 
-        arrayEncima.push[[a,c]]
-    }
-
-    for (let i = 0; i < arrayEncima.length; i++) {
-        a = arrayEncima[i][0]
-        c = arrayEncima[i][1]
-        if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
-            monedas[i].visible = false   
-            //monedasVisitadas.push(i)
-            //pasa = true
-            cuentaMonedas += 1
-
-        }
-    }
-
-    
-   // if(cuentaMonedas <10) {
-    //for (let i = 0; i < monedas.length; i++) {
-      //  let x = monedas[i].position.x
-       // let z = monedas[i].position.z
-        //let a = x - carBody.position.x
-        //let c = z - carBody.position.z
-
         //normalizar la resta
-        //if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
-          //      monedas[i].visible = false   
-                //monedasVisitadas.push(i)
-                //pasa = true
-            //    cuentaMonedas += 1
-       // }
-        //estaDentro(i);
-    //}
-//}
+        if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
+                monedas[i].visible = false 
+                cuentaMonedas += 1
+        }
+        }
 
-
-
-
-    //console.log(estaDentro)
     
     //drawScore()
 
@@ -986,11 +950,19 @@ function dificultad() {
 
 function calcularVictoria() {
 
-
-    if (cuentaMonedas == 10 &&  dificil == false) {
-        console.log("Victoria!")
-    
+    if(medio == false && dificil == false) {
+        var contar = 0
+        for (let i = 0; i < monedas.length; i++) {
+            if (monedas[i].visible == false) {contar += 1}
+        }
+        if(contar == monedas.length) {
+            console.log("HAS GANADO")
+        }
     }
+    //if (cuentaMonedas == 10 &&  dificil == false) {
+      //  console.log("Victoria!")
+    
+    //}
 
     //if (cuentaMonedas == 10 && dificil == true && )
 }
