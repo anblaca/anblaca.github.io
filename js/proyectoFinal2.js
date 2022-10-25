@@ -291,7 +291,7 @@ function loadScene() {
 
     //texWheel.repeat.set(1,1);
     //texWheel.wrapS= texWheel.wrapT = THREE.RepeatWrapping;
-    carBodyMesh = new THREE.Mesh(carBodyGeometry, a)
+    carBodyMesh = new THREE.Mesh(carBodyGeometry, textureCube3)
     carBodyMesh.position.y = 3
     carBodyMesh.castShadow = true
     scene.add(carBodyMesh)
