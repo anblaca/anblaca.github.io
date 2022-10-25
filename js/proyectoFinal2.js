@@ -66,7 +66,7 @@ function init() {
     //canvas.width = 1024;
     //canvas.height = 1024;
 
-    setCameras(window.innerWidth / window.innerHeight);
+    //setCameras(window.innerWidth / window.innerHeight);
 
     var canvas1 = document.createElement('canvas');
     var context1 = canvas1.getContext('2d');
@@ -110,10 +110,10 @@ function onWindowResize() {
     camera.updateProjectionMatrix()
 
     //ortografica
-    camaraPlanta.left = -L;
-    camaraPlanta.right = L;
-    camaraPlanta.bottom = -L;
-    camaraPlanta.top = L;
+    //camaraPlanta.left = -L;
+    //camaraPlanta.right = L;
+    //camaraPlanta.bottom = -L;
+    //camaraPlanta.top = L;
 
     //camaraPlanta.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight)
@@ -551,7 +551,6 @@ function animate() {
         //paredIzquierda.position.x = izquieroWall.position.z 
     }
     
-
     TWEEN.update()
 
     constraintLB.setMotorSpeed(forwardVelocity)
@@ -566,10 +565,7 @@ function animate() {
         v.y = 1
     }
     camera.position.lerpVectors(camera.position, v, 0.05)
-
-    renderer.setViewport(0,window.innerHeight - window.innerHeight/4, Math.min(window.innerWidth, window.innerHeight)/4, Math.min(window.innerWidth, window.innerHeight)/4);
     
-
     render()
 
 }
@@ -770,7 +766,6 @@ function calcularVictoria() {
 function render() {
     renderer.render(scene, camera)
 
-    renderer.render(scene,camaraPlanta);
     
 }
 
