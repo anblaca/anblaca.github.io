@@ -526,14 +526,14 @@ function animate() {
 
         //normalizar la resta
         if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
-                estaDentro()
+                console.log("entro al if")
 
                 monedas[i].visible = false        
         }
         
     }
 
-    console.log(estaDentro)
+    //console.log(estaDentro)
 
     drawScore()
 
