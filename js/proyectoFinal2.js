@@ -16,6 +16,7 @@ var ctx, phongMaterial, sphereMesh,sphereBody, texstone,texball, texwall
 var  traseroWall, delanteroWall, izquieroWall, derechaWall
 var paredDelantera, paredDerecha, paredIzquierda, paredTrasera
 var cuentaMonedas = 0
+var arrayMonedas = []
 const timestep = 1/60
 var camaraPlanta
 
@@ -302,7 +303,6 @@ function loadScene() {
         giro.start();
     }
 
-
     const carBodyGeometry = new THREE.BoxGeometry(1, 1, 2)
     carBodyMesh = new THREE.Mesh(carBodyGeometry, phongMaterial)
     carBodyMesh.position.y = 3
@@ -527,10 +527,10 @@ function animate() {
         //normalizar la resta
         if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
                 console.log("entro al if")
-                console.log(monedas[i])
+                
                 monedas[i].visible = false        
         }
-        
+        console.log(monedas[i])
     }
 
     //console.log(estaDentro)
