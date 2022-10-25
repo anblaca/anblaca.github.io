@@ -921,7 +921,7 @@ function calcularVictoria() {
             //console.log("HAS GANADO")
           //  final = true
         //}
-
+        console.log("Aun no has ganado")
         if(cuentaMonedas == 10) {
             console.log("HAS GANADO")
             final = true
