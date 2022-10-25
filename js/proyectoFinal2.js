@@ -970,7 +970,8 @@ function reproducirVideo() {
     const texvideo = new THREE.VideoTexture(video);
     const pantalla = new THREE.Mesh(new THREE.PlaneGeometry(20,6, 4,4), 
                                     new THREE.MeshBasicMaterial({map:texvideo}));
-    pantalla.position.set(0,4.5,-5);
+    //pantalla.position.set(0,4.5,-5);
+    pantalla.position.set(0,1.5,0);
     scene.add(pantalla);
 }
 
@@ -979,7 +980,7 @@ function escribirVictoria() {
     loader = new FontLoader();
     loader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
 
-    var textGeometry = new TextGeometry( "WIN", {
+    var textGeometry = new TextGeometry( "VICTORIA", {
 
         font: font,
 
