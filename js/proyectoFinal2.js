@@ -75,7 +75,6 @@ function init() {
     //canvas = document.getElementById("canvas");
     //ctx = canvas.getContext("2d");
 
-    //drawScore()
 
     window.addEventListener('resize', onWindowResize, false)
 
@@ -226,34 +225,8 @@ function loadScene() {
     //sueloBody.position.set(0, -1, 0)
     world.addBody(sueloBody)
     
-    //loader = new FontLoader();
-    //loader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
+    
 
-    //textGeometry = new TextGeometry( "text", {
-
-      //  font: font,
-
-        //size: 50,
-        //height: 10,
-        //curveSegments: 12,
-
-        //bevelThickness: 1,
-        //bevelSize: 1,
-        //bevelEnabled: true
-
-    //});
-
-    //var textMaterial = new THREE.MeshPhongMaterial( 
-      //  { color: 0xff0000, specular: 0xffffff }
-    //);
-
-    //mesh = new THREE.Mesh( textGeometry, textMaterial );
-
-    //scene.add( mesh );
-
-    //});   
-
-    drawScore()
 
     const sphereGroundContactMaterial = new CANNON.ContactMaterial(groundMaterial,materialEsfera,
         { friction: 0.7, 
@@ -953,6 +926,7 @@ function calcularVictoria() {
         if(cuentaMonedas == 10) {
             console.log("HAS GANADO")
             final = true
+            escribirVictoria();
         }
     }
     //if (cuentaMonedas == 10 &&  dificil == false) {
@@ -963,10 +937,38 @@ function calcularVictoria() {
     //if (cuentaMonedas == 10 && dificil == true && )
 }
 
+function escribirVictoria() {
+
+    loader = new FontLoader();
+    loader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
+
+    var textGeometry = new TextGeometry( "text", {
+
+        font: font,
+
+        size: 50,
+        height: 10,
+        curveSegments: 12,
+
+        bevelThickness: 1,
+        bevelSize: 1,
+        bevelEnabled: true
+
+    });
+
+    var textMaterial = new THREE.MeshPhongMaterial( 
+        { color: 0xff0000, specular: 0xffffff }
+    );
+
+    mesh = new THREE.Mesh( textGeometry, textMaterial );
+
+    scene.add( mesh );
+
+    });   
+}
+
 function render() {
     renderer.render(scene, camera)
-
-    
 }
 
 init()
