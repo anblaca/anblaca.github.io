@@ -866,7 +866,8 @@ function dificultad() {
     izquieroWall.position.x = paredIzquierda.position.x+30
     izquieroWall.position.y = paredIzquierda.position.y
     izquieroWall.position.z = paredIzquierda.position.z
-    izquieroWall.quaternion.setFromEuler(0,0,Math.PI/2,'XYZ');
+    izquieroWall.rotateZ(Math.PI/2)
+    //izquieroWall.quaternion.setFromEuler(0,0,Math.PI/2,'XYZ');
     world.addBody( izquieroWall );
  
     derechaWall = new CANNON.Body( {mass:0, material:groundMaterial} );
@@ -875,7 +876,8 @@ function dificultad() {
     derechaWall.position.x = paredDerecha.position.x+30
     derechaWall.position.y = paredDerecha.position.y
     derechaWall.position.z = paredDerecha.position.z
-    derechaWall.quaternion.setFromEuler(0,0,Math.PI/2,'XYZ');
+    //derechaWall.quaternion.setFromEuler(0,0,Math.PI/2,'XYZ');
+    derechaWall.rotateZ(Math.PI/2)
     world.addBody( derechaWall );
 
     //añadir una pelota
