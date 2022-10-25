@@ -557,7 +557,7 @@ function animate() {
         }
     }
 
-    
+    calcularVictoria()
     //drawScore()
 
     if (dificil == true || medio == true) { 
