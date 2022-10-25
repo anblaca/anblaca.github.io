@@ -542,8 +542,8 @@ function animate() {
 
     for (let i = 0; i < arrayMonedas.length; i++) {
 
-        let x = monedas[i][0].position.x
-        let z = monedas[i][1].position.z
+        let x = monedas[i][0]
+        let z = monedas[i][1]
         
         let a = x - carBody.position.x
         let c = z - carBody.position.z
