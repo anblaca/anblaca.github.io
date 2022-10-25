@@ -22,7 +22,7 @@ var camaraPlanta
 const monedas = []
 const cylyndersBody = []
 const L = 103;
-
+var medio = false
 var dificil = false
 
 const v = new THREE.Vector3()
@@ -113,6 +113,7 @@ function setCameras(ar) {
 function drawScore() {
     
     if(cuentaMonedas != 0) {
+        console.log("entro a borrar las monedas")
         for( var i = scene.children.length - 1; i >= 0; i--) { 
             var obj = scene.children[i];
             if(obj.name == "puntuacion") {
@@ -452,10 +453,9 @@ function loadScene() {
 function animate() {
     requestAnimationFrame(animate)
 
-    //delta = Math.min(clock.getDelta(), 0.1)
-    //world.step(delta)
+
     world.step(timestep)
-    // Copy coordinates from Cannon to Three.js
+
     carBodyMesh.position.set(
         carBody.position.x,
         carBody.position.y,
@@ -530,7 +530,7 @@ function animate() {
         
     }
 
-    
+    console.log(cuentaMonedas)
 
     drawScore()
 
@@ -584,6 +584,7 @@ function setupGUI()
 
     effectController = {
         boton: false,
+        medio: false
     };
 
 	// Creacion interfaz
@@ -594,6 +595,21 @@ function setupGUI()
 
     //h.add(effectController, "dificil").name("Dificultad").onChange(dificultad);
     //Control del cambio de color del mesh
+
+    h.add(effectController, "medio").name("Medio").onChange(
+        function(click) {
+                    if (click && medio == false){
+                        medio = true;
+                        console.log("medio")
+                        nivelMedio()
+                    } else {
+                        console.log("easy")
+                        medio = false
+                        nivelMedio()
+                    } 
+    
+        });
+
 
     h.add(effectController, "boton").name("Dificil").onChange(
         function(click) {
@@ -610,10 +626,161 @@ function setupGUI()
         });
 }
 
+function nivelMedio() {
+
+    //añadir obstaculos
+    const matStone = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texstone});
+    
+
+    if(medio) {
+
+    for (let i = 0; i < 100; i++) {
+        const jump = new THREE.Mesh(new THREE.CylinderGeometry(0, 1, 0.5, 5), matStone)
+        jump.position.x = Math.random() * 100 - 50
+        jump.position.y = 0.25
+        jump.position.z = Math.random() * 100 - 50
+        jump.name = "jump"
+        scene.add(jump)
+
+        const cylinderShape = new CANNON.Cylinder(0.01, 1, 0.5, 5)
+        const cylinderBody = new CANNON.Body({ mass: 0 })
+        cylinderBody.addShape(cylinderShape, new CANNON.Vec3())
+        cylinderBody.position.x = jump.position.x
+        cylinderBody.position.y = jump.position.y
+        cylinderBody.position.z = jump.position.z
+        cylyndersBody.push(cylinderBody)
+        world.addBody(cylinderBody)
+    }
+
+    //scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 );
+    var rojo = new THREE.MeshBasicMaterial({ color: 'red', wireframe: true });
+    var azul = new THREE.MeshBasicMaterial({ color: 'blue', wireframe: true });
+    var amarillo = new THREE.MeshBasicMaterial({ color: 'yellow', wireframe: true });
+    var negro = new THREE.MeshBasicMaterial({ color: 'black', wireframe: true });
+
+    //construir muros pequeños juntos y una pelota en medio
+    //parte visual
+    //ground
+    const matsuelo = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texwall});
+    //-----------------
+    paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
+    paredIzquierda.position.x = -7.5
+    //paredIzquierda.position.x = -30
+    paredIzquierda.receiveShadow = true
+    paredIzquierda.castShadow = true
+    paredIzquierda.rotation.y = Math.PI/2
+    paredIzquierda.name = "paredIzquierda"
+    //-----------------------------------
+    paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
+    paredDerecha.position.x = 7.5
+    //paredDerecha.position.x = -25
+    paredDerecha.receiveShadow = true
+    paredDerecha.castShadow = true
+    paredDerecha.rotation.y = -Math.PI/2
+    paredDerecha.name = "paredDerecha"
+    //-----------------------------------
+    paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
+    paredDelantera.position.z = 7.5
+    //paredDelantera.position.x = -26.5
+    paredDelantera.receiveShadow = true
+    paredDelantera.castShadow = true
+    paredDelantera.name = "paredDelantera"
+    //---------------------------------
+    paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
+    paredTrasera.position.z = -7.5
+    //paredTrasera.position.x = -30
+    paredTrasera.receiveShadow = true
+    paredTrasera.castShadow = true
+    paredTrasera.name = "paredTrasera"
+
+    var cubo = new THREE.Object3D()
+    cubo.name = "cubo"
+    cubo.add(paredDelantera)
+    cubo.add(paredDerecha)
+    cubo.add(paredIzquierda)
+    cubo.add(paredTrasera)
+    cubo.position.x = 30
+    //cubo.position.z = 30
+    scene.add(cubo)
+
+    //parte fisica
+
+    traseroWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+    traseroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
+    traseroWall.position.x = paredTrasera.position.x+30
+    traseroWall.position.y = paredTrasera.position.y
+    traseroWall.position.z = paredTrasera.position.z 
+    world.addBody( traseroWall );
+ 
+    delanteroWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+    delanteroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
+    delanteroWall.position.x = paredDelantera.position.x+30
+    delanteroWall.position.y = paredDelantera.position.y
+    delanteroWall.position.z = paredDelantera.position.z
+    delanteroWall.name = "delanteroWall"
+    world.addBody( delanteroWall );
+ 
+    izquieroWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+    izquieroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
+    izquieroWall.position.x = paredIzquierda.position.x+30
+    izquieroWall.position.y = paredIzquierda.position.y
+    izquieroWall.position.z = paredIzquierda.position.z
+    world.addBody( izquieroWall );
+ 
+    derechaWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+    derechaWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
+
+    derechaWall.position.x = paredDerecha.position.x+30
+    derechaWall.position.y = paredDerecha.position.y
+    derechaWall.position.z = paredDerecha.position.z
+    world.addBody( derechaWall );
+
+    //añadir una pelota
+    const matball = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texball})
+    const sphereGeometry = new THREE.SphereGeometry(0.5, 8, 8)
+    sphereMesh = new THREE.Mesh(sphereGeometry, rojo)
+    sphereMesh.position.x = 0
+    sphereMesh.position.y = 0.25
+    sphereMesh.name = "bola"
+    //sphereMesh.position.z = Math.random() * 10 - 5
+    sphereMesh.castShadow = true
+    sphereMesh.receiveShadow = true
+    scene.add(sphereMesh)
+
+    const sphereShape = new CANNON.Sphere(0.5)
+    sphereBody = new CANNON.Body({ mass: 1, material: materialEsfera})
+    sphereBody.addShape(sphereShape)
+
+    sphereBody.position.y = sphereMesh.position.y
+    //sphereBody.position.z = sphereMesh.position.z
+    world.addBody(sphereBody)
+    } else {
+
+        console.log("entro a borrar")
+        for( var i = scene.children.length - 1; i >= 0; i--) { 
+            var obj = scene.children[i];
+            if(obj.name == "cubo" || obj.name == "jump" || obj.name == "bola") {
+                scene.remove(obj);  
+            }    
+       }
+
+       for (var i = 0; i < cylyndersBody.length; i++) {
+            world.removeBody(cylyndersBody[i])
+       }
+       cylyndersBody
+       world.removeBody(izquieroWall)
+       world.removeBody(derechaWall)
+       world.removeBody(traseroWall)
+       world.removeBody(delanteroWall)
+       world.removeBody(sphereBody)
+       scene.fog = null
+    }
+}
 
 function dificultad() {
     //añadir obstaculos
     const matStone = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texstone});
+    
 
     if(dificil) {
 
