@@ -18,6 +18,7 @@ var paredDelantera, paredDerecha, paredIzquierda, paredTrasera
 var cuentaMonedas = 0
 var arrayMonedas = []
 var monedasVisitadas = []
+var arrayEncima = []
 const timestep = 1/60
 var camaraPlanta
 var pasa = false
@@ -294,10 +295,10 @@ function loadScene() {
         moneda.receiveShadow = true
         moneda.castShadow = true
         monedas.push(moneda)
-        arrayMonedas.push(0)
         moneda.position.x = Math.random() * 100 - 50
         moneda.position.y = 1 //0.5
         moneda.position.z = Math.random() * 100 - 50
+        arrayMonedas.push([x,z])
         moneda.rotation.x = Math.PI / 2
         scene.add(moneda)
         const giro = new TWEEN.Tween( moneda.rotation ).to( {x:0, y:Math.PI/2, z:0}, 3000 );
@@ -450,14 +451,7 @@ function loadScene() {
     forwardVelocity = 0
     rightVelocity = 0
 }
-function calcularPuntuacion() {
-    for(let i = 0; i < monedas.length; i++) {
 
-        if (monedas[i].visible == false) {
-            cuentaMonedas += 1
-        }
-    }
-}
 function estaDentro(x) {
     let cuantas = 0
     if(pasa) {
@@ -544,23 +538,51 @@ function animate() {
     //para todas las monedas
     //si el coche pasa por alguna de las monedas
     //borrar moneda de la pantalla(pintar todas menos esa)
-    if(cuentaMonedas <10) {
-    for (let i = 0; i < monedas.length; i++) {
-        let x = monedas[i].position.x
-        let z = monedas[i].position.z
+    if(arrayEncima.length == arrayMonedas.length) {arrayEncima = []}
+
+    for (let i = 0; i < arrayMonedas.length; i++) {
+
+        let x = monedas[i][0].position.x
+        let z = monedas[i][1].position.z
+        
         let a = x - carBody.position.x
         let c = z - carBody.position.z
 
-        //normalizar la resta
+        arrayEncima.push[[a,c]]
+    }
+
+    for (let i = 0; i < arrayEncima.length; i++) {
+        a = arrayEncima[i][0]
+        c = arrayEncima[i][1]
         if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
-                monedas[i].visible = false   
+            monedas[i].visible = false   
+            //monedasVisitadas.push(i)
+            //pasa = true
+            cuentaMonedas += 1
+        }
+    }
+
+    
+   // if(cuentaMonedas <10) {
+    //for (let i = 0; i < monedas.length; i++) {
+      //  let x = monedas[i].position.x
+       // let z = monedas[i].position.z
+        //let a = x - carBody.position.x
+        //let c = z - carBody.position.z
+
+        //normalizar la resta
+        //if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
+          //      monedas[i].visible = false   
                 //monedasVisitadas.push(i)
                 //pasa = true
-                cuentaMonedas += 1
-        }
+            //    cuentaMonedas += 1
+       // }
         //estaDentro(i);
-    }
-}
+    //}
+//}
+
+
+
 
     //console.log(estaDentro)
     
