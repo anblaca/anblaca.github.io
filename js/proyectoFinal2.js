@@ -278,9 +278,14 @@ function loadScene() {
     //------------------------------------------------------------------------------------------------------------------------------------
     var texWheel = new THREE.TextureLoader().load(path+"wheel.png");
     const texturaWheel = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texWheel});
-    const sideMaterial = texturaWheel
-    const topMaterial = new THREE.MeshStandardMaterial({color:'black' ,map:texWheel});
-    const bottomMaterial = new THREE.MeshStandardMaterial({color:'black' ,map:texWheel});
+    //const sideMaterial = texturaWheel
+    //const topMaterial = new THREE.MeshStandardMaterial({color:'black' ,map:texWheel});
+    //const bottomMaterial = new THREE.MeshStandardMaterial({color:'black' ,map:texWheel});
+
+    const sideMaterial = new THREE.MeshStandardMaterial({color:'black' ,map:texWheel});
+    const topMaterial = texturaWheel
+    const bottomMaterial = texturaWheel
+
     const materials = [
         sideMaterial,
         topMaterial,
