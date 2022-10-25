@@ -21,7 +21,7 @@ var monedasVisitadas = []
 var arrayEncima = []
 const timestep = 1/60
 var camaraPlanta
-var pasa = false
+var final = false
 const monedas = []
 const cylyndersBody = []
 const L = 103;
