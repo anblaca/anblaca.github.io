@@ -427,7 +427,7 @@ function loadScene() {
 function estaDentro() {
     cuentaMonedas = 10 - monedas.length
     console.log(cuentaMonedas)
-   
+    drawScore()
     
 }
 
@@ -513,7 +513,6 @@ function animate() {
     }
     if (final = false) { calcularVictoria()}
    
-    drawScore()
 
     if (dificil == true || medio == true) { 
 
