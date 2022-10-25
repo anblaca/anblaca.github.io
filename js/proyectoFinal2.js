@@ -265,12 +265,13 @@ function loadScene() {
             color:'green'
             //map: THREE.TextureLoader.load(path+"lado.png")
         }),
-        new THREE.MeshStandardMaterial({ // y negative
+        new THREE.MeshStandardMaterial({ // z negative
             map: new THREE.TextureLoader().load(path+"enfrente.png")
         }),
         new THREE.MeshStandardMaterial({ // x negative
-            map: new THREE.TextureLoader().load(path+"enfrente.png")
-        }),
+            //map: new THREE.TextureLoader().load(path+"enfrente.png")
+            color:'green'
+        })
     ]
     //var texCarLado = new THREE.TextureLoader().load(path+"lado.jpg");
     //var texCarArriba = new THREE.TextureLoader().load(path+"arriba.jpg");
