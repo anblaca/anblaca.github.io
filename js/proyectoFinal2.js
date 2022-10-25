@@ -16,9 +16,7 @@ var ctx, phongMaterial, sphereMesh,sphereBody, texstone,texball, texwall
 var  traseroWall, delanteroWall, izquieroWall, derechaWall
 var paredDelantera, paredDerecha, paredIzquierda, paredTrasera
 var cuentaMonedas = 0
-var arrayMonedas = []
-var monedasVisitadas = []
-var arrayEncima = []
+
 const timestep = 1/60
 var camaraPlanta
 var final = false
@@ -65,19 +63,9 @@ function init() {
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     document.body.appendChild(renderer.domElement)
     
-    //const canvas = document.createElement( "canvas" );
-    //canvas.width = 1024;
-    //canvas.height = 1024;
-
     //setCameras(window.innerWidth / window.innerHeight);
 
-    
-    //canvas = document.getElementById("canvas");
-    //ctx = canvas.getContext("2d");
-
-
     window.addEventListener('resize', onWindowResize, false)
-
 
 }
 
@@ -225,8 +213,6 @@ function loadScene() {
     //sueloBody.position.set(0, -1, 0)
     world.addBody(sueloBody)
     
-    
-
 
     const sphereGroundContactMaterial = new CANNON.ContactMaterial(groundMaterial,materialEsfera,
         { friction: 0.7, 
@@ -945,8 +931,8 @@ function escribirVictoria() {
 
         font: font,
 
-        size: 50,
-        height: 10,
+        size: 15,
+        height: 5,
         curveSegments: 12,
 
         bevelThickness: 1,
@@ -960,7 +946,9 @@ function escribirVictoria() {
     );
 
     var mesh = new THREE.Mesh( textGeometry, textMaterial );
-
+        mesh.position.x = 0
+        mesh.position.y = 0
+        mesh.position.z = 0
     scene.add( mesh );
 
     });   
