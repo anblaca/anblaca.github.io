@@ -277,7 +277,8 @@ function loadScene() {
     wheelLFGeometry.rotateZ(Math.PI / 2)
     //------------------------------------------------------------------------------------------------------------------------------------
     var texWheel = new THREE.TextureLoader().load(path+"wheel.png");
-    const texturaWheel = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texWheel});
+    const texturaWheel = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texWheel, side:THREE.BackSide});
+    
     texWheel.repeat.set(1,1);
     texWheel.wrapS= texWheel.wrapT = THREE.RepeatWrapping;
 
