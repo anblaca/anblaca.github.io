@@ -920,14 +920,7 @@ function dificultad() {
 function calcularVictoria() {
 
     if(medio == false && dificil == false) {
-        //var contar = 0
-        //for (let i = 0; i < monedas.length; i++) {
-          //  if (monedas[i].visible == false) {contar += 1}
-        //}
-        //if(contar == monedas.length) {
-            //console.log("HAS GANADO")
-          //  final = true
-        //}
+
         console.log("Aun no has ganado")
         if(cuentaMonedas == 10) {
             console.log("HAS GANADO")
@@ -958,7 +951,7 @@ function reproducirVideo() {
     const pantalla = new THREE.Mesh(new THREE.PlaneGeometry(20,6, 4,4), 
                                     new THREE.MeshBasicMaterial({map:texvideo}));
     //pantalla.position.set(0,4.5,-5);
-    pantalla.position.set(0,4.5,-50);
+    pantalla.position.set(0,4.5,-45);
     scene.add(pantalla);
 }
 
@@ -971,8 +964,8 @@ function escribirVictoria() {
 
         font: font,
 
-        size: 5,
-        height: 5,
+        size: 3,
+        height: 3,
         curveSegments: 12,
 
         bevelThickness: 1,
@@ -989,6 +982,14 @@ function escribirVictoria() {
         mesh.position.x = 0
         mesh.position.y = 0
         mesh.position.z = 0
+
+          
+    const giro = new TWEEN.Tween( mesh.rotation ).to( {x:0, y:Math.PI/2, z:0}, 3000 ). interpolation( TWEEN.Interpolation.Linear). 
+    easing( TWEEN.Easing.Exponential.InOut);
+
+    giro.repeat(Infinity);
+    giro.start();
+    
     scene.add( mesh );
 
     });   
