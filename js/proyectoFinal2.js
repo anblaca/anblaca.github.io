@@ -537,10 +537,11 @@ function animate() {
         //paredIzquierda.position.x = izquieroWall.position.x 
         //paredIzquierda.position.x = izquieroWall.position.y
         //paredIzquierda.position.x = izquieroWall.position.z 
+        area(paredTrasera, paredDelantera, paredIzquierda, paredDerecha)
     }
     
    
-    area(paredTrasera, paredDelantera, paredIzquierda, paredDerecha)
+    
     TWEEN.update()
 
     constraintLB.setMotorSpeed(forwardVelocity)
