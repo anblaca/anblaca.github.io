@@ -507,6 +507,20 @@ function animate() {
         sphereMesh.position.z = sphereBody.position.z
         sphereMesh.position.x = sphereBody.position.x
 
+        let a = paredTrasera.position.x
+        let b = paredTrasera.position.y
+        let c = paredTrasera.position.z
+
+        let d = paredDelantera.position.x 
+        paredDelantera.position.y = delanteroWall.position.y
+        //paredDelantera.position.z = delanteroWall.position.z
+        //calculamos si esta dentro del cuadrado
+        if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
+            monedas[i].visible = false
+            //borrar la moneda del array y sumar 1
+            monedas.splice(i, 1)
+            estaDentro()
+        }
         // MOVER LAS PAREDES
         //paredTrasera.position.x = traseroWall.position.x
         //paredTrasera.position.y = traseroWall.position.y
@@ -525,7 +539,8 @@ function animate() {
         //paredIzquierda.position.x = izquieroWall.position.z 
     }
     
-    
+   
+    area(paredTrasera, paredDelantera, paredIzquierda, paredDerecha)
     TWEEN.update()
 
     constraintLB.setMotorSpeed(forwardVelocity)
@@ -543,6 +558,13 @@ function animate() {
     
     render()
 
+}
+
+function area(pT, pD, pI, pDe) {
+
+    if(sphereMesh.position.x > pI.position.x && sphereMesh.position.x < pDe.position.x &&sphereMesh.position.z >pT.position.z && sphereMesh.position.z < pD.position.z) {
+        console.log("Estoy donde me toca")
+    }
 }
 
 function setupGUI()
@@ -714,11 +736,7 @@ function nivelMedio() {
     sphereMesh.castShadow = true
     sphereMesh.receiveShadow = true
     scene.add(sphereMesh)
-    const materialBola = new CANNON.Material("bolaMaterial");
-    world.addContactMaterial(materialBola,groundMaterial, {
-        restitution : 0.22
-        
-    })
+ 
     const sphereShape = new CANNON.Sphere(0.5)
     sphereBody = new CANNON.Body({ mass: 1, material: materialEsfera})
     sphereBody.addShape(sphereShape)
@@ -756,27 +774,26 @@ function dificultad() {
 
     if(dificil) {
 
-    scene.fog = new THREE.Fog( 0xffffff, 10, 25 );
+    //scene.fog = new THREE.Fog( 0xffffff, 10, 25 );
 
-    for (let i = 0; i < 100; i++) {
-        const jump = new THREE.Mesh(new THREE.CylinderGeometry(0, 1, 0.5, 5), matStone)
-        jump.position.x = Math.random() * 100 - 50
-        jump.position.y = 0.25
-        jump.position.z = Math.random() * 100 - 50
-        jump.name = "jump"
-        scene.add(jump)
+    //for (let i = 0; i < 100; i++) {
+        //const jump = new THREE.Mesh(new THREE.CylinderGeometry(0, 1, 0.5, 5), matStone)
+        //jump.position.x = Math.random() * 100 - 50
+        //jump.position.y = 0.25
+        //jump.position.z = Math.random() * 100 - 50
+        //jump.name = "jump"
+        //scene.add(jump)
 
-        const cylinderShape = new CANNON.Cylinder(0.01, 1, 0.5, 5)
-        const cylinderBody = new CANNON.Body({ mass: 0 })
-        cylinderBody.addShape(cylinderShape, new CANNON.Vec3())
-        cylinderBody.position.x = jump.position.x
-        cylinderBody.position.y = jump.position.y
-        cylinderBody.position.z = jump.position.z
-        cylyndersBody.push(cylinderBody)
-        world.addBody(cylinderBody)
-    }
+        //const cylinderShape = new CANNON.Cylinder(0.01, 1, 0.5, 5)
+        //const cylinderBody = new CANNON.Body({ mass: 0 })
+        //cylinderBody.addShape(cylinderShape, new CANNON.Vec3())
+        //cylinderBody.position.x = jump.position.x
+        //cylinderBody.position.y = jump.position.y
+        //cylinderBody.position.z = jump.position.z
+        //cylyndersBody.push(cylinderBody)
+        //world.addBody(cylinderBody)
+    //}
 
-    //scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 );
     var rojo = new THREE.MeshBasicMaterial({ color: 'red', wireframe: true });
     var azul = new THREE.MeshBasicMaterial({ color: 'blue', wireframe: true });
     var amarillo = new THREE.MeshBasicMaterial({ color: 'yellow', wireframe: true });
@@ -919,10 +936,10 @@ function calcularVictoria() {
             escribirVictoria();
         }
     }
-    //if (cuentaMonedas == 10 &&  dificil == false) {
+    if (cuentaMonedas == 10 &&  dificil == true) {
       //  console.log("Victoria!")
-    
-    //}
+        //if()
+    }
 
     //if (cuentaMonedas == 10 && dificil == true && )
 }
