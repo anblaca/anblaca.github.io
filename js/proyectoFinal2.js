@@ -20,7 +20,7 @@ var arrayMonedas = []
 var monedasVisitadas = []
 const timestep = 1/60
 var camaraPlanta
-
+var pasa = false
 const monedas = []
 const cylyndersBody = []
 const L = 103;
@@ -453,6 +453,7 @@ function loadScene() {
 
 function estaDentro(x) {
     let cuantas = 0
+    if(pasa) {
     for(let i = 0; i < monedasVisitadas.length; i++) {
 
         if (monedasVisitadas[i] != x) {
@@ -464,8 +465,10 @@ function estaDentro(x) {
         }
         console.log(cuentaMonedas)
     }
+    pasa = false
+}
 
-    
+    //[1,1,1,1,1,1,1,,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3]
     
 }
 
@@ -544,9 +547,9 @@ function animate() {
         if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
                 monedas[i].visible = false   
                 monedasVisitadas.push(i)
-                estaDentro(i);
+                pasa = true
         }
-        
+        estaDentro(i);
     }
 
     //console.log(estaDentro)
