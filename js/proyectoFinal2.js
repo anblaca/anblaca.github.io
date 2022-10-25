@@ -27,6 +27,7 @@ var medio = false
 var dificil = false
 
 const v = new THREE.Vector3()
+
 const groundMaterial = new CANNON.Material("groundMaterial");
 const materialEsfera = new CANNON.Material("sphereMaterial");
 
@@ -170,8 +171,8 @@ function loadScene() {
         //                                            shininess: 30,
           //                                          envMap: texesfera });
 
-    //const matsuelo = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texsuelo});
-    const matsuelo = new THREE.MeshBasicMaterial({color:"rgb(150,150,150)",map:texsuelo});
+    const matsuelo = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texsuelo});
+    //const matsuelo = new THREE.MeshBasicMaterial({color:"rgb(150,150,150)",map:texsuelo});
 
     phongMaterial = new THREE.MeshPhongMaterial()
 
