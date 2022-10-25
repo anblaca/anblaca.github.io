@@ -293,6 +293,7 @@ function loadScene() {
         moneda.receiveShadow = true
         moneda.castShadow = true
         monedas.push(moneda)
+        arrayMonedas.push(0)
         moneda.position.x = Math.random() * 100 - 50
         moneda.position.y = 1 //0.5
         moneda.position.z = Math.random() * 100 - 50
@@ -528,9 +529,10 @@ function animate() {
         if(Math.sqrt(Math.pow(a,2)) < 0.7 && Math.sqrt(Math.pow(c,2)) < 0.7) {
                 console.log("entro al if")
                 
-                monedas[i].visible = false        
+                monedas[i].visible = false   
+                arrayMonedas[i] = 1
         }
-        console.log(monedas[i])
+        
     }
 
     //console.log(estaDentro)
