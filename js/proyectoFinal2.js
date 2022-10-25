@@ -272,7 +272,11 @@ function loadScene() {
     //front left wheel
     const wheelLFGeometry = new THREE.CylinderGeometry(0.33,0.33,0.2) 
     wheelLFGeometry.rotateZ(Math.PI / 2)
-    wheelLFMesh = new THREE.Mesh(wheelLFGeometry, phongMaterial)
+    //------------------------------------------------------------------------------------------------------------------------------------
+    texWheel = new THREE.TextureLoader().load(path+"tyre.jpg");
+    const texturaWheel = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texWheel});
+
+    wheelLFMesh = new THREE.Mesh(wheelLFGeometry, texturaWheel)
     wheelLFMesh.position.x = -1
     wheelLFMesh.position.y = 3
     wheelLFMesh.position.z = -1
@@ -289,7 +293,7 @@ function loadScene() {
     //front right wheel
     const wheelRFGeometry = new THREE.CylinderGeometry(0.33,0.33,0.2)
     wheelRFGeometry.rotateZ(Math.PI / 2)
-    wheelRFMesh = new THREE.Mesh(wheelRFGeometry, phongMaterial)
+    wheelRFMesh = new THREE.Mesh(wheelRFGeometry, texturaWheel)
     wheelRFMesh.position.y = 3
     wheelRFMesh.position.x = 1
     wheelRFMesh.position.z = -1
@@ -306,7 +310,7 @@ function loadScene() {
     //back left wheel
     const wheelLBGeometry = new THREE.CylinderGeometry(0.4,0.4,0.33)
     wheelLBGeometry.rotateZ(Math.PI / 2)
-    wheelLBMesh = new THREE.Mesh(wheelLBGeometry, phongMaterial)
+    wheelLBMesh = new THREE.Mesh(wheelLBGeometry, texturaWheel)
     wheelLBMesh.position.y = 3
     wheelLBMesh.position.x = -1
     wheelLBMesh.position.z = 1
@@ -324,7 +328,7 @@ function loadScene() {
     const wheelRBGeometry = new THREE.CylinderGeometry(0.4,0.4,0.33)
 
     wheelRBGeometry.rotateZ(Math.PI / 2)
-    wheelRBMesh = new THREE.Mesh(wheelRBGeometry, phongMaterial)
+    wheelRBMesh = new THREE.Mesh(wheelRBGeometry, texturaWheel)
     wheelRBMesh.position.y = 3
     wheelRBMesh.position.x = 1
     wheelRBMesh.position.z = 1
