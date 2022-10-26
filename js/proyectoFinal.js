@@ -927,6 +927,7 @@ function calcularVictoria() {
 
     if (cuentaMonedas == 10 &&  dentro == true) {
         if(dificil = true ) {scene.fog = null}
+        final = true
         limpiar()
         escribirVictoria();
         reproducirVideo()
