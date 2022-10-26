@@ -771,25 +771,25 @@ function dificultad() {
 
     if(dificil) {
 
-    //scene.fog = new THREE.Fog( 0xffffff, 10, 25 );
+    scene.fog = new THREE.Fog( 0xffffff, 10, 25 );
 
-    //for (let i = 0; i < 100; i++) {
-        //const jump = new THREE.Mesh(new THREE.CylinderGeometry(0, 1, 0.5, 5), matStone)
-        //jump.position.x = Math.random() * 100 - 50
-        //jump.position.y = 0.25
-        //jump.position.z = Math.random() * 100 - 50
-        //jump.name = "jump"
-        //scene.add(jump)
+    for (let i = 0; i < 100; i++) {
+        const jump = new THREE.Mesh(new THREE.CylinderGeometry(0, 1, 0.5, 5), matStone)
+        jump.position.x = Math.random() * 100 - 50
+        jump.position.y = 0.25
+        jump.position.z = Math.random() * 100 - 50
+        jump.name = "jump"
+        scene.add(jump)
 
-        //const cylinderShape = new CANNON.Cylinder(0.01, 1, 0.5, 5)
-        //const cylinderBody = new CANNON.Body({ mass: 0 })
-        //cylinderBody.addShape(cylinderShape, new CANNON.Vec3())
-        //cylinderBody.position.x = jump.position.x
-        //cylinderBody.position.y = jump.position.y
-        //cylinderBody.position.z = jump.position.z
-        //cylyndersBody.push(cylinderBody)
-        //world.addBody(cylinderBody)
-    //}
+        const cylinderShape = new CANNON.Cylinder(0.01, 1, 0.5, 5)
+        const cylinderBody = new CANNON.Body({ mass: 0 })
+        cylinderBody.addShape(cylinderShape, new CANNON.Vec3())
+        cylinderBody.position.x = jump.position.x
+        cylinderBody.position.y = jump.position.y
+        cylinderBody.position.z = jump.position.z
+        cylyndersBody.push(cylinderBody)
+        world.addBody(cylinderBody)
+    }
 
     //construir muros pequeños juntos y una pelota en medio
     //parte visual
