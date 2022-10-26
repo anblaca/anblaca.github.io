@@ -805,11 +805,6 @@ function dificultad() {
         //world.addBody(cylinderBody)
     //}
 
-    var rojo = new THREE.MeshBasicMaterial({ color: 'red', wireframe: true });
-    var azul = new THREE.MeshBasicMaterial({ color: 'blue', wireframe: true });
-    var amarillo = new THREE.MeshBasicMaterial({ color: 'yellow', wireframe: true });
-    var negro = new THREE.MeshBasicMaterial({ color: 'black', wireframe: true });
-
     //construir muros pequeños juntos y una pelota en medio
     //parte visual
     //ground
