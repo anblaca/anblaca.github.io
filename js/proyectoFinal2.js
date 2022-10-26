@@ -653,7 +653,7 @@ function nivelMedio() {
     //ground
     const matsuelo = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texwall});
     //-----------------
-    paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
+    paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 4, 1), matsuelo)
     paredIzquierda.position.x = -7.5
     //paredIzquierda.position.x = -30
     paredIzquierda.receiveShadow = true
@@ -661,7 +661,7 @@ function nivelMedio() {
     paredIzquierda.rotation.y = Math.PI/2
     paredIzquierda.name = "paredIzquierda"
     //-----------------------------------
-    paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
+    paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 4, 1), matsuelo)
     paredDerecha.position.x = 7.5
     //paredDerecha.position.x = -25
     paredDerecha.receiveShadow = true
@@ -669,14 +669,14 @@ function nivelMedio() {
     paredDerecha.rotation.y = -Math.PI/2
     paredDerecha.name = "paredDerecha"
     //-----------------------------------
-    paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
+    paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 4, 1), matsuelo)
     paredDelantera.position.z = 7.5
     //paredDelantera.position.x = -26.5
     paredDelantera.receiveShadow = true
     paredDelantera.castShadow = true
     paredDelantera.name = "paredDelantera"
     //---------------------------------
-    paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), matsuelo)
+    paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 4, 1), matsuelo)
     paredTrasera.position.z = -7.5
     //paredTrasera.position.x = -30
     paredTrasera.receiveShadow = true
@@ -694,14 +694,14 @@ function nivelMedio() {
 
     //parte fisica
     traseroWall = new CANNON.Body( {mass:0, material:groundMaterial} );
-    traseroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
+    traseroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,2,0.5)) );
     traseroWall.position.x = paredTrasera.position.x+30
     traseroWall.position.y = paredTrasera.position.y
     traseroWall.position.z = paredTrasera.position.z 
     world.addBody( traseroWall );
  
     delanteroWall = new CANNON.Body( {mass:0, material:groundMaterial} );
-    delanteroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
+    delanteroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,2,0.5)) );
     delanteroWall.position.x = paredDelantera.position.x+30
     delanteroWall.position.y = paredDelantera.position.y
     delanteroWall.position.z = paredDelantera.position.z
@@ -709,14 +709,14 @@ function nivelMedio() {
     world.addBody( delanteroWall );
  
     izquieroWall = new CANNON.Body( {mass:0, material:groundMaterial} );
-    izquieroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
+    izquieroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,2,0.5)) );
     izquieroWall.position.x = paredIzquierda.position.x+30
     izquieroWall.position.y = paredIzquierda.position.y
     izquieroWall.position.z = paredIzquierda.position.z
     world.addBody( izquieroWall );
  
     derechaWall = new CANNON.Body( {mass:0, material:groundMaterial} );
-    derechaWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
+    derechaWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,2,0.5)) );
 
     derechaWall.position.x = paredDerecha.position.x+30
     derechaWall.position.y = paredDerecha.position.y
@@ -726,7 +726,7 @@ function nivelMedio() {
     //añadir una pelota
     const matball = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texball})
 
-    const sphereGeometry = new THREE.SphereGeometry(0.5, 8, 8)
+    const sphereGeometry = new THREE.SphereGeometry(2, 8, 8)
     sphereMesh = new THREE.Mesh(sphereGeometry, matball)
     sphereMesh.position.x = 0
     sphereMesh.position.y = 0.25
@@ -735,10 +735,11 @@ function nivelMedio() {
     sphereMesh.receiveShadow = true
     scene.add(sphereMesh)
 
-    const sphereShape = new CANNON.Sphere(0.5)
+    const sphereShape = new CANNON.Sphere(2)
     sphereBody = new CANNON.Body({ mass: 1, material: materialEsfera})
     sphereBody.addShape(sphereShape)
-
+    sphereBody.linearDamping = 0.31
+    
     sphereBody.position.y = sphereMesh.position.y
     //sphereBody.position.z = sphereMesh.position.z
     world.addBody(sphereBody)
