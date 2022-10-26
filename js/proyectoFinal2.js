@@ -566,6 +566,7 @@ function setupGUI()
                     if (click && medio == false){
                         if(dificil == true) { 
                             dificil = false 
+                            boton = false
                             limpiar()
                         }
                         medio = true;
