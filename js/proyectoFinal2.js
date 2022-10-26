@@ -813,34 +813,31 @@ function dificultad() {
     //construir muros pequeños juntos y una pelota en medio
     //parte visual
     //ground
-    const matsuelo = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texwall});
+    const matsuelo = new THREE.MeshLambertMaterial({color:"rgb(150,150,150)",map:texwall});
     //-----------------
-    paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 4, 1), rojo)
+    paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 4, 1), matsuelo)
     paredIzquierda.position.x = -7.5
-    //paredIzquierda.position.x = -30
     paredIzquierda.receiveShadow = true
     paredIzquierda.castShadow = true
     paredIzquierda.rotation.y = Math.PI/2
     paredIzquierda.name = "paredIzquierda"
     //-----------------------------------
-    paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 4, 1), azul)
+    paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 4, 1), matsuelo)
     paredDerecha.position.x = 7.5
-    //paredDerecha.position.x = -25
+
     paredDerecha.receiveShadow = true
     paredDerecha.castShadow = true
     paredDerecha.rotation.y = -Math.PI/2
     paredDerecha.name = "paredDerecha"
     //-----------------------------------
-    paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 4, 1), amarillo)
+    paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 4, 1), matsuelo)
     paredDelantera.position.z = 7.5
-    //paredDelantera.position.x = -26.5
     paredDelantera.receiveShadow = true
     paredDelantera.castShadow = true
     paredDelantera.name = "paredDelantera"
     //---------------------------------
-    paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 4, 1), negro)
+    paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 4, 1), matsuelo)
     paredTrasera.position.z = -7.5
-    //paredTrasera.position.x = -30
     paredTrasera.receiveShadow = true
     paredTrasera.castShadow = true
     paredTrasera.name = "paredTrasera"
@@ -852,7 +849,6 @@ function dificultad() {
     cubo.add(paredIzquierda)
     cubo.add(paredTrasera)
     cubo.position.x = 30
-    //cubo.position.z = 30
     scene.add(cubo)
 
     //parte fisica
