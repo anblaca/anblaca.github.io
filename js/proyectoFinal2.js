@@ -878,7 +878,7 @@ function dificultad() {
     izquieroWall.position.y = paredIzquierda.position.y
     izquieroWall.position.z = paredIzquierda.position.z
     //izquieroWall.rotateZ(Math.PI/2)
-    izquieroWall.quaternion.setFromEuler(-Math.PI/2,0,0,'XYZ');
+    izquieroWall.quaternion.setFromEuler(0,0,-Math.PI/2,'XYZ');
     world.addBody( izquieroWall );
  
     derechaWall = new CANNON.Body( {mass:0, material:groundMaterial} );
@@ -887,7 +887,7 @@ function dificultad() {
     derechaWall.position.x = paredDerecha.position.x+30
     derechaWall.position.y = paredDerecha.position.y
     derechaWall.position.z = paredDerecha.position.z
-    derechaWall.quaternion.setFromEuler(-Math.PI/2,0,0,'XYZ');
+    derechaWall.quaternion.setFromEuler(0,0,-Math.PI/2,'XYZ');
     //derechaWall.rotateZ(Math.PI/2)
     world.addBody( derechaWall );
 
@@ -904,9 +904,11 @@ function dificultad() {
     scene.add(sphereMesh)
 
     const sphereShape = new CANNON.Sphere(0.5)
-    sphereBody = new CANNON.Body({ mass: 10, material: materialEsfera})
-    sphereBody.addShape(sphereShape)
 
+    sphereBody = new CANNON.Body({ mass: 1, material: materialEsfera})
+    sphereBody.addShape(sphereShape)
+    sphereBody.angularVelocity.set(5,0,5)
+    sphereBody.angularDamping = 0.5;
     sphereBody.position.y = sphereMesh.position.y
     sphereBody.linearDamping = 0.31
     //sphereBody.position.z = sphereMesh.position.z
