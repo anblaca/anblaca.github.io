@@ -738,7 +738,6 @@ function nivelMedio() {
     sphereMesh.position.x = 0
     sphereMesh.position.y = 0.25
     sphereMesh.name = "bola"
-    //sphereMesh.position.z = Math.random() * 10 - 5
     sphereMesh.castShadow = true
     sphereMesh.receiveShadow = true
     scene.add(sphereMesh)
@@ -879,7 +878,7 @@ function dificultad() {
     izquieroWall.position.y = paredIzquierda.position.y
     izquieroWall.position.z = paredIzquierda.position.z
     //izquieroWall.rotateZ(Math.PI/2)
-    //izquieroWall.quaternion.setFromEuler(0,0,Math.PI/2,'XYZ');
+    izquieroWall.quaternion.setFromEuler(-Math.PI/2,0,0,'XYZ');
     world.addBody( izquieroWall );
  
     derechaWall = new CANNON.Body( {mass:0, material:groundMaterial} );
@@ -888,7 +887,7 @@ function dificultad() {
     derechaWall.position.x = paredDerecha.position.x+30
     derechaWall.position.y = paredDerecha.position.y
     derechaWall.position.z = paredDerecha.position.z
-    //derechaWall.quaternion.setFromEuler(0,0,Math.PI/2,'XYZ');
+    derechaWall.quaternion.setFromEuler(-Math.PI/2,0,0,'XYZ');
     //derechaWall.rotateZ(Math.PI/2)
     world.addBody( derechaWall );
 
