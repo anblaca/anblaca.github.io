@@ -893,7 +893,7 @@ function dificultad() {
 
     //añadir una pelota
     const matball = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texball})
-    const sphereGeometry = new THREE.SphereGeometry(0.5, 8, 8)
+    const sphereGeometry = new THREE.SphereGeometry(2, 8, 8)
     sphereMesh = new THREE.Mesh(sphereGeometry, rojo)
     sphereMesh.position.x = 0
     sphereMesh.position.y = 0.25
@@ -903,12 +903,11 @@ function dificultad() {
     sphereMesh.receiveShadow = true
     scene.add(sphereMesh)
 
-    const sphereShape = new CANNON.Sphere(0.5)
+    const sphereShape = new CANNON.Sphere(2)
 
     sphereBody = new CANNON.Body({ mass: 1, material: materialEsfera})
     sphereBody.addShape(sphereShape)
-    sphereBody.angularVelocity.set(5,0,5)
-    sphereBody.angularDamping = 0.5;
+   
     sphereBody.position.y = sphereMesh.position.y
     sphereBody.linearDamping = 0.31
     //sphereBody.position.z = sphereMesh.position.z
