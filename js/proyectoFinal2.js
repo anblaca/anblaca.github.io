@@ -815,7 +815,7 @@ function dificultad() {
     //ground
     const matsuelo = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texwall});
     //-----------------
-    paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), rojo)
+    paredIzquierda = new THREE.Mesh(new THREE.BoxGeometry(5, 4, 1), rojo)
     paredIzquierda.position.x = -7.5
     //paredIzquierda.position.x = -30
     paredIzquierda.receiveShadow = true
@@ -823,7 +823,7 @@ function dificultad() {
     paredIzquierda.rotation.y = Math.PI/2
     paredIzquierda.name = "paredIzquierda"
     //-----------------------------------
-    paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), azul)
+    paredDerecha = new THREE.Mesh(new THREE.BoxGeometry(5, 4, 1), azul)
     paredDerecha.position.x = 7.5
     //paredDerecha.position.x = -25
     paredDerecha.receiveShadow = true
@@ -831,14 +831,14 @@ function dificultad() {
     paredDerecha.rotation.y = -Math.PI/2
     paredDerecha.name = "paredDerecha"
     //-----------------------------------
-    paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), amarillo)
+    paredDelantera = new THREE.Mesh(new THREE.BoxGeometry(5, 4, 1), amarillo)
     paredDelantera.position.z = 7.5
     //paredDelantera.position.x = -26.5
     paredDelantera.receiveShadow = true
     paredDelantera.castShadow = true
     paredDelantera.name = "paredDelantera"
     //---------------------------------
-    paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 2, 1), negro)
+    paredTrasera = new THREE.Mesh(new THREE.BoxGeometry(5, 4, 1), negro)
     paredTrasera.position.z = -7.5
     //paredTrasera.position.x = -30
     paredTrasera.receiveShadow = true
@@ -858,14 +858,14 @@ function dificultad() {
     //parte fisica
     
     traseroWall = new CANNON.Body( {mass:0, material:groundMaterial} );
-    traseroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
+    traseroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,2,0.5)) );
     traseroWall.position.x = paredTrasera.position.x+30
     traseroWall.position.y = paredTrasera.position.y
     traseroWall.position.z = paredTrasera.position.z 
     world.addBody( traseroWall );
  
     delanteroWall = new CANNON.Body( {mass:0, material:groundMaterial} );
-    delanteroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
+    delanteroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,2,0.5)) );
     delanteroWall.position.x = paredDelantera.position.x+30
     delanteroWall.position.y = paredDelantera.position.y
     delanteroWall.position.z = paredDelantera.position.z
@@ -873,7 +873,7 @@ function dificultad() {
     world.addBody( delanteroWall );
  
     izquieroWall = new CANNON.Body( {mass:0, material:groundMaterial} );
-    izquieroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
+    izquieroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,2,0.5)) );
     izquieroWall.position.x = paredIzquierda.position.x+30
     izquieroWall.position.y = paredIzquierda.position.y
     izquieroWall.position.z = paredIzquierda.position.z
@@ -882,7 +882,7 @@ function dificultad() {
     world.addBody( izquieroWall );
  
     derechaWall = new CANNON.Body( {mass:0, material:groundMaterial} );
-    derechaWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
+    derechaWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,2,0.5)) );
 
     derechaWall.position.x = paredDerecha.position.x+30
     derechaWall.position.y = paredDerecha.position.y
