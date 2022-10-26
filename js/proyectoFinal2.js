@@ -121,7 +121,7 @@ function loadScene() {
 
     // Materiales 
     const path ="./images/";
-    const texcoin = new THREE.TextureLoader().load(path+"goldMetal.tif");
+    const texcoin = new THREE.TextureLoader().load(path+"goldMetal.jpg");
     const texsuelo = new THREE.TextureLoader().load(path+"grassGround.jpg");
     texsuelo.repeat.set(4,3);
     texsuelo.wrapS= texsuelo.wrapT = THREE.RepeatWrapping;
