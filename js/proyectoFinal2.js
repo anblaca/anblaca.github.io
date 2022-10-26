@@ -564,6 +564,10 @@ function setupGUI()
     h.add(effectController, "mediaDificultad").name("Medio").onChange(
         function(click) {
                     if (click && medio == false){
+                        if(dificil == true) { 
+                            dificil = false 
+                            limpiar()
+                        }
                         medio = true;
                         console.log("medio")
                         nivelMedio()
@@ -616,6 +620,7 @@ function limpiar() {
        world.removeBody(sphereBody)
        scene.fog = null
 }
+
 function nivelMedio() {
 
     //añadir obstaculos
