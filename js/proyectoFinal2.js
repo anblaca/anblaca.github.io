@@ -885,7 +885,7 @@ function dificultad() {
     //añadir una pelota
     const matball = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texball})
     const sphereGeometry = new THREE.SphereGeometry(2, 8, 8)
-    sphereMesh = new THREE.Mesh(sphereGeometry, rojo)
+    sphereMesh = new THREE.Mesh(sphereGeometry, matball)
     sphereMesh.position.x = 0
     sphereMesh.position.y = 0.25
     sphereMesh.name = "bola"
