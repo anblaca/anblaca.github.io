@@ -647,12 +647,6 @@ function nivelMedio() {
         world.addBody(cylinderBody)
     }
 
-    //scene.fog = new THREE.Fog( 0xffffff, 1000, 4000 );
-    var rojo = new THREE.MeshBasicMaterial({ color: 'red', wireframe: true });
-    var azul = new THREE.MeshBasicMaterial({ color: 'blue', wireframe: true });
-    var amarillo = new THREE.MeshBasicMaterial({ color: 'yellow', wireframe: true });
-    var negro = new THREE.MeshBasicMaterial({ color: 'black', wireframe: true });
-
     //construir muros pequeños juntos y una pelota en medio
     //parte visual
     //ground
@@ -695,11 +689,9 @@ function nivelMedio() {
     cubo.add(paredIzquierda)
     cubo.add(paredTrasera)
     cubo.position.x = 30
-    //cubo.position.z = 30
     scene.add(cubo)
 
     //parte fisica
-
     traseroWall = new CANNON.Body( {mass:0, material:groundMaterial} );
     traseroWall.addShape( new CANNON.Box(new CANNON.Vec3(2.5,1,0.5)) );
     traseroWall.position.x = paredTrasera.position.x+30
@@ -734,20 +726,13 @@ function nivelMedio() {
     const matball = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texball})
 
     const sphereGeometry = new THREE.SphereGeometry(0.5, 8, 8)
-    sphereMesh = new THREE.Mesh(sphereGeometry, rojo)
+    sphereMesh = new THREE.Mesh(sphereGeometry, matball)
     sphereMesh.position.x = 0
     sphereMesh.position.y = 0.25
     sphereMesh.name = "bola"
     sphereMesh.castShadow = true
     sphereMesh.receiveShadow = true
     scene.add(sphereMesh)
-
-    //const materialBola = new CANNON.Material("sphereMaterial");
-
-    //const bolaGroundContactMaterial = new CANNON.ContactMaterial(groundMaterial, materialBola,
-      //  { friction: 0, 
-        //    restitution: 0.7 });
-    //world.addContactMaterial(sphereGroundContactMaterial);
 
     const sphereShape = new CANNON.Sphere(0.5)
     sphereBody = new CANNON.Body({ mass: 1, material: materialEsfera})
