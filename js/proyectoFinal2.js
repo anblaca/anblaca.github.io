@@ -121,7 +121,7 @@ function loadScene() {
 
     // Materiales 
     const path ="./images/";
-    const texcoin = new THREE.TextureLoader().load(path+"metal.jpg");
+    const texcoin = new THREE.TextureLoader().load(path+"goldMetal.tif");
     const texsuelo = new THREE.TextureLoader().load(path+"grassGround.jpg");
     texsuelo.repeat.set(4,3);
     texsuelo.wrapS= texsuelo.wrapT = THREE.RepeatWrapping;
@@ -377,7 +377,7 @@ function loadScene() {
         renderer.domElement.setAttribute("tabIndex", "0");
         renderer.domElement.focus();
     
-        //añado los eventos que moveran al robot
+        //añado los eventos que moveran al coche
     keyborad.domElement.addEventListener('keydown', function(event){
         if(keyborad.eventMatches(event, 'left') || keyborad.eventMatches(event, 'a') ){
             rightVelocity -= 0.1
@@ -928,9 +928,7 @@ function calcularVictoria() {
 }
 
 function reproducirVideo() {
-
     // Cine
-
     var video = document.createElement('video');
     video.src = "./videos/fernandoAlonso.mp4";
     video.load();
@@ -952,7 +950,6 @@ function escribirVictoria() {
     var textGeometry = new TextGeometry( "VICTORIA", {
 
         font: font,
-
         size: 3,
         height: 3,
         curveSegments: 12,
@@ -970,9 +967,7 @@ function escribirVictoria() {
     var mesh = new THREE.Mesh( textGeometry, textMaterial );
         mesh.position.x = 0
         mesh.position.y = 0
-        mesh.position.z = 0
-
-          
+        mesh.position.z = 0  
     const giro = new TWEEN.Tween( mesh.rotation ).to( {x:0, y:Math.PI/2, z:0}, 3000 ). interpolation( TWEEN.Interpolation.Linear). 
     easing( TWEEN.Easing.Exponential.InOut);
 
