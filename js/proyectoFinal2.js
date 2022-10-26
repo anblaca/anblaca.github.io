@@ -566,7 +566,6 @@ function setupGUI()
                     if (click && medio == false){
                         if(dificil == true) { 
                             dificil = false 
-                            boton = false
                             limpiar()
                         }
                         medio = true;
@@ -739,7 +738,7 @@ function nivelMedio() {
     sphereBody = new CANNON.Body({ mass: 1, material: materialEsfera})
     sphereBody.addShape(sphereShape)
     sphereBody.linearDamping = 0.31
-    
+
     sphereBody.position.y = sphereMesh.position.y
     //sphereBody.position.z = sphereMesh.position.z
     world.addBody(sphereBody)
