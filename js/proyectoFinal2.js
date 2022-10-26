@@ -552,7 +552,7 @@ function setupGUI()
 
     effectController = {
         boton: false,
-        medio: false
+        mediaDificultad: false
     };
 
 	// Creacion interfaz
@@ -561,7 +561,7 @@ function setupGUI()
 	// Construccion del menu
     var h = gui.addFolder("Menu");
 
-    h.add(effectController, "medio").name("Medio").onChange(
+    h.add(effectController, "mediaDificultad").name("Medio").onChange(
         function(click) {
                     if (click && medio == false){
                         medio = true;
@@ -574,23 +574,48 @@ function setupGUI()
                     } 
     
         });
-
+//si esta en dificil y queremos cambiar a medio, borramos dificil y cambiamos a medio
 
     h.add(effectController, "boton").name("Dificil").onChange(
         function(click) {
-                    if (click && dificil == false){
+                    if (click && dificil == false ){
+                        if(medio == true) {
+                            medio = false;
+                            limpiar()
+                        }
                         dificil = true;
+                        
                         console.log("dificil")
                         dificultad()
                     } else {
                         console.log("easy")
                         dificil = false
-                        dificultad()
+                        limpiar()
+                        //dificultad()
                     } 
     
         });
 }
+function limpiar() {
+    console.log("entro a borrar")
+        for( var i = scene.children.length - 1; i >= 0; i--) { 
+            var obj = scene.children[i];
+            if(obj.name == "cubo" || obj.name == "jump" || obj.name == "bola") {
+                scene.remove(obj);  
+            }    
+       }
 
+       for (var i = 0; i < cylyndersBody.length; i++) {
+            world.removeBody(cylyndersBody[i])
+       }
+       cylyndersBody
+       world.removeBody(izquieroWall)
+       world.removeBody(derechaWall)
+       world.removeBody(traseroWall)
+       world.removeBody(delanteroWall)
+       world.removeBody(sphereBody)
+       scene.fog = null
+}
 function nivelMedio() {
 
     //añadir obstaculos
@@ -753,7 +778,6 @@ function nivelMedio() {
 function dificultad() {
     //añadir obstaculos
     const matStone = new THREE.MeshStandardMaterial({color:"rgb(150,150,150)",map:texstone});
-    
 
     if(dificil) {
 
