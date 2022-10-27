@@ -111,7 +111,8 @@ function loadScene() {
     var materialRobot = new THREE.MeshLambertMaterial({ color: 'white', wireframe: false, map: texturaRobot });
     base = new THREE.Mesh( new THREE.CylinderGeometry(50,50,15,32),materialRobot);
     base.position.set(0, 0, 0);
-
+    base.castShadow = true;
+    base.receiveShadow = true;
     //cilindro    
     var ejeBrazo = new THREE.Mesh(new THREE.CylinderGeometry(20,20,18,32),materialRobot);
     ejeBrazo.rotation.z = Math.PI/2;
@@ -135,12 +136,14 @@ function loadScene() {
     var matCilinAntebrazo = new THREE.MeshPhongMaterial({color: 'white', specular: 0x99BBFF, shininess: 70, map: texturaMadera });
 
     const cilindroAntebrazo = new THREE.Mesh(new THREE.CylinderGeometry(22,22,6,32),matCilinAntebrazo);
-
+    cilindroAntebrazo.castShadow = true;
+    cilindroAntebrazo.receiveShadow = true;
     var cargarTextura = new THREE.TextureLoader().load(path + "pisometalico_1024.jpg");
     var materialSuelo = new THREE.MeshLambertMaterial({ color: 'white', map: cargarTextura });
     var suelo = new THREE.Mesh(new THREE.PlaneGeometry(1000, 1000, 50, 50),materialSuelo);
     suelo.rotation.x = -Math.PI / 2;
-
+    suelo.castShadow = true;
+    suelo.receiveShadow = true;
 
     //Nervios cada uno en una posicion del espacio
     //Nervio 1
