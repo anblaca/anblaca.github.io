@@ -85,9 +85,9 @@ function loadScene() {
 
 
     //material para la rotula
-    var paredes = [path + "posx2.jpg", path + "negx2.jpg", path + "posy2.jpg", path + "negy2.jpg", path + "posz2.jpg", path + "negz2.jpg"];
+    var reflejoBola = [path + "posx2.jpg", path + "negx2.jpg", path + "posy2.jpg", path + "negy2.jpg", path + "posz2.jpg", path + "negz2.jpg"];
 
-    var mapaEntorno = new THREE.CubeTextureLoader().load(paredes);
+    var mapaEntorno = new THREE.CubeTextureLoader().load(reflejoBola);
     var materialRotula = new THREE.MeshPhongMaterial({ color: 'white', specular: 0x99BBFF, shininess: 50, envMap: mapaEntorno });
     //material para el robot
     var path = "images/";
