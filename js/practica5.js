@@ -92,8 +92,7 @@ function loadScene() {
     //material para el robot
     var path = "images/";
     var texturaRobot = new THREE.TextureLoader().load(path + "metal_128.jpg");
-   
-    //var matSuelo = new THREE.MeshLambertMaterial({ color: 'white', map: texturaRobot });
+
     // Carga la escena
     robot = new THREE.Object3D();
 
@@ -271,6 +270,23 @@ function loadScene() {
             robot.position.z -= 5; 
         }
     })
+
+    // Habitacion
+    const paredes = [];
+    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                  map: new THREE.TextureLoader().load(path+"posx.jpg")}) );
+    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                  map: new THREE.TextureLoader().load(path+"negx.jpg")}) );
+    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                  map: new THREE.TextureLoader().load(path+"posy.jpg")}) );
+    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                  map: new THREE.TextureLoader().load(path+"negy.jpg")}) );
+    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                  map: new THREE.TextureLoader().load(path+"posz.jpg")}) );
+    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                  map: new THREE.TextureLoader().load(path+"negz.jpg")}) );
+    const habitacion = new THREE.Mesh( new THREE.BoxGeometry(1000,1000,1000),paredes);
+    scene.add(habitacion);
 }
 
 function setupGUI()
