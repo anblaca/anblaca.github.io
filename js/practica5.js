@@ -85,7 +85,7 @@ function loadScene() {
 
 
     //material para la rotula
-    var reflejoBola = [path + "posx2.jpg", path + "negx2.jpg", path + "posy2.jpg", path + "negy2.jpg", path + "posz2.jpg", path + "negz2.jpg"];
+    var reflejoBola = [path + "posx2.jpeg", path + "negx2.jpeg", path + "posy2.jpeg", path + "negy2.jpeg", path + "posz2.jpeg", path + "negz2.jpeg"];
 
     var mapaEntorno = new THREE.CubeTextureLoader().load(reflejoBola);
     var materialRotula = new THREE.MeshPhongMaterial({ color: 'white', specular: 0x99BBFF, shininess: 50, envMap: mapaEntorno });
@@ -274,17 +274,17 @@ function loadScene() {
     // Habitacion
     const paredes = [];
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                  map: new THREE.TextureLoader().load(path+"posx2.jpg")}) );
+                  map: new THREE.TextureLoader().load(path+"posx2.jpeg")}) );
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                  map: new THREE.TextureLoader().load(path+"negx2.jpg")}) );
+                  map: new THREE.TextureLoader().load(path+"negx2.jpeg")}) );
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                  map: new THREE.TextureLoader().load(path+"posy2.jpg")}) );
+                  map: new THREE.TextureLoader().load(path+"posy2.jpeg")}) );
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                  map: new THREE.TextureLoader().load(path+"negy2.jpg")}) );
+                  map: new THREE.TextureLoader().load(path+"negy2.jpeg")}) );
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                  map: new THREE.TextureLoader().load(path+"posz2.jpg")}) );
+                  map: new THREE.TextureLoader().load(path+"posz2.jpeg")}) );
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                  map: new THREE.TextureLoader().load(path+"negz2.jpg")}) );
+                  map: new THREE.TextureLoader().load(path+"negz2.jpeg")}) );
     const habitacion = new THREE.Mesh( new THREE.BoxGeometry(1000,1000,1000),paredes);
     scene.add(habitacion);
 }
