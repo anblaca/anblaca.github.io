@@ -55,8 +55,15 @@ function init() {
     //otras camaras
     setCameras(aspectRatio);
 
-    var ambiental = new THREE.AmbientLight(0x444444);
+    //parte de luces
+    // Luces
+    const ambiental = new THREE.AmbientLight(0x222222);
     scene.add(ambiental);
+
+    const direccional = new THREE.DirectionalLight(0xFFFFFF,0.3);
+    direccional.position.set(0,200,0);
+    direccional.castShadow = true;
+    scene.add(direccional);
 
     var puntual = new THREE.PointLight('white', 0.3);
     puntual.position.y = 200;
@@ -67,16 +74,15 @@ function init() {
     focal.target.position.set(0, 0, 0);
     focal.angle = Math.PI / 7;
     focal.penumbra = 0.2;
-
+    focal.castShadow= true;
     focal.shadow.camera.near = 30;
     focal.shadow.camera.far = 1500;
     focal.shadow.camera.fov = 4000;
     focal.shadow.mapSize.width = 10000;
     focal.shadow.mapSize.height = 10000;
-
-    scene.add(focal.target);
-    focal.castShadow = true;
     scene.add(focal);
+    window.addEventListener('resize', updateAspectRatio);
+
 }
 
 function loadScene() {
