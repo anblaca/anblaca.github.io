@@ -85,7 +85,7 @@ function loadScene() {
 
 
     //material para la rotula
-    var paredes = [path + "posx.jpg", path + "negx.jpg", path + "posy.jpg", path + "negy.jpg", path + "posz.jpg", path + "negz.jpg"];
+    var paredes = [path + "posx2.jpg", path + "negx2.jpg", path + "posy2.jpg", path + "negy2.jpg", path + "posz2.jpg", path + "negz2.jpg"];
 
     var mapaEntorno = new THREE.CubeTextureLoader().load(paredes);
     var materialRotula = new THREE.MeshPhongMaterial({ color: 'white', specular: 0x99BBFF, shininess: 50, envMap: mapaEntorno });
@@ -274,17 +274,17 @@ function loadScene() {
     // Habitacion
     const paredes = [];
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                  map: new THREE.TextureLoader().load(path+"posx.jpg")}) );
+                  map: new THREE.TextureLoader().load(path+"posx2.jpg")}) );
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                  map: new THREE.TextureLoader().load(path+"negx.jpg")}) );
+                  map: new THREE.TextureLoader().load(path+"negx2.jpg")}) );
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                  map: new THREE.TextureLoader().load(path+"posy.jpg")}) );
+                  map: new THREE.TextureLoader().load(path+"posy2.jpg")}) );
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                  map: new THREE.TextureLoader().load(path+"negy.jpg")}) );
+                  map: new THREE.TextureLoader().load(path+"negy2.jpg")}) );
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                  map: new THREE.TextureLoader().load(path+"posz.jpg")}) );
+                  map: new THREE.TextureLoader().load(path+"posz2.jpg")}) );
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                  map: new THREE.TextureLoader().load(path+"negz.jpg")}) );
+                  map: new THREE.TextureLoader().load(path+"negz2.jpg")}) );
     const habitacion = new THREE.Mesh( new THREE.BoxGeometry(1000,1000,1000),paredes);
     scene.add(habitacion);
 }
