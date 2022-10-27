@@ -163,6 +163,8 @@ function loadScene() {
         5, 9, 8
     ];
 
+    //Calcular normales del vertice 
+    
     pinza.setIndex(indices);
     pinza.setAttribute('position', new THREE.Float32BufferAttribute(vertex,3));
 
