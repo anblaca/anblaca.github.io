@@ -98,6 +98,7 @@ function loadScene() {
     //material para el robot
     var path = "images/";
     var texturaRobot = new THREE.TextureLoader().load(path + "metal_128.jpg");
+    var texturaPinza = new THREE.TextureLoader().load(path + "stone.jpg");
 
     // Carga la escena
     robot = new THREE.Object3D();
@@ -220,13 +221,14 @@ function loadScene() {
 
     pinza.setIndex(indices);
     pinza.setAttribute('position', new THREE.Float32BufferAttribute(vertex,3));
+    var materialPinza = new THREE.MeshLambertMaterial({ color: 'white', wireframe: false, map: texturaPinza });
 
-    pinzaIz = new THREE.Mesh(pinza, material);
+    pinzaIz = new THREE.Mesh(pinza, materialPinza);
     pinzaIz.rotation.y = Math.PI / 2;  
     pinzaIz.receiveShadow = true;
     pinzaIz.castShadow = true;
 
-    pinzaDe = new THREE.Mesh(pinza, material);
+    pinzaDe = new THREE.Mesh(pinza, materialPinza);
     pinzaDe.rotation.y = Math.PI / 2;
     pinzaDe.position.set(0, 20, 0);
     pinzaDe.receiveShadow = true;
